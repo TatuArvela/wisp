@@ -7,6 +7,7 @@ import { ShellChildren } from './types';
 import useWindowManager from './windowManager/useWindowManager';
 
 const ShellElement = styled.div`
+  position: relative;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -30,6 +31,7 @@ const Shell = ({ children }: ShellProps): JSX.Element => {
   const {
     activeWindowId,
     activateWindow,
+    dragWindow,
     windowOrder,
     windows,
   } = windowManager;
@@ -43,6 +45,7 @@ const Shell = ({ children }: ShellProps): JSX.Element => {
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...window}
             activateWindow={activateWindow}
+            dragWindow={dragWindow}
             isActiveWindow={window.id === activeWindowId}
           >
             {window.children}

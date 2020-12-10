@@ -6,6 +6,7 @@ import { WindowType } from './types';
 
 type RenderedWindowProps = WindowType & {
   activateWindow: WindowManager['activateWindow'];
+  dragWindow: WindowManager['dragWindow'];
   isActiveWindow: boolean;
 };
 type WindowComponentProps = Pick<
@@ -37,6 +38,7 @@ const WindowTitle = styled.div<WindowTitleProps>`
   padding-left: 2px;
   width: 100%;
   margin: 0;
+  user-select: none;
 `;
 
 const WindowContent = styled.div`
@@ -46,11 +48,13 @@ const WindowContent = styled.div`
   height: calc(100% - 18px);
   text-align: center;
   width: 100%;
+  user-select: none;
 `;
 
 const RenderedWindow = ({
   activateWindow,
   children,
+  dragWindow,
   id,
   isActiveWindow,
   positionX,
@@ -62,7 +66,12 @@ const RenderedWindow = ({
     positionY={positionY}
     onClick={() => activateWindow(id)}
   >
-    <WindowTitle isActiveWindow={isActiveWindow}>{title}</WindowTitle>
+    <WindowTitle
+      isActiveWindow={isActiveWindow}
+      onMouseDown={(event) => dragWindow(event, id)}
+    >
+      {title}
+    </WindowTitle>
     <WindowContent>{children}</WindowContent>
   </WindowComponent>
 );
