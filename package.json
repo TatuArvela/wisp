@@ -12,8 +12,10 @@
     "lint:fix": "eslint --fix --ext js,ts,tsx src"
   },
   "devDependencies": {
+    "@storybook/addons": "^6.1.10",
     "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/react": "^6.1.10",
+    "@storybook/theming": "^6.1.10",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "eslint": "^7.15.0",
     "eslint-config-airbnb-typescript": "^12.0.0",
