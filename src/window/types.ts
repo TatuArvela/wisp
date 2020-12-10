@@ -2,11 +2,13 @@ import React from 'react';
 
 export type WindowId = string;
 
-export type WindowType = {
+export type WindowProps = {
+  id: WindowId;
   title: string;
   children: React.ReactNode;
 };
 
-export type WindowProps = {
-  id: WindowId;
-} & WindowType;
+export type WindowType = WindowProps & {
+  positionX: number;
+  positionY: number;
+};

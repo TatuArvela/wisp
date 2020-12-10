@@ -1,8 +1,7 @@
-import RenderedWindow from '../../window/RenderedWindow';
 import { WindowType } from '../../window/types';
 import { ShellChildren, WindowManager } from '../types';
 
-const mapWindows = (
+const prepareWindows = (
   windowElements: ShellChildren
 ): WindowManager['windows'] => {
   const windowMap = new Map<string, WindowType>();
@@ -11,15 +10,21 @@ const mapWindows = (
     ? windowElements
     : [windowElements];
 
-  windowArray.forEach((windowElement) =>
-    windowMap.set(windowElement.props.id, {
-      title: windowElement.props.title,
-      children: RenderedWindow(windowElement.props),
-    })
-  );
+  const positionOffsetPx = 10;
+
+  windowArray.forEach((windowElement, index) => {
+    const props = {
+      ...windowElement.props,
+      positionX: positionOffsetPx * index,
+      positionY: positionOffsetPx * index,
+    };
+    return windowMap.set(props.id, {
+      ...props,
+    });
+  });
 
   return windowMap;
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export { mapWindows };
+export { prepareWindows };

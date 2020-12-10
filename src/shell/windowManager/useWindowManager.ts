@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 import { ShellChildren, WindowManager } from '../types';
-import { mapWindows } from './utils';
+import { prepareWindows } from './utils';
 
 const useWindowManager = (shellChildren: ShellChildren): WindowManager => {
-  const mappedWindows = mapWindows(shellChildren);
+  const preparedWindows = prepareWindows(shellChildren);
 
-  const [windows, setWindows] = useState(mappedWindows);
+  const [windows, setWindows] = useState(preparedWindows);
   const [windowOrder, setWindowOrder] = useState<string[]>(
     Array.from(windows.keys()) || []
   );
@@ -14,7 +14,14 @@ const useWindowManager = (shellChildren: ShellChildren): WindowManager => {
   const activateWindow = (id: string) =>
     setWindowOrder([...windowOrder.filter((windowId) => windowId !== id), id]);
 
-  return { windows, setWindows, windowOrder, setWindowOrder, activateWindow };
+  return {
+    activateWindow,
+    activeWindowId: windowOrder[windowOrder.length - 1],
+    setWindowOrder,
+    setWindows,
+    windowOrder,
+    windows,
+  };
 };
 
 export default useWindowManager;

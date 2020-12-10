@@ -1,19 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import RenderedWindow from '../window/RenderedWindow';
+import Taskbar from './Taskbar/Taskbar';
 import { ShellChildren } from './types';
 import useWindowManager from './windowManager/useWindowManager';
 
-const Taskbar = styled.div`
-  width: 100%;
-  height: 32px;
-  position: absolute;
-  bottom: 0;
-  background: white;
-  border-top: 1px solid black;
-`;
-
-const ShellComponent = styled.div`
+const ShellElement = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -30,27 +23,37 @@ type ShellProps = {
   children: ShellChildren;
 };
 
-const Shell = ({ children: windows }: ShellProps): JSX.Element => {
-  const windowManager = useWindowManager(windows);
+const Shell = ({ children }: ShellProps): JSX.Element => {
+  const windowManager = useWindowManager(children);
+  const {
+    activeWindowId,
+    activateWindow,
+    windowOrder,
+    windows,
+  } = windowManager;
 
   return (
-    <ShellComponent>
-      {windowManager.windowOrder.map((id) => {
-        const window = windowManager.windows.get(id);
-        return window.children;
+    <ShellElement>
+      {windowOrder.map((id) => {
+        const window = windows.get(id);
+        return (
+          <RenderedWindow
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...window}
+            activateWindow={activateWindow}
+            isActiveWindow={window.id === activeWindowId}
+          >
+            {window.children}
+          </RenderedWindow>
+        );
       })}
 
-      <Taskbar>
-        {Array.from(windowManager.windows.entries()).map(([id, window]) => (
-          <button
-            type="button"
-            onClick={() => windowManager.activateWindow(id)}
-          >
-            {window.title}
-          </button>
-        ))}
-      </Taskbar>
-    </ShellComponent>
+      <Taskbar
+        activeWindowId={activeWindowId}
+        activateWindow={activateWindow}
+        windows={windows}
+      />
+    </ShellElement>
   );
 };
 

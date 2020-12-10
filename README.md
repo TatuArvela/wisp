@@ -2,9 +2,12 @@
 
 ## 0.1.0 TODO
 
-* Shell window handling
-* Shell taskbar
-* Window component
+* Window
+  * Moving
+  * Minimizing
+  * Maximizing
+  * Restoring
+  * Resizing
 * README
 * LICENSE
 * Release pipeline with `rollup` and GitHub Actions

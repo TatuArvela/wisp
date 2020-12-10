@@ -7,6 +7,7 @@ export type ShellChildren =
   | React.ReactElement<WindowProps>[];
 
 export type WindowManager = {
+  activeWindowId: WindowId;
   activateWindow(windowId: WindowId): void;
   setWindowOrder(windowOrder: WindowId[]): void;
   setWindows(windows: Map<WindowId, WindowType>): void;
