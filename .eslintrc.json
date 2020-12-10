@@ -1,0 +1,54 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "jsx-a11y",
+    "prettier",
+    "react",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "prettier/prettier": [
+      "error"
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "markers": [
+          "/"
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.tsx"
+      ],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}

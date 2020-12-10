@@ -7,6 +7,4 @@ export default {
   title: 'Shell',
 };
 
-export const Default = () => (
-    <Shell />
-);
+export const Default = (): JSX.Element => <Shell />;
