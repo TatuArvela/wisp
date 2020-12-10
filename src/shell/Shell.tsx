@@ -13,6 +13,8 @@ const ShellElement = styled.div`
   overflow: hidden;
   background: rgb(10, 36, 106);
   color: white;
+  font-family: sans-serif;
+  font-size: 14px;
 
   * {
     box-sizing: border-box;

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Button from '../controls/Button';
 import Window from '../window/Window';
 import Shell from './Shell';
 
