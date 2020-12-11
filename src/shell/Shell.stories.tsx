@@ -13,13 +13,13 @@ export const Default = (): JSX.Element => (
   <Shell>
     <Window id="1" title="Uno">
       <p>Alert!</p>
-      <Button type="button" style={{ width: '100px', margin: 'auto' }}>
+      <Button type="button" style={{ width: '60px', margin: 'auto' }}>
         OK
       </Button>
     </Window>
     <Window id="2" title="Dos">
       <p>Warning!</p>
-      <Button type="button" style={{ width: '100px', margin: 'auto' }}>
+      <Button type="button" style={{ width: '60px', margin: 'auto' }}>
         OK
       </Button>
     </Window>
