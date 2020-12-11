@@ -11,11 +11,17 @@ const VersionInformationElement = styled.p`
   right: 0;
   text-align: right;
   user-select: none;
+  font-family: sans-serif;
 `;
 
-const VersionInformation = (): JSX.Element => (
-  <VersionInformationElement>
-    react-classic-shell Version 0.1.0
-  </VersionInformationElement>
-);
+const VersionInformation = (): JSX.Element => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
+  const packageJson = require('../../../package.json');
+
+  return (
+    <VersionInformationElement>
+      {packageJson.name} Version {packageJson.version}
+    </VersionInformationElement>
+  );
+};
 export default VersionInformation;
