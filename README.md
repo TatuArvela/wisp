@@ -10,8 +10,7 @@
     * Resizing on window area resize
   * Positioning
     * Repositioning on viewport resize
-  * Handle situation where a window is added or deleted
-  * Closing windows
+  * Handle Window prop changes
   * Window configuration
     * Enable/disable resize, minimize, close, maximize, move
 * README

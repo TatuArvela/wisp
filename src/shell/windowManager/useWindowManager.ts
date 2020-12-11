@@ -26,12 +26,17 @@ const useWindowManager = (
     setWindows(updatedWindows);
   };
 
-  const putWindowToForeground = (id: string) =>
-    setWindowOrder([...windowOrder.filter((windowId) => windowId !== id), id]);
-
   const activateWindow = (id: string) => {
     setActiveWindowId(id);
-    putWindowToForeground(id);
+    setWindowOrder([...windowOrder.filter((windowId) => windowId !== id), id]);
+  };
+
+  const closeWindow = (id: string) => {
+    if (id === activeWindowId) setActiveWindowId(null);
+    const updatedWindows = new Map(windows);
+    updatedWindows.delete(id);
+    setWindows(updatedWindows);
+    setWindowOrder(windowOrder.filter((windowId) => windowId !== id));
   };
 
   const maximizeWindow = (id: string) => {
@@ -106,6 +111,7 @@ const useWindowManager = (
   return {
     activateWindow,
     activeWindowId,
+    closeWindow,
     dragWindow,
     maximizeWindow,
     minimizeWindow,

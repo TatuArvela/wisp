@@ -5,6 +5,7 @@ import { WindowType } from '../window/types';
 export type WindowManager = {
   activateWindow(windowId: string): void;
   activeWindowId: string;
+  closeWindow(windowId: string): void;
   dragWindow(event: React.MouseEvent, windowId: string): void;
   maximizeWindow(windowId: string): void;
   minimizeWindow(windowId: string): void;

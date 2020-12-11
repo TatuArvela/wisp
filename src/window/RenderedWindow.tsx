@@ -34,6 +34,7 @@ const RenderedWindow = ({
     width={width}
   >
     <TitleBar
+      close={() => windowManager.closeWindow(id)}
       drag={(event) => windowManager.dragWindow(event, id)}
       isActive={id === windowManager.activeWindowId}
       isMaximizable={isMaximizable}
