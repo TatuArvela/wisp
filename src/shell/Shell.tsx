@@ -2,10 +2,10 @@ import React from 'react';
 
 import RenderedWindow from '../window/RenderedWindow';
 import { WindowProps } from '../window/types';
+import Desktop from './components/Desktop';
 import ShellElement from './components/ShellElement';
 import Taskbar from './components/Taskbar';
 import VersionInformation from './components/VersionInformation';
-import WindowArea from './components/WindowArea';
 import defaultConfig from './defaultConfig';
 import { Config } from './types';
 import initializeWindows from './windowManager/initializeWindows';
@@ -19,12 +19,12 @@ type ShellProps = {
 
 const Shell = ({ children, config: _config = {} }: ShellProps): JSX.Element => {
   const config = { ...defaultConfig, ..._config };
-  const windowAreaRef = React.useRef<HTMLDivElement>();
+  const desktopRef = React.useRef<HTMLDivElement>();
 
   const windowManager = useWindowManager(
     config,
     initializeWindows(config, children),
-    windowAreaRef
+    desktopRef
   );
   const { activeWindowId, windowOrder, windows, restoreWindow } = windowManager;
 
@@ -32,7 +32,7 @@ const Shell = ({ children, config: _config = {} }: ShellProps): JSX.Element => {
     <ShellElement>
       {!config.disableVersionInformation && <VersionInformation />}
 
-      <WindowArea config={config} ref={windowAreaRef}>
+      <Desktop config={config} ref={desktopRef}>
         {windowOrder.map((id) => {
           const window = windows.get(id);
           return (
@@ -45,7 +45,7 @@ const Shell = ({ children, config: _config = {} }: ShellProps): JSX.Element => {
             </RenderedWindow>
           );
         })}
-      </WindowArea>
+      </Desktop>
 
       {!config.disableTaskbar && (
         <Taskbar

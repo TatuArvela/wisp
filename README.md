@@ -4,13 +4,13 @@
 
 ## 0.1.0 TODO
 
-* Window
-  * Window area resize
-    * Reposition and resize windows to fit
-  * Handle Window prop changes
 * README
 * LICENSE
 * Release pipeline with `rollup` and GitHub Actions
+
+## 0.2.0 TODO
+
+* Handle Window prop changes
 
 ## 1.0.0 TODO
 

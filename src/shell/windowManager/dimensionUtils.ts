@@ -4,48 +4,45 @@ import { Config } from '../types';
 const calculatePositionX = (
   window: WindowType,
   xOffset: number,
-  getViewportWidth: () => number
+  desktopWidth: number
 ) =>
   Math.min(
     Math.max(window.positionX - xOffset, 0),
-    getViewportWidth() - window.width
+    desktopWidth - window.width
   );
 
 const calculatePositionY = (
   window: WindowType,
   yOffset: number,
-  getViewportHeight: () => number
+  desktopHeight: number
 ) =>
   Math.min(
     Math.max(window.positionY - yOffset, 0),
-    getViewportHeight() - window.height
+    desktopHeight - window.height
   );
 
 const calculateWidth = (
   config: Config,
   window: WindowType,
   xOffset: number,
-  getViewportWidth: () => number,
+  desktopWidth: number,
   factor: number
 ) =>
   Math.min(
     Math.max(window.width - xOffset * factor, config.minWindowWidth),
-    Math.min(getViewportWidth() - window.positionX, config.maxWindowWidth)
+    Math.min(desktopWidth - window.positionX, config.maxWindowWidth)
   );
 
 const calculateHeight = (
   config: Config,
   window: WindowType,
   yOffset: number,
-  getViewportHeight: () => number,
+  desktopHeight: number,
   factor: number
 ) =>
   Math.min(
     Math.max(window.height - yOffset * factor, config.minWindowHeight),
-    Math.min(
-      getViewportHeight() - window.positionY - config.taskbarHeight,
-      config.maxWindowHeight
-    )
+    Math.min(desktopHeight - window.positionY, config.maxWindowHeight)
   );
 
 /* eslint-disable no-param-reassign */
@@ -54,11 +51,28 @@ export const repositionWindow = (
   window: WindowType,
   xOffset: number,
   yOffset: number,
-  getViewportWidth: () => number,
-  getViewportHeight: () => number
+  desktopWidth: number,
+  desktopHeight: number
 ): void => {
-  window.positionX = calculatePositionX(window, xOffset, getViewportWidth);
-  window.positionY = calculatePositionY(window, yOffset, getViewportHeight);
+  window.positionX = calculatePositionX(window, xOffset, desktopWidth);
+  window.positionY = calculatePositionY(window, yOffset, desktopHeight);
+};
+
+export const fitWindow = (
+  window: WindowType,
+  config: Config,
+  desktopWidth: number,
+  desktopHeight: number
+): void => {
+  window.width = Math.min(
+    Math.max(window.width, config.minWindowWidth),
+    Math.min(desktopWidth, config.maxWindowWidth)
+  );
+
+  window.height = Math.min(
+    Math.max(window.height, config.minWindowHeight),
+    Math.min(desktopHeight, config.maxWindowHeight)
+  );
 };
 
 export const resizeWindow = (
@@ -67,52 +81,34 @@ export const resizeWindow = (
   direction: Direction,
   xOffset: number,
   yOffset: number,
-  getViewportWidth: () => number,
-  getViewportHeight: () => number
+  desktopWidth: number,
+  desktopHeight: number
 ): void => {
   const resizeN = () => {
     const originalHeight = window.height;
-    window.height = calculateHeight(
-      config,
-      window,
-      yOffset,
-      getViewportHeight,
-      -1
-    );
+    window.height = calculateHeight(config, window, yOffset, desktopHeight, -1);
     if (window.height !== originalHeight) {
       window.positionY = calculatePositionY(
         window,
         window.height - originalHeight,
-        getViewportHeight
+        desktopHeight
       );
     }
   };
   const resizeE = () => {
-    window.width = calculateWidth(config, window, xOffset, getViewportWidth, 1);
+    window.width = calculateWidth(config, window, xOffset, desktopWidth, 1);
   };
   const resizeS = () => {
-    window.height = calculateHeight(
-      config,
-      window,
-      yOffset,
-      getViewportHeight,
-      1
-    );
+    window.height = calculateHeight(config, window, yOffset, desktopHeight, 1);
   };
   const resizeW = () => {
     const originalWidth = window.width;
-    window.width = calculateWidth(
-      config,
-      window,
-      xOffset,
-      getViewportWidth,
-      -1
-    );
+    window.width = calculateWidth(config, window, xOffset, desktopWidth, -1);
     if (window.width !== originalWidth) {
       window.positionX = calculatePositionX(
         window,
         window.width - originalWidth,
-        getViewportWidth
+        desktopWidth
       );
     }
   };

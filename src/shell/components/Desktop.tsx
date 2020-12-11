@@ -5,7 +5,7 @@ import { Config } from '../types';
 type WindowAreaProps = {
   config: Config;
 };
-const WindowArea = styled.div<WindowAreaProps>`
+const Desktop = styled.div<WindowAreaProps>`
   background: ${(props) =>
     props.config.transparentBackground ? 'transparent' : 'rgb(10, 36, 106)'};
   bottom: ${(props) =>
@@ -18,4 +18,4 @@ const WindowArea = styled.div<WindowAreaProps>`
   right: 0;
   top: 0;
 `;
-export default WindowArea;
+export default Desktop;

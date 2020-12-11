@@ -1,14 +1,14 @@
-import { RefObject, useState } from 'react';
+import { RefObject, useCallback, useLayoutEffect, useState } from 'react';
 
 import { Direction, WindowType } from '../../window/types';
 import { Config, WindowManager } from '../types';
-import { repositionWindow, resizeWindow } from './dimensionUtils';
+import { fitWindow, repositionWindow, resizeWindow } from './dimensionUtils';
 import mouseDragHandler from './mouseDragHandler';
 
 const useWindowManager = (
   config: Config,
   _windows: Map<string, WindowType>,
-  shellElementRef: RefObject<HTMLDivElement>
+  desktopRef: RefObject<HTMLDivElement>
 ): WindowManager => {
   const [windows, setWindows] = useState<Map<string, WindowType>>(_windows);
   const [windowOrder, setWindowOrder] = useState<string[]>(
@@ -18,8 +18,31 @@ const useWindowManager = (
     windowOrder[windowOrder.length - 1]
   );
 
-  const getViewportWidth = () => shellElementRef.current?.offsetWidth || 0;
-  const getViewportHeight = () => shellElementRef.current?.offsetHeight || 0;
+  const getViewportWidth = useCallback(
+    () => desktopRef.current?.offsetWidth || 0,
+    [desktopRef]
+  );
+  const getViewportHeight = useCallback(
+    () => desktopRef.current?.offsetHeight || 0,
+    [desktopRef]
+  );
+
+  useLayoutEffect(() => {
+    function updateAllWindowSizes() {
+      const updatedWindows = new Map(windows);
+      const desktopWidth = getViewportWidth();
+      const desktopHeight = getViewportHeight();
+      updatedWindows.forEach((window) => {
+        fitWindow(window, config, desktopWidth, desktopHeight);
+        repositionWindow(window, 0, 0, desktopWidth, desktopHeight);
+      });
+      setWindows(updatedWindows);
+    }
+    window.addEventListener('resize', updateAllWindowSizes);
+    updateAllWindowSizes();
+    return () => window.removeEventListener('resize', updateAllWindowSizes);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const updateWindow = (window: WindowType) => {
     const updatedWindows = new Map(windows);
@@ -77,8 +100,8 @@ const useWindowManager = (
         window,
         xOffset,
         yOffset,
-        getViewportWidth,
-        getViewportHeight
+        getViewportWidth(),
+        getViewportHeight()
       );
       updateWindow(window);
     });
@@ -95,8 +118,8 @@ const useWindowManager = (
         direction,
         xOffset,
         yOffset,
-        getViewportWidth,
-        getViewportHeight
+        getViewportWidth(),
+        getViewportHeight()
       );
       updateWindow(window);
     });
