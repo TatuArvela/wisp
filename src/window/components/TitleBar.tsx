@@ -9,7 +9,7 @@ type TitleBarProps = {
   isMaximized: boolean;
   isMinimizable: boolean;
   maximize(): void;
-  minimize?: () => void;
+  minimize(): void;
   title: string;
   unmaximize(): void;
 };
@@ -28,7 +28,10 @@ const TitleBarElement = styled.div<{ isActive: boolean }>`
   display: flex;
 `;
 
-const Title = styled.div``;
+const Title = styled.div`
+  display: block;
+  flex-grow: 1;
+`;
 
 const TitleBar = ({
   drag,
@@ -40,8 +43,8 @@ const TitleBar = ({
   title,
   unmaximize,
 }: TitleBarProps): JSX.Element => (
-  <TitleBarElement isActive={isActive} onMouseDown={drag}>
-    <Title>{title}</Title>
+  <TitleBarElement isActive={isActive}>
+    <Title onMouseDown={drag}>{title}</Title>
     <TitleBarButtons
       close={() => null}
       isClosable

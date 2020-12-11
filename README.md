@@ -8,8 +8,6 @@
   * Sizing
     * Resize from edges
     * Resizing on window area resize
-  * Minimizing
-    * Restoring
   * Positioning
     * Repositioning on viewport resize
   * Handle situation where a window is added or deleted

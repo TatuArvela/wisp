@@ -4,7 +4,7 @@ import { WindowType } from '../types';
 
 type WindowProps = Pick<
   WindowType,
-  'height' | 'width' | 'positionX' | 'positionY'
+  'height' | 'width' | 'positionX' | 'positionY' | 'isMinimized'
 > & {
   isMaximized: boolean;
 };
@@ -14,6 +14,10 @@ const maximizedStyles = css`
   left: 0;
   top: 0;
   width: 100%;
+`;
+
+const minimizedStyles = css`
+  display: none;
 `;
 
 const Window = styled.div<WindowProps>`
@@ -30,5 +34,6 @@ const Window = styled.div<WindowProps>`
   border-radius: 3px;
 
   ${(props) => props.isMaximized && maximizedStyles}
+  ${(props) => props.isMinimized && minimizedStyles}
 `;
 export default Window;

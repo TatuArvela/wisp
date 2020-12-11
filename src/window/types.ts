@@ -9,6 +9,7 @@ export type WindowProps = {
 export type WindowType = WindowProps & {
   height: number;
   isMinimizable: boolean;
+  isMinimized: boolean;
   positionX: number;
   positionY: number;
   width: number;

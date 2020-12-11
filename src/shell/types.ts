@@ -8,7 +8,7 @@ export type WindowManager = {
   dragWindow(event: React.MouseEvent, windowId: string): void;
   maximizeWindow(windowId: string): void;
   maximizedWindowId: string | null;
-  minimizeWindow?: (windowId: string) => void;
+  minimizeWindow(windowId: string): void;
   resizeWindow(event: React.MouseEvent, windowId: string): void;
   setWindowOrder(windowOrder: string[]): void;
   setWindows(windows: Map<string, WindowType>): void;

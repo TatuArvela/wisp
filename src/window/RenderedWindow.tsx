@@ -16,6 +16,7 @@ const RenderedWindow = ({
   height,
   id,
   isMinimizable,
+  isMinimized,
   positionX,
   positionY,
   title,
@@ -25,7 +26,7 @@ const RenderedWindow = ({
   <Window
     height={height}
     isMaximized={id === windowManager.maximizedWindowId}
-    onClick={() => windowManager.activateWindow(id)}
+    isMinimized={isMinimized}
     positionX={positionX}
     positionY={positionY}
     width={width}
@@ -35,12 +36,14 @@ const RenderedWindow = ({
       isActive={id === windowManager.activeWindowId}
       isMaximized={id === windowManager.maximizedWindowId}
       isMinimizable={isMinimizable}
-      minimize={() => windowManager.minimizeWindow(id)}
       maximize={() => windowManager.maximizeWindow(id)}
+      minimize={() => windowManager.minimizeWindow(id)}
       title={title}
       unmaximize={() => windowManager.unmaximizeWindow(id)}
     />
-    <WindowContent>{children}</WindowContent>
+    <WindowContent onClick={() => windowManager.activateWindow(id)}>
+      {children}
+    </WindowContent>
     <ResizeHandle
       onMouseDown={(event) => windowManager.resizeWindow(event, id)}
     />
