@@ -15,6 +15,8 @@ const RenderedWindow = ({
   children,
   height,
   id,
+  isMaximized,
+  isMaximizable,
   isMinimizable,
   isMinimized,
   positionX,
@@ -25,7 +27,7 @@ const RenderedWindow = ({
 }: RenderedWindowProps): JSX.Element => (
   <Window
     height={height}
-    isMaximized={id === windowManager.maximizedWindowId}
+    isMaximized={isMaximized}
     isMinimized={isMinimized}
     positionX={positionX}
     positionY={positionY}
@@ -34,7 +36,8 @@ const RenderedWindow = ({
     <TitleBar
       drag={(event) => windowManager.dragWindow(event, id)}
       isActive={id === windowManager.activeWindowId}
-      isMaximized={id === windowManager.maximizedWindowId}
+      isMaximizable={isMaximizable}
+      isMaximized={isMaximized}
       isMinimizable={isMinimizable}
       maximize={() => windowManager.maximizeWindow(id)}
       minimize={() => windowManager.minimizeWindow(id)}

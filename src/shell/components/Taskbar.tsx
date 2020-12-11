@@ -8,7 +8,7 @@ import TaskbarButton from './TaskbarButton';
 export interface TaskbarProps {
   activeWindowId: WindowManager['activeWindowId'];
   windows: WindowManager['windows'];
-  activateWindow: WindowManager['activateWindow'];
+  restoreWindow: WindowManager['restoreWindow'];
 }
 
 const TaskbarElement = styled.div`
@@ -22,13 +22,13 @@ const TaskbarElement = styled.div`
 `;
 
 const Taskbar = ({
-  activateWindow,
+  restoreWindow,
   activeWindowId,
   windows,
 }: TaskbarProps): JSX.Element => {
   const mapButtons = ([id, window]: [id: string, window: WindowType]) => (
     <TaskbarButton
-      onClick={() => activateWindow(id)}
+      onClick={() => restoreWindow(id)}
       active={id === activeWindowId}
     >
       {window.title}

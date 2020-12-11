@@ -26,12 +26,7 @@ const Shell = ({ children, config: _config = {} }: ShellProps): JSX.Element => {
     initializeWindows(config, children),
     windowAreaRef
   );
-  const {
-    activateWindow,
-    activeWindowId,
-    windowOrder,
-    windows,
-  } = windowManager;
+  const { activeWindowId, windowOrder, windows, restoreWindow } = windowManager;
 
   return (
     <ShellElement>
@@ -55,7 +50,7 @@ const Shell = ({ children, config: _config = {} }: ShellProps): JSX.Element => {
       {!config.disableTaskbar && (
         <Taskbar
           activeWindowId={activeWindowId}
-          activateWindow={activateWindow}
+          restoreWindow={restoreWindow}
           windows={windows}
         />
       )}

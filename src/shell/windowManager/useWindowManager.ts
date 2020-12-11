@@ -16,7 +16,6 @@ const useWindowManager = (
   const [activeWindowId, setActiveWindowId] = useState<string>(
     windowOrder[windowOrder.length - 1]
   );
-  const [maximizedWindowId, setMaximizedWindowId] = useState<string | null>();
 
   const getViewportWidth = () => shellElementRef.current?.offsetWidth || 0;
   const getViewportHeight = () => shellElementRef.current?.offsetHeight || 0;
@@ -27,38 +26,46 @@ const useWindowManager = (
     setWindows(updatedWindows);
   };
 
+  const putWindowToForeground = (id: string) =>
+    setWindowOrder([...windowOrder.filter((windowId) => windowId !== id), id]);
+
   const activateWindow = (id: string) => {
     setActiveWindowId(id);
-    setWindowOrder([...windowOrder.filter((windowId) => windowId !== id), id]);
-    const window = windows.get(id);
-    window.isMinimized = false;
-    updateWindow(window);
+    putWindowToForeground(id);
   };
 
   const maximizeWindow = (id: string) => {
-    setActiveWindowId(id);
-    setMaximizedWindowId(id);
-    setWindowOrder([...windowOrder.filter((windowId) => windowId !== id), id]);
+    activateWindow(id);
+    const window = windows.get(id);
+    window.isMaximized = true;
+    updateWindow(window);
   };
 
   const unmaximizeWindow = (id: string) => {
-    setActiveWindowId(id);
-    setMaximizedWindowId(null);
-    setWindowOrder([...windowOrder.filter((windowId) => windowId !== id), id]);
+    activateWindow(id);
+    const window = windows.get(id);
+    window.isMaximized = false;
+    updateWindow(window);
   };
 
   const minimizeWindow = (id: string) => {
     if (id === activeWindowId) setActiveWindowId(null);
-    if (id === maximizedWindowId) setMaximizedWindowId(null);
     const window = windows.get(id);
     window.isMinimized = true;
+    updateWindow(window);
+  };
+
+  const restoreWindow = (id: string) => {
+    activateWindow(id);
+    const window = windows.get(id);
+    window.isMinimized = false;
     updateWindow(window);
   };
 
   const dragWindow = (event, windowId) => {
     activateWindow(windowId);
     const window = windows.get(windowId);
-    if (window.id === maximizedWindowId) return;
+    if (window.isMaximized) return;
     mouseDragHandler(event, window, (xOffset, yOffset) => {
       // eslint-disable-next-line no-param-reassign
       window.positionX = Math.min(
@@ -77,7 +84,7 @@ const useWindowManager = (
   const resizeWindow = (event, windowId) => {
     activateWindow(windowId);
     const window = windows.get(windowId);
-    if (window.id === maximizedWindowId) return;
+    if (window.isMaximized) return;
     mouseDragHandler(event, window, (xOffset, yOffset) => {
       // eslint-disable-next-line no-param-reassign
       window.width = Math.min(
@@ -101,9 +108,9 @@ const useWindowManager = (
     activeWindowId,
     dragWindow,
     maximizeWindow,
-    maximizedWindowId,
     minimizeWindow,
     resizeWindow,
+    restoreWindow,
     unmaximizeWindow,
     setWindowOrder,
     setWindows,

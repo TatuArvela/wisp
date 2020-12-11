@@ -6,6 +6,7 @@ import TitleBarButtons from './TitleBarButtons';
 type TitleBarProps = {
   drag(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
   isActive: boolean;
+  isMaximizable: boolean;
   isMaximized: boolean;
   isMinimizable: boolean;
   maximize(): void;
@@ -36,6 +37,7 @@ const Title = styled.div`
 const TitleBar = ({
   drag,
   isActive,
+  isMaximizable,
   isMaximized,
   isMinimizable,
   maximize,
@@ -48,7 +50,7 @@ const TitleBar = ({
     <TitleBarButtons
       close={() => null}
       isClosable
-      isMaximizable
+      isMaximizable={isMaximizable}
       isMaximized={isMaximized}
       isMinimizable={isMinimizable}
       maximize={maximize}

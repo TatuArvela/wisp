@@ -18,12 +18,14 @@ const initializeWindows = (
   windowElementArray.forEach((windowElement, index) => {
     const window: WindowType = {
       ...windowElement.props,
+      height: config.defaultWindowHeight,
+      isMaximizable: true, // TODO
+      isMaximized: false,
+      isMinimizable: !config.disableTaskbar && true, // TODO
+      isMinimized: false,
       positionX: config.newWindowXOffset * index,
       positionY: config.newWindowYOffset * index,
       width: config.defaultWindowWidth,
-      height: config.defaultWindowHeight,
-      isMinimized: false,
-      isMinimizable: !config.disableTaskbar, // TODO
     };
     return windowMap.set(window.id, window);
   });
