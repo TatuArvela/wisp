@@ -10,6 +10,7 @@ export type WindowManager = {
   activeWindowId: WindowId;
   activateWindow(windowId: WindowId): void;
   dragWindow(event, windowId): void;
+  resizeWindow(event, windowId): void;
   setWindowOrder(windowOrder: WindowId[]): void;
   setWindows(windows: Map<WindowId, WindowType>): void;
   windowOrder: WindowId[];

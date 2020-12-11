@@ -27,17 +27,19 @@ type ShellProps = {
 };
 
 const Shell = ({ children }: ShellProps): JSX.Element => {
-  const windowManager = useWindowManager(children);
+  const shellElementRef = React.useRef<HTMLDivElement>();
+  const windowManager = useWindowManager(children, shellElementRef);
   const {
     activeWindowId,
     activateWindow,
     dragWindow,
+    resizeWindow,
     windowOrder,
     windows,
   } = windowManager;
 
   return (
-    <ShellElement>
+    <ShellElement ref={shellElementRef}>
       {windowOrder.map((id) => {
         const window = windows.get(id);
         return (
@@ -46,6 +48,7 @@ const Shell = ({ children }: ShellProps): JSX.Element => {
             {...window}
             activateWindow={activateWindow}
             dragWindow={dragWindow}
+            resizeWindow={resizeWindow}
             isActiveWindow={window.id === activeWindowId}
           >
             {window.children}

@@ -17,6 +17,8 @@ const prepareWindows = (
       ...windowElement.props,
       positionX: positionOffsetPx * index,
       positionY: positionOffsetPx * index,
+      width: 200, // TODO: Move to config
+      height: 100, // TODO: Move to config
     };
     return windowMap.set(props.id, {
       ...props,

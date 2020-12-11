@@ -11,4 +11,6 @@ export type WindowProps = {
 export type WindowType = WindowProps & {
   positionX: number;
   positionY: number;
+  width: number;
+  height: number;
 };
