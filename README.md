@@ -1,18 +1,36 @@
-# react-classic-shell
+# React Classic Shell
 
-**Build web apps that function like desktop applications**
+Build web applications that look and feel like desktop applications.
 
-## 0.1.0 TODO
+## Usage
 
-* README
-* LICENSE
-* Release pipeline with `rollup` and GitHub Actions
+*TODO*
 
-## 0.2.0 TODO
+### Shell
+
+### Window
+
+### Controls
+
+### Configuration
+
+### Theme
+
+## TODO
+
+### 0.1.0
+
+* Create release pipeline with `rollup` and GitHub Actions
+* Add brief notes on usage
+
+### 0.2.0
 
 * Handle Window prop changes
+* Documentation
+* Storybook knobs
+* Testing
 
-## 1.0.0 TODO
+### 1.0.0
 
 * Shell theming
   * Native default theme
