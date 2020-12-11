@@ -1,5 +1,7 @@
 # react-classic-shell
 
+**Build web apps that function like desktop applications**
+
 ## 0.1.0 TODO
 
 * Window
@@ -19,6 +21,19 @@
 
 ## 1.0.0 TODO
 
-* Window icons
 * Shell theming
+  * Native default theme
+  * Windows Classic theme
 * Controls
+  * Button
+  * CheckBox
+  * ComboBox (basic functionality)
+  * GroupBox
+  * Label
+  * StatusBar
+  * TextBox
+  * time picker (I need to figure out what its WinForms name is)
+  * ToolBar
+* Window icons
+  * Window icon
+  * Alert icon

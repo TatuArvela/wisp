@@ -1,7 +1,7 @@
 {
   "name": "react-classic-shell",
   "version": "0.1.0",
-  "description": "Classic Shell as a React framework",
+  "description": "Graphical shell in React",
   "main": "src/index.ts",
   "repository": "https://github.com/TatuArvela/react-classic-shell",
   "author": "Tatu Arvela",

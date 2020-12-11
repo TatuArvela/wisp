@@ -26,6 +26,14 @@ type ShellProps = {
   children: ShellChildren;
 };
 
+const VersionInformation = styled.p`
+  position: absolute;
+  right: 0;
+  margin: 4px;
+  bottom: 30px;
+  text-align: right;
+`;
+
 const Shell = ({ children }: ShellProps): JSX.Element => {
   const shellElementRef = React.useRef<HTMLDivElement>();
   const windowManager = useWindowManager(children, shellElementRef);
@@ -55,6 +63,8 @@ const Shell = ({ children }: ShellProps): JSX.Element => {
           </RenderedWindow>
         );
       })}
+
+      <VersionInformation>react-classic-shell Version 0.1.0</VersionInformation>
 
       <Taskbar
         activeWindowId={activeWindowId}
