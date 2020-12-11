@@ -44,6 +44,10 @@ const useWindowManager = (
     setWindowOrder([...windowOrder.filter((windowId) => windowId !== id), id]);
   };
 
+  const minimizeWindow = (id: string) => {
+    // TODO
+  };
+
   const dragWindow = (event, windowId) => {
     activateWindow(windowId);
     const window = windows.get(windowId);
@@ -91,6 +95,7 @@ const useWindowManager = (
     dragWindow,
     maximizeWindow,
     maximizedWindowId,
+    minimizeWindow,
     resizeWindow,
     unmaximizeWindow,
     setWindowOrder,

@@ -15,16 +15,17 @@ const RenderedWindow = ({
   children,
   height,
   id,
+  isMinimizable,
   positionX,
   positionY,
   title,
-  windowManager,
   width,
+  windowManager,
 }: RenderedWindowProps): JSX.Element => (
   <Window
+    height={height}
     isMaximized={id === windowManager.maximizedWindowId}
     onClick={() => windowManager.activateWindow(id)}
-    height={height}
     positionX={positionX}
     positionY={positionY}
     width={width}
@@ -33,9 +34,11 @@ const RenderedWindow = ({
       drag={(event) => windowManager.dragWindow(event, id)}
       isActive={id === windowManager.activeWindowId}
       isMaximized={id === windowManager.maximizedWindowId}
-      unmaximize={() => windowManager.unmaximizeWindow(id)}
+      isMinimizable={isMinimizable}
+      minimize={() => windowManager.minimizeWindow(id)}
       maximize={() => windowManager.maximizeWindow(id)}
       title={title}
+      unmaximize={() => windowManager.unmaximizeWindow(id)}
     />
     <WindowContent>{children}</WindowContent>
     <ResizeHandle

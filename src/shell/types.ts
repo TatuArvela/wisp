@@ -8,10 +8,11 @@ export type WindowManager = {
   dragWindow(event: React.MouseEvent, windowId: string): void;
   maximizeWindow(windowId: string): void;
   maximizedWindowId: string | null;
+  minimizeWindow?: (windowId: string) => void;
   resizeWindow(event: React.MouseEvent, windowId: string): void;
-  unmaximizeWindow(windowId: string): void;
   setWindowOrder(windowOrder: string[]): void;
   setWindows(windows: Map<string, WindowType>): void;
+  unmaximizeWindow(windowId: string): void;
   windowOrder: string[];
   windows: Map<string, WindowType>;
 };
@@ -19,6 +20,8 @@ export type WindowManager = {
 export type Config = {
   defaultWindowHeight: number;
   defaultWindowWidth: number;
+  disableTaskbar: boolean;
+  disableVersionInformation: boolean;
   maxWindowHeight: number;
   maxWindowWidth: number;
   minWindowHeight: number;
@@ -26,4 +29,5 @@ export type Config = {
   newWindowXOffset: number;
   newWindowYOffset: number;
   taskbarHeight: number;
+  transparentBackground: boolean;
 };

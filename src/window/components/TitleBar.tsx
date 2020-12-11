@@ -4,12 +4,14 @@ import styled from 'styled-components';
 import TitleBarButtons from './TitleBarButtons';
 
 type TitleBarProps = {
-  isActive: boolean;
   drag(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
-  title: string;
-  maximize(): void;
-  unmaximize(): void;
+  isActive: boolean;
   isMaximized: boolean;
+  isMinimizable: boolean;
+  maximize(): void;
+  minimize?: () => void;
+  title: string;
+  unmaximize(): void;
 };
 
 const TitleBarElement = styled.div<{ isActive: boolean }>`
@@ -32,9 +34,11 @@ const TitleBar = ({
   drag,
   isActive,
   isMaximized,
+  isMinimizable,
   maximize,
-  unmaximize,
+  minimize,
   title,
+  unmaximize,
 }: TitleBarProps): JSX.Element => (
   <TitleBarElement isActive={isActive} onMouseDown={drag}>
     <Title>{title}</Title>
@@ -43,9 +47,9 @@ const TitleBar = ({
       isClosable
       isMaximizable
       isMaximized={isMaximized}
-      isMinimizable
+      isMinimizable={isMinimizable}
       maximize={maximize}
-      minimize={() => null}
+      minimize={minimize}
       unmaximize={unmaximize}
     />
   </TitleBarElement>

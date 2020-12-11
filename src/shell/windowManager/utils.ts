@@ -22,6 +22,7 @@ const initializeWindows = (
       positionY: config.newWindowYOffset * index,
       width: config.defaultWindowWidth,
       height: config.defaultWindowHeight,
+      isMinimizable: !config.disableTaskbar, // TODO
     };
     return windowMap.set(window.id, window);
   });

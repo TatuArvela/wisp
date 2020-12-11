@@ -6,8 +6,10 @@ type WindowAreaProps = {
   config: Config;
 };
 const WindowArea = styled.div<WindowAreaProps>`
-  background: rgb(10, 36, 106);
-  bottom: ${(props) => props.config.taskbarHeight}px;
+  background: ${(props) =>
+    props.config.transparentBackground ? 'transparent' : 'rgb(10, 36, 106)'};
+  bottom: ${(props) =>
+    props.config.disableTaskbar ? '0' : `${props.config.taskbarHeight}px`};
   box-sizing: border-box;
   font-family: sans-serif;
   left: 0;

@@ -25,3 +25,26 @@ export const Default = (): JSX.Element => (
     </Window>
   </Shell>
 );
+
+export const Minimal = (): JSX.Element => (
+  <Shell
+    config={{
+      disableTaskbar: true,
+      disableVersionInformation: true,
+      transparentBackground: true,
+    }}
+  >
+    <Window id="1" title="Uno">
+      <p>Alert!</p>
+      <Button type="button" style={{ width: '60px', margin: 'auto' }}>
+        OK
+      </Button>
+    </Window>
+    <Window id="2" title="Dos">
+      <p>Warning!</p>
+      <Button type="button" style={{ width: '60px', margin: 'auto' }}>
+        OK
+      </Button>
+    </Window>
+  </Shell>
+);
