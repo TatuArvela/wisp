@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { WindowType } from '../window/types';
+import { Direction, WindowType } from '../window/types';
 
 export type WindowManager = {
   activateWindow(windowId: string): void;
@@ -9,7 +9,11 @@ export type WindowManager = {
   dragWindow(event: React.MouseEvent, windowId: string): void;
   maximizeWindow(windowId: string): void;
   minimizeWindow(windowId: string): void;
-  resizeWindow(event: React.MouseEvent, windowId: string): void;
+  resizeWindow(
+    event: React.MouseEvent,
+    windowId: string,
+    direction: Direction
+  ): void;
   restoreWindow(windowId: string): void;
   setWindowOrder(windowOrder: string[]): void;
   setWindows(windows: Map<string, WindowType>): void;

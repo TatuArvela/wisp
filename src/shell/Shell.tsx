@@ -8,8 +8,8 @@ import VersionInformation from './components/VersionInformation';
 import WindowArea from './components/WindowArea';
 import defaultConfig from './defaultConfig';
 import { Config } from './types';
+import initializeWindows from './windowManager/initializeWindows';
 import useWindowManager from './windowManager/useWindowManager';
-import { initializeWindows } from './windowManager/utils';
 
 type ShellProps = {
   children: React.ReactElement<WindowProps> | React.ReactElement<WindowProps>[];

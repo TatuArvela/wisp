@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { WindowManager } from '../shell/types';
+import ResizeBorder from './components/ResizeBorder';
 import ResizeHandle from './components/ResizeHandle';
 import TitleBar from './components/TitleBar';
 import Window from './components/Window';
@@ -48,8 +49,15 @@ const RenderedWindow = ({
     <WindowContent onClick={() => windowManager.activateWindow(id)}>
       {children}
     </WindowContent>
+    <ResizeBorder
+      resize={(event, direction) =>
+        windowManager.resizeWindow(event, id, direction)
+      }
+    />
     <ResizeHandle
-      onMouseDown={(event) => windowManager.resizeWindow(event, id)}
+      resize={(event, direction) =>
+        windowManager.resizeWindow(event, id, direction)
+      }
     />
   </Window>
 );

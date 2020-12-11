@@ -1,5 +1,16 @@
 import React from 'react';
 
+export enum Direction {
+  N = 'N',
+  NE = 'NE',
+  E = 'E',
+  SE = 'SE',
+  S = 'S',
+  SW = 'SW',
+  W = 'W',
+  NW = 'NW',
+}
+
 export type WindowProps = {
   children: React.ReactNode;
   id: string;

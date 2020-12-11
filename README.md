@@ -5,11 +5,8 @@
 ## 0.1.0 TODO
 
 * Window
-  * Sizing
-    * Resize from edges
-    * Resizing on window area resize
-  * Positioning
-    * Repositioning on viewport resize
+  * Window area resize
+    * Reposition and resize windows to fit
   * Handle Window prop changes
   * Window configuration
     * Enable/disable resize, minimize, close, maximize, move

@@ -1,6 +1,13 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const ResizeHandle = styled.div`
+import { Direction } from '../types';
+
+type ResizeHandleProps = {
+  resize: (event: React.MouseEvent, direction: Direction) => void;
+};
+
+const ResizeHandleElement = styled.div`
   position: absolute;
   right: -3px;
   bottom: -3px;
@@ -23,4 +30,7 @@ const ResizeHandle = styled.div`
     border-top: 10px solid transparent;
   }
 `;
+const ResizeHandle = ({ resize }: ResizeHandleProps): JSX.Element => (
+  <ResizeHandleElement onMouseDown={(e) => resize(e, Direction.SE)} />
+);
 export default ResizeHandle;

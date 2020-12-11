@@ -33,5 +33,4 @@ const initializeWindows = (
   return windowMap;
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { initializeWindows };
+export default initializeWindows;
