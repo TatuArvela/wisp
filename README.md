@@ -6,15 +6,21 @@
 
 * Window
   * Sizing
-    * Maximizing
-    * Resizing on viewport resize
-  * Hiding
-    * Minimizing
+    * Resize from edges
+    * Resizing on window area resize
+  * Minimizing
+    * Animation on minimize
     * Restoring
   * Positioning
     * Repositioning on viewport resize
-  * Window controls
   * Handle situation where a window is added or deleted
+  * Closing windows
+  * Window configuration
+    * Enable/disable resize, minimize, close, maximize, move
+  * Shell configuration
+    * Disable taskbar
+    * Disable version information
+    * Set background
 * README
 * LICENSE
 * Release pipeline with `rollup` and GitHub Actions
@@ -37,3 +43,4 @@
 * Window icons
   * Window icon
   * Alert icon
+* Faster outline mode for moving and resizing

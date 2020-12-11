@@ -1,70 +1,55 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import RenderedWindow from '../window/RenderedWindow';
-import Taskbar from './Taskbar/Taskbar';
-import { ShellChildren } from './types';
+import { WindowProps } from '../window/types';
+import ShellElement from './components/ShellElement';
+import Taskbar from './components/Taskbar';
+import VersionInformation from './components/VersionInformation';
+import WindowArea from './components/WindowArea';
+import defaultConfig from './defaultConfig';
+import { Config } from './types';
 import useWindowManager from './windowManager/useWindowManager';
-
-const ShellElement = styled.div`
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: rgb(10, 36, 106);
-  color: white;
-  font-family: sans-serif;
-  font-size: 14px;
-
-  * {
-    box-sizing: border-box;
-  }
-`;
+import { initializeWindows } from './windowManager/utils';
 
 type ShellProps = {
-  children: ShellChildren;
+  config: Partial<Config>;
+  children: React.ReactElement<WindowProps> | React.ReactElement<WindowProps>[];
 };
 
-const VersionInformation = styled.p`
-  position: absolute;
-  right: 0;
-  margin: 4px;
-  bottom: 30px;
-  text-align: right;
-`;
+const Shell = ({ children, config: _config }: ShellProps): JSX.Element => {
+  const config = { ...defaultConfig, ..._config };
+  const windowAreaRef = React.useRef<HTMLDivElement>();
 
-const Shell = ({ children }: ShellProps): JSX.Element => {
-  const shellElementRef = React.useRef<HTMLDivElement>();
-  const windowManager = useWindowManager(children, shellElementRef);
+  const windowManager = useWindowManager(
+    config,
+    initializeWindows(config, children),
+    windowAreaRef
+  );
   const {
-    activeWindowId,
     activateWindow,
-    dragWindow,
-    resizeWindow,
+    activeWindowId,
     windowOrder,
     windows,
   } = windowManager;
 
   return (
-    <ShellElement ref={shellElementRef}>
-      {windowOrder.map((id) => {
-        const window = windows.get(id);
-        return (
-          <RenderedWindow
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...window}
-            activateWindow={activateWindow}
-            dragWindow={dragWindow}
-            resizeWindow={resizeWindow}
-            isActiveWindow={window.id === activeWindowId}
-          >
-            {window.children}
-          </RenderedWindow>
-        );
-      })}
+    <ShellElement>
+      <VersionInformation />
 
-      <VersionInformation>react-classic-shell Version 0.1.0</VersionInformation>
+      <WindowArea config={config} ref={windowAreaRef}>
+        {windowOrder.map((id) => {
+          const window = windows.get(id);
+          return (
+            <RenderedWindow
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...window}
+              windowManager={windowManager}
+            >
+              {window.children}
+            </RenderedWindow>
+          );
+        })}
+      </WindowArea>
 
       <Taskbar
         activeWindowId={activeWindowId}

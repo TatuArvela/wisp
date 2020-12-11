@@ -1,32 +1,33 @@
-import { WindowType } from '../../window/types';
-import { ShellChildren, WindowManager } from '../types';
+import React from 'react';
 
-const prepareWindows = (
-  windowElements: ShellChildren
+import { WindowProps, WindowType } from '../../window/types';
+import { Config, WindowManager } from '../types';
+
+const initializeWindows = (
+  config: Config,
+  windowElements:
+    | React.ReactElement<WindowProps>
+    | React.ReactElement<WindowProps>[]
 ): WindowManager['windows'] => {
   const windowMap = new Map<string, WindowType>();
 
-  const windowArray = Array.isArray(windowElements)
+  const windowElementArray = Array.isArray(windowElements)
     ? windowElements
     : [windowElements];
 
-  const positionOffsetPx = 10;
-
-  windowArray.forEach((windowElement, index) => {
-    const props = {
+  windowElementArray.forEach((windowElement, index) => {
+    const window: WindowType = {
       ...windowElement.props,
-      positionX: positionOffsetPx * index,
-      positionY: positionOffsetPx * index,
-      width: 200, // TODO: Move to config
-      height: 100, // TODO: Move to config
+      positionX: config.newWindowXOffset * index,
+      positionY: config.newWindowYOffset * index,
+      width: config.defaultWindowWidth,
+      height: config.defaultWindowHeight,
     };
-    return windowMap.set(props.id, {
-      ...props,
-    });
+    return windowMap.set(window.id, window);
   });
 
   return windowMap;
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export { prepareWindows };
+export { initializeWindows };

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { WindowId, WindowType } from '../../window/types';
+import { WindowType } from '../../window/types';
 import { WindowManager } from '../types';
 import TaskbarButton from './TaskbarButton';
 
@@ -26,7 +26,7 @@ const Taskbar = ({
   activeWindowId,
   windows,
 }: TaskbarProps): JSX.Element => {
-  const mapButtons = ([id, window]: [id: WindowId, window: WindowType]) => (
+  const mapButtons = ([id, window]: [id: string, window: WindowType]) => (
     <TaskbarButton
       onClick={() => activateWindow(id)}
       active={id === activeWindowId}
