@@ -26,16 +26,18 @@ const WindowComponent = styled.div<WindowComponentProps>`
   position: absolute;
   top: ${(props) => props.positionY}px;
   width: 200px;
-  box-shadow: 1px 1px 0 2px gray;
+  box-shadow: 0 0 0 1px gray;
+  border-radius: 3px;
 `;
 
 const WindowTitle = styled.div<WindowTitleProps>`
-  background: ${(props) => (props.isActiveWindow ? 'blue' : 'grey')};
+  background: ${(props) => (props.isActiveWindow ? 'rgb(19,71,214)' : 'grey')};
+  border-radius: 3px;
   color: white;
   height: 18px;
   font-size: 12px;
   line-height: 18px;
-  padding-left: 2px;
+  padding-left: 4px;
   width: 100%;
   margin: 0;
   user-select: none;
