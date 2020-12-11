@@ -130,7 +130,7 @@ const TitleBarButtons = ({
       ) : (
         <MaximizeButton onClick={maximize} />
       ))}
-    <CloseButton disabled={!isClosable} onClick={close} />
+    {isClosable && <CloseButton onClick={close} />}
   </TitleBarButtonsElement>
 );
 export default TitleBarButtons;

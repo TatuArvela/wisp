@@ -15,16 +15,21 @@ const initializeWindows = (
     ? windowElements
     : [windowElements];
 
-  windowElementArray.forEach((windowElement, index) => {
+  windowElementArray.forEach(({ props }, index) => {
     const window: WindowType = {
-      ...windowElement.props,
-      height: config.defaultWindowHeight,
-      isMaximizable: true, // TODO
-      isMaximized: false,
-      isMinimizable: !config.disableTaskbar && true, // TODO
-      isMinimized: false,
-      positionX: config.newWindowXOffset * index,
-      positionY: config.newWindowYOffset * index,
+      children: props.children,
+      isClosable: props.isClosable ?? true,
+      isDraggable: props.isDraggable ?? true,
+      height: props.height ?? config.defaultWindowHeight,
+      id: props.id,
+      isMaximizable: props.isMaximizable ?? true,
+      isMaximized: props.isMaximized ?? false,
+      isMinimizable: props.isMinimizable ?? !config.disableTaskbar,
+      isMinimized: props.isMinimized ?? false,
+      positionX: props.positionX ?? config.newWindowXOffset * index,
+      positionY: props.positionY ?? config.newWindowYOffset * index,
+      isResizable: props.isResizable ?? true,
+      title: props.title,
       width: config.defaultWindowWidth,
     };
     return windowMap.set(window.id, window);

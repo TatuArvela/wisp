@@ -71,7 +71,7 @@ const useWindowManager = (
   const windowDragHandler = (event, windowId) => {
     activateWindow(windowId);
     const window = windows.get(windowId);
-    if (window.isMaximized) return;
+    if (!window.isDraggable || window.isMaximized) return;
     mouseDragHandler(event, window, (xOffset, yOffset) => {
       repositionWindow(
         window,
@@ -87,7 +87,7 @@ const useWindowManager = (
   const windowResizeHandler = (event, windowId, direction: Direction) => {
     activateWindow(windowId);
     const window = windows.get(windowId);
-    if (window.isMaximized) return;
+    if (!window.isResizable || window.isMaximized) return;
     mouseDragHandler(event, window, (xOffset, yOffset) => {
       resizeWindow(
         config,

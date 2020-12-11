@@ -34,17 +34,20 @@ export const Minimal = (): JSX.Element => (
       transparentBackground: true,
     }}
   >
-    <Window id="1" title="Uno">
-      <p>Alert!</p>
-      <Button type="button" style={{ width: '60px', margin: 'auto' }}>
-        OK
-      </Button>
-    </Window>
-    <Window id="2" title="Dos">
-      <p>Warning!</p>
-      <Button type="button" style={{ width: '60px', margin: 'auto' }}>
-        OK
-      </Button>
+    <Window
+      height={200}
+      id="1"
+      isClosable={false}
+      isDraggable={false}
+      isMaximizable={false}
+      isMinimizable={false}
+      isResizable={false}
+      positionX={100}
+      positionY={100}
+      title="No control"
+      width={200}
+    >
+      <p>I am immovable</p>
     </Window>
   </Shell>
 );

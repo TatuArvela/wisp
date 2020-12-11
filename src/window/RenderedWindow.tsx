@@ -16,10 +16,12 @@ const RenderedWindow = ({
   children,
   height,
   id,
-  isMaximized,
+  isClosable,
   isMaximizable,
+  isMaximized,
   isMinimizable,
   isMinimized,
+  isResizable,
   positionX,
   positionY,
   title,
@@ -38,6 +40,7 @@ const RenderedWindow = ({
       close={() => windowManager.closeWindow(id)}
       drag={(event) => windowManager.dragWindow(event, id)}
       isActive={id === windowManager.activeWindowId}
+      isClosable={isClosable}
       isMaximizable={isMaximizable}
       isMaximized={isMaximized}
       isMinimizable={isMinimizable}
@@ -46,19 +49,25 @@ const RenderedWindow = ({
       title={title}
       unmaximize={() => windowManager.unmaximizeWindow(id)}
     />
+
     <WindowContent onClick={() => windowManager.activateWindow(id)}>
       {children}
     </WindowContent>
-    <ResizeBorder
-      resize={(event, direction) =>
-        windowManager.resizeWindow(event, id, direction)
-      }
-    />
-    <ResizeHandle
-      resize={(event, direction) =>
-        windowManager.resizeWindow(event, id, direction)
-      }
-    />
+
+    {isResizable && (
+      <>
+        <ResizeBorder
+          resize={(event, direction) =>
+            windowManager.resizeWindow(event, id, direction)
+          }
+        />
+        <ResizeHandle
+          resize={(event, direction) =>
+            windowManager.resizeWindow(event, id, direction)
+          }
+        />
+      </>
+    )}
   </Window>
 );
 

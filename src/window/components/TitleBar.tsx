@@ -7,6 +7,7 @@ type TitleBarProps = {
   close(): void;
   drag(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
   isActive: boolean;
+  isClosable: boolean;
   isMaximizable: boolean;
   isMaximized: boolean;
   isMinimizable: boolean;
@@ -42,6 +43,7 @@ const TitleBar = ({
   isMaximizable,
   isMaximized,
   isMinimizable,
+  isClosable,
   maximize,
   minimize,
   title,
@@ -51,7 +53,7 @@ const TitleBar = ({
     <Title onMouseDown={drag}>{title}</Title>
     <TitleBarButtons
       close={close}
-      isClosable
+      isClosable={isClosable}
       isMaximizable={isMaximizable}
       isMaximized={isMaximized}
       isMinimizable={isMinimizable}

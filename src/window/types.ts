@@ -11,13 +11,9 @@ export enum Direction {
   NW = 'NW',
 }
 
-export type WindowProps = {
-  children: React.ReactNode;
-  id: string;
-  title: string;
-};
-
-export type WindowType = WindowProps & {
+type WindowProperties = {
+  isClosable: boolean;
+  isDraggable: boolean;
   height: number;
   isMaximizable: boolean;
   isMaximized: boolean;
@@ -25,5 +21,14 @@ export type WindowType = WindowProps & {
   isMinimized: boolean;
   positionX: number;
   positionY: number;
+  isResizable: boolean;
   width: number;
 };
+
+export type WindowProps = {
+  children: React.ReactNode;
+  id: string;
+  title: string;
+} & Partial<WindowProperties>;
+
+export type WindowType = WindowProps & WindowProperties;
