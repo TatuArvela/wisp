@@ -24,13 +24,15 @@ const initializeWindows = (
       id: props.id,
       isMaximizable: props.isMaximizable ?? true,
       isMaximized: props.isMaximized ?? false,
-      isMinimizable: props.isMinimizable ?? !config.disableTaskbar,
-      isMinimized: props.isMinimized ?? false,
+      isMinimizable: config.disableTaskbar
+        ? false
+        : props.isMinimizable ?? false,
+      isMinimized: config.disableTaskbar ? false : props.isMinimizable ?? false,
       positionX: props.positionX ?? config.newWindowXOffset * index,
       positionY: props.positionY ?? config.newWindowYOffset * index,
       isResizable: props.isResizable ?? true,
       title: props.title,
-      width: config.defaultWindowWidth,
+      width: props.width ?? config.defaultWindowWidth,
     };
     return windowMap.set(window.id, window);
   });
