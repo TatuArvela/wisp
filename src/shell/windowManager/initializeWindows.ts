@@ -26,7 +26,7 @@ const initializeWindows = (
       isMaximized: props.isMaximized ?? false,
       isMinimizable: config.disableTaskbar
         ? false
-        : props.isMinimizable ?? false,
+        : props.isMinimizable ?? true,
       isMinimized: config.disableTaskbar ? false : props.isMinimizable ?? false,
       positionX: props.positionX ?? config.newWindowXOffset * index,
       positionY: props.positionY ?? config.newWindowYOffset * index,
