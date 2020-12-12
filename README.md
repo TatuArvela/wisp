@@ -20,6 +20,10 @@ Build web applications that look and feel like desktop applications.
 
 ### 0.1.0
 
+* Fix VersionInformation rendering
+* Fix taskbar buttons flowing to the next line
+* Add overflow scrolling to windows
+* Fix windows not being scalable up and left at the right or bottom edge 
 * Create release pipeline with `rollup` and GitHub Actions
 * Add brief notes on usage
 
