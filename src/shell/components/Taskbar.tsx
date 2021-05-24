@@ -12,13 +12,16 @@ export interface TaskbarProps {
 }
 
 const TaskbarElement = styled.div`
-  width: 100%;
-  height: 28px;
-  position: absolute;
-  bottom: 0;
   background: white;
   border-top: 1px solid black;
+  bottom: 0;
+  display: inline-block;
+  height: 28px;
+  overflow-x: visible;
   padding: 2px;
+  position: absolute;
+  width: 100%;
+  white-space: nowrap;
 `;
 
 const Taskbar = ({
