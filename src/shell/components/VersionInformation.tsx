@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const VersionInformationElement = styled.p`
   bottom: 30px;
   color: white;
+  font-family: sans-serif;
   font-size: 14px;
   margin: 4px;
   pointer-events: none;
@@ -11,7 +12,7 @@ const VersionInformationElement = styled.p`
   right: 0;
   text-align: right;
   user-select: none;
-  font-family: sans-serif;
+  z-index: 1000;
 `;
 
 const VersionInformation = (): JSX.Element => {
