@@ -23,13 +23,25 @@ export const Default = (): JSX.Element => (
         id est laborum.
       </p>
     </Window>
-    <Window id="1" title="Uno" isResizable={false}>
+    <Window
+      id="1"
+      title="Uno"
+      isMaximizable={false}
+      isMinimizable={false}
+      isResizable={false}
+    >
       <p>Alert!</p>
       <Button type="button" style={{ width: '60px', margin: 'auto' }}>
         OK
       </Button>
     </Window>
-    <Window id="2" title="Dos" isResizable={false}>
+    <Window
+      id="2"
+      title="Dos"
+      isMaximizable={false}
+      isMinimizable={false}
+      isResizable={false}
+    >
       <p>Warning!</p>
       <Button type="button" style={{ width: '60px', margin: 'auto' }}>
         OK
