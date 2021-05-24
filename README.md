@@ -1,4 +1,4 @@
-# React Classic Shell
+# ![icon](./icon.png?raw=true "icon") React Classic Shell
 
 Build web applications that look and feel like desktop applications.
 
