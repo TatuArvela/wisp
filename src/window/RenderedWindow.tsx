@@ -8,24 +8,27 @@ import Window from './components/Window';
 import WindowContent from './components/WindowContent';
 import { WindowType } from './types';
 
-type RenderedWindowProps = WindowType & {
+type RenderedWindowProps = {
+  window: WindowType;
   windowManager: WindowManager;
 };
 
 const RenderedWindow = ({
-  children,
-  height,
-  id,
-  isClosable,
-  isMaximizable,
-  isMaximized,
-  isMinimizable,
-  isMinimized,
-  isResizable,
-  positionX,
-  positionY,
-  title,
-  width,
+  window: {
+    children,
+    height,
+    id,
+    isClosable,
+    isMaximizable,
+    isMaximized,
+    isMinimizable,
+    isMinimized,
+    isResizable,
+    positionX,
+    positionY,
+    title,
+    width,
+  },
   windowManager,
 }: RenderedWindowProps): JSX.Element => (
   <Window

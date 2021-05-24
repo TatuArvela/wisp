@@ -13,7 +13,6 @@ import useWindowManager from './windowManager/useWindowManager';
 
 type ShellProps = {
   children: React.ReactElement<WindowProps> | React.ReactElement<WindowProps>[];
-  // eslint-disable-next-line react/require-default-props
   config?: Partial<Config>;
 };
 
@@ -36,13 +35,7 @@ const Shell = ({ children, config: _config = {} }: ShellProps): JSX.Element => {
         {windowOrder.map((id) => {
           const window = windows.get(id);
           return (
-            <RenderedWindow
-              // eslint-disable-next-line react/jsx-props-no-spreading
-              {...window}
-              windowManager={windowManager}
-            >
-              {window.children}
-            </RenderedWindow>
+            <RenderedWindow window={window} windowManager={windowManager} />
           );
         })}
       </Desktop>
