@@ -1,99 +1,106 @@
-import { RefObject, useCallback, useLayoutEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 
 import { Direction, WindowType } from '../../window/types';
-import { Config, WindowManager } from '../types';
-import { fitWindow, repositionWindow, resizeWindow } from './dimensionUtils';
+import { ShellConfig, WindowManager } from '../types';
+import { repositionWindow, resizeWindow } from './dimensionUtils';
+import initializeWindow from './initializeWindow';
 import mouseDragHandler from './mouseDragHandler';
+import {
+  WindowManagerAction,
+  windowManagerReducer,
+  WindowManagerState,
+} from './reducer';
 
-const useWindowManager = (
-  config: Config,
-  _windows: Map<string, WindowType>,
-  desktopRef: RefObject<HTMLDivElement>
-): WindowManager => {
-  const [windows, setWindows] = useState<Map<string, WindowType>>(_windows);
-  const [windowOrder, setWindowOrder] = useState<string[]>(
-    Array.from(windows.keys()) || []
-  );
-  const [activeWindowId, setActiveWindowId] = useState<string>(
-    windowOrder[windowOrder.length - 1]
-  );
+export function useWindowManager(config: ShellConfig): WindowManager {
+  const [state, dispatch] = React.useReducer<
+    React.Reducer<WindowManagerState, WindowManagerAction>
+  >(windowManagerReducer, {
+    activeWindowId: null,
+    windows: new Map(),
+    windowOrder: [],
+  });
+
+  const windowAreaRef = React.useRef<HTMLDivElement>();
 
   const getViewportWidth = useCallback(
-    () => desktopRef.current?.offsetWidth || 0,
-    [desktopRef]
+    () => windowAreaRef.current?.offsetWidth || 0,
+    [windowAreaRef]
   );
   const getViewportHeight = useCallback(
-    () => desktopRef.current?.offsetHeight || 0,
-    [desktopRef]
+    () => windowAreaRef.current?.offsetHeight || 0,
+    [windowAreaRef]
   );
 
-  useLayoutEffect(() => {
-    function updateAllWindowSizes() {
-      const updatedWindows = new Map(windows);
-      const desktopWidth = getViewportWidth();
-      const desktopHeight = getViewportHeight();
-      updatedWindows.forEach((window) => {
-        fitWindow(window, config, desktopWidth, desktopHeight);
-        repositionWindow(window, 0, 0, desktopWidth, desktopHeight);
-      });
-      setWindows(updatedWindows);
-    }
-    window.addEventListener('resize', updateAllWindowSizes);
-    updateAllWindowSizes();
-    return () => window.removeEventListener('resize', updateAllWindowSizes);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const setActiveWindowId = (id: string) =>
+    dispatch({ type: 'SET_ACTIVE_WINDOW_ID', payload: id });
 
-  const updateWindow = (window: WindowType) => {
-    const updatedWindows = new Map(windows);
-    updatedWindows.set(window.id, window);
+  const setWindows = (windows: Map<string, WindowType>) =>
+    dispatch({ type: 'SET_WINDOWS', payload: windows });
+
+  const setWindowOrder = (windowOrder: string[]) =>
+    dispatch({ type: 'SET_WINDOW_ORDER', payload: windowOrder });
+
+  const updateWindow = (id: string, props: Partial<WindowType>) => {
+    const updatedWindows = new Map(state.windows);
+    updatedWindows.set(id, {
+      ...state.windows.get(id),
+      ...props,
+    });
     setWindows(updatedWindows);
   };
 
-  const activateWindow = (id: string) => {
-    setActiveWindowId(id);
-    setWindowOrder([...windowOrder.filter((windowId) => windowId !== id), id]);
+  const closeWindow: WindowManager['closeWindow'] = (id) => {
+    if (id === state.activeWindowId) setActiveWindowId(null);
+    updateWindow(id, { isClosed: true });
+    setWindowOrder(state.windowOrder.filter((windowId) => windowId !== id));
   };
 
-  const closeWindow = (id: string) => {
-    if (id === activeWindowId) setActiveWindowId(null);
-    const updatedWindows = new Map(windows);
+  const activateWindow: WindowManager['activateWindow'] = (id) => {
+    setActiveWindowId(id);
+    setWindowOrder([
+      ...state.windowOrder.filter((windowId) => windowId !== id),
+      id,
+    ]);
+  };
+
+  const createWindow: WindowManager['createWindow'] = (props) => {
+    const window = initializeWindow(config, props);
+    dispatch({ type: 'CREATE_WINDOW', payload: window });
+    return state.windows.get(window.id);
+  };
+
+  const deleteWindow: WindowManager['deleteWindow'] = (id) => {
+    const updatedWindows = new Map(state.windows);
     updatedWindows.delete(id);
     setWindows(updatedWindows);
-    setWindowOrder(windowOrder.filter((windowId) => windowId !== id));
+    setWindowOrder([
+      ...state.windowOrder.filter((windowId) => windowId !== id),
+    ]);
   };
 
   const maximizeWindow = (id: string) => {
     activateWindow(id);
-    const window = windows.get(id);
-    window.isMaximized = true;
-    updateWindow(window);
+    updateWindow(id, { isMaximized: true });
   };
 
   const unmaximizeWindow = (id: string) => {
     activateWindow(id);
-    const window = windows.get(id);
-    window.isMaximized = false;
-    updateWindow(window);
+    updateWindow(id, { isMaximized: false });
   };
 
   const minimizeWindow = (id: string) => {
-    if (id === activeWindowId) setActiveWindowId(null);
-    const window = windows.get(id);
-    window.isMinimized = true;
-    updateWindow(window);
+    if (id === state.activeWindowId) setActiveWindowId(null);
+    updateWindow(id, { isMinimized: true });
   };
 
   const restoreWindow = (id: string) => {
     activateWindow(id);
-    const window = windows.get(id);
-    window.isMinimized = false;
-    updateWindow(window);
+    updateWindow(id, { isMinimized: false });
   };
 
-  const windowDragHandler = (event, windowId) => {
-    activateWindow(windowId);
-    const window = windows.get(windowId);
+  const windowDragHandler = (event, id) => {
+    activateWindow(id);
+    const window = state.windows.get(id);
     if (!window.isDraggable || window.isMaximized) return;
     mouseDragHandler(event, window, (xOffset, yOffset) => {
       repositionWindow(
@@ -103,13 +110,13 @@ const useWindowManager = (
         getViewportWidth(),
         getViewportHeight()
       );
-      updateWindow(window);
+      updateWindow(id, window);
     });
   };
 
-  const windowResizeHandler = (event, windowId, direction: Direction) => {
-    activateWindow(windowId);
-    const window = windows.get(windowId);
+  const windowResizeHandler = (event, id, direction: Direction) => {
+    activateWindow(id);
+    const window = state.windows.get(id);
     if (!window.isResizable || window.isMaximized) return;
     mouseDragHandler(event, window, (xOffset, yOffset) => {
       resizeWindow(
@@ -121,25 +128,49 @@ const useWindowManager = (
         getViewportWidth(),
         getViewportHeight()
       );
-      updateWindow(window);
+      updateWindow(id, window);
     });
   };
 
+  // FIXME
+  // useLayoutEffect(() => {
+  //   function updateAllWindowSizes() {
+  //     console.log('Updated!');
+  //     const updatedWindows = new Map(state.windows);
+  //     const desktopWidth = getViewportWidth();
+  //     const desktopHeight = getViewportHeight();
+  //     updatedWindows.forEach((window) => {
+  //       fitWindow(window, config, desktopWidth, desktopHeight);
+  //       repositionWindow(window, 0, 0, desktopWidth, desktopHeight);
+  //     });
+  //     setWindows(updatedWindows);
+  //   }
+  //
+  //   window.addEventListener('resize', updateAllWindowSizes);
+  //   updateAllWindowSizes();
+  //   return () => window.removeEventListener('resize', updateAllWindowSizes);
+  //   // This only needs to fire once after all DOM mutations
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
   return {
+    activeWindowId: state.activeWindowId,
+    windowAreaRef,
+    windowOrder: state.windowOrder,
+    windows: state.windows,
     activateWindow,
-    activeWindowId,
     closeWindow,
+    createWindow,
+    deleteWindow,
     dragWindow: windowDragHandler,
     maximizeWindow,
     minimizeWindow,
     resizeWindow: windowResizeHandler,
     restoreWindow,
-    unmaximizeWindow,
     setWindowOrder,
-    setWindows,
-    windowOrder,
-    windows,
+    unmaximizeWindow,
+    updateWindow,
   };
-};
+}
 
 export default useWindowManager;

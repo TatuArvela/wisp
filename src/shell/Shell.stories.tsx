@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { useState } from '@storybook/addons';
 import React from 'react';
 
 import Button from '../controls/Button';
@@ -52,11 +55,9 @@ export const Default = (): JSX.Element => (
 
 export const Minimal = (): JSX.Element => (
   <Shell
-    config={{
-      disableTaskbar: true,
-      disableVersionInformation: true,
-      transparentBackground: true,
-    }}
+    isBackgroundEnabled={false}
+    isTaskbarEnabled={false}
+    isVersionInfoEnabled={false}
   >
     <Window
       height={200}
@@ -102,3 +103,26 @@ export const Minimal = (): JSX.Element => (
     </Window>
   </Shell>
 );
+
+export const ExternalWindowCreation = (): JSX.Element => {
+  const [showWindow, setShowWindow] = useState<boolean>(false);
+  return (
+    <div>
+      <button type="button" onClick={() => setShowWindow(!showWindow)}>
+        Toggle window
+      </button>
+      <div style={{ width: '800px', height: '600px' }}>
+        <Shell>
+          <Window id="1" title="Initially shown">
+            This window is initially shown
+          </Window>
+          {showWindow && (
+            <Window id="2" title="Toggled window">
+              This window is toggled by the button above
+            </Window>
+          )}
+        </Shell>
+      </div>
+    </div>
+  );
+};

@@ -1,53 +1,45 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import RenderedWindow from '../window/RenderedWindow';
-import { WindowProps } from '../window/types';
 import Desktop from './components/Desktop';
-import ShellElement from './components/ShellElement';
 import Taskbar from './components/Taskbar';
-import VersionInformation from './components/VersionInformation';
+import VersionInfo from './components/VersionInfo';
+import WindowArea from './components/WindowArea';
 import defaultConfig from './defaultConfig';
-import { Config } from './types';
-import initializeWindows from './windowManager/initializeWindows';
-import useWindowManager from './windowManager/useWindowManager';
+import { ShellConfig } from './types';
+import { useWindowManager } from './windowManager/useWindowManager';
+import { WindowManagerProvider } from './windowManager/WindowManagerContext';
 
 type ShellProps = {
-  children: React.ReactElement<WindowProps> | React.ReactElement<WindowProps>[];
-  config?: Partial<Config>;
-};
+  children: React.ReactNode;
+} & Partial<ShellConfig>;
 
-const Shell = ({ children, config: _config = {} }: ShellProps): JSX.Element => {
-  const config = { ...defaultConfig, ..._config };
-  const desktopRef = React.useRef<HTMLDivElement>();
+const ShellElement = styled.div`
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`;
 
-  const windowManager = useWindowManager(
-    config,
-    initializeWindows(config, children),
-    desktopRef
-  );
-  const { activeWindowId, windowOrder, windows, restoreWindow } = windowManager;
+const Shell = ({ children, ...rest }: ShellProps): JSX.Element => {
+  const config = { ...defaultConfig, ...rest };
+  const windowManager = useWindowManager(config);
 
   return (
-    <ShellElement>
-      {!config.disableVersionInformation && <VersionInformation />}
+    <WindowManagerProvider value={windowManager}>
+      <ShellElement>
+        <Desktop config={config}>
+          {config.isVersionInfoEnabled && <VersionInfo />}
+        </Desktop>
 
-      <Desktop config={config} ref={desktopRef}>
-        {windowOrder.map((id) => {
-          const window = windows.get(id);
-          return (
-            <RenderedWindow window={window} windowManager={windowManager} />
-          );
-        })}
-      </Desktop>
+        <WindowArea config={config} ref={windowManager.windowAreaRef}>
+          {children}
+        </WindowArea>
 
-      {!config.disableTaskbar && (
-        <Taskbar
-          activeWindowId={activeWindowId}
-          restoreWindow={restoreWindow}
-          windows={windows}
-        />
-      )}
-    </ShellElement>
+        {config.isTaskbarEnabled && <Taskbar />}
+      </ShellElement>
+    </WindowManagerProvider>
   );
 };
 

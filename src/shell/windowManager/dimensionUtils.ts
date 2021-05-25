@@ -1,5 +1,5 @@
 import { Direction, WindowType } from '../../window/types';
-import { Config } from '../types';
+import { ShellConfig } from '../types';
 
 const calculatePositionX = (
   window: WindowType,
@@ -22,7 +22,7 @@ const calculatePositionY = (
   );
 
 const calculateWidth = (
-  config: Config,
+  config: ShellConfig,
   window: WindowType,
   xOffset: number,
   desktopWidth: number,
@@ -34,7 +34,7 @@ const calculateWidth = (
   );
 
 const calculateHeight = (
-  config: Config,
+  config: ShellConfig,
   window: WindowType,
   yOffset: number,
   desktopHeight: number,
@@ -60,7 +60,7 @@ export const repositionWindow = (
 
 export const fitWindow = (
   window: WindowType,
-  config: Config,
+  config: ShellConfig,
   desktopWidth: number,
   desktopHeight: number
 ): void => {
@@ -76,7 +76,7 @@ export const fitWindow = (
 };
 
 export const resizeWindow = (
-  config: Config,
+  config: ShellConfig,
   window: WindowType,
   direction: Direction,
   xOffset: number,

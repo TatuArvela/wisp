@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Direction } from '../types';
+import { useWindowManagerContext } from '../shell/windowManager/WindowManagerContext';
+import { Direction } from '../window/types';
 
 type ResizeHandleProps = {
-  resize: (event: React.MouseEvent, direction: Direction) => void;
+  windowId: string;
 };
 
 const ResizeHandleElement = styled.div`
@@ -30,7 +31,12 @@ const ResizeHandleElement = styled.div`
     border-top: 10px solid transparent;
   }
 `;
-const ResizeHandle = ({ resize }: ResizeHandleProps): JSX.Element => (
-  <ResizeHandleElement onMouseDown={(e) => resize(e, Direction.SE)} />
-);
+const ResizeHandle = ({ windowId }: ResizeHandleProps): JSX.Element => {
+  const { resizeWindow } = useWindowManagerContext();
+  return (
+    <ResizeHandleElement
+      onMouseDown={(e) => resizeWindow(e, windowId, Direction.SE)}
+    />
+  );
+};
 export default ResizeHandle;

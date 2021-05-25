@@ -20,15 +20,16 @@ type TitleBarProps = {
 const TitleBarElement = styled.div<{ isActive: boolean }>`
   background: ${(props) => (props.isActive ? 'rgb(19, 71, 214)' : 'grey')};
   border-radius: 3px;
+  box-sizing: border-box;
   color: white;
-  height: 18px;
-  font-size: 12px;
-  line-height: 18px;
-  padding-left: 4px;
-  width: 100%;
-  margin: 0;
-  user-select: none;
   display: flex;
+  font-size: 12px;
+  height: 18px;
+  line-height: 18px;
+  margin: 0;
+  padding-left: 4px;
+  user-select: none;
+  width: 100%;
 `;
 
 const Title = styled.div`

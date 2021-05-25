@@ -2,18 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { WindowType } from '../../window/types';
-import { WindowManager } from '../types';
+import { useWindowManagerContext } from '../windowManager/WindowManagerContext';
 import TaskbarButton from './TaskbarButton';
-
-export interface TaskbarProps {
-  activeWindowId: WindowManager['activeWindowId'];
-  windows: WindowManager['windows'];
-  restoreWindow: WindowManager['restoreWindow'];
-}
 
 const TaskbarElement = styled.div`
   background: white;
   border-top: 1px solid black;
+  box-sizing: border-box;
   bottom: 0;
   display: inline-block;
   height: 28px;
@@ -24,13 +19,12 @@ const TaskbarElement = styled.div`
   white-space: nowrap;
 `;
 
-const Taskbar = ({
-  restoreWindow,
-  activeWindowId,
-  windows,
-}: TaskbarProps): JSX.Element => {
+const Taskbar = (): JSX.Element => {
+  const { activeWindowId, windows, restoreWindow } = useWindowManagerContext();
+
   const mapButtons = ([id, window]: [id: string, window: WindowType]) => (
     <TaskbarButton
+      key={id}
       onClick={() => restoreWindow(id)}
       active={id === activeWindowId}
     >

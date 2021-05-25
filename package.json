@@ -18,7 +18,7 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "@storybook/addons": "^6.1.10",
+    "@storybook/addons": "^6.2.9",
     "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/react": "^6.1.10",
     "@storybook/theming": "^6.1.10",

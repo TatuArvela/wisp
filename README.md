@@ -20,13 +20,16 @@ Build web applications that look and feel like desktop applications.
 
 ### 0.1.0
 
-* Add overflow scrolling to windows
+* Handle Window prop changes
+* Components
+  * StatusBar (for resizing)
+  * ScrollableContent
+* Add toggleable overflow scrolling to windows
 * Create release pipeline with `rollup` and GitHub Actions
 * Add brief notes on usage
 
 ### 0.2.0
 
-* Handle Window prop changes
 * Documentation
 * Storybook knobs
 * Testing
@@ -42,7 +45,6 @@ Build web applications that look and feel like desktop applications.
   * ComboBox (basic functionality)
   * GroupBox
   * Label
-  * StatusBar
   * TextBox
   * time picker (I need to figure out what its WinForms name is)
   * ToolBar

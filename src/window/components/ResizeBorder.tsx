@@ -10,8 +10,12 @@ type ResizeBorderProps = {
 const size = 5;
 const offset = -5;
 
-const NResize = styled.div`
+const Resize = styled.div`
+  box-sizing: border-box;
   position: absolute;
+`;
+
+const NResize = styled(Resize)`
   top: ${offset}px;
   left: ${offset}px;
   right: ${offset}px;
@@ -19,8 +23,7 @@ const NResize = styled.div`
   cursor: n-resize;
 `;
 
-const NEResize = styled.div`
-  position: absolute;
+const NEResize = styled(Resize)`
   top: ${offset}px;
   right: ${offset}px;
   height: ${size * 2}px;
@@ -28,8 +31,7 @@ const NEResize = styled.div`
   cursor: ne-resize;
 `;
 
-const EResize = styled.div`
-  position: absolute;
+const EResize = styled(Resize)`
   top: ${offset}px;
   bottom: ${offset}px;
   right: ${offset}px;
@@ -37,8 +39,7 @@ const EResize = styled.div`
   cursor: e-resize;
 `;
 
-const SEResize = styled.div`
-  position: absolute;
+const SEResize = styled(Resize)`
   bottom: ${offset}px;
   right: ${offset}px;
   height: ${size * 2}px;
@@ -46,8 +47,7 @@ const SEResize = styled.div`
   cursor: se-resize;
 `;
 
-const SResize = styled.div`
-  position: absolute;
+const SResize = styled(Resize)`
   bottom: ${offset}px;
   left: ${offset}px;
   right: ${offset}px;
@@ -55,8 +55,7 @@ const SResize = styled.div`
   cursor: s-resize;
 `;
 
-const SWResize = styled.div`
-  position: absolute;
+const SWResize = styled(Resize)`
   bottom: ${offset}px;
   left: ${offset}px;
   height: ${size * 2}px;
@@ -64,8 +63,7 @@ const SWResize = styled.div`
   cursor: sw-resize;
 `;
 
-const WResize = styled.div`
-  position: absolute;
+const WResize = styled(Resize)`
   top: ${offset}px;
   bottom: ${offset}px;
   left: ${offset}px;
@@ -73,8 +71,7 @@ const WResize = styled.div`
   cursor: w-resize;
 `;
 
-const NWResize = styled.div`
-  position: absolute;
+const NWResize = styled(Resize)`
   top: ${offset}px;
   left: ${offset}px;
   height: ${size * 2}px;

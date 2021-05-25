@@ -15,7 +15,7 @@ const VersionInformationElement = styled.p`
   z-index: 1000;
 `;
 
-const VersionInformation = (): JSX.Element => {
+const VersionInfo = (): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
   const packageJson = require('../../../package.json');
 
@@ -25,4 +25,4 @@ const VersionInformation = (): JSX.Element => {
     </VersionInformationElement>
   );
 };
-export default VersionInformation;
+export default VersionInfo;

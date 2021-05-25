@@ -13,21 +13,23 @@ type TitleBarButtonsProps = {
 };
 
 const TitleBarButtonsElement = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
+  box-sizing: border-box;
   display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
 `;
 
 const WindowButton = styled.button`
-  margin: 1px 2px;
+  background: white;
   border-radius: 2px;
   border: none;
-  background: white;
+  box-sizing: border-box;
+  height: 16px;
+  margin: 1px 2px;
+  padding: 0;
   position: relative;
   width: 16px;
-  height: 16px;
-  padding: 0;
   &:hover {
     filter: brightness(90%);
   }
@@ -41,74 +43,74 @@ WindowButton.defaultProps = {
 
 const MinimizeButton = styled(WindowButton)`
   &:before {
-    position: absolute;
-    left: 3px;
-    top: 2px;
-    content: '';
-    width: 10px;
-    height: 10px;
     border-bottom: 1px solid black;
+    content: '';
+    height: 10px;
+    left: 3px;
     pointer-events: none;
+    position: absolute;
+    top: 2px;
+    width: 10px;
   }
 `;
 
 const MaximizeButton = styled(WindowButton)`
   &:before {
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    content: '';
-    width: 10px;
-    height: 10px;
     border: 1px solid black;
+    content: '';
+    height: 10px;
+    left: 2px;
     pointer-events: none;
+    position: absolute;
+    top: 2px;
+    width: 10px;
   }
 `;
 
 const UnmaximizeButton = styled(WindowButton)`
   &:before {
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    content: '';
+    height: 8px;
+    pointer-events: none;
     position: absolute;
     right: 2px;
     top: 2px;
-    content: '';
     width: 8px;
-    height: 8px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    pointer-events: none;
   }
   &:after {
-    position: absolute;
-    left: 2px;
+    border: 1px solid black;
     bottom: 2px;
     content: '';
-    width: 8px;
     height: 8px;
-    border: 1px solid black;
+    left: 2px;
     pointer-events: none;
+    position: absolute;
+    width: 8px;
   }
 `;
 
 const CloseButton = styled(WindowButton)`
   &:before {
-    position: absolute;
-    left: 0;
-    top: 8px;
-    content: '';
-    width: 16px;
     border-bottom: 1px solid black;
-    transform: rotate(45deg);
+    content: '';
+    left: 0;
     pointer-events: none;
+    position: absolute;
+    top: 8px;
+    transform: rotate(45deg);
+    width: 16px;
   }
   &:after {
-    position: absolute;
-    left: 0;
-    top: 8px;
-    content: '';
-    width: 16px;
     border-bottom: 1px solid black;
-    transform: rotate(-45deg);
+    content: '';
+    left: 0;
     pointer-events: none;
+    position: absolute;
+    top: 8px;
+    transform: rotate(-45deg);
+    width: 16px;
   }
 `;
 
