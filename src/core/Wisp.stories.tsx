@@ -1,19 +1,19 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { useState } from '@storybook/addons';
+import Button from 'controls/Button';
 import React from 'react';
+import Window from 'window/Window';
 
-import Button from '../controls/Button';
-import Window from '../window/Window';
-import Shell from './Shell';
+import Wisp from './Wisp';
 
 export default {
-  component: Shell,
-  title: 'Shell',
+  component: Wisp,
+  title: 'Wisp',
 };
 
 export const Default = (): JSX.Element => (
-  <Shell>
+  <Wisp>
     <Window id="3" title="Tres" width={400} height={300} isMinimized>
       <p>Regular window</p>
       <p>
@@ -50,11 +50,11 @@ export const Default = (): JSX.Element => (
         OK
       </Button>
     </Window>
-  </Shell>
+  </Wisp>
 );
 
 export const Minimal = (): JSX.Element => (
-  <Shell
+  <Wisp
     isBackgroundEnabled={false}
     isTaskbarEnabled={false}
     isVersionInfoEnabled={false}
@@ -101,7 +101,7 @@ export const Minimal = (): JSX.Element => (
     >
       <p>Can&apos;t close me!</p>
     </Window>
-  </Shell>
+  </Wisp>
 );
 
 export const ExternalWindowCreation = (): JSX.Element => {
@@ -112,7 +112,7 @@ export const ExternalWindowCreation = (): JSX.Element => {
         Toggle window
       </button>
       <div style={{ width: '800px', height: '600px' }}>
-        <Shell>
+        <Wisp>
           <Window id="1" title="Initially shown">
             This window is initially shown
           </Window>
@@ -121,7 +121,7 @@ export const ExternalWindowCreation = (): JSX.Element => {
               This window is toggled by the button above
             </Window>
           )}
-        </Shell>
+        </Wisp>
       </div>
     </div>
   );

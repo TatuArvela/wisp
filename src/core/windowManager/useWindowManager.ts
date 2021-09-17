@@ -1,7 +1,7 @@
+import { WindowManager, WispConfig } from 'core/types';
 import React, { useCallback } from 'react';
+import { Direction, WindowType } from 'window/types';
 
-import { Direction, WindowType } from '../../window/types';
-import { ShellConfig, WindowManager } from '../types';
 import { repositionWindow, resizeWindow } from './dimensionUtils';
 import initializeWindow from './initializeWindow';
 import mouseDragHandler from './mouseDragHandler';
@@ -11,7 +11,7 @@ import {
   WindowManagerState,
 } from './reducer';
 
-export function useWindowManager(config: ShellConfig): WindowManager {
+export function useWindowManager(config: WispConfig): WindowManager {
   const [state, dispatch] = React.useReducer<
     React.Reducer<WindowManagerState, WindowManagerAction>
   >(windowManagerReducer, {

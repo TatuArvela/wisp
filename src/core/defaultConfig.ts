@@ -1,6 +1,6 @@
-import { ShellConfig } from './types';
+import { WispConfig } from './types';
 
-const defaultConfig: ShellConfig = {
+const defaultConfig: WispConfig = {
   defaultWindowHeight: 100,
   defaultWindowWidth: 200,
   isBackgroundEnabled: true,

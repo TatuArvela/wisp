@@ -1,3 +1,3 @@
-import Shell from './shell/Shell';
+import Wisp from './core/Wisp';
 
-export default Shell;
+export default Wisp;

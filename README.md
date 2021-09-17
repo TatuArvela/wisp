@@ -1,12 +1,17 @@
-# ![icon](./icon.png?raw=true "icon") React Classic Shell
+# ![icon](./icon.png?raw=true "icon") Wisp
 
-Build web applications that look and feel like desktop applications.
+Wisp is **a window manager and a widget toolkit** which allows building web
+applications that look and feel like desktop applications.
+
+Wisp comes with a wide set of ready controls and components you can use to build
+your imitation desktop experience. You can also create your own theme and
+components to tune your environment.
 
 ## Usage
 
 *TODO*
 
-### Shell
+### Wisp
 
 ### Window
 
@@ -24,6 +29,8 @@ Build web applications that look and feel like desktop applications.
 * Components
   * StatusBar (for resizing)
   * ScrollableContent
+* Theming
+  * Native default theme
 * Add toggleable overflow scrolling to windows
 * Create release pipeline with `rollup` and GitHub Actions
 * Add brief notes on usage
@@ -36,9 +43,6 @@ Build web applications that look and feel like desktop applications.
 
 ### 1.0.0
 
-* Shell theming
-  * Native default theme
-  * Windows Classic theme
 * Controls
   * Button
   * CheckBox

@@ -1,8 +1,8 @@
-import { WindowType } from '../../window/types';
-import { ShellConfig } from '../types';
+import { WispConfig } from 'core/types';
+import { WindowType } from 'window/types';
 
 const initializeWindow = (
-  config: ShellConfig,
+  config: WispConfig,
   props: Partial<WindowType>
 ): WindowType => {
   const index = 1; // TODO

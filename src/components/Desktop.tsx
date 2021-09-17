@@ -1,9 +1,8 @@
+import { WispConfig } from 'core/types';
 import styled from 'styled-components';
 
-import { ShellConfig } from '../types';
-
 type WindowAreaProps = {
-  config: ShellConfig;
+  config: WispConfig;
 };
 const Desktop = styled.div<WindowAreaProps>`
   background: ${(props) =>

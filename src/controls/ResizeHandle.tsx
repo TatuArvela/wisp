@@ -1,8 +1,7 @@
+import { useWindowManagerContext } from 'core/windowManager/WindowManagerContext';
 import React from 'react';
 import styled from 'styled-components';
-
-import { useWindowManagerContext } from '../shell/windowManager/WindowManagerContext';
-import { Direction } from '../window/types';
+import { Direction } from 'window/types';
 
 type ResizeHandleProps = {
   windowId: string;

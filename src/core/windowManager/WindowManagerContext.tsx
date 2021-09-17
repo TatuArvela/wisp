@@ -1,6 +1,5 @@
+import { WindowManager } from 'core/types';
 import React from 'react';
-
-import { WindowManager } from '../types';
 
 export const WindowManagerContext = React.createContext<WindowManager>(
   undefined

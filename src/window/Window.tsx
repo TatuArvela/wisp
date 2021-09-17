@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { useWindowManagerContext } from '../shell/windowManager/WindowManagerContext';
+import { useWindowManagerContext } from '../core/windowManager/WindowManagerContext';
 import ResizeBorder from './components/ResizeBorder';
 import TitleBar from './components/TitleBar';
 import WindowContent from './components/WindowContent';

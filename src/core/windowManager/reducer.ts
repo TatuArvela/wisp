@@ -1,4 +1,4 @@
-import { WindowType } from '../../window/types';
+import { WindowType } from 'window/types';
 
 export type WindowManagerState = {
   activeWindowId: string | null;

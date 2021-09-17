@@ -4,7 +4,14 @@
     "outDir": "lib",
     "sourceMap": true,
     "esModuleInterop": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "components": ["src/components"],
+      "controls": ["src/controls"],
+      "core": ["src/core"],
+      "window": ["src/window"],
+    }
   },
   "include": [
     "src"

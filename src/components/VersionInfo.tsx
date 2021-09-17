@@ -17,11 +17,11 @@ const VersionInformationElement = styled.p`
 
 const VersionInfo = (): JSX.Element => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
-  const packageJson = require('../../../package.json');
+  const packageJson = require('../../package.json');
 
   return (
     <VersionInformationElement>
-      {packageJson.name} Version {packageJson.version}
+      Wisp Version {packageJson.version}
     </VersionInformationElement>
   );
 };

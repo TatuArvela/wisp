@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { Direction, WindowType } from '../window/types';
+import { Direction, WindowType } from 'window/types';
 
 export type WindowManager = {
   activateWindow(id: string): void;
@@ -21,7 +20,7 @@ export type WindowManager = {
   windows: Map<string, WindowType>;
 };
 
-export type ShellConfig = {
+export type WispConfig = {
   defaultWindowHeight: number;
   defaultWindowWidth: number;
   isBackgroundEnabled: boolean;

@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-
-import { WindowType } from '../types';
+import { WindowType } from 'window/types';
 
 type WindowElementProps = Pick<
   WindowType,
