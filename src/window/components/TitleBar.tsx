@@ -28,6 +28,7 @@ const TitleBarElement = styled.div<{ isActive: boolean }>`
   line-height: 18px;
   margin: 0;
   padding-left: 4px;
+  margin-bottom: 2px;
   user-select: none;
   width: 100%;
 `;

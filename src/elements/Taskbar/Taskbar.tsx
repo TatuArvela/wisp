@@ -1,8 +1,8 @@
-import { useWindowManagerContext } from 'core/windowManager/WindowManagerContext';
 import React from 'react';
 import styled from 'styled-components';
-import { WindowType } from 'window/types';
 
+import { WindowType } from '../../windowManager/types';
+import { useWindowManagerContext } from '../../windowManager/WindowManagerContext';
 import TaskbarButton from './TaskbarButton';
 
 const TaskbarElement = styled.div`

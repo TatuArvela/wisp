@@ -1,32 +1,36 @@
 import React, { useEffect } from 'react';
 
-import { useWindowManagerContext } from '../core/windowManager/WindowManagerContext';
+import { WindowType } from '../windowManager/types';
+import { useWindowManagerContext } from '../windowManager/WindowManagerContext';
 import ResizeBorder from './components/ResizeBorder';
 import TitleBar from './components/TitleBar';
 import WindowContent from './components/WindowContent';
 import WindowElement from './components/WindowElement';
-import { WindowType } from './types';
 
 export type WindowProps = {
   children: React.ReactNode;
   id: string;
-  title: string;
-} & Partial<WindowType>;
+  // Altering the state post-mount is done with the windowManager API
+  initialState: {
+    title: string;
+  } & Partial<WindowType>;
+};
 
-const Window = ({ children, id, ...props }: WindowProps): JSX.Element => {
+const Window = ({ children, id, initialState }: WindowProps): JSX.Element => {
   const windowManager = useWindowManagerContext();
+  // TODO: Return object with orderNumber and adjusted (if maximized) dimensions from window manager
   const window = windowManager.windows.get(id);
   const orderNumber = windowManager.windowOrder.indexOf(id);
 
   useEffect(() => {
     if (!window) {
-      windowManager.createWindow({ id, ...props });
+      windowManager.createWindow(id, initialState);
     }
-    return () => windowManager.deleteWindow(id);
+    return () => windowManager.closeWindow(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
-  if (!window || window.isClosed || window.isMinimized) {
+  if (!window || window.isClosed) {
     return null;
   }
 

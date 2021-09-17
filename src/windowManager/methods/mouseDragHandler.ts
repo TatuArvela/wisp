@@ -1,4 +1,4 @@
-import { WindowType } from 'window/types';
+import { WindowType } from '../types';
 
 const mouseDragHandler = (
   initialEvent: MouseEvent,

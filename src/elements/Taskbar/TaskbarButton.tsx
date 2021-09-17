@@ -19,6 +19,7 @@ const TaskbarButton = styled.button<TaskbarButtonProps>`
   margin-left: 2px;
   text-align: left;
   width: 160px;
+  user-select: none;
   ${(props) => props.active && activeStyle};
 `;
 

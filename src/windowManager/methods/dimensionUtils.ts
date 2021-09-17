@@ -1,5 +1,5 @@
-import { WispConfig } from 'core/types';
-import { Direction, WindowType } from 'window/types';
+import { WispConfig } from '../../config';
+import { Direction, WindowType } from '../types';
 
 const calculatePositionX = (
   window: WindowType,
@@ -45,6 +45,8 @@ const calculateHeight = (
     Math.min(desktopHeight - window.positionY, config.maxWindowHeight)
   );
 
+// TODO: Return new positions instead of mutating window
+// TODO: Improve structure. Split to services
 /* eslint-disable no-param-reassign */
 
 export const repositionWindow = (

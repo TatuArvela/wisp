@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Direction } from 'window/types';
+
+import { Direction } from '../../windowManager/types';
 
 type ResizeBorderProps = {
   resize: (event: React.MouseEvent, direction: Direction) => void;

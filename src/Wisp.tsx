@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import defaultConfig from './defaultConfig';
-import { WispConfig } from './types';
-import { useWindowManager } from './windowManager/useWindowManager';
+import { defaultConfig, WispConfig } from './config';
+import useWindowManager from './windowManager/useWindowManager';
 import { WindowManagerProvider } from './windowManager/WindowManagerContext';
 
 type WispProps = {
@@ -21,11 +20,12 @@ const ViewPort = styled.div`
 
 const Wisp = ({ children, ...rest }: WispProps): JSX.Element => {
   const config = { ...defaultConfig, ...rest };
-  const windowManager = useWindowManager(config);
+  const viewportRef = React.useRef<HTMLDivElement>();
+  const windowManager = useWindowManager(config, viewportRef);
 
   return (
     <WindowManagerProvider value={windowManager}>
-      <ViewPort ref={windowManager.viewportRef}>{children}</ViewPort>
+      <ViewPort ref={viewportRef}>{children}</ViewPort>
     </WindowManagerProvider>
   );
 };

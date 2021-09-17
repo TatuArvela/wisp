@@ -25,11 +25,11 @@ components to tune your environment.
 
 ### 0.1.0
 
-* Handle Window prop changes
 * Components
-  * StatusBar (for resizing)
+  * Statusbar (for resizing)
   * ScrollableContent
 * Theming
+  * Style provider
   * Native default theme
 * Add toggleable overflow scrolling to windows
 * Create release pipeline with `rollup` and GitHub Actions
@@ -45,14 +45,22 @@ components to tune your environment.
 
 * Controls
   * Button
-  * CheckBox
-  * ComboBox (basic functionality)
-  * GroupBox
+  * Checkbox
+  * Combobox (basic functionality)
+  * Groupbox
   * Label
-  * TextBox
-  * time picker (I need to figure out what its WinForms name is)
-  * ToolBar
-* Window icons
+  * Textbox
+  * Time input
+  * Toolbar
+  * Progress bar
+* Popup menus
+* Elements
+  * Start menu
+  * Quick launch bar
+  * Splash screen
+* Cursor theming
+* Sound effect support
+* Icons
   * Window icon
   * Alert icon
 * Animations
