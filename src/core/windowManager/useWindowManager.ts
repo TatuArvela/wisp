@@ -20,15 +20,15 @@ export function useWindowManager(config: WispConfig): WindowManager {
     windowOrder: [],
   });
 
-  const windowAreaRef = React.useRef<HTMLDivElement>();
+  const viewportRef = React.useRef<HTMLDivElement>();
 
   const getViewportWidth = useCallback(
-    () => windowAreaRef.current?.offsetWidth || 0,
-    [windowAreaRef]
+    () => viewportRef.current?.offsetWidth || 0,
+    [viewportRef]
   );
   const getViewportHeight = useCallback(
-    () => windowAreaRef.current?.offsetHeight || 0,
-    [windowAreaRef]
+    () => viewportRef.current?.offsetHeight || 0,
+    [viewportRef]
   );
 
   const setActiveWindowId = (id: string) =>
@@ -155,7 +155,7 @@ export function useWindowManager(config: WispConfig): WindowManager {
 
   return {
     activeWindowId: state.activeWindowId,
-    windowAreaRef,
+    viewportRef,
     windowOrder: state.windowOrder,
     windows: state.windows,
     activateWindow,

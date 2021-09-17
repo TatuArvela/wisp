@@ -1,6 +1,3 @@
-import Desktop from 'components/Desktop';
-import Taskbar from 'components/Taskbar/Taskbar';
-import VersionInfo from 'components/VersionInfo';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -28,15 +25,7 @@ const Wisp = ({ children, ...rest }: WispProps): JSX.Element => {
 
   return (
     <WindowManagerProvider value={windowManager}>
-      <ViewPort>
-        <Desktop config={config}>
-          {config.isVersionInfoEnabled && <VersionInfo />}
-        </Desktop>
-
-        {children}
-
-        {config.isTaskbarEnabled && <Taskbar />}
-      </ViewPort>
+      <ViewPort ref={windowManager.viewportRef}>{children}</ViewPort>
     </WindowManagerProvider>
   );
 };

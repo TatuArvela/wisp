@@ -15,7 +15,7 @@ export type WindowManager = {
   setWindowOrder(windowOrder: string[]): void;
   unmaximizeWindow(windowId: string): void;
   updateWindow(id: string, props: Partial<WindowType>): void;
-  windowAreaRef: React.Ref<HTMLDivElement>;
+  viewportRef: React.Ref<HTMLDivElement>;
   windowOrder: string[];
   windows: Map<string, WindowType>;
 };
@@ -23,9 +23,6 @@ export type WindowManager = {
 export type WispConfig = {
   defaultWindowHeight: number;
   defaultWindowWidth: number;
-  isBackgroundEnabled: boolean;
-  isTaskbarEnabled: boolean;
-  isVersionInfoEnabled: boolean;
   maxWindowHeight: number;
   maxWindowWidth: number;
   minWindowHeight: number;

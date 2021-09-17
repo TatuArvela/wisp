@@ -7,9 +7,9 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "components": ["src/components"],
       "controls": ["src/controls"],
       "core": ["src/core"],
+      "elements": ["src/elements"],
       "window": ["src/window"],
     }
   },

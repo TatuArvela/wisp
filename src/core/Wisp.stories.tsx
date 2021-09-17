@@ -2,6 +2,9 @@
 // @ts-ignore
 import { useState } from '@storybook/addons';
 import Button from 'controls/Button';
+import Desktop from 'elements/Desktop';
+import Taskbar from 'elements/Taskbar/Taskbar';
+import VersionInfo from 'elements/VersionInfo';
 import React from 'react';
 import Window from 'window/Window';
 
@@ -14,6 +17,9 @@ export default {
 
 export const Default = (): JSX.Element => (
   <Wisp>
+    <Desktop>
+      <VersionInfo />
+    </Desktop>
     <Window id="3" title="Tres" width={400} height={300} isMinimized>
       <p>Regular window</p>
       <p>
@@ -50,15 +56,12 @@ export const Default = (): JSX.Element => (
         OK
       </Button>
     </Window>
+    <Taskbar />
   </Wisp>
 );
 
 export const Minimal = (): JSX.Element => (
-  <Wisp
-    isBackgroundEnabled={false}
-    isTaskbarEnabled={false}
-    isVersionInfoEnabled={false}
-  >
+  <Wisp>
     <Window
       height={200}
       id="1"
@@ -113,6 +116,9 @@ export const ExternalWindowCreation = (): JSX.Element => {
       </button>
       <div style={{ width: '800px', height: '600px' }}>
         <Wisp>
+          <Desktop>
+            <VersionInfo />
+          </Desktop>
           <Window id="1" title="Initially shown">
             This window is initially shown
           </Window>
@@ -121,6 +127,7 @@ export const ExternalWindowCreation = (): JSX.Element => {
               This window is toggled by the button above
             </Window>
           )}
+          <Taskbar />
         </Wisp>
       </div>
     </div>
