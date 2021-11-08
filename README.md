@@ -28,8 +28,20 @@ components to tune your environment.
 * Components
   * Statusbar (for resizing)
   * ScrollableContent
+* Window manager
+  * mouse drag
+  * window state
+  * resize
+  * position
+  * size
+  * window order
+  * get properties for window painting
 * Theming
-  * Style provider
+  * Name: style provider, theme manager, widget manager?
+  * Themes can either provide styles for a default component, or a custom
+    component that replaces a default component automatically
+  * Themes can also include custom components that are imported separately
+  * Theme switcher window
   * Native default theme
 * Add toggleable overflow scrolling to windows
 * Create release pipeline with `rollup` and GitHub Actions
