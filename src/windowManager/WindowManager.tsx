@@ -3,17 +3,15 @@ import React, { useCallback } from 'react';
 import { WispConfig } from '../config';
 import getMethods from './methods/getMethods';
 import reducer from './state/reducer';
-import {
-  WindowManager,
-  WindowManagerAction,
-  WindowManagerState,
-  WindowType,
-} from './types';
+import { WindowManagerAction, WindowManagerState, WindowType } from './types';
+import { WindowManagerProvider } from './WindowManagerContext';
 
-function useWindowManager(
-  config: WispConfig,
-  viewportRef: React.MutableRefObject<HTMLDivElement>
-): WindowManager {
+type Props = {
+  config: WispConfig;
+  viewportRef: React.MutableRefObject<HTMLDivElement>;
+};
+
+const WindowManager: React.FC<Props> = ({ children, config, viewportRef }) => {
   const [state, dispatch] = React.useReducer<
     React.Reducer<WindowManagerState, WindowManagerAction>
   >(reducer, {
@@ -69,11 +67,15 @@ function useWindowManager(
     state,
   });
 
-  return {
+  const context = {
     viewportRef,
     ...state,
     ...methods,
   };
-}
 
-export default useWindowManager;
+  return (
+    <WindowManagerProvider value={context}>{children}</WindowManagerProvider>
+  );
+};
+
+export default WindowManager;

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
+import { useWindowManager } from '../windowManager/hooks';
 import { WindowType } from '../windowManager/types';
-import { useWindowManagerContext } from '../windowManager/WindowManagerContext';
 import ResizeBorder from './components/ResizeBorder';
 import TitleBar from './components/TitleBar';
 import WindowContent from './components/WindowContent';
@@ -17,7 +17,7 @@ export type WindowProps = {
 };
 
 const Window = ({ children, id, initialState }: WindowProps): JSX.Element => {
-  const windowManager = useWindowManagerContext();
+  const windowManager = useWindowManager();
   // TODO: Return object with orderNumber and adjusted (if maximized) dimensions from window manager
   const window = windowManager.windows.get(id);
   const orderNumber = windowManager.windowOrder.indexOf(id);

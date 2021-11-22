@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useWindowManager } from '../windowManager/hooks';
 import { Direction } from '../windowManager/types';
-import { useWindowManagerContext } from '../windowManager/WindowManagerContext';
 
 type ResizeHandleProps = {
   windowId: string;
@@ -13,7 +13,7 @@ const ResizeHandleElement = styled.div`
 `;
 
 const ResizeHandle = ({ windowId }: ResizeHandleProps): JSX.Element => {
-  const { resizeWindow } = useWindowManagerContext();
+  const { resizeWindow } = useWindowManager();
   return (
     <ResizeHandleElement
       onMouseDown={(e) => resizeWindow(e, windowId, Direction.SE)}

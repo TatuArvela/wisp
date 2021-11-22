@@ -4,14 +4,13 @@ import styled from 'styled-components';
 import { defaultConfig, WispConfig } from './config';
 import DefaultElements from './elements/DefaultElements';
 import ThemeManager from './themeManager/ThemeManager';
-import useWindowManager from './windowManager/useWindowManager';
-import { WindowManagerProvider } from './windowManager/WindowManagerContext';
+import WindowManager from './windowManager/WindowManager';
 
 type WispProps = {
   children: React.ReactNode;
 } & Partial<WispConfig>;
 
-const ViewPort = styled.div`
+const Viewport = styled.div`
   position: relative;
   box-sizing: border-box;
   width: 100%;
@@ -23,16 +22,15 @@ const ViewPort = styled.div`
 const Wisp = ({ children, ...rest }: WispProps): JSX.Element => {
   const config = { ...defaultConfig, ...rest };
   const viewportRef = React.useRef<HTMLDivElement>();
-  const windowManager = useWindowManager(config, viewportRef);
 
   return (
     <ThemeManager themes={config.themes}>
-      <WindowManagerProvider value={windowManager}>
-        <ViewPort ref={viewportRef}>
+      <WindowManager config={config} viewportRef={viewportRef}>
+        <Viewport ref={viewportRef}>
           {config.enableDefaultElements && <DefaultElements />}
           {children}
-        </ViewPort>
-      </WindowManagerProvider>
+        </Viewport>
+      </WindowManager>
     </ThemeManager>
   );
 };

@@ -2,8 +2,8 @@ import React from 'react';
 
 import Desktop from '../elements/Desktop';
 import Taskbar from '../elements/Taskbar/Taskbar';
+import ThemeSwitcher from '../elements/ThemeSwitcher';
 import VersionInfo from '../elements/VersionInfo';
-import ThemeSwitcher from '../themeManager/ThemeSwitcher';
 import Wisp from '../Wisp';
 
 export default {

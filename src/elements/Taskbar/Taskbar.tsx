@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useWindowManager } from '../../windowManager/hooks';
 import { WindowType } from '../../windowManager/types';
-import { useWindowManagerContext } from '../../windowManager/WindowManagerContext';
 import TaskbarButton from './TaskbarButton';
 
 const TaskbarElement = styled.div`
@@ -10,7 +10,7 @@ const TaskbarElement = styled.div`
 `;
 
 const Taskbar = (): JSX.Element => {
-  const { activeWindowId, windows, restoreWindow } = useWindowManagerContext();
+  const { activeWindowId, windows, restoreWindow } = useWindowManager();
 
   const mapButtons = ([id, window]: [id: string, window: WindowType]) => (
     <TaskbarButton

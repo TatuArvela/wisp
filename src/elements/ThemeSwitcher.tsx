@@ -1,7 +1,7 @@
 import React from 'react';
 
+import { useThemeManager } from '../themeManager/hooks';
 import Window from '../window/Window';
-import { useThemeManager } from './ThemeManager';
 
 const ThemeSwitcher: React.FC = () => {
   const { theme: currentTheme, themes, changeTheme } = useThemeManager();
