@@ -1,0 +1,27 @@
+import React from 'react';
+
+import Window from '../window/Window';
+import { useThemeManager } from './ThemeManager';
+
+const ThemeSwitcher: React.FC = () => {
+  const { theme: currentTheme, themes, changeTheme } = useThemeManager();
+  const onChange = (e) => {
+    const newTheme = themes.find(e.target.value);
+    newTheme && changeTheme(newTheme);
+  };
+
+  return (
+    <Window initialState={{ title: 'Theme Switcher' }} id="THEME_SWITCHER">
+      <select onChange={onChange} value={currentTheme.id}>
+        {themes.map((theme) => (
+          <option value={theme.id}>
+            {theme.name}
+            {theme.id === currentTheme.id && ' (Active)'}
+          </option>
+        ))}
+      </select>
+    </Window>
+  );
+};
+
+export default ThemeSwitcher;

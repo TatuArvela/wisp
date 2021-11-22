@@ -7,7 +7,6 @@ export const WindowManagerContext =
 WindowManagerContext.displayName = 'WindowManagerContext';
 
 export const WindowManagerProvider = WindowManagerContext.Provider;
-export const WindowManagerConsumer = WindowManagerContext.Consumer;
 
 export function useWindowManagerContext(): WindowManager {
   return React.useContext<WindowManager>(WindowManagerContext);

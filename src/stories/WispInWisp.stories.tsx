@@ -7,7 +7,7 @@ import Wisp from '../Wisp';
 
 export default {
   component: Wisp,
-  title: 'Wisp',
+  title: 'Wisp/Advanced Usage',
 };
 
 export const WispInWisp = (): JSX.Element => (

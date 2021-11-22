@@ -36,6 +36,8 @@ export type ElementsThemeSection = ThemeSection<typeof ElementsProperties>;
 export type WindowThemeSection = ThemeSection<typeof WindowProperties>;
 
 export type Theme = {
+  id: string;
+  name: string;
   controls: ControlsThemeSection;
   elements: ElementsThemeSection;
   window: WindowThemeSection;

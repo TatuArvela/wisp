@@ -4,6 +4,8 @@ import elements from './elements';
 import window from './window/index';
 
 const theme: Theme = {
+  id: 'DEFAULT',
+  name: 'Default Theme',
   controls,
   elements,
   window,

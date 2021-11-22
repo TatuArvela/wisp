@@ -4,9 +4,6 @@ import { useState } from '@storybook/addons';
 import React from 'react';
 
 import Button from '../controls/Button';
-import Desktop from '../elements/Desktop';
-import Taskbar from '../elements/Taskbar/Taskbar';
-import VersionInfo from '../elements/VersionInfo';
 import Window from '../window/Window';
 import Wisp from '../Wisp';
 
@@ -17,9 +14,6 @@ export default {
 
 export const DesktopStory = (): JSX.Element => (
   <Wisp>
-    <Desktop>
-      <VersionInfo />
-    </Desktop>
     <Window
       id="3"
       initialState={{
@@ -68,7 +62,6 @@ export const DesktopStory = (): JSX.Element => (
         OK
       </Button>
     </Window>
-    <Taskbar />
   </Wisp>
 );
 DesktopStory.story = {
@@ -86,7 +79,7 @@ export const StickyNotes = (): JSX.Element => {
     width: 200,
   };
   return (
-    <Wisp>
+    <Wisp enableDefaultElements={false}>
       <Window
         id="1"
         initialState={{
@@ -130,9 +123,6 @@ export const ExternalWindowToggling = (): JSX.Element => {
       </button>
       <div style={{ width: '800px', height: '600px' }}>
         <Wisp>
-          <Desktop>
-            <VersionInfo />
-          </Desktop>
           <Window id="1" initialState={{ title: 'Initially shown' }}>
             This window is initially shown
           </Window>
@@ -141,7 +131,6 @@ export const ExternalWindowToggling = (): JSX.Element => {
               This window is toggled by the button above
             </Window>
           )}
-          <Taskbar />
         </Wisp>
       </div>
     </div>
