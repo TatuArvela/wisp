@@ -25,9 +25,10 @@ components to tune your environment.
 
 ### 0.1.0
 
-* Components
-  * Statusbar (for resizing)
-  * ScrollableContent
+* Theming
+  * Use default theme as a fallback for missing theme properties
+  * Theme switcher window
+  * Improve default theme
 * Window manager
   * mouse drag
   * window state
@@ -36,13 +37,9 @@ components to tune your environment.
   * size
   * window order
   * get properties for window painting
-* Theming
-  * Name: style provider, theme manager, widget manager?
-  * Themes can either provide styles for a default component, or a custom
-    component that replaces a default component automatically
-  * Themes can also include custom components that are imported separately
-  * Theme switcher window
-  * Native default theme
+* Components
+  * Statusbar (for resizing)
+  * ScrollableContent
 * Add toggleable overflow scrolling to windows
 * Create release pipeline with `rollup` and GitHub Actions
 * Add brief notes on usage

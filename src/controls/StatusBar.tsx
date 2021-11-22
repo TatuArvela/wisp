@@ -8,7 +8,9 @@ type StatusBarProps = {
   windowId: string;
 };
 
-const StatusBarElement = styled.div``;
+const StatusBarElement = styled.div`
+  ${(props) => props.theme.controls.StatusBar}
+`;
 
 const StatusBar = ({ isResizable, windowId }: StatusBarProps): JSX.Element => (
   <StatusBarElement>

@@ -3,10 +3,13 @@ import styled from 'styled-components';
 
 import TitleBarButtons from './TitleBarButtons';
 
-type TitleBarProps = {
+export type TitleBarProps = {
+  isActive: boolean;
+};
+
+type Props = TitleBarProps & {
   close(): void;
   drag(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
-  isActive: boolean;
   isClosable: boolean;
   isMaximizable: boolean;
   isMaximized: boolean;
@@ -17,28 +20,15 @@ type TitleBarProps = {
   unmaximize(): void;
 };
 
-const TitleBarElement = styled.div<{ isActive: boolean }>`
-  background: ${(props) => (props.isActive ? 'rgb(19, 71, 214)' : 'grey')};
-  border-radius: 3px;
-  box-sizing: border-box;
-  color: white;
-  display: flex;
-  font-size: 12px;
-  height: 18px;
-  line-height: 18px;
-  margin: 0;
-  padding-left: 4px;
-  margin-bottom: 2px;
-  user-select: none;
-  width: 100%;
+const TitleBarElement = styled.div<TitleBarProps>`
+  ${(props) => props.theme.window.TitleBar}
 `;
 
 const Title = styled.div`
-  display: block;
-  flex-grow: 1;
+  ${(props) => props.theme.window.Title}
 `;
 
-const TitleBar = ({
+const TitleBar: React.FC<Props> = ({
   close,
   drag,
   isActive,
@@ -50,7 +40,7 @@ const TitleBar = ({
   minimize,
   title,
   unmaximize,
-}: TitleBarProps): JSX.Element => (
+}) => (
   <TitleBarElement isActive={isActive}>
     <Title onMouseDown={drag}>{title}</Title>
     <TitleBarButtons

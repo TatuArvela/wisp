@@ -6,17 +6,7 @@ import { useWindowManagerContext } from '../../windowManager/WindowManagerContex
 import TaskbarButton from './TaskbarButton';
 
 const TaskbarElement = styled.div`
-  background: white;
-  border-top: 1px solid black;
-  box-sizing: border-box;
-  bottom: 0;
-  display: inline-block;
-  height: 28px;
-  overflow-x: visible;
-  padding: 2px;
-  position: absolute;
-  width: 100%;
-  white-space: nowrap;
+  ${(props) => props.theme.elements.Taskbar}
 `;
 
 const Taskbar = (): JSX.Element => {

@@ -7,79 +7,39 @@ type ResizeBorderProps = {
   resize: (event: React.MouseEvent, direction: Direction) => void;
 };
 
-const size = 5;
-const offset = -5;
-
-const Resize = styled.div`
-  box-sizing: border-box;
-  position: absolute;
+const NResize = styled.div`
+  ${(props) => props.theme.window.NResize}
 `;
 
-const NResize = styled(Resize)`
-  top: ${offset}px;
-  left: ${offset}px;
-  right: ${offset}px;
-  height: ${size}px;
-  cursor: n-resize;
+const NEResize = styled.div`
+  ${(props) => props.theme.window.NEResize}
 `;
 
-const NEResize = styled(Resize)`
-  top: ${offset}px;
-  right: ${offset}px;
-  height: ${size * 2}px;
-  width: ${size * 2}px;
-  cursor: ne-resize;
+const EResize = styled.div`
+  ${(props) => props.theme.window.EResize}
 `;
 
-const EResize = styled(Resize)`
-  top: ${offset}px;
-  bottom: ${offset}px;
-  right: ${offset}px;
-  width: ${size}px;
-  cursor: e-resize;
+const SEResize = styled.div`
+  ${(props) => props.theme.window.SEResize}
 `;
 
-const SEResize = styled(Resize)`
-  bottom: ${offset}px;
-  right: ${offset}px;
-  height: ${size * 2}px;
-  width: ${size * 2}px;
-  cursor: se-resize;
+const SResize = styled.div`
+  ${(props) => props.theme.window.SResize}
 `;
 
-const SResize = styled(Resize)`
-  bottom: ${offset}px;
-  left: ${offset}px;
-  right: ${offset}px;
-  height: ${size}px;
-  cursor: s-resize;
+const SWResize = styled.div`
+  ${(props) => props.theme.window.SWResize}
 `;
 
-const SWResize = styled(Resize)`
-  bottom: ${offset}px;
-  left: ${offset}px;
-  height: ${size * 2}px;
-  width: ${size * 2}px;
-  cursor: sw-resize;
+const WResize = styled.div`
+  ${(props) => props.theme.window.WResize}
 `;
 
-const WResize = styled(Resize)`
-  top: ${offset}px;
-  bottom: ${offset}px;
-  left: ${offset}px;
-  width: ${size}px;
-  cursor: w-resize;
+const NWResize = styled.div`
+  ${(props) => props.theme.window.NWResize}
 `;
 
-const NWResize = styled(Resize)`
-  top: ${offset}px;
-  left: ${offset}px;
-  height: ${size * 2}px;
-  width: ${size * 2}px;
-  cursor: nw-resize;
-`;
-
-const ResizeBorder = ({ resize }: ResizeBorderProps): JSX.Element => (
+const ResizeBorder: React.FC<ResizeBorderProps> = ({ resize }) => (
   <>
     <NResize onMouseDown={(e) => resize(e, Direction.N)} />
     <EResize onMouseDown={(e) => resize(e, Direction.E)} />
