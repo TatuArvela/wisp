@@ -1,12 +1,17 @@
 import { FlattenInterpolation } from 'styled-components';
 
-const ControlsProperties = ['Button', 'ResizeHandle', 'StatusBar'];
+const ControlsProperties = [
+  'AlertText',
+  'Button',
+  'ResizeHandle',
+  'StatusBar',
+] as const;
 const ElementsProperties = [
   'Desktop',
   'Taskbar',
   'TaskbarButton',
   'VersionInfo',
-];
+] as const;
 const WindowProperties = [
   'CloseButton',
   'EResize',
@@ -25,10 +30,11 @@ const WindowProperties = [
   'WResize',
   'WindowContent',
   'WindowElement',
-];
+] as const;
 
-type ThemeSection<Properties extends Array<string>> = {
-  [key in Properties[number]]: FlattenInterpolation<any>;
+type Style = FlattenInterpolation<any>;
+type ThemeSection<Properties extends ReadonlyArray<string>> = {
+  [key in Properties[number]]: Style;
 };
 
 export type ControlsThemeSection = ThemeSection<typeof ControlsProperties>;
