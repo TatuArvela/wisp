@@ -2,11 +2,19 @@ import { css } from 'styled-components';
 
 import { ControlsThemeSection } from '../types';
 
+const AlertText = css`
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+`;
+
 const Button = css`
   box-shadow: 1px 1px 0 0 gray;
   font-size: 11px;
   padding: 2px;
   user-select: none;
+  border-radius: 0;
+  border: 1px solid gray;
 
   &:active {
     box-shadow: none;
@@ -44,6 +52,7 @@ const ResizeHandle = css`
 const StatusBar = css``;
 
 const controls: ControlsThemeSection = {
+  AlertText,
   Button,
   ResizeHandle,
   StatusBar,

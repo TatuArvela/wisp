@@ -3,7 +3,7 @@
 import { useState } from '@storybook/addons';
 import React from 'react';
 
-import Button from '../controls/Button';
+import AlertWindow from '../window/AlertWindow';
 import Window from '../window/Window';
 import Wisp from '../Wisp';
 
@@ -34,34 +34,12 @@ export const DesktopStory = (): JSX.Element => (
         id est laborum.
       </p>
     </Window>
-    <Window
-      id="1"
-      initialState={{
-        title: 'Uno',
-        isMaximizable: false,
-        isMinimizable: false,
-        isResizable: false,
-      }}
-    >
-      <p>Alert!</p>
-      <Button type="button" style={{ width: '60px', margin: 'auto' }}>
-        OK
-      </Button>
-    </Window>
-    <Window
-      id="2"
-      initialState={{
-        title: 'Dos',
-        isMaximizable: false,
-        isMinimizable: false,
-        isResizable: false,
-      }}
-    >
-      <p>Warning!</p>
-      <Button type="button" style={{ width: '60px', margin: 'auto' }}>
-        OK
-      </Button>
-    </Window>
+    <AlertWindow id="1" title="Uno">
+      Alert!
+    </AlertWindow>
+    <AlertWindow id="2" title="Dos">
+      Warning!
+    </AlertWindow>
   </Wisp>
 );
 DesktopStory.story = {

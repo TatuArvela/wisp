@@ -16,7 +16,7 @@ export type WindowProps = {
   } & Partial<WindowType>;
 };
 
-const Window = ({ children, id, initialState }: WindowProps): JSX.Element => {
+const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
   const windowManager = useWindowManager();
   // TODO: Return object with orderNumber and adjusted (if maximized) dimensions from window manager
   const window = windowManager.windows.get(id);
