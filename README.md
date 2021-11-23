@@ -27,16 +27,9 @@ components to tune your environment.
 
 * Theming
   * Use default theme as a fallback for missing theme properties
-  * Theme switcher window
   * Improve default theme
 * Window manager
-  * mouse drag
-  * window state
-  * resize
-  * position
-  * size
-  * window order
-  * get properties for window painting
+  * Finish TODOs
 * Components
   * Statusbar (for resizing)
   * ScrollableContent

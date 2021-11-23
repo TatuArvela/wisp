@@ -7,52 +7,61 @@ export type WindowManagerState = {
   windowMargins: WindowMargins;
 };
 
+type ActivateWindowAction = { type: 'ACTIVATE_WINDOW'; payload: string };
+type CloseWindowAction = { type: 'CLOSE_WINDOW'; payload: string };
 type CreateWindowAction = { type: 'CREATE_WINDOW'; payload: WindowType };
-
-type SetActiveWindowIdAction = {
-  type: 'SET_ACTIVE_WINDOW_ID';
-  payload: string;
-};
-
-type SetWindowOrderAction = {
-  type: 'SET_WINDOW_ORDER';
-  payload: string[];
-};
-
-type SetWindowsAction = {
-  type: 'SET_WINDOWS';
-  payload: Map<string, WindowType>;
+type DeactivateWindowAction = { type: 'DEACTIVATE_WINDOW'; payload: string };
+type UpdateWindowAction = {
+  type: 'UPDATE_WINDOW';
+  payload: {
+    id: string;
+    props: Partial<WindowType>;
+  };
 };
 
 export type WindowManagerAction =
+  | ActivateWindowAction
+  | CloseWindowAction
   | CreateWindowAction
-  | SetActiveWindowIdAction
-  | SetWindowOrderAction
-  | SetWindowsAction;
+  | DeactivateWindowAction
+  | UpdateWindowAction;
 
-export type WindowManagerMethods = {
+export type BaseMethods = {
   activateWindow(id: string): void;
-  // TODO: flashWindow
-  // TODO: cascadeWindows
   closeWindow(id: string): void;
   createWindow(id: string, initialState: Partial<WindowType>): WindowType;
-  dragWindow(event: React.MouseEvent, id: string): void; // TODO: Clearer name
+  deactivateWindow(id: string): void;
+  getViewportHeight(): number;
+  getViewportWidth(): number;
+  updateWindow(id: string, props: Partial<WindowType>): void;
+};
+
+export type WindowStateMethods = {
   maximizeWindow(id: string): void;
-  // TODO: maximizeWindowHorizontally
-  // TODO: maximizeWindowVertically
   minimizeWindow(id: string): void;
-  resizeWindow(event: React.MouseEvent, id: string, direction: Direction): void; // TODO: Clearer name
   restoreWindow(id: string): void;
   unmaximizeWindow(id: string): void;
+  // TODO: flashWindow
+  // TODO: maximizeWindowHorizontally
+  // TODO: maximizeWindowVertically
   // TODO: unmaximizeWindowHorizontally
   // TODO: unmaximizeWindowVertically
-  updateWindow(id: string, props: Partial<WindowType>): void;
   // TODO: dimWindow, to simulate crashed app
+};
+
+export type WindowDimensionMethods = {
+  dragWindow(event: React.MouseEvent, id: string): void; // TODO: Clearer name
+  resizeWindow(event: React.MouseEvent, id: string, direction: Direction): void; // TODO: Clearer name
   // TODO: setWindowPositionX
   // TODO: setWindowPositionY
   // TODO: setWindowHeight
   // TODO: setWindowWidth
+  // TODO: cascadeWindows
 };
+
+type WindowManagerMethods = BaseMethods &
+  WindowStateMethods &
+  WindowDimensionMethods;
 
 export type WindowManager = {
   viewportRef: React.Ref<HTMLDivElement>;

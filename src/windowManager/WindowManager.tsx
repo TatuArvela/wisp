@@ -1,9 +1,16 @@
 import React, { useCallback } from 'react';
 
 import { WispConfig } from '../config';
-import getMethods from './methods/getMethods';
+import getWindowDimensionMethods from './methods/getWindowDimensionMethods';
+import getWindowStateMethods from './methods/getWindowStateMethods';
+import constructWindow from './state/constructWindow';
 import reducer from './state/reducer';
-import { WindowManagerAction, WindowManagerState, WindowType } from './types';
+import {
+  BaseMethods,
+  WindowManagerAction,
+  WindowManagerState,
+  WindowType,
+} from './types';
 import { WindowManagerProvider } from './WindowManagerContext';
 
 type Props = {
@@ -21,33 +28,49 @@ const WindowManager: React.FC<Props> = ({ children, config, viewportRef }) => {
     windows: new Map(),
   });
 
-  const createWindow = (window: WindowType) =>
+  const activateWindow = useCallback(
+    (id: string) =>
+      dispatch({
+        type: 'ACTIVATE_WINDOW',
+        payload: id,
+      }),
+    []
+  );
+
+  const closeWindow = useCallback(
+    (id: string) =>
+      dispatch({
+        type: 'CLOSE_WINDOW',
+        payload: id,
+      }),
+    []
+  );
+
+  const createWindow = (id: string, initialState: Partial<WindowType>) => {
+    const window = constructWindow(config, id, initialState);
     dispatch({
       type: 'CREATE_WINDOW',
       payload: window,
     });
+    return state.windows.get(id);
+  };
 
-  const setActiveWindowId = (id: string) =>
-    dispatch({
-      type: 'SET_ACTIVE_WINDOW_ID',
-      payload: id,
-    });
+  const deactivateWindow = useCallback(
+    (id: string) =>
+      dispatch({
+        type: 'DEACTIVATE_WINDOW',
+        payload: id,
+      }),
+    []
+  );
 
-  const setWindowOrder = (windowOrder: string[]) =>
-    dispatch({
-      type: 'SET_WINDOW_ORDER',
-      payload: windowOrder,
-    });
-
-  const setWindows = (windows: Map<string, WindowType>) =>
-    dispatch({
-      type: 'SET_WINDOWS',
-      payload: windows,
-    });
-
-  const getViewportWidth = useCallback(
-    () => viewportRef.current?.offsetWidth || 0,
-    [viewportRef]
+  const updateWindow = useCallback(
+    (id: string, props: Partial<WindowType>) =>
+      dispatch({
+        type: 'UPDATE_WINDOW',
+        payload: { id, props },
+      }),
+    []
   );
 
   const getViewportHeight = useCallback(
@@ -55,22 +78,35 @@ const WindowManager: React.FC<Props> = ({ children, config, viewportRef }) => {
     [viewportRef]
   );
 
-  // TODO: These will be split into services
-  const methods = getMethods({
-    config,
+  const getViewportWidth = useCallback(
+    () => viewportRef.current?.offsetWidth || 0,
+    [viewportRef]
+  );
+
+  const baseMethods: BaseMethods = {
+    activateWindow,
+    closeWindow,
     createWindow,
+    deactivateWindow,
+    updateWindow,
     getViewportHeight,
     getViewportWidth,
-    setActiveWindowId,
-    setWindowOrder,
-    setWindows,
+  };
+
+  const windowDimensionMethods = getWindowDimensionMethods(
+    config,
     state,
-  });
+    baseMethods
+  );
+
+  const windowStateMethods = getWindowStateMethods(config, state, baseMethods);
 
   const context = {
     viewportRef,
     ...state,
-    ...methods,
+    ...baseMethods,
+    ...windowDimensionMethods,
+    ...windowStateMethods,
   };
 
   return (

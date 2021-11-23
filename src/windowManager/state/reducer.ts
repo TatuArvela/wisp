@@ -5,29 +5,62 @@ function reducer(
   action: WindowManagerAction
 ): WindowManagerState {
   switch (action.type) {
-    case 'CREATE_WINDOW':
+    case 'ACTIVATE_WINDOW': {
+      return {
+        ...state,
+        activeWindowId: action.payload,
+        windowOrder: [
+          ...state.windowOrder.filter(
+            (windowId) => windowId !== action.payload
+          ),
+          action.payload,
+        ],
+      };
+    }
+
+    case 'CLOSE_WINDOW': {
+      const windows = new Map(state.windows);
+      windows.delete(action.payload);
+      return {
+        ...state,
+        windows: windows,
+        windowOrder: [...state.windowOrder].filter(
+          (windowId) => windowId !== action.payload
+        ),
+      };
+    }
+
+    case 'CREATE_WINDOW': {
       return {
         ...state,
         windows: new Map(state.windows).set(action.payload.id, action.payload),
         windowOrder: state.windowOrder.concat(action.payload.id),
       };
-    case 'SET_ACTIVE_WINDOW_ID':
+    }
+
+    case 'DEACTIVATE_WINDOW': {
       return {
         ...state,
-        activeWindowId: action.payload,
+        activeWindowId:
+          action.payload === state.activeWindowId ? null : state.activeWindowId,
       };
-    case 'SET_WINDOW_ORDER':
+    }
+
+    case 'UPDATE_WINDOW': {
+      const windows = new Map(state.windows);
+      windows.set(action.payload.id, {
+        ...state.windows.get(action.payload.id),
+        ...action.payload.props,
+      });
       return {
         ...state,
-        windowOrder: action.payload,
+        windows: windows,
       };
-    case 'SET_WINDOWS':
-      return {
-        ...state,
-        windows: action.payload,
-      };
-    default:
+    }
+
+    default: {
       return state;
+    }
   }
 }
 
