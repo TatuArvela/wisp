@@ -6,7 +6,7 @@ import Window from '../window/Window';
 const ThemeSwitcher: React.FC = () => {
   const { theme: currentTheme, themes, changeTheme } = useThemeManager();
   const onChange = (e) => {
-    const newTheme = themes.find(e.target.value);
+    const newTheme = themes.find((theme) => theme.id === e.target.value);
     newTheme && changeTheme(newTheme);
   };
 
@@ -14,7 +14,7 @@ const ThemeSwitcher: React.FC = () => {
     <Window initialState={{ title: 'Theme Switcher' }} id="THEME_SWITCHER">
       <select onChange={onChange} value={currentTheme.id}>
         {themes.map((theme) => (
-          <option value={theme.id}>
+          <option key={theme.id} value={theme.id}>
             {theme.name}
             {theme.id === currentTheme.id && ' (Active)'}
           </option>
