@@ -1,4 +1,4 @@
-# ![icon](public/icon.png?raw=true "icon") Wisp
+# ![icon](assets/icon.png?raw=true "icon") Wisp
 
 Wisp is **a window manager and a widget toolkit** which allows building web
 applications that look and feel like desktop applications.

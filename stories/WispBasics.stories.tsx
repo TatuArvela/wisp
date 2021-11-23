@@ -3,9 +3,9 @@
 import { useState } from '@storybook/addons';
 import React from 'react';
 
-import AlertWindow from '../window/AlertWindow';
-import Window from '../window/Window';
-import Wisp from '../Wisp';
+import AlertWindow from '../src/window/AlertWindow';
+import Window from '../src/window/Window';
+import Wisp from '../src/Wisp';
 
 export default {
   component: Wisp,

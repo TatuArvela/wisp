@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Desktop from '../elements/Desktop';
-import Taskbar from '../elements/Taskbar/Taskbar';
-import ThemeSwitcher from '../elements/ThemeSwitcher';
-import VersionInfo from '../elements/VersionInfo';
-import Wisp from '../Wisp';
+import Desktop from '../src/elements/Desktop';
+import Taskbar from '../src/elements/Taskbar/Taskbar';
+import ThemeSwitcher from '../src/elements/ThemeSwitcher';
+import VersionInfo from '../src/elements/VersionInfo';
+import Wisp from '../src/Wisp';
 
 export default {
   component: Wisp,

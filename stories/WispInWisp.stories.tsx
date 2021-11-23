@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Desktop from '../elements/Desktop';
-import Taskbar from '../elements/Taskbar/Taskbar';
-import Window from '../window/Window';
-import Wisp from '../Wisp';
+import Desktop from '../src/elements/Desktop';
+import Taskbar from '../src/elements/Taskbar/Taskbar';
+import Window from '../src/window/Window';
+import Wisp from '../src/Wisp';
 
 export default {
   component: Wisp,
