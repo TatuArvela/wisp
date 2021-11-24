@@ -18,13 +18,18 @@ type UpdateWindowAction = {
     props: Partial<WindowType>;
   };
 };
+type SetWindowMarginsAction = {
+  type: 'SET_WINDOW_MARGINS';
+  payload: Partial<WindowMargins>;
+};
 
 export type WindowManagerAction =
   | ActivateWindowAction
   | CloseWindowAction
   | CreateWindowAction
   | DeactivateWindowAction
-  | UpdateWindowAction;
+  | UpdateWindowAction
+  | SetWindowMarginsAction;
 
 export type BaseMethods = {
   activateWindow(id: string): void;
@@ -33,6 +38,7 @@ export type BaseMethods = {
   deactivateWindow(id: string): void;
   getViewportHeight(): number;
   getViewportWidth(): number;
+  setWindowMargins(windowMargins: Partial<WindowMargins>);
   updateWindow(id: string, props: Partial<WindowType>): void;
 };
 
@@ -79,18 +85,30 @@ export type WindowType = {
   isMinimizable: boolean;
   isMinimized: boolean;
   isResizable: boolean;
+  maxHeight?: number;
+  maxWidth?: number;
+  minHeight?: number;
+  minWidth?: number;
   positionX: number;
   positionY: number;
   title: string;
   width: number;
 };
 
-export type WindowMargins = [
-  top: number,
-  right: number,
-  bottom: number,
-  left: number
-];
+// TODO: Think of a better name
+export type WindowMargins = {
+  top: number;
+  right: number;
+  bottom: number;
+  left: number;
+};
+
+export type Boundaries = {
+  minX: number;
+  maxX: number;
+  minY: number;
+  maxY: number;
+};
 
 export enum Direction {
   N = 'N',

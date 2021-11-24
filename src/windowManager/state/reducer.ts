@@ -58,6 +58,16 @@ function reducer(
       };
     }
 
+    case 'SET_WINDOW_MARGINS': {
+      return {
+        ...state,
+        windowMargins: {
+          ...state.windowMargins,
+          ...action.payload,
+        },
+      };
+    }
+
     default: {
       return state;
     }

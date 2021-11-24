@@ -5,7 +5,11 @@ import {
   WindowDimensionMethods,
   WindowManagerState,
 } from '../types';
-import { repositionWindow, resizeWindow } from './utils/dimensionUtils';
+import {
+  getBoundaries,
+  repositionWindow,
+  resizeWindow,
+} from './utils/dimensionUtils';
 import mouseDragHandler from './utils/mouseDragHandler';
 
 const getWindowDimensionMethods = (
@@ -27,8 +31,11 @@ const getWindowDimensionMethods = (
         window,
         xOffset,
         yOffset,
-        getViewportWidth(),
-        getViewportHeight()
+        getBoundaries(
+          getViewportWidth(),
+          getViewportHeight(),
+          state.windowMargins
+        )
       );
       updateWindow(id, window);
     });
@@ -40,13 +47,15 @@ const getWindowDimensionMethods = (
     if (!window.isResizable || window.isMaximized) return;
     mouseDragHandler(event, window, (xOffset, yOffset) => {
       resizeWindow(
-        config,
         window,
         direction,
         xOffset,
         yOffset,
-        getViewportWidth(),
-        getViewportHeight()
+        getBoundaries(
+          getViewportWidth(),
+          getViewportHeight(),
+          state.windowMargins
+        )
       );
       updateWindow(id, window);
     });

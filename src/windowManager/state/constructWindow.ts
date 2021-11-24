@@ -7,8 +7,8 @@ const constructWindow = (
   initial: Partial<WindowType>
 ): WindowType => {
   return {
-    id,
     height: initial.height ?? config.defaultWindowHeight,
+    id,
     isClosable: initial.isClosable ?? true,
     isClosed: initial.isClosed ?? false,
     isDraggable: initial.isDraggable ?? true,
@@ -17,6 +17,10 @@ const constructWindow = (
     isMinimizable: initial.isMinimizable ?? true,
     isMinimized: initial.isMinimized ?? false,
     isResizable: initial.isResizable ?? true,
+    maxHeight: initial.maxHeight ?? config.maxWindowHeight,
+    maxWidth: initial.maxWidth ?? config.maxWindowWidth,
+    minHeight: initial.minHeight ?? config.minWindowHeight,
+    minWidth: initial.minWidth ?? config.minWindowWidth,
     positionX: initial.positionX ?? config.newWindowXOffset,
     positionY: initial.positionY ?? config.newWindowYOffset,
     title: initial.title,

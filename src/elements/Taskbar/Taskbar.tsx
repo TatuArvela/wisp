@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { useWindowManager } from '../../windowManager/hooks';
@@ -10,7 +10,19 @@ const TaskbarElement = styled.div`
 `;
 
 const Taskbar = (): JSX.Element => {
-  const { activeWindowId, windows, restoreWindow } = useWindowManager();
+  const { activeWindowId, windows, restoreWindow, setWindowMargins } =
+    useWindowManager();
+  const taskbarRef = React.useRef<HTMLDivElement>();
+
+  const getTaskbarHeight = useCallback(
+    () => taskbarRef.current?.offsetHeight || 0,
+    [taskbarRef]
+  );
+
+  useEffect(() => {
+    setWindowMargins({ bottom: getTaskbarHeight() });
+    return () => setWindowMargins({ bottom: 0 });
+  }, [getTaskbarHeight, setWindowMargins]);
 
   const mapButtons = ([id, window]: [id: string, window: WindowType]) => (
     <TaskbarButton
@@ -23,7 +35,7 @@ const Taskbar = (): JSX.Element => {
   );
 
   return (
-    <TaskbarElement>
+    <TaskbarElement ref={taskbarRef}>
       {Array.from(windows.entries()).map(mapButtons)}
     </TaskbarElement>
   );

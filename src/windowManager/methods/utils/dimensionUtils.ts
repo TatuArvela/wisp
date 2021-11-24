@@ -1,51 +1,55 @@
 import { WispConfig } from '../../../config';
-import { Direction, WindowType } from '../../types';
+import { Boundaries, Direction, WindowMargins, WindowType } from '../../types';
 
 // TODO: Split to smaller utilities
 
 const calculatePositionX = (
   window: WindowType,
   xOffset: number,
-  desktopWidth: number
-) =>
-  Math.min(
-    Math.max(window.positionX - xOffset, 0),
-    desktopWidth - window.width
-  );
+  boundaries: Boundaries
+) => {
+  const newX = window.positionX - xOffset;
+  const maxX = boundaries.maxX - window.width; // Keep window within viewport
+  return Math.min(Math.max(newX, boundaries.minX), maxX);
+};
 
 const calculatePositionY = (
   window: WindowType,
   yOffset: number,
-  desktopHeight: number
-) =>
-  Math.min(
-    Math.max(window.positionY - yOffset, 0),
-    desktopHeight - window.height
-  );
+  boundaries: Boundaries
+) => {
+  const newY = window.positionY - yOffset;
+  const maxY = boundaries.maxY - window.height; // Keep window within viewport
+  return Math.min(Math.max(newY, boundaries.minY), maxY);
+};
 
 const calculateWidth = (
-  config: WispConfig,
   window: WindowType,
   xOffset: number,
-  desktopWidth: number,
-  factor: number
-) =>
-  Math.min(
-    Math.max(window.width - xOffset * factor, config.minWindowWidth),
-    Math.min(desktopWidth - window.positionX, config.maxWindowWidth)
+  boundaries: Boundaries,
+  factor: number // TODO: Clarify
+) => {
+  const newWidth = window.width - xOffset * factor;
+  const maxWidth = boundaries.minX + window.positionX; // Keep window within viewport
+  return Math.min(
+    Math.max(newWidth, window.minWidth),
+    Math.min(maxWidth, window.maxWidth)
   );
+};
 
 const calculateHeight = (
-  config: WispConfig,
   window: WindowType,
   yOffset: number,
-  desktopHeight: number,
-  factor: number
-) =>
-  Math.min(
-    Math.max(window.height - yOffset * factor, config.minWindowHeight),
-    Math.min(desktopHeight - window.positionY, config.maxWindowHeight)
+  boundaries: Boundaries,
+  factor: number // TODO: Clarify
+) => {
+  const newHeight = window.height - yOffset * factor;
+  const maxHeight = boundaries.minY + window.positionY; // Keep window within viewport
+  return Math.min(
+    Math.max(newHeight, window.minHeight),
+    Math.min(maxHeight, window.maxHeight)
   );
+};
 
 // TODO: Return new positions instead of mutating window
 /* eslint-disable no-param-reassign */
@@ -54,11 +58,10 @@ export const repositionWindow = (
   window: WindowType,
   xOffset: number,
   yOffset: number,
-  desktopWidth: number,
-  desktopHeight: number
+  boundaries: Boundaries
 ): void => {
-  window.positionX = calculatePositionX(window, xOffset, desktopWidth);
-  window.positionY = calculatePositionY(window, yOffset, desktopHeight);
+  window.positionX = calculatePositionX(window, xOffset, boundaries);
+  window.positionY = calculatePositionY(window, yOffset, boundaries);
 };
 
 export const fitWindow = (
@@ -79,39 +82,40 @@ export const fitWindow = (
 };
 
 export const resizeWindow = (
-  config: WispConfig,
   window: WindowType,
   direction: Direction,
   xOffset: number,
   yOffset: number,
-  desktopWidth: number,
-  desktopHeight: number
+  boundaries: Boundaries
 ): void => {
   const resizeN = () => {
     const originalHeight = window.height;
-    window.height = calculateHeight(config, window, yOffset, desktopHeight, -1);
+    window.height = calculateHeight(window, yOffset, boundaries, -1);
     if (window.height !== originalHeight) {
       window.positionY = calculatePositionY(
         window,
         window.height - originalHeight,
-        desktopHeight
+        boundaries
       );
     }
   };
+
   const resizeE = () => {
-    window.width = calculateWidth(config, window, xOffset, desktopWidth, 1);
+    window.width = calculateWidth(window, xOffset, boundaries, 1);
   };
+
   const resizeS = () => {
-    window.height = calculateHeight(config, window, yOffset, desktopHeight, 1);
+    window.height = calculateHeight(window, yOffset, boundaries, 1);
   };
+
   const resizeW = () => {
     const originalWidth = window.width;
-    window.width = calculateWidth(config, window, xOffset, desktopWidth, -1);
+    window.width = calculateWidth(window, xOffset, boundaries, -1);
     if (window.width !== originalWidth) {
       window.positionX = calculatePositionX(
         window,
         window.width - originalWidth,
-        desktopWidth
+        boundaries
       );
     }
   };
@@ -149,3 +153,14 @@ export const resizeWindow = (
       break;
   }
 };
+
+export const getBoundaries = (
+  viewportWidth: number,
+  viewportHeight: number,
+  windowMargins: WindowMargins
+): Boundaries => ({
+  minX: windowMargins.left,
+  minY: windowMargins.top,
+  maxX: viewportWidth - windowMargins.right,
+  maxY: viewportHeight - windowMargins.bottom,
+});

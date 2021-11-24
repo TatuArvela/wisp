@@ -9,6 +9,7 @@ import {
   BaseMethods,
   WindowManagerAction,
   WindowManagerState,
+  WindowMargins,
   WindowType,
 } from './types';
 import { WindowManagerProvider } from './WindowManagerContext';
@@ -73,6 +74,15 @@ const WindowManager: React.FC<Props> = ({ children, config, viewportRef }) => {
     []
   );
 
+  const setWindowMargins = useCallback(
+    (windowMargins: Partial<WindowMargins>) =>
+      dispatch({
+        type: 'SET_WINDOW_MARGINS',
+        payload: windowMargins,
+      }),
+    []
+  );
+
   const getViewportHeight = useCallback(
     () => viewportRef.current?.offsetHeight || 0,
     [viewportRef]
@@ -89,6 +99,7 @@ const WindowManager: React.FC<Props> = ({ children, config, viewportRef }) => {
     createWindow,
     deactivateWindow,
     updateWindow,
+    setWindowMargins,
     getViewportHeight,
     getViewportWidth,
   };
