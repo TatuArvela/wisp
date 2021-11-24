@@ -2,8 +2,7 @@
 
 ## For 0.1.0
 
-* Window manager and windows
-  * Improve maximized window size calculations
+* Handle viewport resizing
 * Add toggleable overflow scrolling to windows
 * Create release pipeline with `rollup` and GitHub Actions
 * Add brief notes on usage

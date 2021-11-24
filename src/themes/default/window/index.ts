@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 import { WindowElementProps } from '../../../window/components/WindowElement';
+import { WindowMargins } from '../../../windowManager/types';
 import { WindowThemeSection } from '../../types';
 import resizeBorder from './resizeBorder';
 import titleBar from './titleBar';
@@ -17,12 +18,19 @@ const WindowContent = css`
   user-select: none;
 `;
 
+const getHeight = (windowMargins: WindowMargins) =>
+  `calc(100% - ${windowMargins.top + windowMargins.bottom}px)`;
+
+const getWidth = (windowMargins: WindowMargins) =>
+  `calc(100% - ${windowMargins.left + windowMargins.right}px)`;
+
 const maximizedStyles = css<WindowElementProps>`
-  height: 100% !important;
-  left: 0 !important;
-  top: 0 !important;
-  width: 100% !important;
+  height: ${(props) => getHeight(props.windowMargins)} !important;
+  left: ${(props) => props.windowMargins.left} !important;
+  top: ${(props) => props.windowMargins.top} !important;
+  width: ${(props) => getWidth(props.windowMargins)} !important;
   z-index: ${(props) => props.orderNumber} !important;
+  border-radius: 0;
 `;
 
 const minimizedStyles = css`
@@ -41,7 +49,6 @@ const WindowElement = css<WindowElementProps>`
   padding: 0;
   position: absolute;
 
-  // TODO: Get maximized size and position from windowManager
   ${(props) => props.isMaximized && maximizedStyles}
   ${(props) => props.isMinimized && minimizedStyles}
 `;

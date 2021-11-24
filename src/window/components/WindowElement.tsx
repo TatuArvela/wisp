@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-import { WindowType } from '../../windowManager/types';
+import { WindowMargins, WindowType } from '../../windowManager/types';
 
 export type WindowElementProps = Pick<
   WindowType,
   'height' | 'width' | 'positionX' | 'positionY' | 'isMinimized' | 'isMaximized'
 > & {
   orderNumber: number;
+  windowMargins: WindowMargins;
 };
 
 const WindowElement = styled.div.attrs((props: WindowElementProps) => ({

@@ -18,7 +18,6 @@ export type WindowProps = {
 
 const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
   const windowManager = useWindowManager();
-  // TODO: Return object with orderNumber and adjusted (if maximized) dimensions from window manager
   const window = windowManager.windows.get(id);
   const orderNumber = windowManager.windowOrder.indexOf(id);
 
@@ -43,6 +42,7 @@ const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
       positionX={window.positionX}
       positionY={window.positionY}
       width={window.width}
+      windowMargins={windowManager.windowMargins}
     >
       <TitleBar
         close={() => windowManager.closeWindow(id)}
