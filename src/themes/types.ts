@@ -3,6 +3,7 @@ import { FlattenInterpolation } from 'styled-components';
 const ControlsProperties = [
   'AlertText',
   'Button',
+  'ButtonWrapper',
   'ResizeHandle',
   'StatusBar',
 ] as const;
@@ -41,10 +42,18 @@ export type ControlsThemeSection = ThemeSection<typeof ControlsProperties>;
 export type ElementsThemeSection = ThemeSection<typeof ElementsProperties>;
 export type WindowThemeSection = ThemeSection<typeof WindowProperties>;
 
-export type Theme = {
+export type DefaultTheme = {
   id: string;
   name: string;
   controls: ControlsThemeSection;
   elements: ElementsThemeSection;
   window: WindowThemeSection;
+};
+
+export type Theme = {
+  id: string;
+  name: string;
+  controls?: Partial<ControlsThemeSection>;
+  elements?: Partial<ElementsThemeSection>;
+  window?: Partial<WindowThemeSection>;
 };

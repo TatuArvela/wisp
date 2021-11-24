@@ -2,10 +2,6 @@
 
 ## For 0.1.0
 
-* Theming
-  * Use default theme as a fallback for missing theme properties
-  * Improve default theme
-  * Verify themability
 * Window manager and windows
   * Improve maximized window size calculations
 * Add toggleable overflow scrolling to windows

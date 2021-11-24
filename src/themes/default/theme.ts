@@ -1,9 +1,9 @@
-import { Theme } from '../types';
+import { DefaultTheme } from '../types';
 import controls from './controls';
 import elements from './elements';
 import window from './window/index';
 
-const theme: Theme = {
+const theme: DefaultTheme = {
   id: 'DEFAULT',
   name: 'Default Theme',
   controls,

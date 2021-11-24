@@ -8,6 +8,11 @@ const AlertText = css`
   align-items: center;
 `;
 
+const ButtonWrapper = css`
+  display: inherit;
+  padding: 0 1px 1px 0;
+`;
+
 const Button = css`
   box-shadow: 1px 1px 0 0 gray;
   font-size: 11px;
@@ -54,6 +59,7 @@ const StatusBar = css``;
 const controls: ControlsThemeSection = {
   AlertText,
   Button,
+  ButtonWrapper,
   ResizeHandle,
   StatusBar,
 };
