@@ -10,7 +10,11 @@
   ],
   "sideEffects": false,
   "repository": "https://github.com/TatuArvela/wisp",
-  "author": "Tatu Arvela",
+  "author": {
+    "name": "Tatu Arvela",
+    "email": "tatu@tatuarvela.com",
+    "url": "https://tatuarvela.com/"
+  },
   "license": "MIT",
   "scripts": {
     "build": "rollup -c rollup.config.js",
