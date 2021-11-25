@@ -2,6 +2,7 @@
 
 ## For 1.0.0
 
+* Publish automatically on adding a new tag
 * Components
   * Statusbar (for resizing)
   * ScrollableContent
@@ -40,3 +41,4 @@
   * Alert icon
 * Animations
 * Optional faster outline mode for moving and resizing
+* Publish Storybook on GitHub Pages
