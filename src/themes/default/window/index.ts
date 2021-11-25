@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 import { WindowElementProps } from '../../../window/components/WindowElement';
-import { WindowMargins } from '../../../windowManager/types';
+import { ViewportWindowMargins } from '../../../windowManager/types';
 import { WindowThemeSection } from '../../types';
 import resizeBorder from './resizeBorder';
 import titleBar from './titleBar';
@@ -18,17 +18,17 @@ const WindowContent = css`
   user-select: none;
 `;
 
-const getHeight = (windowMargins: WindowMargins) =>
-  `calc(100% - ${windowMargins.top + windowMargins.bottom}px)`;
+const getHeight = (viewportWindowMargins: ViewportWindowMargins) =>
+  `calc(100% - ${viewportWindowMargins.top + viewportWindowMargins.bottom}px)`;
 
-const getWidth = (windowMargins: WindowMargins) =>
-  `calc(100% - ${windowMargins.left + windowMargins.right}px)`;
+const getWidth = (viewportWindowMargins: ViewportWindowMargins) =>
+  `calc(100% - ${viewportWindowMargins.left + viewportWindowMargins.right}px)`;
 
 const maximizedStyles = css<WindowElementProps>`
-  height: ${(props) => getHeight(props.windowMargins)} !important;
-  left: ${(props) => props.windowMargins.left} !important;
-  top: ${(props) => props.windowMargins.top} !important;
-  width: ${(props) => getWidth(props.windowMargins)} !important;
+  height: ${(props) => getHeight(props.viewportWindowMargins)} !important;
+  left: ${(props) => props.viewportWindowMargins.left} !important;
+  top: ${(props) => props.viewportWindowMargins.top} !important;
+  width: ${(props) => getWidth(props.viewportWindowMargins)} !important;
   z-index: ${(props) => props.orderNumber} !important;
   border-radius: 0;
 `;

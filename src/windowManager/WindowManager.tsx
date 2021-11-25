@@ -1,33 +1,39 @@
 import React, { useCallback } from 'react';
 
 import { WispConfig } from '../config';
-import getWindowDimensionMethods from './methods/getWindowDimensionMethods';
-import getWindowStateMethods from './methods/getWindowStateMethods';
+import {
+  maximizeWindow,
+  minimizeWindow,
+  restoreWindow,
+  unmaximizeWindow,
+} from './methods/windowStateMethods';
 import constructWindow from './state/constructWindow';
 import reducer from './state/reducer';
 import {
-  BaseMethods,
+  ViewportWindowMargins,
+  WindowManager as WindowManagerType,
   WindowManagerAction,
+  WindowManagerBase,
   WindowManagerState,
-  WindowMargins,
   WindowType,
 } from './types';
+import Viewport from './Viewport';
 import { WindowManagerProvider } from './WindowManagerContext';
 
 type Props = {
   config: WispConfig;
-  viewportRef: React.MutableRefObject<HTMLDivElement>;
 };
 
-const WindowManager: React.FC<Props> = ({ children, config, viewportRef }) => {
+const WindowManager: React.FC<Props> = ({ children, config }) => {
   const [state, dispatch] = React.useReducer<
     React.Reducer<WindowManagerState, WindowManagerAction>
   >(reducer, {
     activeWindowId: null,
-    windowMargins: config.windowMargins,
+    viewportWindowMargins: config.viewportWindowMargins,
     windowOrder: [],
     windows: new Map(),
   });
+  const viewportRef = React.useRef<HTMLDivElement>();
 
   const activateWindow = useCallback(
     (id: string) =>
@@ -74,11 +80,11 @@ const WindowManager: React.FC<Props> = ({ children, config, viewportRef }) => {
     []
   );
 
-  const setWindowMargins = useCallback(
-    (windowMargins: Partial<WindowMargins>) =>
+  const setViewportWindowMargins = useCallback(
+    (viewportWindowMargins: Partial<ViewportWindowMargins>) =>
       dispatch({
         type: 'SET_WINDOW_MARGINS',
-        payload: windowMargins,
+        payload: viewportWindowMargins,
       }),
     []
   );
@@ -93,35 +99,32 @@ const WindowManager: React.FC<Props> = ({ children, config, viewportRef }) => {
     [viewportRef]
   );
 
-  const baseMethods: BaseMethods = {
+  // Used for setting up additional methods
+  const baseContext: WindowManagerBase = {
+    ...state,
     activateWindow,
     closeWindow,
     createWindow,
     deactivateWindow,
-    updateWindow,
-    setWindowMargins,
     getViewportHeight,
     getViewportWidth,
+    setViewportWindowMargins,
+    updateWindow,
+    viewportRef,
   };
 
-  const windowDimensionMethods = getWindowDimensionMethods(
-    config,
-    state,
-    baseMethods
-  );
-
-  const windowStateMethods = getWindowStateMethods(config, state, baseMethods);
-
-  const context = {
-    viewportRef,
-    ...state,
-    ...baseMethods,
-    ...windowDimensionMethods,
-    ...windowStateMethods,
+  const context: WindowManagerType = {
+    ...baseContext,
+    maximizeWindow: maximizeWindow(baseContext),
+    minimizeWindow: minimizeWindow(baseContext),
+    restoreWindow: restoreWindow(baseContext),
+    unmaximizeWindow: unmaximizeWindow(baseContext),
   };
 
   return (
-    <WindowManagerProvider value={context}>{children}</WindowManagerProvider>
+    <WindowManagerProvider value={context}>
+      <Viewport ref={viewportRef}>{children}</Viewport>
+    </WindowManagerProvider>
   );
 };
 

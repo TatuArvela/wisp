@@ -10,7 +10,7 @@ const TaskbarElement = styled.div`
 `;
 
 const Taskbar = (): JSX.Element => {
-  const { activeWindowId, windows, restoreWindow, setWindowMargins } =
+  const { activeWindowId, windows, restoreWindow, setViewportWindowMargins } =
     useWindowManager();
   const taskbarRef = React.useRef<HTMLDivElement>();
 
@@ -20,9 +20,9 @@ const Taskbar = (): JSX.Element => {
   );
 
   useEffect(() => {
-    setWindowMargins({ bottom: getTaskbarHeight() });
-    return () => setWindowMargins({ bottom: 0 });
-  }, [getTaskbarHeight, setWindowMargins]);
+    setViewportWindowMargins({ bottom: getTaskbarHeight() });
+    return () => setViewportWindowMargins({ bottom: 0 });
+  }, [getTaskbarHeight, setViewportWindowMargins]);
 
   const mapButtons = ([id, window]: [id: string, window: WindowType]) => (
     <TaskbarButton

@@ -2,8 +2,6 @@
 
 ## For 0.1.0
 
-* Handle viewport resizing
-* Add toggleable overflow scrolling to windows
 * Create release pipeline with `rollup` and GitHub Actions
 * Add brief notes on usage
 
@@ -14,8 +12,11 @@
   * ScrollableContent
 * Window manager and windows
   * Add missing methods
-  * Finish TODOs
+  * Handle viewport resizing
+  * Add toggleable overflow scrolling to windows
   * Allow moving window past right and bottom borders
+  * Window dragging and resizing behavior when cursor moves outside viewport
+    could be improved
   * Calculate default window position
     * Maybe a "atDefaultPosition" property
     * Share logic with cascadeWindows

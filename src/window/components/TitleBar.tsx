@@ -40,20 +40,28 @@ const TitleBar: React.FC<Props> = ({
   minimize,
   title,
   unmaximize,
-}) => (
-  <TitleBarElement isActive={isActive}>
-    <Title onMouseDown={drag}>{title}</Title>
-    <TitleBarButtons
-      close={close}
-      isClosable={isClosable}
-      isMaximizable={isMaximizable}
-      isMaximized={isMaximized}
-      isMinimizable={isMinimizable}
-      maximize={maximize}
-      minimize={minimize}
-      unmaximize={unmaximize}
-    />
-  </TitleBarElement>
-);
+}) => {
+  const onTitleDoubleClick = () => {
+    isMaximized ? unmaximize() : maximize();
+  };
+
+  return (
+    <TitleBarElement isActive={isActive}>
+      <Title onMouseDown={drag} onDoubleClick={onTitleDoubleClick}>
+        {title}
+      </Title>
+      <TitleBarButtons
+        close={close}
+        isClosable={isClosable}
+        isMaximizable={isMaximizable}
+        isMaximized={isMaximized}
+        isMinimizable={isMinimizable}
+        maximize={maximize}
+        minimize={minimize}
+        unmaximize={unmaximize}
+      />
+    </TitleBarElement>
+  );
+};
 
 export default TitleBar;

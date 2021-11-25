@@ -6,6 +6,8 @@ import ResizeBorder from './components/ResizeBorder';
 import TitleBar from './components/TitleBar';
 import WindowContent from './components/WindowContent';
 import WindowElement from './components/WindowElement';
+import { windowDragHandler } from './handlers/windowDragHandler';
+import { windowResizeHandler } from './handlers/windowResizeHandler';
 
 export type WindowProps = {
   children: React.ReactNode;
@@ -18,20 +20,23 @@ export type WindowProps = {
 
 const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
   const windowManager = useWindowManager();
-  const window = windowManager.windows.get(id);
+  const wmWindow = windowManager.windows.get(id);
   const orderNumber = windowManager.windowOrder.indexOf(id);
 
   useEffect(() => {
-    if (!window) {
+    if (!wmWindow) {
       windowManager.createWindow(id, initialState);
     }
     return () => windowManager.closeWindow(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  if (!window || window.isClosed) {
+  if (!wmWindow || wmWindow.isClosed) {
     return null;
   }
+
+  // Mutable copy for quick and iterative event handling
+  const window = { ...wmWindow };
 
   return (
     <WindowElement
@@ -42,11 +47,11 @@ const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
       positionX={window.positionX}
       positionY={window.positionY}
       width={window.width}
-      windowMargins={windowManager.windowMargins}
+      viewportWindowMargins={windowManager.viewportWindowMargins}
     >
       <TitleBar
         close={() => windowManager.closeWindow(id)}
-        drag={(event) => windowManager.dragWindow(event, id)}
+        drag={windowDragHandler(windowManager, window)}
         isActive={id === windowManager.activeWindowId}
         isClosable={window.isClosable}
         isMaximizable={window.isMaximizable}
@@ -63,11 +68,7 @@ const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
       </WindowContent>
 
       {window.isResizable && (
-        <ResizeBorder
-          resize={(event, direction) =>
-            windowManager.resizeWindow(event, id, direction)
-          }
-        />
+        <ResizeBorder resize={windowResizeHandler(windowManager, window)} />
       )}
     </WindowElement>
   );

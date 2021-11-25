@@ -47,22 +47,20 @@ function reducer(
     }
 
     case 'UPDATE_WINDOW': {
-      const windows = new Map(state.windows);
-      windows.set(action.payload.id, {
-        ...state.windows.get(action.payload.id),
-        ...action.payload.props,
-      });
       return {
         ...state,
-        windows: windows,
+        windows: new Map(state.windows).set(action.payload.id, {
+          ...state.windows.get(action.payload.id),
+          ...action.payload.props,
+        }),
       };
     }
 
     case 'SET_WINDOW_MARGINS': {
       return {
         ...state,
-        windowMargins: {
-          ...state.windowMargins,
+        viewportWindowMargins: {
+          ...state.viewportWindowMargins,
           ...action.payload,
         },
       };

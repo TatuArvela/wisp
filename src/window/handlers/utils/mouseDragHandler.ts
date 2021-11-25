@@ -1,8 +1,5 @@
-import { WindowType } from '../../types';
-
 const mouseDragHandler = (
   initialEvent: MouseEvent,
-  window: WindowType,
   callback: (xOffset: number, yOffset: number) => void
 ): void => {
   initialEvent.preventDefault();

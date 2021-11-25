@@ -4,7 +4,7 @@ export type WindowManagerState = {
   activeWindowId: string | null;
   windows: Map<string, WindowType>;
   windowOrder: string[];
-  windowMargins: WindowMargins;
+  viewportWindowMargins: ViewportWindowMargins;
 };
 
 type ActivateWindowAction = { type: 'ACTIVATE_WINDOW'; payload: string };
@@ -18,9 +18,9 @@ type UpdateWindowAction = {
     props: Partial<WindowType>;
   };
 };
-type SetWindowMarginsAction = {
+type SetViewportWindowMarginsAction = {
   type: 'SET_WINDOW_MARGINS';
-  payload: Partial<WindowMargins>;
+  payload: Partial<ViewportWindowMargins>;
 };
 
 export type WindowManagerAction =
@@ -29,7 +29,7 @@ export type WindowManagerAction =
   | CreateWindowAction
   | DeactivateWindowAction
   | UpdateWindowAction
-  | SetWindowMarginsAction;
+  | SetViewportWindowMarginsAction;
 
 export type BaseMethods = {
   activateWindow(id: string): void;
@@ -38,7 +38,9 @@ export type BaseMethods = {
   deactivateWindow(id: string): void;
   getViewportHeight(): number;
   getViewportWidth(): number;
-  setWindowMargins(windowMargins: Partial<WindowMargins>);
+  setViewportWindowMargins(
+    viewportWindowMargins: Partial<ViewportWindowMargins>
+  ): void;
   updateWindow(id: string, props: Partial<WindowType>): void;
 };
 
@@ -53,11 +55,6 @@ export type WindowStateMethods = {
   // TODO: unmaximizeWindowHorizontally
   // TODO: unmaximizeWindowVertically
   // TODO: dimWindow, to simulate crashed app
-};
-
-export type WindowDimensionMethods = {
-  dragWindow(event: React.MouseEvent, id: string): void; // TODO: Clearer name
-  resizeWindow(event: React.MouseEvent, id: string, direction: Direction): void; // TODO: Clearer name
   // TODO: setWindowPositionX
   // TODO: setWindowPositionY
   // TODO: setWindowHeight
@@ -65,14 +62,12 @@ export type WindowDimensionMethods = {
   // TODO: cascadeWindows
 };
 
-type WindowManagerMethods = BaseMethods &
-  WindowStateMethods &
-  WindowDimensionMethods;
-
-export type WindowManager = {
+export type WindowManagerBase = {
   viewportRef: React.Ref<HTMLDivElement>;
 } & WindowManagerState &
-  WindowManagerMethods;
+  BaseMethods;
+
+export type WindowManager = WindowManagerBase & WindowStateMethods;
 
 export type WindowType = {
   height: number;
@@ -95,8 +90,7 @@ export type WindowType = {
   width: number;
 };
 
-// TODO: Think of a better name
-export type WindowMargins = {
+export type ViewportWindowMargins = {
   top: number;
   right: number;
   bottom: number;

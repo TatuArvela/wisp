@@ -1,7 +1,7 @@
 import defaultTheme from './themes/default/theme';
 import testTheme from './themes/test/theme';
 import { Theme } from './themes/types';
-import { WindowMargins } from './windowManager/types';
+import { ViewportWindowMargins } from './windowManager/types';
 
 export type WispConfig = {
   enableDefaultElements: boolean;
@@ -15,7 +15,7 @@ export type WispConfig = {
   newWindowYOffset: number;
   taskbarHeight: number;
   themes: Theme[];
-  windowMargins: WindowMargins;
+  viewportWindowMargins: ViewportWindowMargins;
 };
 
 export const defaultConfig: WispConfig = {
@@ -30,7 +30,7 @@ export const defaultConfig: WispConfig = {
   newWindowYOffset: 10,
   taskbarHeight: 28,
   themes: [defaultTheme, testTheme],
-  windowMargins: {
+  viewportWindowMargins: {
     top: 0,
     left: 0,
     bottom: 0,
