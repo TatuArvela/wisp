@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "dts",
+    "emitDeclarationOnly": true,
     "target": "ES6",
-    "outDir": "lib",
+    "outDir": "dist",
     "sourceMap": true,
     "esModuleInterop": true,
     "jsx": "react"
   },
+  "exclude": [
+    "dist"
+  ],
   "include": [
     "src"
   ]
