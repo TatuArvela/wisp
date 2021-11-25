@@ -6,6 +6,7 @@ const TitleBarButtons = css`
   position: absolute;
   right: 0;
   top: 0;
+  margin: 0;
 `;
 
 const sharedWindowButtonStyle = css`
@@ -14,7 +15,7 @@ const sharedWindowButtonStyle = css`
   border: none;
   box-sizing: border-box;
   height: 16px;
-  margin: 1px 2px;
+  margin: 2px 2px;
   padding: 0;
   position: relative;
   width: 16px;

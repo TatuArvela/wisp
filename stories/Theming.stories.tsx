@@ -1,9 +1,7 @@
 import React from 'react';
 
-import ThemeSwitcher from '../src/elements/ThemeSwitcher';
+import { AlertWindow, ThemeSwitcher, Wisp } from '../src/index';
 import testTheme from '../src/themes/test/theme';
-import AlertWindow from '../src/window/AlertWindow';
-import Wisp from '../src/Wisp';
 
 export default {
   component: Wisp,

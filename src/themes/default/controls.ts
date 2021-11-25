@@ -31,8 +31,8 @@ const Button = css`
 
 const ResizeHandle = css`
   position: absolute;
-  right: -3px;
-  bottom: -3px;
+  right: 0;
+  bottom: 0;
   content: ' ';
   width: 12px;
   height: 12px;
@@ -54,7 +54,17 @@ const ResizeHandle = css`
   }
 `;
 
-const StatusBar = css``;
+const StatusBar = css`
+  box-sizing: border-box;
+  margin: -3px;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid grey;
+  width: calc(100% + 6px);
+  font-size: 14px;
+  padding: 2px 3px;
+`;
 
 const controls: ControlsThemeSection = {
   AlertText,

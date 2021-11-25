@@ -13,9 +13,7 @@ export type WindowProps = {
   children: React.ReactNode;
   id: string;
   // Altering the state post-mount is done with the windowManager API
-  initialState: {
-    title: string;
-  } & Partial<WindowType>;
+  initialState?: Partial<WindowType>;
 };
 
 const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
@@ -37,6 +35,13 @@ const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
 
   // Mutable copy for quick and iterative event handling
   const window = { ...wmWindow };
+
+  const childrenWithWindow = React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, { window });
+    }
+    return child;
+  });
 
   return (
     <WindowElement
@@ -64,7 +69,7 @@ const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
       />
 
       <WindowContent onClick={() => windowManager.activateWindow(id)}>
-        {children}
+        {childrenWithWindow}
       </WindowContent>
 
       {window.isResizable && (

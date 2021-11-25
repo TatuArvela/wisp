@@ -3,48 +3,40 @@
 import { useState } from '@storybook/addons';
 import React from 'react';
 
-import AlertWindow from '../src/window/AlertWindow';
-import Window from '../src/window/Window';
-import Wisp from '../src/Wisp';
+import { Window, Wisp } from '../src/index';
 
 export default {
   component: Wisp,
-  title: 'Wisp/Basics',
+  title: 'Wisp/Advanced Usage',
 };
 
-export const DesktopStory = (): JSX.Element => (
+export const WispInWisp = (): JSX.Element => (
   <Wisp>
     <Window
-      id="3"
+      id="1"
       initialState={{
-        title: 'Tres',
-        width: 400,
-        height: 300,
-        isMinimized: true,
+        title: 'Parent window',
+        width: 600,
+        height: 480,
       }}
     >
-      <p>Regular window</p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod
-        tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea
-        commodi consequat. Quis aute iure reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat
-        cupiditat non proident, sunt in culpa qui officia deserunt mollit anim
-        id est laborum.
-      </p>
+      <div
+        style={{
+          border: '1px solid black',
+          boxSizing: 'border-box',
+          height: '100%',
+          width: '100%',
+        }}
+      >
+        <Wisp>
+          <Window id="2" initialState={{ title: 'Child window' }}>
+            Test
+          </Window>
+        </Wisp>
+      </div>
     </Window>
-    <AlertWindow id="1" title="Uno">
-      Alert!
-    </AlertWindow>
-    <AlertWindow id="2" title="Dos">
-      Warning!
-    </AlertWindow>
   </Wisp>
 );
-DesktopStory.story = {
-  name: 'Desktop',
-};
 
 export const StickyNotes = (): JSX.Element => {
   const commonState = {
