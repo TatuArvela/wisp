@@ -1,9 +1,5 @@
 # TODO
 
-## For 0.1.0
-
-* Create release pipeline to npm with GitHub Actions
-
 ## For 1.0.0
 
 * Components
