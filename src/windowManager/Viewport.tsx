@@ -6,12 +6,11 @@ type Props = {
 };
 
 const ViewportElement = styled.div`
-  position: relative;
   box-sizing: border-box;
-  width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: sans-serif;
+  position: relative;
+  width: 100%;
 `;
 
 const Viewport: React.FC<Props> = React.forwardRef(({ children }, ref) => (

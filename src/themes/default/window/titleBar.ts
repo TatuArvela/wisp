@@ -8,12 +8,14 @@ const TitleBar = css<TitleBarProps>`
   box-sizing: border-box;
   color: white;
   display: flex;
+  flex-shrink: 0;
+  font-family: sans-serif;
   font-size: 12px;
   height: 20px;
-  flex-shrink: 0;
   line-height: 18px;
-  padding-left: 4px;
   margin: 0 0 2px;
+  padding-left: 4px;
+  text-align: left;
   user-select: none;
   width: 100%;
 `;

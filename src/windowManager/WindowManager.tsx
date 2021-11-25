@@ -41,7 +41,7 @@ const WindowManager: React.FC<Props> = ({ children, config }) => {
         type: 'ACTIVATE_WINDOW',
         payload: id,
       }),
-    []
+    [dispatch]
   );
 
   const closeWindow = useCallback(
@@ -50,7 +50,7 @@ const WindowManager: React.FC<Props> = ({ children, config }) => {
         type: 'CLOSE_WINDOW',
         payload: id,
       }),
-    []
+    [dispatch]
   );
 
   const createWindow = (id: string, initialState: Partial<WindowType>) => {
@@ -68,7 +68,7 @@ const WindowManager: React.FC<Props> = ({ children, config }) => {
         type: 'DEACTIVATE_WINDOW',
         payload: id,
       }),
-    []
+    [dispatch]
   );
 
   const updateWindow = useCallback(
@@ -77,7 +77,7 @@ const WindowManager: React.FC<Props> = ({ children, config }) => {
         type: 'UPDATE_WINDOW',
         payload: { id, props },
       }),
-    []
+    [dispatch]
   );
 
   const setViewportWindowMargins = useCallback(
@@ -86,7 +86,7 @@ const WindowManager: React.FC<Props> = ({ children, config }) => {
         type: 'SET_WINDOW_MARGINS',
         payload: viewportWindowMargins,
       }),
-    []
+    [dispatch]
   );
 
   const getViewportHeight = useCallback(

@@ -6,15 +6,18 @@ import { ElementsThemeSection } from '../types';
 const Taskbar = css`
   background: white;
   border-top: 1px solid black;
-  box-sizing: border-box;
   bottom: 0;
+  box-sizing: border-box;
   display: inline-block;
+  font-size: 16px;
   height: 28px;
+  left: 0;
   overflow-x: visible;
   padding: 2px;
   position: absolute;
-  width: 100%;
+  text-align: left;
   white-space: nowrap;
+  width: 100%;
 `;
 
 const taskbarButtonActiveStyle = css`

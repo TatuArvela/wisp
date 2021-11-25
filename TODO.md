@@ -2,8 +2,7 @@
 
 ## For 0.1.0
 
-* Create release pipeline with `rollup` and GitHub Actions
-* Add brief notes on usage
+* Create release pipeline to npm with GitHub Actions
 
 ## For 1.0.0
 

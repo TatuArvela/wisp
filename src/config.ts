@@ -13,7 +13,6 @@ export type WispConfig = {
   minWindowWidth: number;
   newWindowXOffset: number;
   newWindowYOffset: number;
-  taskbarHeight: number;
   themes: Theme[];
   viewportWindowMargins: ViewportWindowMargins;
 };
@@ -28,7 +27,6 @@ export const defaultConfig: WispConfig = {
   minWindowWidth: 200,
   newWindowXOffset: 10,
   newWindowYOffset: 10,
-  taskbarHeight: 28,
   themes: [defaultTheme, testTheme],
   viewportWindowMargins: {
     top: 0,

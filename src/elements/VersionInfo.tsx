@@ -6,12 +6,10 @@ const VersionInformationElement = styled.p`
 `;
 
 const VersionInfo: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires,global-require
-  const packageJson = require('../../package.json');
-
+  const version = '0.1.0';
   return (
     <VersionInformationElement>
-      Wisp Version {packageJson.version}
+      Wisp Version {version}
     </VersionInformationElement>
   );
 };

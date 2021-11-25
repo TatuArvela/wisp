@@ -87,5 +87,7 @@ const resizeWindow = (
       return { ...resizeW() };
     case Direction.NW:
       return { ...resizeN(), ...resizeW() };
+    default:
+      return {};
   }
 };
