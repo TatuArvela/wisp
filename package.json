@@ -18,6 +18,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c rollup.config.js",
+    "build-pages": "build-storybook",
     "start": "start-storybook -p 6006 --quiet",
     "lint": "eslint --ext js,ts,tsx src",
     "lint:fix": "eslint --fix --ext js,ts,tsx src"
