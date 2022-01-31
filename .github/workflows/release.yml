@@ -1,0 +1,33 @@
+name: release
+
+on:
+  release:
+    types: [ created ]
+
+jobs:
+  release:
+    name: Release Wisp ${{ github.ref }}
+    runs-on: ubuntu-latest
+    env:
+      PUBLISH_ENABLED: ${{ secrets.PUBLISH_ENABLED == 'true' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Release to npm
+        if: ${{ env.PUBLISH_ENABLED == 'true' }}
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
