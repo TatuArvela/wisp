@@ -22,7 +22,7 @@ jobs:
           git config --global user.name 'Tatu Arvela'
           git config --global user.email 'tatu.arvela@nitor.com'
           npm --no-git-tag-version version from-git -m "npm v%s"
-          git push
+          git push origin HEAD:master
 
       - name: Install dependencies and build
         run: |
