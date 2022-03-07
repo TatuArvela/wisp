@@ -12,8 +12,10 @@ jobs:
       PUBLISH_ENABLED: ${{ secrets.PUBLISH_ENABLED == 'true' }}
 
     steps:
-      - name: Checkout and increment version
+      - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Commit version increment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
         run: |
