@@ -1,4 +1,10 @@
-# ![icon](stories/assets/icon.png?raw=true "icon") Wisp
+# ![Wisp icon](stories/assets/icon.png?raw=true "Wisp icon") Wisp
+
+[![Repository](https://img.shields.io/badge/repository-gray.svg?logo=github)](https://github.com/TatuArvela/wisp)
+[![GitHub issues](https://img.shields.io/github/issues/TatuArvela/wisp)](https://github.com/TatuArvela/wisp/issues)
+[![npm](https://img.shields.io/npm/v/@tatuarvela/wisp)](https://www.npmjs.com/package/@tatuarvela/wisp)
+[![License](https://img.shields.io/github/license/TatuArvela/wisp)](https://github.com/TatuArvela/wisp/blob/master/LICENSE)
+[![Created at Nitor](https://img.shields.io/badge/created%20at-Nitor-informational.svg)](https://nitor.com/)
 
 Wisp is **a window manager and a widget toolkit** which allows building web
 applications that look and feel like desktop applications.
