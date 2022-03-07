@@ -25,7 +25,7 @@ jobs:
           git config --global user.name 'Tatu Arvela'
           git config --global user.email 'tatu.arvela@nitor.com'
           npm --no-git-tag-version version from-git
-          git commit -m "npm ${{ env.RELEASE_VERSION }}"
+          git commit -am "npm ${{ env.RELEASE_VERSION }}"
           git push origin HEAD:master
 
       - name: Install dependencies and build
