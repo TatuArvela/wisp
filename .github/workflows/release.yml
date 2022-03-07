@@ -14,10 +14,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Commit version increment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit version increment
         run: |
           git config --global user.name 'Tatu Arvela'
           git config --global user.email 'tatu.arvela@nitor.com'
