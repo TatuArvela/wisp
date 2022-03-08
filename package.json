@@ -19,6 +19,9 @@
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "build-pages": "build-storybook",
+    "version-patch": "npm version patch -m 'v%s' && git push && git push --tags",
+    "version-minor": "npm version minor -m 'v%s' && git push && git push --tags",
+    "version-major": "npm version major -m 'v%s' && git push && git push --tags",
     "start": "start-storybook -p 6006 --quiet",
     "lint": "eslint --ext js,ts,tsx src",
     "lint:fix": "eslint --fix --ext js,ts,tsx src"
