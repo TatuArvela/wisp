@@ -5,7 +5,7 @@ import DefaultElements from './elements/DefaultElements';
 import ThemeManager from './themeManager/ThemeManager';
 import WindowManager from './windowManager/WindowManager';
 
-type WispProps = {
+export type WispProps = {
   children: React.ReactNode;
 } & Partial<WispConfig>;
 
