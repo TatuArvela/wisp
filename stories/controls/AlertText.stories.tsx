@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { AlertText, Window, Wisp } from '../../src/index';
 
 export default {

@@ -1,7 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { useState } from '@storybook/addons';
-import React from 'react';
 
 import { Window, Wisp } from '../src/index';
 
