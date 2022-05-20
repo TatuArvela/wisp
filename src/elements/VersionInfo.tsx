@@ -6,7 +6,12 @@ const VersionInformationElement = styled.p`
 `;
 
 const VersionInfo: React.FC = () => {
-  const version = '0.1.0';
+  const version =
+    process.env.PACKAGE_VERSION || process.env.STORYBOOK_PACKAGE_VERSION;
+
+  if (!version) {
+    return null;
+  }
   return (
     <VersionInformationElement>
       Wisp Version {version}
