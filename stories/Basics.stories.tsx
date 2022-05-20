@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { AlertWindow, Window, Wisp } from '../src/index';
 
 export default {

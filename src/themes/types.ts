@@ -42,18 +42,18 @@ export type ControlsThemeSection = ThemeSection<typeof ControlsProperties>;
 export type ElementsThemeSection = ThemeSection<typeof ElementsProperties>;
 export type WindowThemeSection = ThemeSection<typeof WindowProperties>;
 
-export type DefaultTheme = {
+export interface DefaultTheme {
   id: string;
   name: string;
   controls: ControlsThemeSection;
   elements: ElementsThemeSection;
   window: WindowThemeSection;
-};
+}
 
-export type Theme = {
+export interface Theme {
   id: string;
   name: string;
   controls?: Partial<ControlsThemeSection>;
   elements?: Partial<ElementsThemeSection>;
   window?: Partial<WindowThemeSection>;
-};
+}

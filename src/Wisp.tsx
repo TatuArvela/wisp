@@ -5,9 +5,9 @@ import DefaultElements from './elements/DefaultElements';
 import ThemeManager from './themeManager/ThemeManager';
 import WindowManager from './windowManager/WindowManager';
 
-export type WispProps = {
+export interface WispProps extends Partial<WispConfig> {
   children: React.ReactNode;
-} & Partial<WispConfig>;
+}
 
 const Wisp = ({ children, ...rest }: WispProps): JSX.Element => {
   const config = { ...defaultConfig, ...rest };

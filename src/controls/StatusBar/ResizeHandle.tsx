@@ -5,9 +5,9 @@ import { windowResizeHandler } from '../../window/handlers/windowResizeHandler';
 import { useWindowManager } from '../../windowManager/hooks';
 import { Direction, WindowType } from '../../windowManager/types';
 
-type ResizeHandleProps = {
+interface ResizeHandleProps {
   window: WindowType;
-};
+}
 
 const ResizeHandleElement = styled.div`
   ${(props) => props.theme.controls.ResizeHandle}

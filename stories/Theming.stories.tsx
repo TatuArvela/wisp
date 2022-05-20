@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { AlertWindow, ThemeSwitcher, Wisp } from '../src/index';
 import defaultTheme from '../src/themes/default/theme';
 import testTheme from '../src/themes/test/theme';

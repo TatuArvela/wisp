@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { StatusBar, Window, Wisp } from '../../src/index';
 
 export default {

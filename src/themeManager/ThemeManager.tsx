@@ -6,11 +6,12 @@ import { Theme } from '../themes/types';
 import { ThemeManagerProvider } from './ThemeManagerContext';
 import { mergeDeep } from './utils';
 
-type Props = {
+interface Props {
+  children: React.ReactNode;
   themes: Theme[];
-};
+}
 
-const ThemeManager: React.FC<Props> = ({ children, themes }) => {
+const ThemeManager = ({ children, themes }: Props) => {
   const baseOnDefault = (theme: Theme) => {
     if (theme.id === defaultTheme.id) {
       return theme;

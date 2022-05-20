@@ -20,11 +20,12 @@ import {
 import Viewport from './Viewport';
 import { WindowManagerProvider } from './WindowManagerContext';
 
-type Props = {
+interface Props {
+  children: React.ReactNode;
   config: WispConfig;
-};
+}
 
-const WindowManager: React.FC<Props> = ({ children, config }) => {
+const WindowManager = ({ children, config }: Props) => {
   const [state, dispatch] = React.useReducer<
     React.Reducer<WindowManagerState, WindowManagerAction>
   >(reducer, {

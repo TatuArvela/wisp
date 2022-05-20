@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export type TaskbarButtonProps = {
+export interface TaskbarButtonProps
+  extends React.ComponentPropsWithoutRef<'button'> {
   active: boolean;
-} & React.HTMLProps<HTMLButtonElement>;
+}
 
 const TaskbarButton = styled.button<TaskbarButtonProps>`
   ${(props) => props.theme.elements.TaskbarButton}

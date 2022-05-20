@@ -1,16 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type TitleBarButtonsProps = {
+interface TitleBarButtonsProps {
   close(): void;
+
   isClosable: boolean;
   isMaximizable: boolean;
   isMaximized: boolean;
   isMinimizable: boolean;
+
   maximize(): void;
+
   minimize(): void;
+
   unmaximize(): void;
-};
+}
 
 const TitleBarButtonsElement = styled.div`
   ${(props) => props.theme.window.TitleBarButtons}

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Button, Window, Wisp } from '../../src/index';
 
 export default {

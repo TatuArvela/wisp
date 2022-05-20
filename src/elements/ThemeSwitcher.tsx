@@ -3,7 +3,7 @@ import React from 'react';
 import { useThemeManager } from '../themeManager/hooks';
 import Window from '../window/Window';
 
-const ThemeSwitcher: React.FC = () => {
+const ThemeSwitcher = () => {
   const { theme: currentTheme, themes, changeTheme } = useThemeManager();
   const onChange = (e) => {
     const newTheme = themes.find((theme) => theme.id === e.target.value);

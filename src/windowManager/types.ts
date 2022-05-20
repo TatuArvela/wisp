@@ -1,27 +1,44 @@
 import React from 'react';
 
-export type WindowManagerState = {
+export interface WindowManagerState {
   activeWindowId: string | null;
   windows: Map<string, WindowType>;
   windowOrder: string[];
   viewportWindowMargins: ViewportWindowMargins;
-};
+}
 
-type ActivateWindowAction = { type: 'ACTIVATE_WINDOW'; payload: string };
-type CloseWindowAction = { type: 'CLOSE_WINDOW'; payload: string };
-type CreateWindowAction = { type: 'CREATE_WINDOW'; payload: WindowType };
-type DeactivateWindowAction = { type: 'DEACTIVATE_WINDOW'; payload: string };
-type UpdateWindowAction = {
+interface ActivateWindowAction {
+  type: 'ACTIVATE_WINDOW';
+  payload: string;
+}
+
+interface CloseWindowAction {
+  type: 'CLOSE_WINDOW';
+  payload: string;
+}
+
+interface CreateWindowAction {
+  type: 'CREATE_WINDOW';
+  payload: WindowType;
+}
+
+interface DeactivateWindowAction {
+  type: 'DEACTIVATE_WINDOW';
+  payload: string;
+}
+
+interface UpdateWindowAction {
   type: 'UPDATE_WINDOW';
   payload: {
     id: string;
     props: Partial<WindowType>;
   };
-};
-type SetViewportWindowMarginsAction = {
+}
+
+interface SetViewportWindowMarginsAction {
   type: 'SET_WINDOW_MARGINS';
   payload: Partial<ViewportWindowMargins>;
-};
+}
 
 export type WindowManagerAction =
   | ActivateWindowAction
@@ -62,14 +79,13 @@ export type WindowStateMethods = {
   // TODO: cascadeWindows
 };
 
-export type WindowManagerBase = {
+export interface WindowManagerBase extends WindowManagerState, BaseMethods {
   viewportRef: React.Ref<HTMLDivElement>;
-} & WindowManagerState &
-  BaseMethods;
+}
 
-export type WindowManager = WindowManagerBase & WindowStateMethods;
+export interface WindowManager extends WindowManagerBase, WindowStateMethods {}
 
-export type WindowType = {
+export interface WindowType {
   height: number;
   id: string;
   isClosable: boolean;
@@ -88,21 +104,21 @@ export type WindowType = {
   positionY: number;
   title: string;
   width: number;
-};
+}
 
-export type ViewportWindowMargins = {
+export interface ViewportWindowMargins {
   top: number;
   right: number;
   bottom: number;
   left: number;
-};
+}
 
-export type Boundaries = {
+export interface Boundaries {
   minX: number;
   maxX: number;
   minY: number;
   maxY: number;
-};
+}
 
 export enum Direction {
   N = 'N',

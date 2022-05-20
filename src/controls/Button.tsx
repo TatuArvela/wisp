@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type ButtonWrapperProps = {
-  width: number;
-  height: number;
-};
+interface ButtonWrapperProps {
+  width?: number;
+  height?: number;
+}
 
 const ButtonWrapper = styled.div<ButtonWrapperProps>`
   height: ${(props) => `${props.height}px`};
@@ -12,13 +12,16 @@ const ButtonWrapper = styled.div<ButtonWrapperProps>`
   ${(props) => props.theme.controls.ButtonWrapper}
 `;
 
-type Props = any & ButtonWrapperProps;
+interface Props extends React.ComponentPropsWithoutRef<'button'> {
+  width?: number;
+  height?: number;
+}
 
 const ButtonElement = styled.button`
   ${(props) => props.theme.controls.Button}
 `;
 
-const Button: React.FC<Props> = ({ width, height, ...rest }) => (
+const Button = ({ width, height, ...rest }: Props) => (
   <ButtonWrapper width={width} height={height}>
     <ButtonElement {...rest} />
   </ButtonWrapper>

@@ -9,12 +9,12 @@ import WindowElement from './components/WindowElement';
 import { windowDragHandler } from './handlers/windowDragHandler';
 import { windowResizeHandler } from './handlers/windowResizeHandler';
 
-export type WindowProps = {
+export interface WindowProps {
   children: React.ReactNode;
   id: string;
   // Altering the state post-mount is done with the windowManager API
   initialState?: Partial<WindowType>;
-};
+}
 
 const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
   const windowManager = useWindowManager();

@@ -5,7 +5,7 @@ const VersionInformationElement = styled.p`
   ${(props) => props.theme.elements.VersionInfo}
 `;
 
-const VersionInfo: React.FC = () => {
+const VersionInfo = () => {
   const version =
     process.env.PACKAGE_VERSION || process.env.STORYBOOK_PACKAGE_VERSION;
 

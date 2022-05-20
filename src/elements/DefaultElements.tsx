@@ -4,7 +4,7 @@ import Desktop from './Desktop';
 import Taskbar from './Taskbar/Taskbar';
 import VersionInfo from './VersionInfo';
 
-const DefaultElements: React.FC = () => (
+const DefaultElements = () => (
   <>
     <Desktop>
       <VersionInfo />

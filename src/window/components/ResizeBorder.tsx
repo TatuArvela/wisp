@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { Direction } from '../../windowManager/types';
 
-type ResizeBorderProps = {
+interface ResizeBorderProps {
   resize: (event: React.MouseEvent, direction: Direction) => void;
-};
+}
 
 const NResize = styled.div`
   ${(props) => props.theme.window.NResize}
@@ -39,7 +39,7 @@ const NWResize = styled.div`
   ${(props) => props.theme.window.NWResize}
 `;
 
-const ResizeBorder: React.FC<ResizeBorderProps> = ({ resize }) => (
+const ResizeBorder = ({ resize }: ResizeBorderProps) => (
   <>
     <NResize onMouseDown={(e) => resize(e, Direction.N)} />
     <EResize onMouseDown={(e) => resize(e, Direction.E)} />

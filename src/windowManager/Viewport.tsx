@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type Props = {
-  ref: React.Ref<HTMLDivElement>;
-};
+interface Props {
+  children: React.ReactNode;
+}
 
 const ViewportElement = styled.div`
   box-sizing: border-box;
@@ -13,8 +13,10 @@ const ViewportElement = styled.div`
   width: 100%;
 `;
 
-const Viewport: React.FC<Props> = React.forwardRef(({ children }, ref) => (
-  <ViewportElement ref={ref}>{children}</ViewportElement>
-));
+const Viewport = React.forwardRef<HTMLDivElement, Props>(
+  ({ children }: Props, ref) => (
+    <ViewportElement ref={ref}>{children}</ViewportElement>
+  )
+);
 
 export default Viewport;

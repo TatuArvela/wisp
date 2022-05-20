@@ -4,20 +4,23 @@ import AlertText from '../controls/AlertText';
 import Button from '../controls/Button';
 import Window from './Window';
 
-type Props = {
-  id: string;
-  title: string;
+interface Props {
   buttonText?: string;
-  onButtonClick?: () => void;
-};
+  children: React.ReactNode;
+  id: string;
 
-const AlertWindow: React.FC<Props> = ({
+  onButtonClick?(): void;
+
+  title: string;
+}
+
+const AlertWindow = ({
   id,
   title,
   buttonText = 'OK',
   onButtonClick,
   children,
-}) => (
+}: Props) => (
   <Window
     id={id}
     initialState={{
