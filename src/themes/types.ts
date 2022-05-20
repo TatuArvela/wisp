@@ -2,6 +2,7 @@ import { FlattenInterpolation } from 'styled-components';
 
 const ControlsProperties = [
   'AlertText',
+  'AlertButton',
   'Button',
   'ButtonWrapper',
   'ResizeHandle',

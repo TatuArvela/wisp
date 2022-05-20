@@ -8,9 +8,16 @@ const AlertText = css`
   align-items: center;
 `;
 
-const ButtonWrapper = css`
+const AlertButton = css`
+  width: 60px;
+  margin: auto;
+`;
+
+const ButtonWrapper = css<{ height: number; width: number }>`
   display: inherit;
+  height: ${(props) => `${props.height}px`};
   padding: 0 1px 1px 0;
+  width: ${(props) => `${props.width}px`};
 `;
 
 const Button = css`
@@ -68,6 +75,7 @@ const StatusBar = css`
 
 const controls: ControlsThemeSection = {
   AlertText,
+  AlertButton,
   Button,
   ButtonWrapper,
   ResizeHandle,

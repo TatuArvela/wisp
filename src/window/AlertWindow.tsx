@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import AlertText from '../controls/AlertText';
 import Button from '../controls/Button';
@@ -13,6 +14,10 @@ interface Props {
 
   title: string;
 }
+
+const AlertButton = styled(Button)`
+  ${(props) => props.theme.controls.AlertButton}
+`;
 
 const AlertWindow = ({
   id,
@@ -31,13 +36,9 @@ const AlertWindow = ({
     }}
   >
     <AlertText>{children}</AlertText>
-    <Button
-      onClick={onButtonClick}
-      type="button"
-      style={{ width: '60px', margin: 'auto' }}
-    >
+    <AlertButton onClick={onButtonClick} type="button">
       {buttonText}
-    </Button>
+    </AlertButton>
   </Window>
 );
 

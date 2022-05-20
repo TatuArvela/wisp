@@ -7,8 +7,6 @@ interface ButtonWrapperProps {
 }
 
 const ButtonWrapper = styled.div<ButtonWrapperProps>`
-  height: ${(props) => `${props.height}px`};
-  width: ${(props) => `${props.width}px`};
   ${(props) => props.theme.controls.ButtonWrapper}
 `;
 
