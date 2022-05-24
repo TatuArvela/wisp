@@ -22,11 +22,12 @@ const ButtonWrapper = css<{ height: number; width: number }>`
 
 const Button = css`
   box-shadow: 1px 1px 0 0 gray;
-  font-size: 11px;
-  padding: 2px;
+  font-size: 12px;
+  padding: 4px;
   user-select: none;
   border-radius: 0;
-  border: 1px solid gray;
+  border: 1px solid black;
+  background: white;
 
   &:active {
     box-shadow: none;
