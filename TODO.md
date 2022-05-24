@@ -2,8 +2,6 @@
 
 ## Controls
 
-* Button
-* Checkbox
 * Combobox (basic functionality)
 * Groupbox
 * Label
