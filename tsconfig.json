@@ -7,7 +7,8 @@
     "outDir": "dist",
     "sourceMap": true,
     "esModuleInterop": true,
-    "jsx": "react"
+    "jsx": "react",
+    "moduleResolution": "node"
   },
   "exclude": [
     "dist"
