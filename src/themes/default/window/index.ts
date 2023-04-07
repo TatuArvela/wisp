@@ -12,7 +12,7 @@ const WindowContent = css`
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   height: 100%;
   margin: 0;
   overflow: hidden;

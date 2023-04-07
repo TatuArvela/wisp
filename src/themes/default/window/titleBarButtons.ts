@@ -14,11 +14,11 @@ const sharedWindowButtonStyle = css`
   border-radius: 2px;
   border: none;
   box-sizing: border-box;
-  height: 16px;
+  height: 20px;
   margin: 2px 2px;
   padding: 0;
   position: relative;
-  width: 16px;
+  width: 20px;
 
   &:hover {
     filter: brightness(90%);
@@ -36,10 +36,10 @@ const MinimizeButton = css`
     border-bottom: 1px solid black;
     content: '';
     height: 10px;
-    left: 3px;
+    left: 5px;
     pointer-events: none;
     position: absolute;
-    top: 2px;
+    top: 4px;
     width: 10px;
   }
 `;
@@ -51,10 +51,10 @@ const MaximizeButton = css`
     border: 1px solid black;
     content: '';
     height: 10px;
-    left: 2px;
+    left: 4px;
     pointer-events: none;
     position: absolute;
-    top: 2px;
+    top: 4px;
     width: 10px;
   }
 `;
@@ -69,17 +69,17 @@ const UnmaximizeButton = css`
     height: 8px;
     pointer-events: none;
     position: absolute;
-    right: 2px;
-    top: 2px;
+    right: 4px;
+    top: 4px;
     width: 8px;
   }
 
   &:after {
     border: 1px solid black;
-    bottom: 2px;
+    bottom: 4px;
     content: '';
     height: 8px;
-    left: 2px;
+    left: 4px;
     pointer-events: none;
     position: absolute;
     width: 8px;
@@ -92,10 +92,10 @@ const CloseButton = css`
   &:before {
     border-bottom: 1px solid black;
     content: '';
-    left: 0;
+    left: 2px;
     pointer-events: none;
     position: absolute;
-    top: 8px;
+    top: 10px;
     transform: rotate(45deg);
     width: 16px;
   }
@@ -103,10 +103,10 @@ const CloseButton = css`
   &:after {
     border-bottom: 1px solid black;
     content: '';
-    left: 0;
+    left: 2px;
     pointer-events: none;
     position: absolute;
-    top: 8px;
+    top: 10px;
     transform: rotate(-45deg);
     width: 16px;
   }

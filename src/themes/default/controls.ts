@@ -21,13 +21,13 @@ const ButtonWrapper = css<{ height: number; width: number }>`
 `;
 
 const Button = css`
+  background: white;
+  border-radius: 2px;
+  border: 1px solid black;
   box-shadow: 1px 1px 0 0 gray;
   font-size: 12px;
-  padding: 4px;
+  padding: 6px;
   user-select: none;
-  border-radius: 0;
-  border: 1px solid black;
-  background: white;
 
   &:active {
     box-shadow: none;
@@ -55,6 +55,7 @@ const checkedStyle = css`
 const Checkbox = css<{ checked: boolean }>`
   background: white;
   border: 1px solid black;
+  border-radius: 2px;
   box-shadow: 1px 1px 0 0 gray;
   height: 20px;
   position: relative;

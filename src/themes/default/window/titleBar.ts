@@ -11,9 +11,9 @@ const TitleBar = css<TitleBarProps>`
   flex-shrink: 0;
   font-family: sans-serif;
   font-size: 12px;
-  height: 20px;
+  height: 24px;
   line-height: 18px;
-  margin: 0 0 2px;
+  margin: 0 0 4px;
   padding-left: 4px;
   text-align: left;
   user-select: none;
@@ -23,6 +23,7 @@ const TitleBar = css<TitleBarProps>`
 const Title = css`
   display: block;
   flex-grow: 1;
+  margin-top: 4px;
 `;
 
 export default {
