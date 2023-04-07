@@ -19,7 +19,7 @@ ThemeSwitcherStory.story = {
 };
 
 export const TestTheme = (): JSX.Element => (
-  <Wisp themes={[testTheme]}>
+  <Wisp themes={[testTheme]} enableVersionInfo={false}>
     <AlertWindow id={'1'} title={'TEST'}>
       TEEEST
     </AlertWindow>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
+import { useConfig } from '../ConfigContext';
 import defaultTheme from '../themes/default/theme';
 import { Theme } from '../themes/types';
 import { ThemeManagerProvider } from './ThemeManagerContext';
@@ -8,10 +9,11 @@ import { mergeDeep } from './utils';
 
 interface Props {
   children: React.ReactNode;
-  themes: Theme[];
 }
 
-const ThemeManager = ({ children, themes }: Props) => {
+const ThemeManager = ({ children }: Props) => {
+  const { themes } = useConfig();
+
   const baseOnDefault = (theme: Theme) => {
     if (theme.id === defaultTheme.id) {
       return theme;

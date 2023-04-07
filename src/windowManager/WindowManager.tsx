@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { WispConfig } from '../config';
+import { useConfig } from '../ConfigContext';
 import {
   maximizeWindow,
   minimizeWindow,
@@ -22,10 +22,11 @@ import { WindowManagerProvider } from './WindowManagerContext';
 
 interface Props {
   children: React.ReactNode;
-  config: WispConfig;
 }
 
-const WindowManager = ({ children, config }: Props) => {
+const WindowManager = ({ children }: Props) => {
+  const config = useConfig();
+
   const [state, dispatch] = React.useReducer<
     React.Reducer<WindowManagerState, WindowManagerAction>
   >(reducer, {
