@@ -1,18 +1,17 @@
 import React from 'react';
 
-import { AlertText, Window, Wisp } from '../../src/index';
+import { AlertText } from '../../src/index';
+import ControlStoryWrapper from './ControlStoryWrapper';
 
 export default {
-  component: Wisp,
+  component: AlertText,
   title: 'controls/AlertText',
 };
 
-export const AlertTextStory = (): JSX.Element => (
-  <Wisp enableDefaultElements={false}>
-    <Window id="1">
-      <AlertText>AlertText</AlertText>
-    </Window>
-  </Wisp>
+export const AlertTextStory = () => (
+  <ControlStoryWrapper>
+    <AlertText>AlertText</AlertText>
+  </ControlStoryWrapper>
 );
 AlertTextStory.story = {
   name: 'AlertText',

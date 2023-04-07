@@ -1,18 +1,17 @@
 import React from 'react';
 
-import { Button, Window, Wisp } from '../../src/index';
+import { Button } from '../../src/index';
+import ControlStoryWrapper from './ControlStoryWrapper';
 
 export default {
-  component: Wisp,
+  component: Button,
   title: 'controls/Button',
 };
 
-export const ButtonStory = (): JSX.Element => (
-  <Wisp enableDefaultElements={false}>
-    <Window id="1">
-      <Button>Button</Button>
-    </Window>
-  </Wisp>
+export const ButtonStory = () => (
+  <ControlStoryWrapper>
+    <Button>Button</Button>
+  </ControlStoryWrapper>
 );
 ButtonStory.story = {
   name: 'Button',

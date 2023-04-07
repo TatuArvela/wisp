@@ -1,10 +1,11 @@
 import { useState } from '@storybook/addons';
 import React from 'react';
 
-import { Checkbox, Window, Wisp } from '../../src/index';
+import { Checkbox } from '../../src/index';
+import ControlStoryWrapper from './ControlStoryWrapper';
 
 export default {
-  component: Wisp,
+  component: Checkbox,
   title: 'controls/Checkbox',
 };
 
@@ -13,11 +14,9 @@ export const CheckboxStory = () => {
   const toggleChecked = () => setChecked((prevState) => !prevState);
 
   return (
-    <Wisp enableDefaultElements={false}>
-      <Window id="1">
-        <Checkbox checked={checked} onClick={toggleChecked} />
-      </Window>
-    </Wisp>
+    <ControlStoryWrapper>
+      <Checkbox checked={checked} onClick={toggleChecked} />
+    </ControlStoryWrapper>
   );
 };
 CheckboxStory.story = {

@@ -1,29 +1,26 @@
 import React from 'react';
 
-import { StatusBar, Window, Wisp } from '../../src/index';
+import { StatusBar } from '../../src/index';
+import ControlStoryWrapper from './ControlStoryWrapper';
 
 export default {
-  component: Wisp,
+  component: StatusBar,
   title: 'controls/StatusBar',
 };
 
-export const StatusBarStory = (): JSX.Element => (
-  <Wisp enableDefaultElements={false}>
-    <Window id="1">
-      <StatusBar>Status bar</StatusBar>
-    </Window>
-  </Wisp>
+export const StatusBarStory = () => (
+  <ControlStoryWrapper>
+    <StatusBar>Status bar</StatusBar>
+  </ControlStoryWrapper>
 );
 StatusBarStory.story = {
   name: 'StatusBar',
 };
 
-export const WithResizeHandle = (): JSX.Element => (
-  <Wisp enableDefaultElements={false}>
-    <Window id="1">
-      <StatusBar showResizeHandle>Status bar</StatusBar>
-    </Window>
-  </Wisp>
+export const WithResizeHandle = () => (
+  <ControlStoryWrapper>
+    <StatusBar showResizeHandle>Status bar</StatusBar>
+  </ControlStoryWrapper>
 );
 WithResizeHandle.story = {
   name: 'StatusBar with resize handle',
