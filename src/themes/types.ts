@@ -1,12 +1,19 @@
 import { FlattenInterpolation } from 'styled-components';
 
 const ControlsProperties = [
-  'AlertText',
   'AlertButton',
-  'Checkbox',
-  'CheckboxWrapper',
+  'AlertText',
   'Button',
   'ButtonWrapper',
+  'Checkbox',
+  'CheckboxWrapper',
+  'ComboBoxButton',
+  'ComboBoxControl',
+  'ComboBoxElement',
+  'ComboBoxInput',
+  'ComboBoxLabel',
+  'ComboBoxOption',
+  'ComboBoxOptions',
   'ResizeHandle',
   'StatusBar',
 ] as const;
