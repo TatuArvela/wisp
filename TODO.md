@@ -2,7 +2,6 @@
 
 ## Controls
 
-* Combobox (basic functionality)
 * Groupbox
 * Label
 * Textbox
