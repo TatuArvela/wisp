@@ -1,7 +1,7 @@
 import { DefaultTheme } from '../types';
 import controls from './controls';
 import elements from './elements';
-import window from './window/index';
+import window from './window';
 
 const defaultTheme: DefaultTheme = {
   id: 'DEFAULT',

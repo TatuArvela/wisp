@@ -8,7 +8,7 @@ const sharedStyle = css`
   position: absolute;
 `;
 
-const NResize = css`
+export const NResize = css`
   ${sharedStyle};
   top: ${offset}px;
   left: ${offset}px;
@@ -17,7 +17,7 @@ const NResize = css`
   cursor: n-resize;
 `;
 
-const NEResize = css`
+export const NEResize = css`
   ${sharedStyle};
   top: ${offset}px;
   right: ${offset}px;
@@ -26,7 +26,7 @@ const NEResize = css`
   cursor: ne-resize;
 `;
 
-const EResize = css`
+export const EResize = css`
   ${sharedStyle};
   top: ${offset}px;
   bottom: ${offset}px;
@@ -35,7 +35,7 @@ const EResize = css`
   cursor: e-resize;
 `;
 
-const SEResize = css`
+export const SEResize = css`
   ${sharedStyle};
   bottom: ${offset}px;
   right: ${offset}px;
@@ -44,7 +44,7 @@ const SEResize = css`
   cursor: se-resize;
 `;
 
-const SResize = css`
+export const SResize = css`
   ${sharedStyle};
   bottom: ${offset}px;
   left: ${offset}px;
@@ -53,7 +53,7 @@ const SResize = css`
   cursor: s-resize;
 `;
 
-const SWResize = css`
+export const SWResize = css`
   ${sharedStyle};
   bottom: ${offset}px;
   left: ${offset}px;
@@ -62,7 +62,7 @@ const SWResize = css`
   cursor: sw-resize;
 `;
 
-const WResize = css`
+export const WResize = css`
   ${sharedStyle};
   top: ${offset}px;
   bottom: ${offset}px;
@@ -71,7 +71,7 @@ const WResize = css`
   cursor: w-resize;
 `;
 
-const NWResize = css`
+export const NWResize = css`
   ${sharedStyle};
   top: ${offset}px;
   left: ${offset}px;
@@ -79,14 +79,3 @@ const NWResize = css`
   width: ${size * 2}px;
   cursor: nw-resize;
 `;
-
-export default {
-  EResize,
-  NEResize,
-  NResize,
-  NWResize,
-  SEResize,
-  SResize,
-  SWResize,
-  WResize,
-};

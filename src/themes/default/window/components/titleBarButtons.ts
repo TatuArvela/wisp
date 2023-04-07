@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const TitleBarButtons = css`
+export const TitleBarButtons = css`
   box-sizing: border-box;
   display: flex;
   position: absolute;
@@ -29,7 +29,7 @@ const sharedWindowButtonStyle = css`
   }
 `;
 
-const MinimizeButton = css`
+export const MinimizeButton = css`
   ${sharedWindowButtonStyle};
 
   &:before {
@@ -44,7 +44,7 @@ const MinimizeButton = css`
   }
 `;
 
-const MaximizeButton = css`
+export const MaximizeButton = css`
   ${sharedWindowButtonStyle};
 
   &:before {
@@ -59,7 +59,7 @@ const MaximizeButton = css`
   }
 `;
 
-const UnmaximizeButton = css`
+export const UnmaximizeButton = css`
   ${sharedWindowButtonStyle};
 
   &:before {
@@ -86,7 +86,7 @@ const UnmaximizeButton = css`
   }
 `;
 
-const CloseButton = css`
+export const CloseButton = css`
   ${sharedWindowButtonStyle};
 
   &:before {
@@ -111,11 +111,3 @@ const CloseButton = css`
     width: 16px;
   }
 `;
-
-export default {
-  TitleBarButtons,
-  MinimizeButton,
-  MaximizeButton,
-  UnmaximizeButton,
-  CloseButton,
-};

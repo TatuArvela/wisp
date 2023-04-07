@@ -1,23 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
 
+import AlertButton from '../controls/AlertButton';
 import AlertText from '../controls/AlertText';
-import Button from '../controls/Button';
 import Window from './Window';
 
 interface Props {
   buttonText?: string;
   children: React.ReactNode;
   id: string;
-
   onButtonClick?(): void;
-
   title: string;
 }
-
-const AlertButton = styled(Button)`
-  ${(props) => props.theme.controls.AlertButton}
-`;
 
 const AlertWindow = ({
   id,

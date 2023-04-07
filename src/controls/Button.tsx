@@ -10,7 +10,7 @@ const ButtonWrapper = styled.div<ButtonWrapperProps>`
   ${(props) => props.theme.controls.ButtonWrapper}
 `;
 
-interface Props extends React.ComponentPropsWithoutRef<'button'> {
+export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   width?: number;
   height?: number;
 }
@@ -19,7 +19,7 @@ const ButtonElement = styled.button`
   ${(props) => props.theme.controls.Button}
 `;
 
-const Button = ({ width, height, ...rest }: Props) => (
+const Button = ({ width, height, ...rest }: ButtonProps) => (
   <ButtonWrapper width={width} height={height}>
     <ButtonElement {...rest} />
   </ButtonWrapper>
