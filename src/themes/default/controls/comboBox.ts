@@ -1,14 +1,29 @@
 import { css } from 'styled-components';
 
-import { ComboBoxOptionsProps } from '../../../controls/ComboBox';
+import {
+  ComboBoxOptionsProps,
+  ComboBoxWrapperProps,
+} from '../../../controls/ComboBox';
 
-export const ComboBoxWrapper = css`
-  display: flex;
-  height: 24px;
-  width: 100%;
+const columnStyle = css`
+  flex-direction: column;
+  height: 40px;
   justify-content: center;
-  align-items: center;
+`;
+
+const inlineStyle = css`
+  flex-direction: row;
   gap: 16px;
+  height: 24px;
+  align-items: center;
+`;
+
+export const ComboBoxWrapper = css<ComboBoxWrapperProps>`
+  display: flex;
+  width: 100%;
+  margin-bottom: 4px;
+  box-sizing: border-box;
+  ${({ inlineLabel }) => (inlineLabel ? inlineStyle : columnStyle)}
 `;
 
 export const ComboBoxLabel = css`
@@ -31,11 +46,12 @@ export const ComboBoxInput = css`
   border-top: 1px solid black;
   box-sizing: border-box;
   font-size: 12px;
-  height: 100%;
+  height: 24px;
   margin: 0;
   outline: none;
   position: relative;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 export const ComboBoxButton = css`
@@ -45,9 +61,10 @@ export const ComboBoxButton = css`
   border-bottom: 1px solid black;
   border-left: none;
   border-radius: 0;
+  box-sizing: border-box;
   width: 24px;
   padding: 0;
-  height: 100%;
+  height: 24px;
   position: relative;
 
   &:before {
@@ -56,7 +73,7 @@ export const ComboBoxButton = css`
     left: 2px;
     pointer-events: none;
     position: absolute;
-    top: 10px;
+    top: 11px;
     transform: rotate(45deg);
     width: 8px;
   }
@@ -67,7 +84,7 @@ export const ComboBoxButton = css`
     left: 8px;
     pointer-events: none;
     position: absolute;
-    top: 10px;
+    top: 11px;
     transform: rotate(-45deg);
     width: 8px;
   }

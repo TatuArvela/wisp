@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TextInputWrapper = styled.div`
+export interface TextInputWrapperProps {
+  inlineLabel: boolean;
+}
+const TextInputWrapper = styled.div<TextInputWrapperProps>`
   ${(props) => props.theme.controls.TextInputWrapper}
 `;
 
@@ -14,12 +17,18 @@ const TextInputElement = styled.input`
 `;
 
 interface TextInputProps {
+  inlineLabel?: boolean;
   label?: string;
   onChange(value: string): void;
   value?: string;
 }
-const TextInput = ({ label, onChange, value }: TextInputProps) => (
-  <TextInputWrapper>
+const TextInput = ({
+  inlineLabel = false,
+  label,
+  onChange,
+  value,
+}: TextInputProps) => (
+  <TextInputWrapper inlineLabel={inlineLabel}>
     {label && <TextInputLabel>{label}</TextInputLabel>}
     <TextInputElement
       value={value}

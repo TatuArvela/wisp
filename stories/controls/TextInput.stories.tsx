@@ -15,6 +15,12 @@ export const TextInputStory = () => {
   return (
     <ControlStoryWrapper>
       <TextInput value={value} onChange={setValue} label="Feedback:" />
+      <TextInput
+        value={value}
+        onChange={setValue}
+        label="Feedback:"
+        inlineLabel
+      />
     </ControlStoryWrapper>
   );
 };

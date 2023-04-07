@@ -5,7 +5,10 @@ import styled from 'styled-components';
 
 import { useWindow } from '../window/WindowContext';
 
-const ComboBoxWrapper = styled.div`
+export interface ComboBoxWrapperProps {
+  inlineLabel: boolean;
+}
+const ComboBoxWrapper = styled.div<ComboBoxWrapperProps>`
   ${(props) => props.theme.controls.ComboBoxWrapper}
 `;
 
@@ -40,6 +43,7 @@ const ComboBoxOption = styled(HeadlessComboBox.Option)`
 `;
 
 interface ComboBoxProps {
+  inlineLabel?: boolean;
   label?: string;
   nullable?: boolean;
   onChange(value?: string): void;
@@ -47,6 +51,7 @@ interface ComboBoxProps {
   value?: string;
 }
 const ComboBox = ({
+  inlineLabel = false,
   label,
   nullable,
   onChange,
@@ -97,7 +102,7 @@ const ComboBox = ({
       nullable={nullable ? true : undefined}
     >
       {({ open }) => (
-        <ComboBoxWrapper>
+        <ComboBoxWrapper inlineLabel={inlineLabel}>
           {label && <ComboBoxLabel>{label}</ComboBoxLabel>}
           <ComboBoxControl ref={controlRef}>
             <ComboBoxInput

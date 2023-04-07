@@ -8,6 +8,7 @@ const ControlStoryWrapper = ({ children }: { children: React.ReactNode }) => (
       id="1"
       initialState={{
         width: 300,
+        height: 120,
       }}
     >
       {children}

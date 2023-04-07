@@ -22,6 +22,14 @@ export const ComboBoxStory = () => {
         label="Smoothie:"
         nullable
       />
+      <ComboBox
+        value={value}
+        onChange={setValue}
+        options={options}
+        label="Smoothie:"
+        nullable
+        inlineLabel
+      />
     </ControlStoryWrapper>
   );
 };
