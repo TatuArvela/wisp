@@ -48,7 +48,6 @@ export const ComboBoxButton = css`
   width: 24px;
   padding: 0;
   height: 100%;
-  cursor: pointer;
   position: relative;
 
   &:before {
@@ -94,7 +93,7 @@ export const ComboBoxOption = css`
   padding: 4px;
   cursor: pointer;
   &:hover {
-    background: blue;
+    background: rgb(19, 71, 214);
     color: white;
   }
 `;

@@ -20,6 +20,7 @@ export const ComboBoxStory = () => {
         onChange={setValue}
         options={options}
         label="Smoothie:"
+        nullable
       />
     </ControlStoryWrapper>
   );

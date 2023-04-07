@@ -40,14 +40,22 @@ const ComboBoxOption = styled(HeadlessComboBox.Option)`
 `;
 
 interface ComboBoxProps {
+  label?: string;
+  nullable?: boolean;
+  onChange(value?: string): void;
   options: string[];
   value?: string;
-  onChange(value?: string): void;
-  label?: string;
 }
-const ComboBox = ({ options, onChange, value, label }: ComboBoxProps) => {
+const ComboBox = ({
+  label,
+  nullable,
+  onChange,
+  options,
+  value,
+}: ComboBoxProps) => {
   const window = useWindow();
   const controlRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const [query, setQuery] = useState<string>('');
   const [sizes, setSizes] = useState<{
     width: number;
@@ -71,6 +79,10 @@ const ComboBox = ({ options, onChange, value, label }: ComboBoxProps) => {
     }
   }, [window]);
 
+  const onInputClick = () => {
+    buttonRef?.current?.click();
+  };
+
   const filteredOptions =
     query === ''
       ? options
@@ -79,13 +91,20 @@ const ComboBox = ({ options, onChange, value, label }: ComboBoxProps) => {
         });
 
   return (
-    <HeadlessComboBox value={value} onChange={onChange}>
+    <HeadlessComboBox
+      value={value ?? ''}
+      onChange={onChange}
+      nullable={nullable ? true : undefined}
+    >
       {({ open }) => (
         <ComboBoxElement>
           {label && <ComboBoxLabel>{label}</ComboBoxLabel>}
           <ComboBoxControl ref={controlRef}>
-            <ComboBoxInput onChange={(event) => setQuery(event.target.value)} />
-            <ComboBoxButton />
+            <ComboBoxInput
+              onClick={onInputClick}
+              onChange={(event) => setQuery(event.target.value)}
+            />
+            <ComboBoxButton ref={buttonRef} />
             <Portal>
               <ComboBoxOptions
                 as="ul"
