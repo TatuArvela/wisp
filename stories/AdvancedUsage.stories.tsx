@@ -2,6 +2,7 @@ import { useState } from '@storybook/addons';
 import React from 'react';
 
 import { Window, Wisp } from '../src/index';
+import { useWindow } from '../src/window/WindowContext';
 
 export default {
   component: Wisp,
@@ -102,5 +103,48 @@ export const ExternalWindowToggling = (): JSX.Element => {
         </Wisp>
       </div>
     </div>
+  );
+};
+
+const ContextExample = () => {
+  const window = useWindow();
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <td>width</td>
+          <td>{window.width}</td>
+        </tr>
+        <tr>
+          <td>height</td>
+          <td>{window.height}</td>
+        </tr>
+        <tr>
+          <td>x position</td>
+          <td>{window.positionX}</td>
+        </tr>
+        <tr>
+          <td>y position</td>
+          <td>{window.positionY}</td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};
+
+export const WindowContext = (): JSX.Element => {
+  return (
+    <Wisp enableDefaultElements={false}>
+      <Window
+        id="1"
+        initialState={{
+          width: 230,
+          height: 115,
+          title: 'Window Context Example',
+        }}
+      >
+        <ContextExample />
+      </Window>
+    </Wisp>
   );
 };

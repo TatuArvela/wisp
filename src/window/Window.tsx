@@ -8,6 +8,7 @@ import WindowContent from './components/WindowContent';
 import WindowElement from './components/WindowElement';
 import { windowDragHandler } from './handlers/windowDragHandler';
 import { windowResizeHandler } from './handlers/windowResizeHandler';
+import { WindowProvider } from './WindowContext';
 
 export interface WindowProps {
   children: React.ReactNode;
@@ -36,46 +37,41 @@ const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
   // Mutable copy for quick and iterative event handling
   const window = { ...wmWindow };
 
-  const childrenWithWindow = React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, { ...window });
-    }
-    return child;
-  });
-
   return (
-    <WindowElement
-      height={window.height}
-      isMaximized={window.isMaximized}
-      isMinimized={window.isMinimized}
-      orderNumber={orderNumber}
-      positionX={window.positionX}
-      positionY={window.positionY}
-      width={window.width}
-      viewportWindowMargins={windowManager.viewportWindowMargins}
-    >
-      <TitleBar
-        close={() => windowManager.closeWindow(id)}
-        drag={windowDragHandler(windowManager, window)}
-        isActive={id === windowManager.activeWindowId}
-        isClosable={window.isClosable}
-        isMaximizable={window.isMaximizable}
+    <WindowProvider value={wmWindow}>
+      <WindowElement
+        height={window.height}
         isMaximized={window.isMaximized}
-        isMinimizable={window.isMinimizable}
-        maximize={() => windowManager.maximizeWindow(id)}
-        minimize={() => windowManager.minimizeWindow(id)}
-        title={window.title}
-        unmaximize={() => windowManager.unmaximizeWindow(id)}
-      />
+        isMinimized={window.isMinimized}
+        orderNumber={orderNumber}
+        positionX={window.positionX}
+        positionY={window.positionY}
+        width={window.width}
+        viewportWindowMargins={windowManager.viewportWindowMargins}
+      >
+        <TitleBar
+          close={() => windowManager.closeWindow(id)}
+          drag={windowDragHandler(windowManager, window)}
+          isActive={id === windowManager.activeWindowId}
+          isClosable={window.isClosable}
+          isMaximizable={window.isMaximizable}
+          isMaximized={window.isMaximized}
+          isMinimizable={window.isMinimizable}
+          maximize={() => windowManager.maximizeWindow(id)}
+          minimize={() => windowManager.minimizeWindow(id)}
+          title={window.title}
+          unmaximize={() => windowManager.unmaximizeWindow(id)}
+        />
 
-      <WindowContent onClick={() => windowManager.activateWindow(id)}>
-        {childrenWithWindow}
-      </WindowContent>
+        <WindowContent onClick={() => windowManager.activateWindow(id)}>
+          {children}
+        </WindowContent>
 
-      {window.isResizable && (
-        <ResizeBorder resize={windowResizeHandler(windowManager, window)} />
-      )}
-    </WindowElement>
+        {window.isResizable && (
+          <ResizeBorder resize={windowResizeHandler(windowManager, window)} />
+        )}
+      </WindowElement>
+    </WindowProvider>
   );
 };
 
