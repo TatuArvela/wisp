@@ -38,7 +38,7 @@ const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
 
   const childrenWithWindow = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, { window });
+      return React.cloneElement(child, { ...window });
     }
     return child;
   });
