@@ -5,6 +5,7 @@ import { ViewportWindowMargins } from './windowManager/types';
 export interface WispConfig {
   enableDefaultElements: boolean;
   enableVersionInfo: boolean;
+  enableWindowMinimize: boolean;
   defaultWindowHeight: number;
   defaultWindowWidth: number;
   maxWindowHeight: number;
@@ -20,6 +21,7 @@ export interface WispConfig {
 export const defaultConfig: WispConfig = {
   enableDefaultElements: true,
   enableVersionInfo: true,
+  enableWindowMinimize: true,
   defaultWindowHeight: 100,
   defaultWindowWidth: 200,
   maxWindowHeight: Infinity,

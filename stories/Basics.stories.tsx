@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AlertWindow, Window, Wisp } from '../src/index';
+import { AlertWindow, Desktop, Window, Wisp } from '../src/index';
 
 export default {
   component: Wisp,
@@ -9,6 +9,19 @@ export default {
 
 export const HelloWorld = (): JSX.Element => (
   <Wisp>
+    <Window id="hello world" initialState={{ title: 'Hello World' }}>
+      Check out Wisp
+    </Window>
+  </Wisp>
+);
+
+export const NoDefaultElements = (): JSX.Element => (
+  <Wisp
+    enableDefaultElements={false}
+    enableVersionInfo={false}
+    enableWindowMinimize={false}
+  >
+    <Desktop />
     <Window id="hello world" initialState={{ title: 'Hello World' }}>
       Check out Wisp
     </Window>
