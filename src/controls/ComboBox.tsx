@@ -5,12 +5,12 @@ import styled from 'styled-components';
 
 import { useWindow } from '../window/WindowContext';
 
-const ComboBoxLabel = styled.label`
-  ${(props) => props.theme.controls.ComboBoxLabel}
+const ComboBoxWrapper = styled.div`
+  ${(props) => props.theme.controls.ComboBoxWrapper}
 `;
 
-const ComboBoxElement = styled.div`
-  ${(props) => props.theme.controls.ComboBoxElement}
+const ComboBoxLabel = styled.label`
+  ${(props) => props.theme.controls.ComboBoxLabel}
 `;
 
 const ComboBoxControl = styled.div`
@@ -97,7 +97,7 @@ const ComboBox = ({
       nullable={nullable ? true : undefined}
     >
       {({ open }) => (
-        <ComboBoxElement>
+        <ComboBoxWrapper>
           {label && <ComboBoxLabel>{label}</ComboBoxLabel>}
           <ComboBoxControl ref={controlRef}>
             <ComboBoxInput
@@ -119,7 +119,7 @@ const ComboBox = ({
               </ComboBoxOptions>
             </Portal>
           </ComboBoxControl>
-        </ComboBoxElement>
+        </ComboBoxWrapper>
       )}
     </HeadlessComboBox>
   );

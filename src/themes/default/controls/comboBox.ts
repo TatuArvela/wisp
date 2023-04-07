@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 import { ComboBoxOptionsProps } from '../../../controls/ComboBox';
 
-export const ComboBoxElement = css`
+export const ComboBoxWrapper = css`
   display: flex;
   height: 24px;
   width: 100%;

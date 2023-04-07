@@ -9,20 +9,25 @@ const ControlsProperties = [
   'CheckboxWrapper',
   'ComboBoxButton',
   'ComboBoxControl',
-  'ComboBoxElement',
   'ComboBoxInput',
   'ComboBoxLabel',
   'ComboBoxOption',
   'ComboBoxOptions',
+  'ComboBoxWrapper',
   'ResizeHandle',
   'StatusBar',
+  'TextInputElement',
+  'TextInputLabel',
+  'TextInputWrapper',
 ] as const;
+
 const ElementsProperties = [
   'Desktop',
   'Taskbar',
   'TaskbarButton',
   'VersionInfo',
 ] as const;
+
 const WindowProperties = [
   'CloseButton',
   'EResize',

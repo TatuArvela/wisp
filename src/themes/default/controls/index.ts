@@ -6,6 +6,7 @@ import * as checkbox from './checkbox';
 import * as comboBox from './comboBox';
 import * as resizeHandle from './statusBar/resizeHandle';
 import * as statusBar from './statusBar/statusBar';
+import * as textInput from './textInput';
 
 const controls: ControlsThemeSection = {
   ...alertButton,
@@ -15,6 +16,7 @@ const controls: ControlsThemeSection = {
   ...comboBox,
   ...resizeHandle,
   ...statusBar,
+  ...textInput,
 };
 
 export default controls;
