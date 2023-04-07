@@ -20,7 +20,9 @@ const TitleBarButtonsElement = styled.div`
   ${(props) => props.theme.window.TitleBarButtons}
 `;
 
-const WindowButton = styled.button``;
+const WindowButton = styled.button`
+  ${(props) => props.theme.window.WindowButton}
+`;
 WindowButton.defaultProps = {
   type: 'button',
 };

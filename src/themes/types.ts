@@ -32,6 +32,7 @@ const WindowProperties = [
   'TitleBarButtons',
   'UnmaximizeButton',
   'WResize',
+  'WindowButton',
   'WindowContent',
   'WindowElement',
 ] as const;

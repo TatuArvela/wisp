@@ -9,7 +9,7 @@ export const TitleBarButtons = css`
   margin: 0;
 `;
 
-const sharedWindowButtonStyle = css`
+export const WindowButton = css`
   background: white;
   border-radius: 2px;
   border: none;
@@ -30,8 +30,6 @@ const sharedWindowButtonStyle = css`
 `;
 
 export const MinimizeButton = css`
-  ${sharedWindowButtonStyle};
-
   &:before {
     border-bottom: 1px solid black;
     content: '';
@@ -45,8 +43,6 @@ export const MinimizeButton = css`
 `;
 
 export const MaximizeButton = css`
-  ${sharedWindowButtonStyle};
-
   &:before {
     border: 1px solid black;
     content: '';
@@ -60,8 +56,6 @@ export const MaximizeButton = css`
 `;
 
 export const UnmaximizeButton = css`
-  ${sharedWindowButtonStyle};
-
   &:before {
     border-right: 1px solid black;
     border-top: 1px solid black;
@@ -87,8 +81,6 @@ export const UnmaximizeButton = css`
 `;
 
 export const CloseButton = css`
-  ${sharedWindowButtonStyle};
-
   &:before {
     border-bottom: 1px solid black;
     content: '';
