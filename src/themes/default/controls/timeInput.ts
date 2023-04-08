@@ -1,7 +1,27 @@
 import { css } from 'styled-components';
 
-export const TimeInputWrapper = css`
+import { TimeInputWrapperProps } from '../../../controls/TimeInput';
+
+const columnStyle = css`
+  flex-direction: column;
+  height: 40px;
+  justify-content: center;
+  box-sizing: border-box;
+`;
+
+const inlineStyle = css`
+  flex-direction: row;
+  gap: 16px;
+  height: 24px;
+  align-items: center;
+  box-sizing: border-box;
+`;
+
+export const TimeInputWrapper = css<TimeInputWrapperProps>`
+  display: flex;
+  width: 100%;
   margin-bottom: 4px;
+  ${({ inlineLabel }) => (inlineLabel ? inlineStyle : columnStyle)}
 `;
 
 export const TimeInputLabel = css``;
@@ -10,13 +30,14 @@ export const TimeInputControl = css`
   display: flex;
   height: 24px;
   gap: 2px;
+  width: 100%;
 `;
 
 export const TimeInputField = css`
   display: flex;
   border: 1px solid black;
   border-radius: 1px;
-  width: 100px;
+  width: 100%;
 `;
 
 export const TimeInputValue = css`
