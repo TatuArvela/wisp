@@ -5,5 +5,6 @@ export { default as Checkbox } from './Checkbox';
 export { default as ComboBox } from './ComboBox';
 export { default as Divider } from './Divider';
 export { default as ListBox } from './ListBox';
+export { default as StatusBar } from './StatusBar/StatusBar';
 export { default as TextInput } from './TextInput';
 export { default as TimeInput } from './TimeInput';

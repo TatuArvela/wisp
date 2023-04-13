@@ -1,6 +1,7 @@
 import { useState } from '@storybook/addons';
 import React from 'react';
 
+import { Divider } from '../../src';
 import TimeInput, { Time } from '../../src/controls/TimeInput';
 import ControlStoryWrapper from './ControlStoryWrapper';
 
@@ -18,6 +19,7 @@ export const TimeInputStory = () => {
   return (
     <ControlStoryWrapper>
       <TimeInput value={value} onChange={setValue} label="Time:" />
+      <Divider />
       <TimeInput value={value} onChange={setValue} label="Time:" inlineLabel />
     </ControlStoryWrapper>
   );

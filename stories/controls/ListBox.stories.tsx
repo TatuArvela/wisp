@@ -1,6 +1,7 @@
 import { useState } from '@storybook/addons';
 import React from 'react';
 
+import { Divider } from '../../src';
 import ListBox from '../../src/controls/ListBox';
 import ControlStoryWrapper from './ControlStoryWrapper';
 
@@ -21,6 +22,7 @@ export const ListBoxStory = () => {
         options={options}
         label="Smoothie:"
       />
+      <Divider />
       <ListBox
         value={value}
         onChange={setValue}

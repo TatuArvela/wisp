@@ -1,6 +1,7 @@
 import { useState } from '@storybook/addons';
 import React from 'react';
 
+import { Divider } from '../../src';
 import ComboBox from '../../src/controls/ComboBox';
 import ControlStoryWrapper from './ControlStoryWrapper';
 
@@ -22,6 +23,7 @@ export const ComboBoxStory = () => {
         label="Smoothie:"
         nullable
       />
+      <Divider />
       <ComboBox
         value={value}
         onChange={setValue}

@@ -1,7 +1,7 @@
 import { useState } from '@storybook/addons';
 import React from 'react';
 
-import { Checkbox } from '../../src/index';
+import { Checkbox, Divider } from '../../src/index';
 import ControlStoryWrapper from './ControlStoryWrapper';
 
 export default {
@@ -16,12 +16,14 @@ export const CheckboxStory = () => {
   return (
     <ControlStoryWrapper>
       <Checkbox checked={checked} onClick={toggleChecked} />
+      <Divider />
       <Checkbox
         checked={checked}
         onClick={toggleChecked}
         inlineLabel
         label="Checkbox"
       />
+      <Divider />
       <Checkbox checked={checked} onClick={toggleChecked} label="Checkbox" />
     </ControlStoryWrapper>
   );

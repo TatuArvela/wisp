@@ -1,6 +1,7 @@
 import { useState } from '@storybook/addons';
 import React from 'react';
 
+import { Divider } from '../../src';
 import TextInput from '../../src/controls/TextInput';
 import ControlStoryWrapper from './ControlStoryWrapper';
 
@@ -15,6 +16,7 @@ export const TextInputStory = () => {
   return (
     <ControlStoryWrapper>
       <TextInput value={value} onChange={setValue} label="Feedback:" />
+      <Divider />
       <TextInput
         value={value}
         onChange={setValue}
