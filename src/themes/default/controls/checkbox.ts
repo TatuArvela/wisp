@@ -1,26 +1,9 @@
 import { css } from 'styled-components';
 
-import { CheckboxWrapperProps } from '../../../controls/Checkbox';
+import { ControlWrapperProps } from '../../../controls/ControlWrapper';
 import { Label } from './label';
 
-const columnStyle = css`
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const inlineStyle = css`
-  flex-direction: row;
-  gap: 16px;
-  align-items: center;
-`;
-
-export const CheckboxWrapper = css<CheckboxWrapperProps>`
-  display: flex;
-  width: 100%;
-  margin-bottom: 4px;
-  box-sizing: border-box;
-  ${({ inlineLabel }) => (inlineLabel ? inlineStyle : columnStyle)}
-`;
+export const CheckboxWrapper = css<ControlWrapperProps>``;
 
 const checkedStyle = css`
   &:before {

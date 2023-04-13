@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export interface CheckboxWrapperProps {
-  inlineLabel: boolean;
-}
-const CheckboxWrapper = styled.div<CheckboxWrapperProps>`
+import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
+
+const CheckboxWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.CheckboxWrapper}
 `;
 
@@ -26,8 +25,7 @@ const CheckboxLabel = styled.label`
   ${(props) => props.theme.controls.CheckboxLabel}
 `;
 
-interface CheckboxProps {
-  inlineLabel?: boolean;
+interface CheckboxProps extends ControlWrapperProps {
   checked?: boolean;
   onClick?(): void;
   label?: string;

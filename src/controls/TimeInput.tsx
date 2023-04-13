@@ -1,15 +1,14 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
+import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
+
 export type Time = {
   hours: number;
   minutes: number;
 };
 
-export interface TimeInputWrapperProps {
-  inlineLabel: boolean;
-}
-const TimeInputWrapper = styled.div<TimeInputWrapperProps>`
+const TimeInputWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.TimeInputWrapper}
 `;
 
@@ -45,19 +44,13 @@ const TimeInputIncreaseButton = styled.button<{ active?: boolean }>`
   ${(props) => props.theme.controls.TimeInputIncreaseButton}
 `;
 
-interface TimeInputProps {
-  inlineLabel?: boolean;
+interface TimeInputProps extends ControlWrapperProps {
   label?: string;
   nullable?: boolean;
   onChange(value: Time): void;
   value?: Time;
 }
-const TimeInput = ({
-  inlineLabel = false,
-  label,
-  onChange,
-  value,
-}: TimeInputProps) => {
+const TimeInput = ({ inlineLabel, label, onChange, value }: TimeInputProps) => {
   const [activeField, setActiveField] = useState<keyof Time>('hours');
   const [activeButton, setActiveButton] = useState<
     'increase' | 'decrease' | undefined

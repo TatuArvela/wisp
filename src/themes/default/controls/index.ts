@@ -4,6 +4,7 @@ import * as alertText from './alertText';
 import * as button from './button';
 import * as checkbox from './checkbox';
 import * as comboBox from './comboBox';
+import * as controlWrapper from './controlWrapper';
 import * as divider from './divider';
 import * as label from './label';
 import * as listBox from './listBox';
@@ -18,6 +19,7 @@ const controls: ControlsThemeSection = {
   ...alertText,
   ...button,
   ...checkbox,
+  ...controlWrapper,
   ...comboBox,
   ...divider,
   ...label,

@@ -4,11 +4,9 @@ import { Portal } from 'react-portal';
 import styled from 'styled-components';
 
 import { useWindow } from '../window/WindowContext';
+import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
-export interface ComboBoxWrapperProps {
-  inlineLabel: boolean;
-}
-const ComboBoxWrapper = styled.div<ComboBoxWrapperProps>`
+const ComboBoxWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.ComboBoxWrapper}
 `;
 
@@ -42,8 +40,7 @@ const ComboBoxOption = styled(HeadlessComboBox.Option)`
   ${(props) => props.theme.controls.ComboBoxOption}
 `;
 
-interface ComboBoxProps {
-  inlineLabel?: boolean;
+interface ComboBoxProps extends ControlWrapperProps {
   label?: string;
   nullable?: boolean;
   onChange(value?: string): void;
@@ -51,12 +48,12 @@ interface ComboBoxProps {
   value?: string;
 }
 const ComboBox = ({
-  inlineLabel = false,
   label,
   nullable,
   onChange,
   options,
   value,
+  inlineLabel,
 }: ComboBoxProps) => {
   const window = useWindow();
   const controlRef = useRef<HTMLDivElement>(null);

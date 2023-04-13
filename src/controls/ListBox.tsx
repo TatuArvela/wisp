@@ -4,11 +4,9 @@ import { Portal } from 'react-portal';
 import styled from 'styled-components';
 
 import { useWindow } from '../window/WindowContext';
+import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
-export interface ListBoxWrapperProps {
-  inlineLabel: boolean;
-}
-const ListBoxWrapper = styled.div<ListBoxWrapperProps>`
+const ListBoxWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.ListBoxWrapper}
 `;
 
@@ -34,15 +32,14 @@ const ListBoxOption = styled(HeadlessListBox.Option)`
   ${(props) => props.theme.controls.ListBoxOption}
 `;
 
-interface ListBoxProps {
-  inlineLabel?: boolean;
+interface ListBoxProps extends ControlWrapperProps {
   label?: string;
   onChange(value?: string): void;
   options: string[];
   value?: string;
 }
 const ListBox = ({
-  inlineLabel = false,
+  inlineLabel,
   label,
   onChange,
   options,

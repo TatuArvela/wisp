@@ -1,31 +1,10 @@
 import { css } from 'styled-components';
 
-import {
-  ComboBoxOptionsProps,
-  ComboBoxWrapperProps,
-} from '../../../controls/ComboBox';
+import { ComboBoxOptionsProps } from '../../../controls/ComboBox';
+import { ControlWrapperProps } from '../../../controls/ControlWrapper';
 import { Label } from './label';
 
-const columnStyle = css`
-  flex-direction: column;
-  height: 40px;
-  justify-content: center;
-`;
-
-const inlineStyle = css`
-  flex-direction: row;
-  gap: 16px;
-  height: 24px;
-  align-items: center;
-`;
-
-export const ComboBoxWrapper = css<ComboBoxWrapperProps>`
-  display: flex;
-  width: 100%;
-  margin-bottom: 4px;
-  box-sizing: border-box;
-  ${({ inlineLabel }) => (inlineLabel ? inlineStyle : columnStyle)}
-`;
+export const ComboBoxWrapper = css<ControlWrapperProps>``;
 
 export const ComboBoxLabel = Label;
 
