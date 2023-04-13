@@ -1,8 +1,5 @@
 export { WispConfig } from './config';
-export { default as AlertText } from './controls/AlertText';
-export { default as Button } from './controls/Button';
-export { default as Checkbox } from './controls/Checkbox';
-export { default as StatusBar } from './controls/StatusBar/StatusBar';
+export * from './controls';
 export { default as Desktop } from './elements/Desktop';
 export { default as Taskbar } from './elements/Taskbar/Taskbar';
 export { default as ThemeSwitcher } from './elements/ThemeSwitcher';
