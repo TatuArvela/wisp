@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 import { TimeInputWrapperProps } from '../../../controls/TimeInput';
+import { Label } from './label';
 
 const columnStyle = css`
   flex-direction: column;
@@ -24,7 +25,7 @@ export const TimeInputWrapper = css<TimeInputWrapperProps>`
   ${({ inlineLabel }) => (inlineLabel ? inlineStyle : columnStyle)}
 `;
 
-export const TimeInputLabel = css``;
+export const TimeInputLabel = Label;
 
 export const TimeInputControl = css`
   display: flex;

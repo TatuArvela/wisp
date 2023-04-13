@@ -4,6 +4,7 @@ import {
   ListBoxOptionsProps,
   ListBoxWrapperProps,
 } from '../../../controls/ListBox';
+import { Label } from './label';
 
 const columnStyle = css`
   flex-direction: column;
@@ -26,9 +27,7 @@ export const ListBoxWrapper = css<ListBoxWrapperProps>`
   ${({ inlineLabel }) => (inlineLabel ? inlineStyle : columnStyle)}
 `;
 
-export const ListBoxLabel = css`
-  margin: 0;
-`;
+export const ListBoxLabel = Label;
 
 export const ListBoxButton = css`
   background: white;

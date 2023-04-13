@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 import { TextInputWrapperProps } from '../../../controls/TextInput';
+import { Label } from './label';
 
 const columnStyle = css`
   flex-direction: column;
@@ -24,9 +25,7 @@ export const TextInputWrapper = css<TextInputWrapperProps>`
   ${({ inlineLabel }) => (inlineLabel ? inlineStyle : columnStyle)}
 `;
 
-export const TextInputLabel = css`
-  margin: 0;
-`;
+export const TextInputLabel = Label;
 
 export const TextInputElement = css`
   border: 1px solid black;

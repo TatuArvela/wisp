@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 import { CheckboxWrapperProps } from '../../../controls/Checkbox';
+import { Label } from './label';
 
 const columnStyle = css`
   flex-direction: column;
@@ -56,6 +57,4 @@ export const Checkbox = css<{ checked: boolean }>`
   ${(props) => props.checked && checkedStyle}
 `;
 
-export const CheckboxLabel = css`
-  margin: 0;
-`;
+export const CheckboxLabel = Label;

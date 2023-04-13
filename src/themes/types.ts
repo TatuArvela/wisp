@@ -15,6 +15,7 @@ const ControlsProperties = [
   'ComboBoxOption',
   'ComboBoxOptions',
   'ComboBoxWrapper',
+  'Label',
   'ListBoxButton',
   'ListBoxLabel',
   'ListBoxOption',

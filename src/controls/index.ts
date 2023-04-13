@@ -4,6 +4,7 @@ export { default as Button } from './Button';
 export { default as Checkbox } from './Checkbox';
 export { default as ComboBox } from './ComboBox';
 export { default as Divider } from './Divider';
+export { default as Label } from './Label';
 export { default as ListBox } from './ListBox';
 export { default as StatusBar } from './StatusBar/StatusBar';
 export { default as TextInput } from './TextInput';

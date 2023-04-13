@@ -5,6 +5,7 @@ import * as button from './button';
 import * as checkbox from './checkbox';
 import * as comboBox from './comboBox';
 import * as divider from './divider';
+import * as label from './label';
 import * as listBox from './listBox';
 import * as resizeHandle from './statusBar/resizeHandle';
 import * as statusBar from './statusBar/statusBar';
@@ -19,6 +20,7 @@ const controls: ControlsThemeSection = {
   ...checkbox,
   ...comboBox,
   ...divider,
+  ...label,
   ...listBox,
   ...resizeHandle,
   ...statusBar,

@@ -4,6 +4,7 @@ import {
   ComboBoxOptionsProps,
   ComboBoxWrapperProps,
 } from '../../../controls/ComboBox';
+import { Label } from './label';
 
 const columnStyle = css`
   flex-direction: column;
@@ -26,9 +27,7 @@ export const ComboBoxWrapper = css<ComboBoxWrapperProps>`
   ${({ inlineLabel }) => (inlineLabel ? inlineStyle : columnStyle)}
 `;
 
-export const ComboBoxLabel = css`
-  margin: 0;
-`;
+export const ComboBoxLabel = Label;
 
 export const ComboBoxControl = css`
   display: flex;
