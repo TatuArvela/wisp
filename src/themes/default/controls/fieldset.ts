@@ -1,8 +1,9 @@
 import { css } from 'styled-components';
 
 export const Fieldset = css`
+  border-radius: 2px;
   border: 1px solid black;
-  padding: 10px;
+  padding: 8px;
   margin-bottom: 4px;
 `;
 
