@@ -4,6 +4,7 @@ import * as alertText from './alertText';
 import * as button from './button';
 import * as checkbox from './checkbox';
 import * as comboBox from './comboBox';
+import * as listBox from './listBox';
 import * as resizeHandle from './statusBar/resizeHandle';
 import * as statusBar from './statusBar/statusBar';
 import * as textInput from './textInput';
@@ -15,6 +16,7 @@ const controls: ControlsThemeSection = {
   ...button,
   ...checkbox,
   ...comboBox,
+  ...listBox,
   ...resizeHandle,
   ...statusBar,
   ...textInput,

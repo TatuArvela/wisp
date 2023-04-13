@@ -112,7 +112,6 @@ const ComboBox = ({
             <ComboBoxButton ref={buttonRef} />
             <Portal>
               <ComboBoxOptions
-                as="ul"
                 open={filteredOptions.length > 0 && open}
                 {...sizes}
               >
