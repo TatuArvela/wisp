@@ -3,6 +3,12 @@ import styled from 'styled-components';
 
 import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
+export const CheckboxThemeProperties = [
+  'Checkbox',
+  'CheckboxLabel',
+  'CheckboxWrapper',
+] as const;
+
 const CheckboxWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.CheckboxWrapper}
 `;

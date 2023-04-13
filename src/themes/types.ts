@@ -1,45 +1,35 @@
 import { FlattenInterpolation } from 'styled-components';
 
+import { AlertButtonThemeProperties } from '../controls/AlertButton';
+import { AlertTextThemeProperties } from '../controls/AlertText';
+import { ButtonThemeProperties } from '../controls/Button';
+import { CheckboxThemeProperties } from '../controls/Checkbox';
+import { ComboBoxThemeProperties } from '../controls/ComboBox';
+import { ControlWrapperThemeProperties } from '../controls/ControlWrapper';
+import { DividerThemeProperties } from '../controls/Divider';
+import { LabelThemeProperties } from '../controls/Label';
+import { ListBoxThemeProperties } from '../controls/ListBox';
+import { StatusBarThemeProperties } from '../controls/StatusBar';
+import { TextareaThemeProperties } from '../controls/Textarea';
+import { TextInputThemeProperties } from '../controls/TextInput';
+import { TimeInputThemeProperties } from '../controls/TimeInput';
+import { WellThemeProperties } from '../controls/Well';
+
 const ControlsProperties = [
-  'AlertButton',
-  'AlertText',
-  'Button',
-  'ButtonWrapper',
-  'Checkbox',
-  'CheckboxLabel',
-  'CheckboxWrapper',
-  'ComboBoxButton',
-  'ComboBoxControl',
-  'ComboBoxInput',
-  'ComboBoxLabel',
-  'ComboBoxOption',
-  'ComboBoxOptions',
-  'ComboBoxWrapper',
-  'ControlWrapper',
-  'Divider',
-  'Label',
-  'ListBoxButton',
-  'ListBoxLabel',
-  'ListBoxOption',
-  'ListBoxOptions',
-  'ListBoxWrapper',
-  'ResizeHandle',
-  'StatusBar',
-  'TextareaWrapper',
-  'TextareaLabel',
-  'TextareaElement',
-  'TextInputElement',
-  'TextInputLabel',
-  'TextInputWrapper',
-  'TimeInputWrapper',
-  'TimeInputLabel',
-  'TimeInputControl',
-  'TimeInputField',
-  'TimeInputValue',
-  'TimeInputSeparator',
-  'TimeInputButtons',
-  'TimeInputIncreaseButton',
-  'TimeInputDecreaseButton',
+  ...AlertButtonThemeProperties,
+  ...AlertTextThemeProperties,
+  ...ButtonThemeProperties,
+  ...CheckboxThemeProperties,
+  ...ComboBoxThemeProperties,
+  ...ControlWrapperThemeProperties,
+  ...DividerThemeProperties,
+  ...LabelThemeProperties,
+  ...ListBoxThemeProperties,
+  ...StatusBarThemeProperties,
+  ...TextareaThemeProperties,
+  ...TextInputThemeProperties,
+  ...TimeInputThemeProperties,
+  ...WellThemeProperties,
 ] as const;
 
 const ElementsProperties = [

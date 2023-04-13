@@ -6,6 +6,14 @@ import styled from 'styled-components';
 import { useWindow } from '../window/WindowContext';
 import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
+export const ListBoxThemeProperties = [
+  'ListBoxButton',
+  'ListBoxLabel',
+  'ListBoxOption',
+  'ListBoxOptions',
+  'ListBoxWrapper',
+] as const;
+
 const ListBoxWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.ListBoxWrapper}
 `;

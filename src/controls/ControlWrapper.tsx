@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+export const ControlWrapperThemeProperties = ['ControlWrapper'] as const;
+
 export interface ControlWrapperProps {
   inlineLabel?: boolean;
 }

@@ -3,6 +3,18 @@ import styled from 'styled-components';
 
 import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
+export const TimeInputThemeProperties = [
+  'TimeInputWrapper',
+  'TimeInputLabel',
+  'TimeInputControl',
+  'TimeInputField',
+  'TimeInputValue',
+  'TimeInputSeparator',
+  'TimeInputButtons',
+  'TimeInputIncreaseButton',
+  'TimeInputDecreaseButton',
+] as const;
+
 export type Time = {
   hours: number;
   minutes: number;

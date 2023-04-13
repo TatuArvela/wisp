@@ -6,7 +6,7 @@ export { default as ComboBox } from './ComboBox';
 export { default as Divider } from './Divider';
 export { default as Label } from './Label';
 export { default as ListBox } from './ListBox';
-export { default as StatusBar } from './StatusBar/StatusBar';
+export { default as StatusBar } from './StatusBar';
 export { default as TextInput } from './TextInput';
 export { default as TimeInput } from './TimeInput';
 export { default as Well } from './Well';

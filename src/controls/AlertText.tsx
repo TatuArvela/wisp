@@ -1,16 +1,9 @@
-import React from 'react';
 import styled from 'styled-components';
 
-interface Props {
-  children: React.ReactNode;
-}
+export const AlertTextThemeProperties = ['AlertText'] as const;
 
-const AlertTextElement = styled.div`
+const AlertText = styled.div`
   ${(props) => props.theme.controls.AlertText}
 `;
-
-const AlertText = ({ children }: Props) => {
-  return <AlertTextElement>{children}</AlertTextElement>;
-};
 
 export default AlertText;

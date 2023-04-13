@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+export const DividerThemeProperties = ['Divider'] as const;
+
 export interface DividerProps {
   vertical?: boolean;
 }

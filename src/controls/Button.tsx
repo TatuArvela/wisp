@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+export const ButtonThemeProperties = ['Button', 'ButtonWrapper'] as const;
+
 interface ButtonWrapperProps {
   width?: number;
   height?: number;

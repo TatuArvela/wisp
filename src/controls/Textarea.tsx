@@ -3,6 +3,12 @@ import styled from 'styled-components';
 
 import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
+export const TextareaThemeProperties = [
+  'TextareaWrapper',
+  'TextareaLabel',
+  'TextareaElement',
+] as const;
+
 const TextareaWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.TextareaWrapper}
 `;

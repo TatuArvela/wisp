@@ -3,6 +3,12 @@ import styled from 'styled-components';
 
 import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
+export const TextInputThemeProperties = [
+  'TextInputElement',
+  'TextInputLabel',
+  'TextInputWrapper',
+] as const;
+
 const TextInputWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.TextInputWrapper}
 `;

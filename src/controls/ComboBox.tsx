@@ -6,6 +6,16 @@ import styled from 'styled-components';
 import { useWindow } from '../window/WindowContext';
 import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
+export const ComboBoxThemeProperties = [
+  'ComboBoxButton',
+  'ComboBoxControl',
+  'ComboBoxInput',
+  'ComboBoxLabel',
+  'ComboBoxOption',
+  'ComboBoxOptions',
+  'ComboBoxWrapper',
+] as const;
+
 const ComboBoxWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.ComboBoxWrapper}
 `;
