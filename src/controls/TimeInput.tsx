@@ -58,6 +58,7 @@ const TimeInput = ({
   onChange,
   value,
 }: TimeInputProps) => {
+  const [activeField, setActiveField] = useState<keyof Time>('hours');
   const [activeButton, setActiveButton] = useState<
     'increase' | 'decrease' | undefined
   >();
@@ -69,20 +70,11 @@ const TimeInput = ({
   const increaseButtonRef = useRef<HTMLButtonElement>(null);
   const decreaseButtonRef = useRef<HTMLButtonElement>(null);
 
-  const hoursDisplay = value.hours.toString().padStart(2, '0');
-  const minutesDisplay = value.minutes.toString().padStart(2, '0');
-
-  const getSelected = (): keyof Time => {
-    if (document.activeElement === hoursRef?.current) {
-      return 'hours';
-    }
-    if (document.activeElement === minutesRef?.current) {
-      return 'minutes';
-    }
-  };
+  const hoursDisplay = value?.hours.toString().padStart(2, '0') ?? '00';
+  const minutesDisplay = value?.minutes.toString().padStart(2, '0') ?? '00';
 
   const buttonClickHandler = (button: 'increase' | 'decrease') => () => {
-    onChange(changeTime(value, getSelected(), button === 'increase' ? 1 : -1));
+    onChange(changeTime(value, activeField, button === 'increase' ? 1 : -1));
     setActiveButton(button);
     clearTimeout(activeButtonTimeout);
     setActiveButtonTimeout(
@@ -92,7 +84,18 @@ const TimeInput = ({
     );
   };
 
-  const keyDownHandler = () => (e) => {
+  const changeHandler = (field: keyof Time) => (e) => {
+    onChange({
+      ...value,
+      [field]: parseInt(e.target.value.substr(-2)),
+    });
+  };
+
+  const blurHandler = () => {
+    value && onChange(constrainTime(value));
+  };
+
+  const keyDownHandler = (e) => {
     if (e.key === 'ArrowUp') {
       e.preventDefault();
       increaseButtonRef.current?.click();
@@ -111,13 +114,19 @@ const TimeInput = ({
           <TimeInputValue
             ref={hoursRef}
             value={hoursDisplay}
-            onKeyDown={keyDownHandler()}
+            onKeyDown={keyDownHandler}
+            onChange={changeHandler('hours')}
+            onBlur={blurHandler}
+            onFocus={() => setActiveField('hours')}
           />
           <TimeInputSeparator />
           <TimeInputValue
             ref={minutesRef}
             value={minutesDisplay}
-            onKeyDown={keyDownHandler()}
+            onKeyDown={keyDownHandler}
+            onChange={changeHandler('minutes')}
+            onBlur={blurHandler}
+            onFocus={() => setActiveField('minutes')}
           />
         </TimeInputField>
         <TimeInputButtons>
@@ -137,16 +146,28 @@ const TimeInput = ({
   );
 };
 
+const constrainTime = (time: Time): Time => {
+  const getMinutes = () => {
+    if (time.hours >= 24) {
+      return 0;
+    }
+    if (time.hours < 0) {
+      return 0;
+    }
+    return Math.max(0, Math.min(time.minutes, 59));
+  };
+
+  return {
+    hours: Math.max(0, Math.min(time.hours, 24)),
+    minutes: getMinutes(),
+  };
+};
+
 const changeTime = (
   { hours, minutes }: Time,
   field: keyof Time,
   change: number
 ): Time => {
-  const constrainTime = (time: Time): Time => ({
-    hours: Math.max(0, Math.min(time.hours, 24)),
-    minutes: time.hours >= 24 ? 0 : Math.max(0, Math.min(time.minutes, 59)),
-  });
-
   if (field === 'hours') {
     const changedHours = hours + change;
     return constrainTime({
