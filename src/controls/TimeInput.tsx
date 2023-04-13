@@ -134,11 +134,13 @@ const TimeInput = ({
             ref={increaseButtonRef}
             onClick={buttonClickHandler('increase')}
             active={activeButton === 'increase'}
+            tabIndex={-1}
           />
           <TimeInputDecreaseButton
             ref={decreaseButtonRef}
             onClick={buttonClickHandler('decrease')}
             active={activeButton === 'decrease'}
+            tabIndex={-1}
           />
         </TimeInputButtons>
       </TimeInputControl>
