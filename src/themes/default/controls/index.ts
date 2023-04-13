@@ -10,6 +10,7 @@ import * as label from './label';
 import * as listBox from './listBox';
 import * as resizeHandle from './statusBar/resizeHandle';
 import * as statusBar from './statusBar/statusBar';
+import * as textarea from './textarea';
 import * as textInput from './textInput';
 import * as timeInput from './timeInput';
 import * as well from './well';
@@ -19,13 +20,14 @@ const controls: ControlsThemeSection = {
   ...alertText,
   ...button,
   ...checkbox,
-  ...controlWrapper,
   ...comboBox,
+  ...controlWrapper,
   ...divider,
   ...label,
   ...listBox,
   ...resizeHandle,
   ...statusBar,
+  ...textarea,
   ...textInput,
   ...timeInput,
   ...well,
