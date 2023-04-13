@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface Props {
-  checked?: boolean;
-
-  onClick?(): void;
+export interface CheckboxWrapperProps {
+  inlineLabel: boolean;
 }
-
-const CheckboxWrapper = styled.div`
-  ${(props) => props.theme.controls.CheckboxContainer}
+const CheckboxWrapper = styled.div<CheckboxWrapperProps>`
+  ${(props) => props.theme.controls.CheckboxWrapper}
 `;
 
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
@@ -21,12 +18,24 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   width: 1px;
 `;
 
-const StyledCheckbox = styled.div<Props>`
+const StyledCheckbox = styled.div<CheckboxProps>`
   ${(props) => props.theme.controls.Checkbox}
 `;
 
-const Checkbox = ({ checked, onClick }: Props) => (
-  <CheckboxWrapper>
+const CheckboxLabel = styled.label`
+  ${(props) => props.theme.controls.CheckboxLabel}
+`;
+
+interface CheckboxProps {
+  inlineLabel?: boolean;
+  checked?: boolean;
+  onClick?(): void;
+  label?: string;
+}
+
+const Checkbox = ({ checked, onClick, label, inlineLabel }: CheckboxProps) => (
+  <CheckboxWrapper inlineLabel={inlineLabel}>
+    {label && <CheckboxLabel>{label}</CheckboxLabel>}
     <HiddenCheckbox checked={checked} />
     <StyledCheckbox checked={checked} onClick={onClick} />
   </CheckboxWrapper>

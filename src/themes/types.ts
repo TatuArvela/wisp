@@ -6,6 +6,7 @@ const ControlsProperties = [
   'Button',
   'ButtonWrapper',
   'Checkbox',
+  'CheckboxLabel',
   'CheckboxWrapper',
   'ComboBoxButton',
   'ComboBoxControl',

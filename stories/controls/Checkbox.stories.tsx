@@ -16,6 +16,13 @@ export const CheckboxStory = () => {
   return (
     <ControlStoryWrapper>
       <Checkbox checked={checked} onClick={toggleChecked} />
+      <Checkbox
+        checked={checked}
+        onClick={toggleChecked}
+        inlineLabel
+        label="Checkbox"
+      />
+      <Checkbox checked={checked} onClick={toggleChecked} label="Checkbox" />
     </ControlStoryWrapper>
   );
 };
