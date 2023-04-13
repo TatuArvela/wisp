@@ -7,6 +7,7 @@ import { CheckboxThemeProperties } from '../controls/Checkbox';
 import { ComboBoxThemeProperties } from '../controls/ComboBox';
 import { ControlWrapperThemeProperties } from '../controls/ControlWrapper';
 import { DividerThemeProperties } from '../controls/Divider';
+import { FieldsetThemeProperties } from '../controls/Fieldset';
 import { LabelThemeProperties } from '../controls/Label';
 import { ListBoxThemeProperties } from '../controls/ListBox';
 import { StatusBarThemeProperties } from '../controls/StatusBar';
@@ -23,6 +24,7 @@ const ControlsProperties = [
   ...ComboBoxThemeProperties,
   ...ControlWrapperThemeProperties,
   ...DividerThemeProperties,
+  ...FieldsetThemeProperties,
   ...LabelThemeProperties,
   ...ListBoxThemeProperties,
   ...StatusBarThemeProperties,
