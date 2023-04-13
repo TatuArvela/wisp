@@ -1,16 +1,5 @@
 # TODO
 
-## Controls
-
-* Groupbox
-* Label
-* Textbox
-* Time input
-* Toolbar
-* Progress bar
-* Statusbar (for resizing)
-* ScrollableContent
-
 ## Windows
 
 * Add missing methods
@@ -46,7 +35,6 @@
 
 ## Visuals
 
-* Animations
 * Optional faster outline mode for moving and resizing
 
 ## Documentation and verification
