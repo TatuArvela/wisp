@@ -9,6 +9,9 @@ import * as divider from './divider';
 import * as fieldset from './fieldset';
 import * as label from './label';
 import * as listBox from './listBox';
+import * as scrollableContent from './scrollableContent';
+import * as scrollbarHorizontal from './scrollbarHorizontal';
+import * as scrollbarVertical from './scrollbarVertical';
 import * as statusBar from './statusBar';
 import * as textarea from './textarea';
 import * as textInput from './textInput';
@@ -26,6 +29,9 @@ const controls: ControlsThemeSection = {
   ...fieldset,
   ...label,
   ...listBox,
+  ...scrollableContent,
+  ...scrollbarHorizontal,
+  ...scrollbarVertical,
   ...statusBar,
   ...textarea,
   ...textInput,
