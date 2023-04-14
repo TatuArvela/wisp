@@ -119,8 +119,8 @@ const ScrollableContent = ({
     <ScrollableContentWrapper ref={wrapperRef}>
       <ScrollableContentView
         ref={viewRef}
-        vertical={vertical}
-        horizontal={horizontal}
+        vertical={showVertical}
+        horizontal={showHorizontal}
         onScroll={scrollHandler}
       >
         {children}
