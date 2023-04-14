@@ -20,7 +20,7 @@ export const ScrollLeftButton = css`
     left: 5px;
     pointer-events: none;
     position: absolute;
-    top: 12px;
+    top: 13px;
     transform: rotate(45deg);
     width: 8px;
   }
@@ -31,7 +31,7 @@ export const ScrollLeftButton = css`
     left: 5px;
     pointer-events: none;
     position: absolute;
-    top: 6px;
+    top: 7px;
     transform: rotate(-45deg);
     width: 8px;
   }
@@ -54,21 +54,21 @@ export const ScrollRightButton = css`
   &:before {
     border-bottom: 1px solid black;
     content: '';
-    left: 5px;
+    left: 6px;
     pointer-events: none;
     position: absolute;
-    top: 6px;
+    top: 7px;
     transform: rotate(45deg);
-    width: 7px;
+    width: 8px;
   }
 
   &:after {
     border-bottom: 1px solid black;
     content: '';
-    left: 5px;
+    left: 6px;
     pointer-events: none;
     position: absolute;
-    top: 12px;
+    top: 13px;
     transform: rotate(-45deg);
     width: 8px;
   }
