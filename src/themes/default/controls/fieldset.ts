@@ -3,6 +3,7 @@ import { css } from 'styled-components';
 export const Fieldset = css`
   border-radius: 2px;
   border: 1px solid black;
+  font-family: sans-serif;
   padding: 8px;
   margin-bottom: 4px;
 `;

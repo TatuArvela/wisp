@@ -2,11 +2,11 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import del from 'rollup-plugin-delete';
 import dts from 'rollup-plugin-dts';
 import externals from 'rollup-plugin-node-externals';
-import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
 

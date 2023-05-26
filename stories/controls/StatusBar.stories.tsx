@@ -1,27 +1,20 @@
-import React from 'react';
-
 import { StatusBar } from '../../src/index';
-import ControlStoryWrapper from './ControlStoryWrapper';
+import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
   component: StatusBar,
-  title: 'controls/StatusBar',
+  decorators: [ControlStoryDecorator],
 };
 
-export const StatusBarStory = () => (
-  <ControlStoryWrapper>
-    <StatusBar>Status bar</StatusBar>
-  </ControlStoryWrapper>
-);
-StatusBarStory.story = {
-  name: 'StatusBar',
+export const Default = {
+  args: {
+    children: 'Status bar',
+  },
 };
 
-export const WithResizeHandle = () => (
-  <ControlStoryWrapper>
-    <StatusBar showResizeHandle>Status bar</StatusBar>
-  </ControlStoryWrapper>
-);
-WithResizeHandle.story = {
-  name: 'StatusBar with resize handle',
+export const WithResizeHandle = {
+  args: {
+    children: 'Status bar',
+    showResizeHandle: true,
+  },
 };

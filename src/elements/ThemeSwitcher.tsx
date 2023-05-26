@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ComboBox from '../controls/ComboBox';
+import ListBox from '../controls/ListBox';
 import { useThemeManager } from '../themeManager/hooks';
 import Window from '../window/Window';
 
@@ -29,7 +29,7 @@ const ThemeSwitcher = () => {
       }}
       id="THEME_SWITCHER"
     >
-      <ComboBox onChange={onChange} value={value} options={options} />
+      <ListBox onChange={onChange} value={value} options={options} />
     </Window>
   );
 };

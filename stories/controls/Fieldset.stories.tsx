@@ -1,23 +1,17 @@
 import React from 'react';
 
 import { Fieldset } from '../../src';
-import ControlStoryWrapper from './ControlStoryWrapper';
+import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
   component: Fieldset,
-  title: 'controls/Fieldset',
+  decorators: [ControlStoryDecorator],
+  tags: ['autodocs'],
 };
 
-export const FieldsetStory = () => (
-  <ControlStoryWrapper>
-    <Fieldset legend="Fieldset 1">
-      <div>Foo</div>
-    </Fieldset>
-    <Fieldset legend="Fieldset 2">
-      <div>Bar</div>
-    </Fieldset>
-  </ControlStoryWrapper>
-);
-FieldsetStory.story = {
-  name: 'Fieldset',
+export const Default = {
+  args: {
+    legend: 'Fieldset 1',
+    children: <div>Foo</div>,
+  },
 };

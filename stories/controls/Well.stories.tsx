@@ -1,20 +1,16 @@
 import React from 'react';
 
 import { Well } from '../../src';
-import ControlStoryWrapper from './ControlStoryWrapper';
+import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
   component: Well,
-  title: 'controls/Well',
+  decorators: [ControlStoryDecorator],
+  tags: ['autodocs'],
 };
 
-export const WellStory = () => (
-  <ControlStoryWrapper>
-    <Well>
-      <div>Well, well, well!</div>
-    </Well>
-  </ControlStoryWrapper>
-);
-WellStory.story = {
-  name: 'Well',
+export const Default = {
+  args: {
+    children: <div>Well, well, well!</div>,
+  },
 };

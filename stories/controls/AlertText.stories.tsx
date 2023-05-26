@@ -1,18 +1,14 @@
-import React from 'react';
-
 import { AlertText } from '../../src/index';
-import ControlStoryWrapper from './ControlStoryWrapper';
+import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
   component: AlertText,
-  title: 'controls/AlertText',
+  decorators: [ControlStoryDecorator],
+  tags: ['autodocs'],
 };
 
-export const AlertTextStory = () => (
-  <ControlStoryWrapper>
-    <AlertText>AlertText</AlertText>
-  </ControlStoryWrapper>
-);
-AlertTextStory.story = {
-  name: 'AlertText',
+export const Default = {
+  args: {
+    children: 'AlertText',
+  },
 };

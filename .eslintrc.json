@@ -2,7 +2,8 @@
   "extends": [
     "react-app",
     "react-app/jest",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended"
   ],
   "plugins": [
     "simple-import-sort"

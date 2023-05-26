@@ -1,33 +1,17 @@
-import { useState } from '@storybook/addons';
-import React from 'react';
-
-import { Checkbox, Divider } from '../../src/index';
-import ControlStoryWrapper from './ControlStoryWrapper';
+import { Checkbox } from '../../src/index';
+import Argon from '../decorators/Argon';
+import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
   component: Checkbox,
-  title: 'controls/Checkbox',
+  decorators: [ControlStoryDecorator],
+  tags: ['autodocs'],
 };
 
-export const CheckboxStory = () => {
-  const [checked, setChecked] = useState<boolean>(false);
-  const toggleChecked = () => setChecked((prevState) => !prevState);
-
-  return (
-    <ControlStoryWrapper>
-      <Checkbox checked={checked} onClick={toggleChecked} />
-      <Divider />
-      <Checkbox
-        checked={checked}
-        onClick={toggleChecked}
-        inlineLabel
-        label="Checkbox"
-      />
-      <Divider />
-      <Checkbox checked={checked} onClick={toggleChecked} label="Checkbox" />
-    </ControlStoryWrapper>
-  );
-};
-CheckboxStory.story = {
-  name: 'Checkbox',
+export const Default = {
+  args: {
+    label: 'Checkbox',
+    inlineLabel: false,
+  },
+  decorators: [Argon('checked', 'onChange', false, 'toggle')],
 };

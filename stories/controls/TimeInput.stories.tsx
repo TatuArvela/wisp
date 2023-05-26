@@ -1,29 +1,17 @@
-import { useState } from '@storybook/addons';
-import React from 'react';
-
-import { Divider } from '../../src';
-import TimeInput, { Time } from '../../src/controls/TimeInput';
-import ControlStoryWrapper from './ControlStoryWrapper';
+import TimeInput from '../../src/controls/TimeInput';
+import Argon from '../decorators/Argon';
+import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
   component: TimeInput,
-  title: 'controls/TimeInput',
+  decorators: [ControlStoryDecorator],
+  tags: ['autodocs'],
 };
 
-export const TimeInputStory = () => {
-  const [value, setValue] = useState<Time>({
-    hours: 0,
-    minutes: 0,
-  });
-
-  return (
-    <ControlStoryWrapper>
-      <TimeInput value={value} onChange={setValue} label="Time:" />
-      <Divider />
-      <TimeInput value={value} onChange={setValue} label="Time:" inlineLabel />
-    </ControlStoryWrapper>
-  );
-};
-TimeInputStory.story = {
-  name: 'TimeInput',
+export const Default = {
+  args: {
+    label: 'Time:',
+    inlineLabel: false,
+  },
+  decorators: [Argon('value', 'onChange', { minutes: 0, hours: 0 })],
 };

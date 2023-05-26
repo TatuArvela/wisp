@@ -1,18 +1,14 @@
-import React from 'react';
-
 import { Button } from '../../src/index';
-import ControlStoryWrapper from './ControlStoryWrapper';
+import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
   component: Button,
-  title: 'controls/Button',
+  decorators: [ControlStoryDecorator],
+  tags: ['autodocs'],
 };
 
-export const ButtonStory = () => (
-  <ControlStoryWrapper>
-    <Button>Button</Button>
-  </ControlStoryWrapper>
-);
-ButtonStory.story = {
-  name: 'Button',
+export const Default = {
+  args: {
+    children: 'Button',
+  },
 };

@@ -1,18 +1,14 @@
-import React from 'react';
-
 import { Label } from '../../src';
-import ControlStoryWrapper from './ControlStoryWrapper';
+import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
   component: Label,
-  title: 'controls/Label',
+  decorators: [ControlStoryDecorator],
+  tags: ['autodocs'],
 };
 
-export const LabelStory = () => (
-  <ControlStoryWrapper>
-    <Label>Label, label, label!</Label>
-  </ControlStoryWrapper>
-);
-LabelStory.story = {
-  name: 'Label',
+export const Default = {
+  args: {
+    children: 'Label, label, label!',
+  },
 };

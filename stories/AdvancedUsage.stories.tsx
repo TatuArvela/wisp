@@ -1,95 +1,101 @@
-import { useState } from '@storybook/addons';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Window, Wisp } from '../src/index';
 import { useWindow } from '../src/window/WindowContext';
 
 export default {
-  component: Wisp,
   title: 'Wisp/Advanced Usage',
+  component: Wisp,
 };
 
-export const WispInWisp = (): JSX.Element => (
-  <Wisp>
-    <Window
-      id="1"
-      initialState={{
-        title: 'Parent window',
-        width: 600,
-        height: 480,
-      }}
-    >
-      <div
-        style={{
-          border: '1px solid black',
-          boxSizing: 'border-box',
-          height: '100%',
-          width: '100%',
-        }}
-      >
-        <Wisp>
-          <Window id="2" initialState={{ title: 'Child window' }}>
-            Test
-          </Window>
-        </Wisp>
-      </div>
-    </Window>
-  </Wisp>
-);
-
-export const StickyNotes = (): JSX.Element => {
-  const commonState = {
-    height: 200,
-    isClosable: false,
-    isMaximizable: false,
-    isMinimizable: false,
-    positionX: 100,
-    positionY: 100,
-    width: 200,
-  };
-  return (
-    <Wisp enableDefaultElements={false}>
+export const WispInWisp = {
+  args: {
+    children: (
       <Window
         id="1"
         initialState={{
-          ...commonState,
-          isDraggable: false,
-          isResizable: false,
-          title: 'Static note',
+          title: 'Parent window',
+          width: 600,
+          height: 480,
         }}
       >
-        <p>Immovable object</p>
+        <div
+          style={{
+            border: '1px solid black',
+            boxSizing: 'border-box',
+            height: '100%',
+            width: '100%',
+          }}
+        >
+          <Wisp>
+            <Window id="2" initialState={{ title: 'Child window' }}>
+              Test
+            </Window>
+          </Wisp>
+        </div>
       </Window>
-      <Window
-        id="2"
-        initialState={{
-          ...commonState,
-          title: 'Resizable sticky note',
-        }}
-      >
-        <p>Make me big!</p>
-      </Window>
-      <Window
-        id="3"
-        initialState={{
-          ...commonState,
-          isResizable: false,
-          title: 'Sticky note',
-        }}
-      >
-        <p>Can&apos;t close me!</p>
-      </Window>
-    </Wisp>
-  );
+    ),
+  },
 };
 
-export const ExternalWindowToggling = (): JSX.Element => {
+const commonState = {
+  height: 200,
+  isClosable: false,
+  isMaximizable: false,
+  isMinimizable: false,
+  positionX: 100,
+  positionY: 100,
+  width: 200,
+};
+export const StickyNotes = {
+  args: {
+    enableDefaultElements: false,
+    children: (
+      <>
+        <Window
+          id="1"
+          initialState={{
+            ...commonState,
+            isDraggable: false,
+            isResizable: false,
+            title: 'Static note',
+          }}
+        >
+          <p>Immovable object</p>
+        </Window>
+        <Window
+          id="2"
+          initialState={{
+            ...commonState,
+            title: 'Resizable sticky note',
+          }}
+        >
+          <p>Make me big!</p>
+        </Window>
+        <Window
+          id="3"
+          initialState={{
+            ...commonState,
+            isResizable: false,
+            title: 'Sticky note',
+          }}
+        >
+          <p>Can't close me!</p>
+        </Window>
+      </>
+    ),
+  },
+};
+
+export const ExternalWindowToggling = () => {
   const [showWindow, setShowWindow] = useState<boolean>(false);
   return (
     <div>
-      <button type="button" onClick={() => setShowWindow(!showWindow)}>
-        Toggle window
-      </button>
+      <div style={{ padding: '10px' }}>
+        <button type="button" onClick={() => setShowWindow(!showWindow)}>
+          Toggle window
+        </button>
+      </div>
       <div style={{ width: '800px', height: '600px' }}>
         <Wisp>
           <Window id="1" initialState={{ title: 'Initially shown' }}>
@@ -106,7 +112,7 @@ export const ExternalWindowToggling = (): JSX.Element => {
   );
 };
 
-const ContextExample = () => {
+const ContextExampleComponent = () => {
   const window = useWindow();
   return (
     <table>
@@ -131,20 +137,17 @@ const ContextExample = () => {
     </table>
   );
 };
-
-export const WindowContext = (): JSX.Element => {
-  return (
-    <Wisp enableDefaultElements={false}>
-      <Window
-        id="1"
-        initialState={{
-          width: 230,
-          height: 115,
-          title: 'Window Context Example',
-        }}
-      >
-        <ContextExample />
-      </Window>
-    </Wisp>
-  );
-};
+export const WindowContext = () => (
+  <Wisp enableDefaultElements={false}>
+    <Window
+      id="1"
+      initialState={{
+        width: 230,
+        height: 115,
+        title: 'Window Context Example',
+      }}
+    >
+      <ContextExampleComponent />
+    </Window>
+  </Wisp>
+);
