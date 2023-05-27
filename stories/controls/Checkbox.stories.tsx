@@ -1,5 +1,5 @@
 import { Checkbox } from '../../src/index';
-import Argon from '../decorators/Argon';
+import { argonParameters } from '../decorators/Argon';
 import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
@@ -13,5 +13,5 @@ export const Default = {
     label: 'Checkbox',
     inlineLabel: false,
   },
-  decorators: [Argon('checked', 'onChange', false, 'toggle')],
+  parameters: argonParameters('checked', 'onChange', false, 'toggle'),
 };

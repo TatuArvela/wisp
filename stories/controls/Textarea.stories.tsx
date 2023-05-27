@@ -1,5 +1,5 @@
 import Textarea from '../../src/controls/Textarea';
-import Argon from '../decorators/Argon';
+import { argonParameters } from '../decorators/Argon';
 import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
@@ -13,5 +13,5 @@ export const Default = {
     label: 'Feedback:',
     inlineLabel: false,
   },
-  decorators: [Argon('value', 'onChange', '')],
+  parameters: argonParameters('value', 'onChange', ''),
 };

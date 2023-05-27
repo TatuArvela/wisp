@@ -1,4 +1,5 @@
 import { Preview } from "@storybook/react";
+import { ArgonDecorator } from "../stories/decorators/Argon";
 
 const preview: Preview = {
   parameters: {
@@ -8,6 +9,7 @@ const preview: Preview = {
       }
     },
   },
+  decorators: [ArgonDecorator]
 };
 
 export default preview;

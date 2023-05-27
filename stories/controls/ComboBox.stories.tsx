@@ -1,5 +1,5 @@
 import ComboBox from '../../src/controls/ComboBox';
-import Argon from '../decorators/Argon';
+import { argonParameters } from '../decorators/Argon';
 import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
@@ -15,5 +15,5 @@ export const Default = {
     label: 'Smoothie',
     inlineLabel: false,
   },
-  decorators: [Argon('value', 'onChange', undefined)],
+  parameters: argonParameters('value', 'onChange', undefined),
 };
