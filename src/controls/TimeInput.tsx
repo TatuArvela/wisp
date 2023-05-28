@@ -24,7 +24,7 @@ const TimeInputWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.TimeInputWrapper}
 `;
 
-const TimeInputLabel = styled.label`
+const TimeInputLabel = styled.label<{ disabled?: boolean }>`
   ${(props) => props.theme.controls.TimeInputLabel}
 `;
 
@@ -32,7 +32,7 @@ const TimeInputControl = styled.div`
   ${(props) => props.theme.controls.TimeInputControl}
 `;
 
-const TimeInputField = styled.div`
+const TimeInputField = styled.div<{ disabled?: boolean }>`
   ${(props) => props.theme.controls.TimeInputField}
 `;
 
@@ -48,21 +48,34 @@ const TimeInputButtons = styled.div`
   ${(props) => props.theme.controls.TimeInputButtons}
 `;
 
-const TimeInputDecreaseButton = styled.button<{ active?: boolean }>`
+const TimeInputDecreaseButton = styled.button<{
+  active?: boolean;
+  disabled?: boolean;
+}>`
   ${(props) => props.theme.controls.TimeInputDecreaseButton}
 `;
 
-const TimeInputIncreaseButton = styled.button<{ active?: boolean }>`
+const TimeInputIncreaseButton = styled.button<{
+  active?: boolean;
+  disabled?: boolean;
+}>`
   ${(props) => props.theme.controls.TimeInputIncreaseButton}
 `;
 
 interface TimeInputProps extends ControlWrapperProps {
+  disabled?: boolean;
   label?: string;
   nullable?: boolean;
   onChange(value: Time): void;
   value?: Time;
 }
-const TimeInput = ({ inlineLabel, label, onChange, value }: TimeInputProps) => {
+const TimeInput = ({
+  disabled,
+  inlineLabel,
+  label,
+  onChange,
+  value,
+}: TimeInputProps) => {
   const [activeField, setActiveField] = useState<keyof Time>('hours');
   const [activeButton, setActiveButton] = useState<
     'increase' | 'decrease' | undefined
@@ -79,6 +92,7 @@ const TimeInput = ({ inlineLabel, label, onChange, value }: TimeInputProps) => {
   const minutesDisplay = value?.minutes.toString().padStart(2, '0') ?? '00';
 
   const buttonClickHandler = (button: 'increase' | 'decrease') => () => {
+    if (disabled) return;
     onChange(changeTime(value, activeField, button === 'increase' ? 1 : -1));
     setActiveButton(button);
     clearTimeout(activeButtonTimeout);
@@ -90,6 +104,7 @@ const TimeInput = ({ inlineLabel, label, onChange, value }: TimeInputProps) => {
   };
 
   const changeHandler = (field: keyof Time) => (e) => {
+    if (disabled) return;
     onChange({
       ...value,
       [field]: parseInt(e.target.value.substr(-2)),
@@ -97,10 +112,12 @@ const TimeInput = ({ inlineLabel, label, onChange, value }: TimeInputProps) => {
   };
 
   const blurHandler = () => {
+    if (disabled) return;
     value && onChange(constrainTime(value));
   };
 
   const keyDownHandler = (e) => {
+    if (disabled) return;
     if (e.key === 'ArrowUp') {
       e.preventDefault();
       increaseButtonRef.current?.click();
@@ -113,35 +130,39 @@ const TimeInput = ({ inlineLabel, label, onChange, value }: TimeInputProps) => {
 
   return (
     <TimeInputWrapper inlineLabel={inlineLabel}>
-      {label && <TimeInputLabel>{label}</TimeInputLabel>}
+      {label && <TimeInputLabel disabled={disabled}>{label}</TimeInputLabel>}
       <TimeInputControl>
-        <TimeInputField>
+        <TimeInputField disabled={disabled}>
           <TimeInputValue
+            disabled={disabled}
+            onBlur={blurHandler}
+            onChange={changeHandler('hours')}
+            onFocus={() => setActiveField('hours')}
+            onKeyDown={keyDownHandler}
             ref={hoursRef}
             value={hoursDisplay}
-            onKeyDown={keyDownHandler}
-            onChange={changeHandler('hours')}
-            onBlur={blurHandler}
-            onFocus={() => setActiveField('hours')}
           />
           <TimeInputSeparator />
           <TimeInputValue
+            disabled={disabled}
+            onBlur={blurHandler}
+            onChange={changeHandler('minutes')}
+            onFocus={() => setActiveField('minutes')}
+            onKeyDown={keyDownHandler}
             ref={minutesRef}
             value={minutesDisplay}
-            onKeyDown={keyDownHandler}
-            onChange={changeHandler('minutes')}
-            onBlur={blurHandler}
-            onFocus={() => setActiveField('minutes')}
           />
         </TimeInputField>
         <TimeInputButtons>
           <TimeInputIncreaseButton
+            disabled={disabled}
             ref={increaseButtonRef}
             onClick={buttonClickHandler('increase')}
             active={activeButton === 'increase'}
             tabIndex={-1}
           />
           <TimeInputDecreaseButton
+            disabled={disabled}
             ref={decreaseButtonRef}
             onClick={buttonClickHandler('decrease')}
             active={activeButton === 'decrease'}

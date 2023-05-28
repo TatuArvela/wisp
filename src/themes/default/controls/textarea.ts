@@ -7,12 +7,13 @@ export const TextareaWrapper = css<ControlWrapperProps>``;
 
 export const TextareaLabel = Label;
 
-export const TextareaElement = css`
-  border: 1px solid black;
-  border-radius: 1ps;
+export const TextareaElement = css<{ disabled?: boolean }>`
+  border-radius: 1px;
+  border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   box-sizing: border-box;
-  height: 24px;
-  width: 100%;
+  color: ${(props) => (props.disabled ? 'gray' : 'black')};
   font-size: 12px;
+  height: 24px;
   outline: none;
+  width: 100%;
 `;

@@ -15,28 +15,30 @@ export const ComboBoxControl = css`
   width: 100%;
 `;
 
-export const ComboBoxInput = css`
+export const ComboBoxInput = css<{ disabled?: boolean }>`
   border-bottom-left-radius: 1px;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
+  border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  border-left: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   border-right: none;
   border-top-left-radius: 1px;
-  border-top: 1px solid black;
+  border-top: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   box-sizing: border-box;
+  box-sizing: border-box;
+  color: ${(props) => (props.disabled ? 'gray' : 'black')};
   font-size: 12px;
   height: 24px;
   margin: 0;
   outline: none;
   position: relative;
+  user-select: ${(props) => (props.disabled ? 'none' : 'auto')};
   width: 100%;
-  box-sizing: border-box;
 `;
 
-export const ComboBoxButton = css`
+export const ComboBoxButton = css<{ disabled?: boolean }>`
   background: white;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  border-right: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   border-left: none;
   border-radius: 0;
   box-sizing: border-box;
@@ -46,7 +48,7 @@ export const ComboBoxButton = css`
   position: relative;
 
   &:before {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
     content: '';
     left: 2px;
     pointer-events: none;
@@ -57,7 +59,7 @@ export const ComboBoxButton = css`
   }
 
   &:after {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
     content: '';
     left: 8px;
     pointer-events: none;

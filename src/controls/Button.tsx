@@ -4,8 +4,9 @@ import styled from 'styled-components';
 export const ButtonThemeProperties = ['Button', 'ButtonWrapper'] as const;
 
 interface ButtonWrapperProps {
-  width?: number;
+  disabled?: boolean;
   height?: number;
+  width?: number;
 }
 
 const ButtonWrapper = styled.div<ButtonWrapperProps>`
@@ -13,8 +14,9 @@ const ButtonWrapper = styled.div<ButtonWrapperProps>`
 `;
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  width?: number;
+  disabled?: boolean;
   height?: number;
+  width?: number;
 }
 
 const ButtonElement = styled.button`

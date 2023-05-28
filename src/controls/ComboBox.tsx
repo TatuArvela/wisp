@@ -20,7 +20,7 @@ const ComboBoxWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.ComboBoxWrapper}
 `;
 
-const ComboBoxLabel = styled.label`
+const ComboBoxLabel = styled.label<{ disabled?: boolean }>`
   ${(props) => props.theme.controls.ComboBoxLabel}
 `;
 
@@ -28,11 +28,11 @@ const ComboBoxControl = styled.div`
   ${(props) => props.theme.controls.ComboBoxControl}
 `;
 
-const ComboBoxButton = styled(HeadlessComboBox.Button)`
+const ComboBoxButton = styled(HeadlessComboBox.Button)<{ disabled?: boolean }>`
   ${(props) => props.theme.controls.ComboBoxButton}
 `;
 
-const ComboBoxInput = styled(HeadlessComboBox.Input)`
+const ComboBoxInput = styled(HeadlessComboBox.Input)<{ disabled?: boolean }>`
   ${(props) => props.theme.controls.ComboBoxInput}
 `;
 
@@ -51,6 +51,7 @@ const ComboBoxOption = styled(HeadlessComboBox.Option)`
 `;
 
 interface ComboBoxProps extends ControlWrapperProps {
+  disabled?: boolean;
   label?: string;
   nullable?: boolean;
   onChange(value?: string): void;
@@ -58,6 +59,7 @@ interface ComboBoxProps extends ControlWrapperProps {
   value?: string;
 }
 const ComboBox = ({
+  disabled,
   label,
   nullable,
   onChange,
@@ -104,19 +106,21 @@ const ComboBox = ({
 
   return (
     <HeadlessComboBox
+      disabled={disabled}
       value={value ?? ''}
       onChange={onChange}
       nullable={nullable ? true : undefined}
     >
       {({ open }) => (
         <ComboBoxWrapper inlineLabel={inlineLabel}>
-          {label && <ComboBoxLabel>{label}</ComboBoxLabel>}
+          {label && <ComboBoxLabel disabled={disabled}>{label}</ComboBoxLabel>}
           <ComboBoxControl ref={controlRef}>
             <ComboBoxInput
+              disabled={disabled}
               onClick={onInputClick}
               onChange={(event) => setQuery(event.target.value)}
             />
-            <ComboBoxButton ref={buttonRef} />
+            <ComboBoxButton disabled={disabled} ref={buttonRef} />
             <Portal>
               <ComboBoxOptions
                 open={filteredOptions.length > 0 && open}

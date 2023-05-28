@@ -7,12 +7,13 @@ export const TextInputWrapper = css<ControlWrapperProps>``;
 
 export const TextInputLabel = Label;
 
-export const TextInputElement = css`
-  border: 1px solid black;
+export const TextInputElement = css<{ disabled?: boolean }>`
   border-radius: 1ps;
+  border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   box-sizing: border-box;
-  height: 24px;
-  width: 100%;
+  color: ${(props) => (props.disabled ? 'gray' : 'black')};
   font-size: 12px;
+  height: 24px;
   outline: none;
+  width: 100%;
 `;

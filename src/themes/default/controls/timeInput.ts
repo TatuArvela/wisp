@@ -14,21 +14,22 @@ export const TimeInputControl = css`
   width: 100%;
 `;
 
-export const TimeInputField = css`
-  display: flex;
-  border: 1px solid black;
+export const TimeInputField = css<{ disabled?: boolean }>`
   border-radius: 1px;
+  border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  display: flex;
   width: 100%;
 `;
 
-export const TimeInputValue = css`
-  width: 18px;
+export const TimeInputValue = css<{ disabled?: boolean }>`
   border: none;
+  color: ${(props) => (props.disabled ? 'gray' : 'black')};
   outline: none;
+  width: 18px;
 
   &::selection {
     color: white;
-    background: rgb(19, 71, 214);
+    background: ${(props) => (props.disabled ? 'gray' : 'rgb(19, 71, 214)')};
   }
 `;
 
@@ -50,27 +51,33 @@ export const TimeInputButtons = css`
   gap: 2px;
 `;
 
-const activeStyle = css`
+const activeStyleProperties = css`
   background: rgb(200, 200, 200);
   box-shadow: none;
   left: 1px;
   top: 1px;
 `;
-
-export const TimeInputIncreaseButton = css<{ active?: boolean }>`
-  height: 11px;
-  width: 18px;
-  box-sizing: border-box;
-  border-radius: 0;
-  border: 1px solid black;
-  position: relative;
-  background: white;
-  box-shadow: 1px 1px 0 0 gray;
-
-  ${({ active }) => active && activeStyle}
+const activeStyle = css<{ active?: boolean }>`
+  ${({ active }) => active && activeStyleProperties}
   &:active {
-    ${activeStyle}
+    ${activeStyleProperties}
   }
+`;
+
+export const TimeInputIncreaseButton = css<{
+  active?: boolean;
+  disabled?: boolean;
+}>`
+  background: white;
+  border-radius: 0;
+  border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  box-shadow: 1px 1px 0 0 gray;
+  box-sizing: border-box;
+  height: 11px;
+  position: relative;
+  width: 18px;
+
+  ${(props) => !props.disabled && activeStyle}
 
   &:before {
     border-bottom: 1px solid black;
@@ -95,20 +102,20 @@ export const TimeInputIncreaseButton = css<{ active?: boolean }>`
   }
 `;
 
-export const TimeInputDecreaseButton = css<{ active?: boolean }>`
-  height: 11px;
-  width: 18px;
-  box-sizing: border-box;
-  border-radius: 0;
-  border: 1px solid black;
-  position: relative;
+export const TimeInputDecreaseButton = css<{
+  active?: boolean;
+  disabled?: boolean;
+}>`
   background: white;
+  border-radius: 0;
+  border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   box-shadow: 1px 1px 0 0 gray;
+  box-sizing: border-box;
+  height: 11px;
+  position: relative;
+  width: 18px;
 
-  ${({ active }) => active && activeStyle}
-  &:active {
-    ${activeStyle}
-  }
+  ${(props) => !props.disabled && activeStyle}
 
   &:before {
     border-bottom: 1px solid black;

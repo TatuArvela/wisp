@@ -18,11 +18,11 @@ const ListBoxWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.ListBoxWrapper}
 `;
 
-const ListBoxLabel = styled.label`
+const ListBoxLabel = styled.label<{ disabled?: boolean }>`
   ${(props) => props.theme.controls.ListBoxLabel}
 `;
 
-const ListBoxButton = styled(HeadlessListBox.Button)`
+const ListBoxButton = styled(HeadlessListBox.Button)<{ disabled?: boolean }>`
   ${(props) => props.theme.controls.ListBoxButton}
 `;
 
@@ -41,12 +41,14 @@ const ListBoxOption = styled(HeadlessListBox.Option)`
 `;
 
 interface ListBoxProps extends ControlWrapperProps {
+  disabled?: boolean;
   label?: string;
   onChange(value?: string): void;
   options: string[];
   value?: string;
 }
 const ListBox = ({
+  disabled,
   inlineLabel,
   label,
   onChange,
@@ -78,11 +80,17 @@ const ListBox = ({
   }, [window]);
 
   return (
-    <HeadlessListBox value={value ?? ''} onChange={onChange}>
+    <HeadlessListBox
+      disabled={disabled}
+      value={value ?? ''}
+      onChange={onChange}
+    >
       {({ open }) => (
         <ListBoxWrapper inlineLabel={inlineLabel}>
-          {label && <ListBoxLabel>{label}</ListBoxLabel>}
-          <ListBoxButton ref={buttonRef}>{value}</ListBoxButton>
+          {label && <ListBoxLabel disabled={disabled}>{label}</ListBoxLabel>}
+          <ListBoxButton disabled={disabled} ref={buttonRef}>
+            {value}
+          </ListBoxButton>
           <Portal>
             <ListBoxOptions open={open} {...sizes}>
               {options.map((option) => (

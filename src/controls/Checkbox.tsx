@@ -30,23 +30,30 @@ const StyledCheckbox = styled.div<StyledCheckboxProps>`
   ${(props) => props.theme.controls.Checkbox}
 `;
 
-const CheckboxLabel = styled.label`
+const CheckboxLabel = styled.label<{ disabled?: boolean }>`
   ${(props) => props.theme.controls.CheckboxLabel}
 `;
 
 interface CheckboxProps extends ControlWrapperProps {
   checked?: boolean;
+  disabled?: boolean;
   onChange(value: boolean): void;
   label?: string;
 }
 
-const Checkbox = ({ checked, onChange, label, inlineLabel }: CheckboxProps) => {
-  const onClick = () => onChange(!checked);
+const Checkbox = ({
+  checked,
+  disabled,
+  onChange,
+  label,
+  inlineLabel,
+}: CheckboxProps) => {
+  const onClick = () => !disabled && onChange(!checked);
   return (
     <CheckboxWrapper inlineLabel={inlineLabel}>
-      {label && <CheckboxLabel>{label}</CheckboxLabel>}
+      {label && <CheckboxLabel disabled={disabled}>{label}</CheckboxLabel>}
       <HiddenCheckbox checked={checked} onChange={() => undefined} />
-      <StyledCheckbox checked={checked} onClick={onClick} />
+      <StyledCheckbox checked={checked} disabled={disabled} onClick={onClick} />
     </CheckboxWrapper>
   );
 };

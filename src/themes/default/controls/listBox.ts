@@ -8,10 +8,10 @@ export const ListBoxWrapper = css<ControlWrapperProps>``;
 
 export const ListBoxLabel = Label;
 
-export const ListBoxButton = css`
+export const ListBoxButton = css<{ disabled?: boolean }>`
   background: white;
   border-radius: 0;
-  border: 1px solid black;
+  border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   box-sizing: border-box;
   display: flex;
   height: 24px;
@@ -22,7 +22,7 @@ export const ListBoxButton = css`
   width: 100%;
 
   &:before {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
     content: '';
     right: 10px;
     pointer-events: none;
@@ -33,7 +33,7 @@ export const ListBoxButton = css`
   }
 
   &:after {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
     content: '';
     right: 4px;
     pointer-events: none;
