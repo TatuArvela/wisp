@@ -31,13 +31,10 @@ Add a `Wisp` component to your React component, and give it some `Window`
 components as children. The containing component needs to have a width and a
 height.
 
-`initialState` prop can be used to provide a title, size and position, as well
-as other properties.
-
 ```jsx
 <div className="App">
   <Wisp>
-    <Window id="hello world" initialState={{ title: 'Hello World' }}>
+    <Window id="hello world" title="Hello World">
       Check out Wisp
     </Window>
   </Wisp>

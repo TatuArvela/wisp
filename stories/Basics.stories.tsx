@@ -10,7 +10,7 @@ export default {
 export const HelloWorld = {
   args: {
     children: (
-      <Window id="hello world" initialState={{ title: 'Hello World' }}>
+      <Window id="hello world" title="Hello World">
         Check out Wisp
       </Window>
     ),
@@ -25,7 +25,7 @@ export const NoDefaultElements = {
     children: (
       <>
         <Desktop />
-        <Window id="hello world" initialState={{ title: 'Hello World' }}>
+        <Window id="hello world" title="Hello World">
           Check out Wisp
         </Window>
       </>
@@ -43,15 +43,7 @@ export const MultipleWindows = {
         <AlertWindow id="2" title="Dos">
           Warning!
         </AlertWindow>
-        <Window
-          id="3"
-          initialState={{
-            title: 'Tres',
-            width: 400,
-            height: 300,
-            isMinimized: true,
-          }}
-        >
+        <Window id="3" title="Tres" width={400} height={300} isMinimized={true}>
           <p>Regular window</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod

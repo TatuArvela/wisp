@@ -21,12 +21,10 @@ const AlertWindow = ({
 }: Props) => (
   <Window
     id={id}
-    initialState={{
-      title,
-      isMaximizable: false,
-      isMinimizable: false,
-      isResizable: false,
-    }}
+    title={title}
+    isMaximizable={false}
+    isMinimizable={false}
+    isResizable={false}
   >
     <AlertText>{children}</AlertText>
     <AlertButton onClick={onButtonClick} type="button">

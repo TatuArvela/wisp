@@ -11,14 +11,7 @@ export default {
 export const WispInWisp = {
   args: {
     children: (
-      <Window
-        id="1"
-        initialState={{
-          title: 'Parent window',
-          width: 600,
-          height: 480,
-        }}
-      >
+      <Window id="1" title="Parent window" width={600} height={480}>
         <div
           style={{
             border: '1px solid black',
@@ -28,7 +21,7 @@ export const WispInWisp = {
           }}
         >
           <Wisp>
-            <Window id="2" initialState={{ title: 'Child window' }}>
+            <Window id="2" title="Child window">
               Test
             </Window>
           </Wisp>
@@ -54,32 +47,17 @@ export const StickyNotes = {
       <>
         <Window
           id="1"
-          initialState={{
-            ...commonState,
-            isDraggable: false,
-            isResizable: false,
-            title: 'Static note',
-          }}
+          {...commonState}
+          isDraggable={false}
+          isResizable={false}
+          title="Static note"
         >
           <p>Immovable object</p>
         </Window>
-        <Window
-          id="2"
-          initialState={{
-            ...commonState,
-            title: 'Resizable sticky note',
-          }}
-        >
+        <Window id="2" {...commonState} title="Resizable sticky note">
           <p>Make me big!</p>
         </Window>
-        <Window
-          id="3"
-          initialState={{
-            ...commonState,
-            isResizable: false,
-            title: 'Sticky note',
-          }}
-        >
+        <Window id="3" {...commonState} isResizable={false} title="Sticky note">
           <p>Can't close me!</p>
         </Window>
       </>
@@ -98,11 +76,11 @@ export const ExternalWindowToggling = () => {
       </div>
       <div style={{ width: '800px', height: '600px' }}>
         <Wisp>
-          <Window id="1" initialState={{ title: 'Initially shown' }}>
+          <Window id="1" title="Initially shown">
             This window is initially shown
           </Window>
           {showWindow && (
-            <Window id="2" initialState={{ title: 'Toggled window' }}>
+            <Window id="2" title="Toggled window">
               This window is toggled by the button above
             </Window>
           )}
@@ -139,14 +117,7 @@ const ContextExampleComponent = () => {
 };
 export const WindowContext = () => (
   <Wisp enableDefaultElements={false}>
-    <Window
-      id="1"
-      initialState={{
-        width: 230,
-        height: 115,
-        title: 'Window Context Example',
-      }}
-    >
+    <Window id="1" width={230} height={115} title="Window Context Example">
       <ContextExampleComponent />
     </Window>
   </Wisp>

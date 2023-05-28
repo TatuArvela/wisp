@@ -20,14 +20,12 @@ const ThemeSwitcher = () => {
 
   return (
     <Window
-      initialState={{
-        title: 'Theme Switcher',
-        isResizable: false,
-        isClosable: false,
-        isMaximizable: false,
-        height: 58,
-      }}
       id="THEME_SWITCHER"
+      title="Theme Switcher"
+      isResizable={false}
+      isClosable={false}
+      isMaximizable={false}
+      height={58}
     >
       <ListBox onChange={onChange} value={value} options={options} />
     </Window>

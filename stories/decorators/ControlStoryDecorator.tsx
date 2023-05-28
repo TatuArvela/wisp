@@ -34,12 +34,10 @@ export const buildControlStoryDecorator =
         <Desktop />
         <Window
           id="1"
-          initialState={{
-            width: width ?? 300,
-            height: height ?? 160,
-            isClosable: false,
-            isMaximizable: false,
-          }}
+          width={width ?? 300}
+          height={height ?? 160}
+          isClosable={false}
+          isMaximizable={false}
         >
           <Story />
         </Window>

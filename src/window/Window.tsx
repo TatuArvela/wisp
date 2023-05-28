@@ -10,21 +10,20 @@ import { windowDragHandler } from './handlers/windowDragHandler';
 import { windowResizeHandler } from './handlers/windowResizeHandler';
 import { WindowProvider } from './WindowContext';
 
-export interface WindowProps {
+// Altering the state post-mount is done with the windowManager API
+export type WindowProps = {
   children: React.ReactNode;
   id: string;
-  // Altering the state post-mount is done with the windowManager API
-  initialState?: Partial<WindowType>;
-}
+} & Partial<WindowType>;
 
-const Window: React.FC<WindowProps> = ({ children, id, initialState }) => {
+const Window: React.FC<WindowProps> = ({ children, id, ...windowProps }) => {
   const windowManager = useWindowManager();
   const wmWindow = windowManager.windows.get(id);
   const orderNumber = windowManager.windowOrder.indexOf(id);
 
   useEffect(() => {
     if (!wmWindow) {
-      windowManager.createWindow(id, initialState);
+      windowManager.createWindow(id, windowProps);
     }
     return () => windowManager.closeWindow(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
