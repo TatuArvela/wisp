@@ -2,7 +2,7 @@ import { useArgs } from '@storybook/preview-api';
 import { Decorator } from '@storybook/react';
 import React, { useCallback, useEffect, useState } from 'react';
 
-export const argonParameters = (
+export const argon = (
   valueProp: ArgonParameters['valueProp'],
   onChangeProp: ArgonParameters['onChangeProp'],
   defaultValue: ArgonParameters['defaultValue'],
@@ -82,3 +82,5 @@ export const ArgonDecorator: Decorator = (Story, context) => {
 
   return <Story args={argonArgs} />;
 };
+
+export default argon;

@@ -1,5 +1,5 @@
 import ListBox from '../../src/controls/ListBox';
-import { argonParameters } from '../decorators/Argon';
+import argon from '../decorators/Argon';
 import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
@@ -15,5 +15,5 @@ export const Default = {
     label: 'Smoothie',
     inlineLabel: false,
   },
-  parameters: argonParameters('value', 'onChange', undefined),
+  parameters: argon('value', 'onChange', undefined),
 };

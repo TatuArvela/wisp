@@ -1,5 +1,5 @@
 import TimeInput from '../../src/controls/TimeInput';
-import { argonParameters } from '../decorators/Argon';
+import argon from '../decorators/Argon';
 import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
 
 export default {
@@ -13,5 +13,5 @@ export const Default = {
     label: 'Time:',
     inlineLabel: false,
   },
-  parameters: argonParameters('value', 'onChange', { minutes: 0, hours: 0 }),
+  parameters: argon('value', 'onChange', { minutes: 0, hours: 0 }),
 };
