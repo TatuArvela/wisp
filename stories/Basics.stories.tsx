@@ -37,6 +37,12 @@ export const MultipleWindows = {
   args: {
     children: (
       <>
+        <AlertWindow id="1" title="Uno">
+          Alert!
+        </AlertWindow>
+        <AlertWindow id="2" title="Dos">
+          Warning!
+        </AlertWindow>
         <Window
           id="3"
           initialState={{
@@ -57,12 +63,6 @@ export const MultipleWindows = {
             mollit anim id est laborum.
           </p>
         </Window>
-        <AlertWindow id="1" title="Uno">
-          Alert!
-        </AlertWindow>
-        <AlertWindow id="2" title="Dos">
-          Warning!
-        </AlertWindow>
       </>
     ),
   },
