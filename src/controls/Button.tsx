@@ -24,7 +24,7 @@ const ButtonElement = styled.button`
 `;
 
 const Button = ({ width, height, ...rest }: ButtonProps) => (
-  <ButtonWrapper width={width} height={height}>
+  <ButtonWrapper style={{ width: `${width}px`, height: `${height}px` }}>
     <ButtonElement {...rest} />
   </ButtonWrapper>
 );
