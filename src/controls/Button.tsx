@@ -23,9 +23,12 @@ const ButtonElement = styled.button`
   ${(props) => props.theme.controls.Button}
 `;
 
-const Button = ({ width, height, ...rest }: ButtonProps) => (
-  <ButtonWrapper style={{ width: `${width}px`, height: `${height}px` }}>
-    <ButtonElement {...rest} />
+const Button = ({ width, height, disabled, ...rest }: ButtonProps) => (
+  <ButtonWrapper
+    disabled={disabled}
+    style={{ width: `${width}px`, height: `${height}px` }}
+  >
+    <ButtonElement disabled={disabled} {...rest} />
   </ButtonWrapper>
 );
 

@@ -1,35 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { WindowIcon } from '../../windowManager/types';
+import type { Icon } from '../../icons/types';
+import { getIconFileForSize } from '../../icons/utils';
 
 export type TaskbarButtonProps = {
   active: boolean;
-  icon?: WindowIcon;
+  icon?: Icon;
   title?: string;
   onClick(): void;
 };
 
-const StyledTaskbarButton = styled.button<TaskbarButtonProps>`
+const TaskbarButtonElement = styled.button<TaskbarButtonProps>`
   ${(props) => props.theme.elements.TaskbarButton}
 `;
 
-const Title = styled.div`
+const TaskbarButtonTitle = styled.div`
   ${(props) => props.theme.elements.TaskbarButtonTitle}
 `;
 
-const StyledIcon = styled.img`
+const TaskbarButtonIconElement = styled.img`
   ${(props) => props.theme.elements.TaskbarButtonIcon}
 `;
 
-const Icon = ({ icon }: { icon: WindowIcon }) => {
+const TaskbarButtonIcon = ({ icon }: { icon: Icon }) => {
   if (!icon) {
     return null;
   }
 
-  // TODO: get most suitable icon size from entries
-  const iconFile = Object.entries(icon)[0][1];
-  return <StyledIcon src={iconFile} alt="Window icon" />;
+  const iconFile = getIconFileForSize(icon);
+  return <TaskbarButtonIconElement src={iconFile} alt="Window icon" />;
 };
 
 const TaskbarButton = ({
@@ -39,10 +39,10 @@ const TaskbarButton = ({
   onClick,
 }: TaskbarButtonProps) => {
   return (
-    <StyledTaskbarButton type="button" active={active} onClick={onClick}>
-      <Icon icon={icon} />
-      <Title>{title}</Title>
-    </StyledTaskbarButton>
+    <TaskbarButtonElement type="button" active={active} onClick={onClick}>
+      <TaskbarButtonIcon icon={icon} />
+      <TaskbarButtonTitle>{title}</TaskbarButtonTitle>
+    </TaskbarButtonElement>
   );
 };
 

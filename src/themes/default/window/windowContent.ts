@@ -8,7 +8,6 @@ export const WindowContent = css`
   font-size: 14px;
   height: 100%;
   margin: 0;
-  overflow: hidden;
   text-align: left;
   user-select: none;
   width: 100%;

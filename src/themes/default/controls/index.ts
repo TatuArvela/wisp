@@ -16,6 +16,8 @@ import * as statusBar from './statusBar';
 import * as textarea from './textarea';
 import * as textInput from './textInput';
 import * as timeInput from './timeInput';
+import * as toolbar from './toolbar';
+import * as toolbarButton from './toolbarButton';
 import * as well from './well';
 
 const controls: ControlsThemeSection = {
@@ -36,6 +38,8 @@ const controls: ControlsThemeSection = {
   ...textarea,
   ...textInput,
   ...timeInput,
+  ...toolbar,
+  ...toolbarButton,
   ...well,
 };
 

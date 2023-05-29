@@ -17,6 +17,7 @@ import { StatusBarThemeProperties } from '../controls/StatusBar';
 import { TextareaThemeProperties } from '../controls/Textarea';
 import { TextInputThemeProperties } from '../controls/TextInput';
 import { TimeInputThemeProperties } from '../controls/TimeInput';
+import { ToolbarButtonThemeProperties } from '../controls/ToolbarButton';
 import { WellThemeProperties } from '../controls/Well';
 
 const ControlsProperties = [
@@ -37,6 +38,7 @@ const ControlsProperties = [
   ...TextareaThemeProperties,
   ...TextInputThemeProperties,
   ...TimeInputThemeProperties,
+  ...ToolbarButtonThemeProperties,
   ...WellThemeProperties,
 ] as const;
 
@@ -62,11 +64,14 @@ const WindowProperties = [
   'Title',
   'TitleBar',
   'TitleBarButtons',
+  'TitleBarIcon',
+  'TitleBarTitle',
+  'TitleBarTitleContainer',
   'UnmaximizeButton',
-  'WResize',
   'WindowButton',
   'WindowContent',
   'WindowElement',
+  'WResize',
 ] as const;
 
 type Style = FlattenInterpolation<any>;

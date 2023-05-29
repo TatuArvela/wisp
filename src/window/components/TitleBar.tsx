@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { WindowIcon } from '../../windowManager/types';
+import type { Icon } from '../../icons/types';
+import { getIconFileForSize } from '../../icons/utils';
 import TitleBarButtons from './TitleBarButtons';
 
 export interface TitleBarProps {
@@ -13,7 +14,7 @@ interface Props extends TitleBarProps {
 
   drag(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
 
-  icon: WindowIcon;
+  icon: Icon;
   isClosable: boolean;
   isMaximizable: boolean;
   isMaximized: boolean;
@@ -33,25 +34,24 @@ const TitleBarElement = styled.div<TitleBarProps>`
 `;
 
 const TitleContainer = styled.div`
-  ${(props) => props.theme.window.TitleContainer}
+  ${(props) => props.theme.window.TitleBarTitleContainer}
 `;
 
-const Title = styled.div`
-  ${(props) => props.theme.window.Title}
+const TitleBarTitle = styled.div`
+  ${(props) => props.theme.window.TitleBarTitle}
 `;
 
-const StyledIcon = styled.img`
-  ${(props) => props.theme.window.Icon}
+const TitleBarIconElement = styled.img`
+  ${(props) => props.theme.window.TitleBarIcon}
 `;
 
-const Icon = ({ icon }: { icon: WindowIcon }) => {
+const TitleBarIcon = ({ icon }: { icon: Icon }) => {
   if (!icon) {
     return null;
   }
 
-  // TODO: get most suitable icon size from entries
-  const iconFile = Object.entries(icon)[0][1];
-  return <StyledIcon src={iconFile} alt="Window icon" />;
+  const iconFile = getIconFileForSize(icon);
+  return <TitleBarIconElement src={iconFile} alt="Window icon" />;
 };
 
 const TitleBar = ({
@@ -75,8 +75,8 @@ const TitleBar = ({
   return (
     <TitleBarElement isActive={isActive}>
       <TitleContainer onMouseDown={drag} onDoubleClick={onTitleDoubleClick}>
-        <Icon icon={icon} />
-        <Title>{title}</Title>
+        <TitleBarIcon icon={icon} />
+        <TitleBarTitle>{title}</TitleBarTitle>
       </TitleContainer>
       <TitleBarButtons
         close={close}

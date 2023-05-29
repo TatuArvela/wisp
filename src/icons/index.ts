@@ -1,10 +1,11 @@
+import { Icon } from './types';
 import wispIcon from './wisp.png';
 
-const wisp = {
+const wisp: Icon = {
   48: wispIcon,
 };
 
-const icons = {
+const icons: { [key: string]: Icon } = {
   wisp,
 };
 

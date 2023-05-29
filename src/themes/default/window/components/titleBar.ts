@@ -19,18 +19,18 @@ export const TitleBar = css<TitleBarProps>`
   width: 100%;
 `;
 
-export const TitleContainer = css`
+export const TitleBarTitleContainer = css`
   display: flex;
   align-items: center;
   flex-grow: 1;
 `;
 
-export const Title = css`
+export const TitleBarTitle = css`
   position: relative;
   top: 1px;
 `;
 
-export const Icon = css`
+export const TitleBarIcon = css`
   display: block;
   height: 16px;
   width: 16px;

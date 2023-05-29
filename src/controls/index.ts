@@ -11,4 +11,6 @@ export { default as ScrollableContent } from './ScrollableContent';
 export { default as StatusBar } from './StatusBar';
 export { default as TextInput } from './TextInput';
 export { default as TimeInput } from './TimeInput';
+export { default as Toolbar } from './Toolbar';
+export { default as ToolbarButton } from './ToolbarButton';
 export { default as Well } from './Well';

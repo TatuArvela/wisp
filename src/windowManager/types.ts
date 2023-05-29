@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Icon } from '../icons/types';
+
 export interface WindowManagerState {
   activeWindowId: string | null;
   windows: Map<string, WindowType>;
@@ -87,7 +89,7 @@ export interface WindowManager extends WindowManagerBase, WindowStateMethods {}
 
 export interface WindowType {
   height: number;
-  icon?: WindowIcon;
+  icon?: Icon;
   id: string;
   isClosable: boolean;
   isClosed: boolean;
@@ -106,10 +108,6 @@ export interface WindowType {
   showAsTask: boolean;
   title: string;
   width: number;
-}
-
-export interface WindowIcon {
-  [size: number]: string;
 }
 
 export interface ViewportWindowMargins {
