@@ -50,6 +50,7 @@ const ElementsProperties = [
 const WindowProperties = [
   'CloseButton',
   'EResize',
+  'Icon',
   'MaximizeButton',
   'MinimizeButton',
   'NEResize',

@@ -8,6 +8,7 @@ const constructWindow = (
 ): WindowType => {
   return {
     height: initial?.height ?? config.defaultWindowHeight,
+    icon: initial?.icon,
     id,
     isClosable: initial?.isClosable ?? true,
     isClosed: initial?.isClosed ?? false,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AlertWindow, Desktop, Window, Wisp } from '../src/index';
+import { AlertWindow, Desktop, icons, Window, Wisp } from '../src/index';
 
 export default {
   component: Wisp,
@@ -10,7 +10,7 @@ export default {
 export const HelloWorld = {
   args: {
     children: (
-      <Window id="hello world" title="Hello World">
+      <Window id="hello world" title="Hello World" icon={icons.wisp}>
         Check out Wisp
       </Window>
     ),
@@ -21,7 +21,7 @@ export const NoDefaultElements = {
   args: {
     enableDefaultElements: false,
     enableVersionInfo: false,
-    enableWindowMinimzie: false,
+    enableWindowMinimize: false,
     children: (
       <>
         <Desktop />

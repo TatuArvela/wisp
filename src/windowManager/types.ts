@@ -87,6 +87,7 @@ export interface WindowManager extends WindowManagerBase, WindowStateMethods {}
 
 export interface WindowType {
   height: number;
+  icon?: WindowIcon;
   id: string;
   isClosable: boolean;
   isClosed: boolean;
@@ -104,6 +105,10 @@ export interface WindowType {
   positionY: number;
   title: string;
   width: number;
+}
+
+export interface WindowIcon {
+  [size: number]: string;
 }
 
 export interface ViewportWindowMargins {

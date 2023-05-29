@@ -12,7 +12,6 @@ export const TitleBar = css<TitleBarProps>`
   font-family: sans-serif;
   font-size: 12px;
   height: 24px;
-  line-height: 18px;
   margin: 0 0 4px;
   padding-left: 4px;
   text-align: left;
@@ -20,8 +19,20 @@ export const TitleBar = css<TitleBarProps>`
   width: 100%;
 `;
 
-export const Title = css`
-  display: block;
+export const TitleContainer = css`
+  display: flex;
+  align-items: center;
   flex-grow: 1;
-  margin-top: 4px;
+`;
+
+export const Title = css`
+  position: relative;
+  top: 1px;
+`;
+
+export const Icon = css`
+  display: block;
+  height: 16px;
+  width: 16px;
+  margin-right: 4px;
 `;

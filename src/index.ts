@@ -4,6 +4,7 @@ export { default as Desktop } from './elements/Desktop';
 export { default as Taskbar } from './elements/Taskbar/Taskbar';
 export { default as ThemeSwitcher } from './elements/ThemeSwitcher';
 export { default as VersionInfo } from './elements/VersionInfo';
+export { default as icons } from './icons';
 export { useThemeManager } from './themeManager/hooks';
 export { default as defaultTheme } from './themes/default/theme';
 export { Theme } from './themes/types';

@@ -29,9 +29,9 @@ const Taskbar = (): JSX.Element => {
       key={id}
       onClick={() => restoreWindow(id)}
       active={id === activeWindowId}
-    >
-      {window.title}
-    </TaskbarButton>
+      icon={window.icon}
+      title={window.title}
+    />
   );
 
   return (

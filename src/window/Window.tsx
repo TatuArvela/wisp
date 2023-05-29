@@ -51,6 +51,7 @@ const Window: React.FC<WindowProps> = ({ children, id, ...windowProps }) => {
         <TitleBar
           close={() => windowManager.closeWindow(id)}
           drag={windowDragHandler(windowManager, window)}
+          icon={window.icon}
           isActive={id === windowManager.activeWindowId}
           isClosable={window.isClosable}
           isMaximizable={window.isMaximizable}

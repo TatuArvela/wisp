@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { WindowIcon } from '../../windowManager/types';
 import TitleBarButtons from './TitleBarButtons';
 
 export interface TitleBarProps {
@@ -12,6 +13,7 @@ interface Props extends TitleBarProps {
 
   drag(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
 
+  icon: WindowIcon;
   isClosable: boolean;
   isMaximizable: boolean;
   isMaximized: boolean;
@@ -30,13 +32,32 @@ const TitleBarElement = styled.div<TitleBarProps>`
   ${(props) => props.theme.window.TitleBar}
 `;
 
+const TitleContainer = styled.div`
+  ${(props) => props.theme.window.TitleContainer}
+`;
+
 const Title = styled.div`
   ${(props) => props.theme.window.Title}
 `;
 
+const StyledIcon = styled.img`
+  ${(props) => props.theme.window.Icon}
+`;
+
+const Icon = ({ icon }: { icon: WindowIcon }) => {
+  if (!icon) {
+    return null;
+  }
+
+  // TODO: get most suitable icon size from entries
+  const iconFile = Object.entries(icon)[0][1];
+  return <StyledIcon src={iconFile} alt="Window icon" />;
+};
+
 const TitleBar = ({
   close,
   drag,
+  icon,
   isActive,
   isMaximizable,
   isMaximized,
@@ -53,9 +74,10 @@ const TitleBar = ({
 
   return (
     <TitleBarElement isActive={isActive}>
-      <Title onMouseDown={drag} onDoubleClick={onTitleDoubleClick}>
-        {title}
-      </Title>
+      <TitleContainer onMouseDown={drag} onDoubleClick={onTitleDoubleClick}>
+        <Icon icon={icon} />
+        <Title>{title}</Title>
+      </TitleContainer>
       <TitleBarButtons
         close={close}
         isClosable={isClosable}
