@@ -36,7 +36,9 @@ const Taskbar = (): JSX.Element => {
 
   return (
     <TaskbarElement ref={taskbarRef}>
-      {Array.from(windows.entries()).map(mapButtons)}
+      {Array.from(windows.entries())
+        .filter(([id, window]) => window.showAsTask)
+        .map(mapButtons)}
     </TaskbarElement>
   );
 };

@@ -103,6 +103,7 @@ export interface WindowType {
   minWidth?: number;
   positionX: number;
   positionY: number;
+  showAsTask: boolean;
   title: string;
   width: number;
 }

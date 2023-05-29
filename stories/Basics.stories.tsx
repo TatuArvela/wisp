@@ -55,6 +55,15 @@ export const MultipleWindows = {
             mollit anim id est laborum.
           </p>
         </Window>
+        <Window
+          id="4"
+          title="Quatro"
+          isResizable={false}
+          isMinimizable={false}
+          showAsTask={false}
+        >
+          Not visible in task bar!
+        </Window>
       </>
     ),
   },

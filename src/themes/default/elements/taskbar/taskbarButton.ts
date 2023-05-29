@@ -14,7 +14,7 @@ export const TaskbarButton = css<TaskbarButtonProps>`
   border-radius: 3px;
   border: 1px solid gray;
   box-shadow: 1px 1px 0 lightgray;
-  display: flex;
+  display: inline-flex;
   flex-grow: 1;
   font-size: 12px;
   height: 22px;

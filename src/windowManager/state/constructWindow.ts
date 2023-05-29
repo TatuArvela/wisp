@@ -26,6 +26,7 @@ const constructWindow = (
     minWidth: initial?.minWidth ?? config.minWindowWidth,
     positionX: initial?.positionX ?? config.newWindowXOffset,
     positionY: initial?.positionY ?? config.newWindowYOffset,
+    showAsTask: initial?.showAsTask ?? true,
     title: initial?.title ?? '',
     width: initial?.width ?? config.defaultWindowWidth,
   };
