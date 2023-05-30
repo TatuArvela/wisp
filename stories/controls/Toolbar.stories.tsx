@@ -11,7 +11,6 @@ export default {
 
 export const Default = {
   args: {
-    label: 'Button',
     children: (
       <>
         <ToolbarButton label="Action" />

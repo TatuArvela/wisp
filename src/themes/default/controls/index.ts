@@ -9,6 +9,7 @@ import * as divider from './divider';
 import * as fieldset from './fieldset';
 import * as label from './label';
 import * as listBox from './listBox';
+import * as menuBar from './menuBar';
 import * as scrollableContent from './scrollableContent';
 import * as scrollbarHorizontal from './scrollbarHorizontal';
 import * as scrollbarVertical from './scrollbarVertical';
@@ -31,6 +32,7 @@ const controls: ControlsThemeSection = {
   ...fieldset,
   ...label,
   ...listBox,
+  ...menuBar,
   ...scrollableContent,
   ...scrollbarHorizontal,
   ...scrollbarVertical,

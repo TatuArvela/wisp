@@ -10,6 +10,7 @@ import { DividerThemeProperties } from '../controls/Divider';
 import { FieldsetThemeProperties } from '../controls/Fieldset';
 import { LabelThemeProperties } from '../controls/Label';
 import { ListBoxThemeProperties } from '../controls/ListBox';
+import { MenuBarThemeProperties } from '../controls/MenuBar';
 import { ScrollableContentThemeProperties } from '../controls/ScrollableContent';
 import { ScrollbarHorizontalThemeProperties } from '../controls/ScrollbarHorizontal';
 import { ScrollbarVerticalThemeProperties } from '../controls/ScrollbarVertical';
@@ -31,6 +32,7 @@ const ControlsProperties = [
   ...FieldsetThemeProperties,
   ...LabelThemeProperties,
   ...ListBoxThemeProperties,
+  ...MenuBarThemeProperties,
   ...ScrollableContentThemeProperties,
   ...ScrollbarHorizontalThemeProperties,
   ...ScrollbarVerticalThemeProperties,
