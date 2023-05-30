@@ -1,4 +1,5 @@
 import { ControlsThemeSection } from '../../types';
+import * as addressBar from './addressBar';
 import * as alertButton from './alertButton';
 import * as alertText from './alertText';
 import * as button from './button';
@@ -23,6 +24,7 @@ import * as toolbarButton from './toolbarButton';
 import * as well from './well';
 
 const controls: ControlsThemeSection = {
+  ...addressBar,
   ...alertButton,
   ...alertText,
   ...button,

@@ -8,7 +8,7 @@ export const TextInputWrapper = css<ControlWrapperProps>``;
 export const TextInputLabel = Label;
 
 export const TextInputElement = css<{ disabled?: boolean }>`
-  border-radius: 1ps;
+  border-radius: 1px;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   box-sizing: border-box;
   color: ${(props) => (props.disabled ? 'gray' : 'black')};

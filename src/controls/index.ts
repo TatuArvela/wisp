@@ -1,3 +1,4 @@
+export { default as AddressBar } from './AddressBar';
 export { default as AlertButton } from './AlertButton';
 export { default as AlertText } from './AlertText';
 export { default as Button } from './Button';

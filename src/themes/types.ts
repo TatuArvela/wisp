@@ -1,5 +1,6 @@
 import { FlattenInterpolation } from 'styled-components';
 
+import { AddressBarThemeProperties } from '../controls/AddressBar';
 import { AlertButtonThemeProperties } from '../controls/AlertButton';
 import { AlertTextThemeProperties } from '../controls/AlertText';
 import { ButtonThemeProperties } from '../controls/Button';
@@ -23,6 +24,7 @@ import { ToolbarButtonThemeProperties } from '../controls/ToolbarButton';
 import { WellThemeProperties } from '../controls/Well';
 
 const ControlsProperties = [
+  ...AddressBarThemeProperties,
   ...AlertButtonThemeProperties,
   ...AlertTextThemeProperties,
   ...ButtonThemeProperties,
