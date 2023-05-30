@@ -14,6 +14,7 @@ import * as scrollableContent from './scrollableContent';
 import * as scrollbarHorizontal from './scrollbarHorizontal';
 import * as scrollbarVertical from './scrollbarVertical';
 import * as statusBar from './statusBar';
+import * as statusBarSection from './statusBarSection';
 import * as textarea from './textarea';
 import * as textInput from './textInput';
 import * as timeInput from './timeInput';
@@ -37,6 +38,7 @@ const controls: ControlsThemeSection = {
   ...scrollbarHorizontal,
   ...scrollbarVertical,
   ...statusBar,
+  ...statusBarSection,
   ...textarea,
   ...textInput,
   ...timeInput,

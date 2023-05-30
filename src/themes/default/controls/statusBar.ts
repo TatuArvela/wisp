@@ -1,15 +1,17 @@
 import { css } from 'styled-components';
 
 export const StatusBar = css`
-  box-sizing: border-box;
-  margin: -3px;
-  height: 20px;
-  position: absolute;
-  bottom: 0;
   border-top: 1px solid grey;
-  width: calc(100% + 6px);
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
   font-size: 14px;
-  padding: 2px 3px;
+  gap: 3px;
+  height: 26px;
+  margin: -3px;
+  padding: 2px;
+  position: absolute;
+  width: calc(100% + 6px);
 `;
 
 export const ResizeHandle = css`
@@ -29,8 +31,8 @@ export const ResizeHandle = css`
     width: 0;
     height: 0;
     position: absolute;
-    top: -9px;
-    left: 1px;
+    top: -10px;
+    left: 0px;
     border-left: 10px solid transparent;
     border-bottom: 10px solid grey;
     border-top: 10px solid transparent;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const MenuBarThemeProperties = ['MenuBar', 'MenuBarThrobber'];
+export const MenuBarThemeProperties = ['MenuBar', 'MenuBarThrobber'] as const;
 
 interface MenuBarProps {
   children?: React.ReactNode;

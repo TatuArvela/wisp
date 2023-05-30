@@ -12,6 +12,7 @@ export const MenuBar = css`
   font-family: sans-serif;
   height: 28px;
   margin-top: -2px;
+  margin-bottom: 2px;
   padding: 0;
   text-align: left;
   user-select: none;

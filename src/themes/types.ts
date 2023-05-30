@@ -15,6 +15,7 @@ import { ScrollableContentThemeProperties } from '../controls/ScrollableContent'
 import { ScrollbarHorizontalThemeProperties } from '../controls/ScrollbarHorizontal';
 import { ScrollbarVerticalThemeProperties } from '../controls/ScrollbarVertical';
 import { StatusBarThemeProperties } from '../controls/StatusBar';
+import { StatusBarSectionThemeProperties } from '../controls/StatusBarSection';
 import { TextareaThemeProperties } from '../controls/Textarea';
 import { TextInputThemeProperties } from '../controls/TextInput';
 import { TimeInputThemeProperties } from '../controls/TimeInput';
@@ -37,6 +38,7 @@ const ControlsProperties = [
   ...ScrollbarHorizontalThemeProperties,
   ...ScrollbarVerticalThemeProperties,
   ...StatusBarThemeProperties,
+  ...StatusBarSectionThemeProperties,
   ...TextareaThemeProperties,
   ...TextInputThemeProperties,
   ...TimeInputThemeProperties,

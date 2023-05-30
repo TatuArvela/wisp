@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 
-import { Window, Wisp } from '../src/index';
+import {
+  icons,
+  MenuBar,
+  StatusBar,
+  StatusBarSection,
+  Toolbar,
+  ToolbarButton,
+  Window,
+  Wisp,
+} from '../src/index';
 import { useWindow } from '../src/window/WindowContext';
 
 export default {
@@ -119,6 +128,22 @@ export const WindowContext = () => (
   <Wisp enableDefaultElements={false}>
     <Window id="1" width={230} height={115} title="Window Context Example">
       <ContextExampleComponent />
+    </Window>
+  </Wisp>
+);
+
+export const ComplexWindow = () => (
+  <Wisp>
+    <Window id="1" width={320} height={240} title="Complex Window">
+      <MenuBar isThrobberAnimated></MenuBar>
+      <Toolbar>
+        <ToolbarButton label="Action" />
+        <ToolbarButton icon={icons.wisp} />
+      </Toolbar>
+      <StatusBar showResizeHandle>
+        <StatusBarSection>Status bar</StatusBarSection>
+        <StatusBarSection>Yes</StatusBarSection>
+      </StatusBar>
     </Window>
   </Wisp>
 );

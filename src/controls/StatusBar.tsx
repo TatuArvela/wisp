@@ -8,7 +8,7 @@ import { Direction, WindowType } from '../windowManager/types';
 export const StatusBarThemeProperties = ['ResizeHandle', 'StatusBar'] as const;
 
 interface StatusBarProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   showResizeHandle?: boolean;
   window?: WindowType;
 }

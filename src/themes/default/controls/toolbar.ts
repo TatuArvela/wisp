@@ -8,6 +8,7 @@ export const Toolbar = css`
   display: flex;
   height: 28px;
   margin-top: -2px;
+  margin-bottom: 2px;
   padding: 0;
   text-align: left;
   white-space: nowrap;
