@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 
 import {
+  AddressBar,
   icons,
   MenuBar,
+  ProgressBar,
+  ScrollableContent,
   StatusBar,
   StatusBarSection,
   Toolbar,
@@ -132,18 +135,48 @@ export const WindowContext = () => (
   </Wisp>
 );
 
-export const ComplexWindow = () => (
-  <Wisp>
-    <Window id="1" width={320} height={240} title="Complex Window">
-      <MenuBar isThrobberAnimated></MenuBar>
-      <Toolbar>
-        <ToolbarButton label="Action" />
-        <ToolbarButton icon={icons.wisp} />
-      </Toolbar>
-      <StatusBar showResizeHandle>
-        <StatusBarSection>Status bar</StatusBarSection>
-        <StatusBarSection>Yes</StatusBarSection>
-      </StatusBar>
-    </Window>
-  </Wisp>
-);
+export const ComplexWindow = () => {
+  const [address, setAddress] = useState<string>();
+  return (
+    <Wisp>
+      <Window
+        id="1"
+        width={400}
+        height={300}
+        minHeight={200}
+        minWidth={200}
+        title="Complex Window"
+      >
+        <MenuBar isThrobberAnimated></MenuBar>
+        <Toolbar>
+          <ToolbarButton label="Action" />
+          <ToolbarButton icon={icons.wisp} />
+        </Toolbar>
+        <AddressBar value={address} onChange={setAddress}>
+          Address:
+        </AddressBar>
+
+        <div style={{ flexGrow: 1, overflow: 'hidden' }}>
+          <ScrollableContent horizontal vertical>
+            <div
+              style={{
+                height: '400px',
+                padding: '5px',
+                borderLeft: '1px solid black',
+              }}
+            >
+              Test
+            </div>
+          </ScrollableContent>
+        </div>
+
+        <StatusBar showResizeHandle>
+          <StatusBarSection>Status bar</StatusBarSection>
+          <StatusBarSection width="80px">
+            <ProgressBar />
+          </StatusBarSection>
+        </StatusBar>
+      </Window>
+    </Wisp>
+  );
+};

@@ -6,8 +6,9 @@ export const WindowContent = css`
   flex-direction: column;
   font-family: sans-serif;
   font-size: 14px;
-  height: 100%;
+  flex-grow: 1;
   margin: 0;
+  overflow: hidden;
   text-align: left;
   user-select: none;
   width: 100%;

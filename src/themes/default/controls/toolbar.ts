@@ -7,8 +7,7 @@ export const Toolbar = css`
   box-sizing: border-box;
   display: flex;
   height: 28px;
-  margin-top: -2px;
-  margin-bottom: 2px;
+  flex-shrink: 0;
   padding: 0;
   text-align: left;
   white-space: nowrap;

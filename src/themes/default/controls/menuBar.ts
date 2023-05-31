@@ -11,8 +11,7 @@ export const MenuBar = css`
   font-size: 14px;
   font-family: sans-serif;
   height: 28px;
-  margin-top: -2px;
-  margin-bottom: 2px;
+  flex-shrink: 0;
   padding: 0;
   text-align: left;
   user-select: none;

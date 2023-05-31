@@ -6,12 +6,11 @@ export const StatusBar = css`
   box-sizing: border-box;
   display: flex;
   font-size: 14px;
+  flex-shrink: 0;
   gap: 3px;
   height: 26px;
-  margin: -3px;
-  padding: 2px;
-  position: absolute;
-  width: calc(100% + 6px);
+  padding: 2px 0;
+  width: 100%;
 `;
 
 export const ResizeHandle = css`

@@ -12,6 +12,7 @@ import { FieldsetThemeProperties } from '../controls/Fieldset';
 import { LabelThemeProperties } from '../controls/Label';
 import { ListBoxThemeProperties } from '../controls/ListBox';
 import { MenuBarThemeProperties } from '../controls/MenuBar';
+import { ProgressBarThemeProperties } from '../controls/ProgressBar';
 import { ScrollableContentThemeProperties } from '../controls/ScrollableContent';
 import { ScrollbarHorizontalThemeProperties } from '../controls/ScrollbarHorizontal';
 import { ScrollbarVerticalThemeProperties } from '../controls/ScrollbarVertical';
@@ -36,6 +37,7 @@ const ControlsProperties = [
   ...LabelThemeProperties,
   ...ListBoxThemeProperties,
   ...MenuBarThemeProperties,
+  ...ProgressBarThemeProperties,
   ...ScrollableContentThemeProperties,
   ...ScrollbarHorizontalThemeProperties,
   ...ScrollbarVerticalThemeProperties,

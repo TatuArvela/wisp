@@ -7,12 +7,11 @@ export const AddressBar = css`
   box-shadow: -1px -1px 0 lightgray;
   box-sizing: border-box;
   display: flex;
-  font-size: 14px;
+  font-size: 12px;
   font-family: sans-serif;
   gap: 4px;
   height: 28px;
-  margin-top: -2px;
-  margin-bottom: 2px;
+  flex-shrink: 0;
   padding: 2px;
   text-align: left;
   user-select: none;
