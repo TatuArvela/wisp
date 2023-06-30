@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c rollup.config.js",
+    "build": "rollup -c rollup.config.mjs",
     "build-pages": "storybook build",
     "version-patch": "npm version patch -m 'v%s' && git push && git push --tags",
     "version-minor": "npm version minor -m 'v%s' && git push && git push --tags",
@@ -46,6 +46,7 @@
     "@babel/preset-typescript": "^7.21.4",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-image": "^3.0.2",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-terser": "^0.4.1",
