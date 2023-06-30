@@ -5,33 +5,48 @@ export const StatusBar = css`
   bottom: 0;
   box-sizing: border-box;
   display: flex;
+  margin-top: auto;
   font-size: 14px;
   flex-shrink: 0;
   gap: 3px;
   height: 26px;
-  padding: 2px 0;
+  padding: 2px 0 0;
   width: 100%;
 `;
 
 export const ResizeHandle = css`
-  position: absolute;
-  right: 0;
   bottom: 0;
   content: ' ';
-  width: 12px;
-  height: 12px;
-  padding: 0;
-  margin: 0;
   cursor: se-resize;
+  height: 14px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  width: 14px;
+  overflow: clip;
 
   &:before {
+    content: '';
+    background: white;
+    display: block;
+    border-left: 1px solid black;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &:after {
     content: '';
     display: block;
     width: 0;
     height: 0;
     position: absolute;
-    top: -10px;
-    left: 0px;
+    bottom: 0px;
+    right: 0px;
     border-left: 10px solid transparent;
     border-bottom: 10px solid grey;
     border-top: 10px solid transparent;

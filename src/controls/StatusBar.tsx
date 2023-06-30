@@ -2,40 +2,37 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { windowResizeHandler } from '../window/handlers/windowResizeHandler';
+import { useWindow } from '../window/WindowContext';
 import { useWindowManager } from '../windowManager/hooks';
-import { Direction, WindowType } from '../windowManager/types';
+import { Direction } from '../windowManager/types';
 
 export const StatusBarThemeProperties = ['ResizeHandle', 'StatusBar'] as const;
 
 interface StatusBarProps {
   children?: React.ReactNode;
   showResizeHandle?: boolean;
-  window?: WindowType;
 }
 
 const StatusBarElement = styled.div`
   ${(props) => props.theme.controls.StatusBar}
 `;
 
-const StatusBar = ({ children, showResizeHandle, window }: StatusBarProps) => {
+const StatusBar = ({ children, showResizeHandle }: StatusBarProps) => {
   return (
     <StatusBarElement>
       {children}
-      {showResizeHandle && <ResizeHandle window={window} />}
+      {showResizeHandle && <ResizeHandle />}
     </StatusBarElement>
   );
 };
-
-interface ResizeHandleProps {
-  window: WindowType;
-}
 
 const ResizeHandleElement = styled.div`
   ${(props) => props.theme.controls.ResizeHandle}
 `;
 
-const ResizeHandle = ({ window }: ResizeHandleProps): JSX.Element => {
+const ResizeHandle = (): JSX.Element => {
   const windowManager = useWindowManager();
+  const window = useWindow();
   const eventHandler = windowResizeHandler(windowManager, window);
 
   return (

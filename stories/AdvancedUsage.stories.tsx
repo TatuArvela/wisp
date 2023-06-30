@@ -175,6 +175,7 @@ export const ComplexWindow = () => {
           <StatusBarSection width="80px">
             <ProgressBar />
           </StatusBarSection>
+          <StatusBarSection></StatusBarSection>
         </StatusBar>
       </Window>
     </Wisp>
