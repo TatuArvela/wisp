@@ -1,6 +1,4 @@
-import ListBox from '../../src/controls/ListBox';
-import argon from '../decorators/Argon';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { argon, ControlStoryDecorator, ListBox } from '../../src';
 
 export default {
   component: ListBox,

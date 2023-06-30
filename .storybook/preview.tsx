@@ -1,15 +1,15 @@
-import { Preview } from "@storybook/react";
-import { ArgonDecorator } from "../stories/decorators/Argon";
+import { Preview } from '@storybook/react';
+import { ArgonDecorator } from '../src';
 
 const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ["Wisp", ["Basics", "Advanced Usage", "Theming"], "controls"]
-      }
+        order: ['Wisp', ['Basics', 'Advanced Usage', 'Theming'], 'controls'],
+      },
     },
   },
-  decorators: [ArgonDecorator]
+  decorators: [ArgonDecorator],
 };
 
 export default preview;

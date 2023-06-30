@@ -1,5 +1,4 @@
-import ToolbarButton from '../../src/controls/ToolbarButton';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { ControlStoryDecorator, ToolbarButton } from '../../src';
 
 export default {
   component: ToolbarButton,

@@ -1,5 +1,4 @@
-import { Button } from '../../src/index';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { Button, ControlStoryDecorator } from '../../src';
 
 export default {
   component: Button,

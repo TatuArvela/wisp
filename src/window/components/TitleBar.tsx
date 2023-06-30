@@ -5,31 +5,11 @@ import type { Icon } from '../../icons/types';
 import { getIconFileForSize } from '../../icons/utils';
 import TitleBarButtons from './TitleBarButtons';
 
-export interface TitleBarProps {
+export interface TitleBarElementProps {
   isActive: boolean;
 }
 
-interface Props extends TitleBarProps {
-  close(): void;
-
-  drag(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
-
-  icon: Icon;
-  isClosable: boolean;
-  isMaximizable: boolean;
-  isMaximized: boolean;
-  isMinimizable: boolean;
-
-  maximize(): void;
-
-  minimize(): void;
-
-  title: string;
-
-  unmaximize(): void;
-}
-
-const TitleBarElement = styled.div<TitleBarProps>`
+const TitleBarElement = styled.div<TitleBarElementProps>`
   ${(props) => props.theme.window.TitleBar}
 `;
 
@@ -54,6 +34,26 @@ const TitleBarIcon = ({ icon }: { icon: Icon }) => {
   return <TitleBarIconElement src={iconFile} alt="Window icon" />;
 };
 
+export interface TitleBarProps extends TitleBarElementProps {
+  close(): void;
+
+  drag(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
+
+  icon: Icon;
+  isClosable: boolean;
+  isMaximizable: boolean;
+  isMaximized: boolean;
+  isMinimizable: boolean;
+
+  maximize(): void;
+
+  minimize(): void;
+
+  title: string;
+
+  unmaximize(): void;
+}
+
 const TitleBar = ({
   close,
   drag,
@@ -67,7 +67,7 @@ const TitleBar = ({
   minimize,
   title,
   unmaximize,
-}: Props) => {
+}: TitleBarProps) => {
   const onTitleDoubleClick = () => {
     isMaximized ? unmaximize() : maximize();
   };

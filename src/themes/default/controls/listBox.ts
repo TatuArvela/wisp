@@ -55,6 +55,7 @@ export const ListBoxOptions = css<ListBoxOptionsProps>`
   position: fixed;
   top: ${(props) => `${props.top - 1}`}px;
   width: ${(props) => `${props.width}`}px;
+  z-index: 100;
 `;
 
 export const ListBoxOption = css`

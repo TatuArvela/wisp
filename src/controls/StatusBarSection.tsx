@@ -3,21 +3,20 @@ import styled from 'styled-components';
 
 export const StatusBarSectionThemeProperties = ['StatusBarSection'] as const;
 
-const StatusBarSectionElement = styled.div<{ hasSetWidth: boolean }>`
+export interface StatusBarSectionProps {
+  width?: string;
+  children?: React.ReactNode;
+}
+
+const StatusBarSectionElement = styled.div<StatusBarSectionProps>`
   ${(props) => props.theme.controls.StatusBarSection}
 `;
 
 export const StatusBarSection = ({
   width,
   children,
-}: {
-  width?: string;
-  children?: React.ReactNode;
-}) => (
-  <StatusBarSectionElement
-    hasSetWidth={width !== undefined}
-    style={{ width: width }}
-  >
+}: StatusBarSectionProps) => (
+  <StatusBarSectionElement width={width} style={{ width: width }}>
     {children}
   </StatusBarSectionElement>
 );

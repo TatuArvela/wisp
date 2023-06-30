@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+import { ButtonProps } from '../../../controls';
+
 export const ButtonWrapper = css`
   display: inherit;
   padding: 0 1px 1px 0;
@@ -14,7 +16,7 @@ const activeStyle = css`
   }
 `;
 
-export const Button = css<{ disabled?: boolean }>`
+export const Button = css<ButtonProps>`
   background: white;
   border-radius: 2px;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};

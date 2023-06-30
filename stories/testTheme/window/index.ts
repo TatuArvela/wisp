@@ -1,8 +1,10 @@
 import { css } from 'styled-components';
 
-import { WindowElementProps } from '../../../window/components/WindowElement';
-import defaultTheme from '../../default/theme';
-import { WindowThemeSection } from '../../types';
+import {
+  defaultTheme,
+  WindowElementProps,
+  WindowThemeSection,
+} from '../../../src';
 import titleBar from './titleBar';
 
 const WindowContent = css`

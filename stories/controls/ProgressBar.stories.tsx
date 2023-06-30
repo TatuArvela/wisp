@@ -1,5 +1,4 @@
-import { ProgressBar } from '../../src';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { ControlStoryDecorator, ProgressBar } from '../../src';
 
 export default {
   component: ProgressBar,

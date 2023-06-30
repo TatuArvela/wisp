@@ -37,7 +37,7 @@ export interface ScrollableContentProps {
   horizontal?: boolean;
   vertical?: boolean;
 }
-const ScrollableContent = ({
+export const ScrollableContent = ({
   children,
   horizontal,
   vertical,

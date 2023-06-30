@@ -1,6 +1,8 @@
 import { css } from 'styled-components';
 
-export const ProgressBar = css<{ disabled: boolean }>`
+import { ProgressBarFillProps, ProgressBarProps } from '../../../controls';
+
+export const ProgressBar = css<ProgressBarProps>`
   background: lightgray;
   border-radius: 1px;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
@@ -14,10 +16,7 @@ export const ProgressBar = css<{ disabled: boolean }>`
   overflow: hidden;
 `;
 
-export const ProgressBarFill = css<{
-  isIndeterminate: boolean;
-  disabled: boolean;
-}>`
+export const ProgressBarFill = css<ProgressBarFillProps>`
   height: 100%;
   background: ${(props) => (props.disabled ? 'gray' : '#2222ff')};
 

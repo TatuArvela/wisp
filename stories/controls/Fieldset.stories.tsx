@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Fieldset } from '../../src';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { ControlStoryDecorator, Fieldset } from '../../src';
 
 export default {
   component: Fieldset,

@@ -1,5 +1,4 @@
-import { AlertText } from '../../src/index';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { AlertText, ControlStoryDecorator } from '../../src';
 
 export default {
   component: AlertText,

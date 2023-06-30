@@ -2,24 +2,23 @@ import React from 'react';
 
 import AlertButton from '../controls/AlertButton';
 import AlertText from '../controls/AlertText';
-import Window from './Window';
+import Window, { WindowProps } from './Window';
 
-interface Props {
+export type AlertWindowProps = WindowProps & {
   buttonText?: string;
-  children: React.ReactNode;
-  id: string;
   onButtonClick?(): void;
-  title: string;
-}
+};
 
-const AlertWindow = ({
+export const AlertWindow = ({
   id,
   title,
   buttonText = 'OK',
   onButtonClick,
   children,
-}: Props) => (
+  ...windowProps
+}: AlertWindowProps) => (
   <Window
+    {...windowProps}
     id={id}
     title={title}
     isMaximizable={false}

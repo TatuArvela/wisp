@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+import { ToolbarButtonProps } from '../../../controls';
+
 export const ToolbarButtonWrapper = css``;
 
 const hoverStyle = css`
@@ -16,7 +18,7 @@ const activeStyle = css`
   }
 `;
 
-export const ToolbarButton = css<{ disabled?: boolean }>`
+export const ToolbarButton = css<ToolbarButtonProps>`
   justify-content: center;
   background: white;
   border-radius: 1px;

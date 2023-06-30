@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Well } from '../../src';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { ControlStoryDecorator, Well } from '../../src';
 
 export default {
   component: Well,

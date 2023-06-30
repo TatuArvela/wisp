@@ -4,7 +4,7 @@ import Button from '../controls/Button';
 
 export const AlertButtonThemeProperties = ['AlertButton'] as const;
 
-const AlertButton = styled(Button)`
+export const AlertButton = styled(Button)`
   ${(props) => props.theme.controls.AlertButton}
 `;
 

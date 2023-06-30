@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 
-import { TitleBarProps } from '../../../window/components/TitleBar';
-import defaultTheme from '../../default/theme';
+import { defaultTheme, TitleBarProps } from '../../../src';
 
 const TitleBar = css<TitleBarProps>`
   ${defaultTheme.window.TitleBar}

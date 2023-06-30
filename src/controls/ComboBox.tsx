@@ -20,7 +20,10 @@ const ComboBoxWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.ComboBoxWrapper}
 `;
 
-const ComboBoxLabel = styled.label<{ disabled?: boolean }>`
+export interface ComboBoxLabelProps {
+  disabled?: boolean;
+}
+const ComboBoxLabel = styled.label<ComboBoxLabelProps>`
   ${(props) => props.theme.controls.ComboBoxLabel}
 `;
 
@@ -28,11 +31,17 @@ const ComboBoxControl = styled.div`
   ${(props) => props.theme.controls.ComboBoxControl}
 `;
 
-const ComboBoxButton = styled(HeadlessComboBox.Button)<{ disabled?: boolean }>`
+export interface ComboBoxButtonProps {
+  disabled?: boolean;
+}
+const ComboBoxButton = styled(HeadlessComboBox.Button)<ComboBoxButtonProps>`
   ${(props) => props.theme.controls.ComboBoxButton}
 `;
 
-const ComboBoxInput = styled(HeadlessComboBox.Input)<{ disabled?: boolean }>`
+export interface ComboBoxInputProps {
+  disabled?: boolean;
+}
+const ComboBoxInput = styled(HeadlessComboBox.Input)<ComboBoxInputProps>`
   ${(props) => props.theme.controls.ComboBoxInput}
 `;
 
@@ -50,7 +59,7 @@ const ComboBoxOption = styled(HeadlessComboBox.Option)`
   ${(props) => props.theme.controls.ComboBoxOption}
 `;
 
-interface ComboBoxProps extends ControlWrapperProps {
+export interface ComboBoxProps extends ControlWrapperProps {
   disabled?: boolean;
   label?: string;
   nullable?: boolean;
@@ -58,7 +67,7 @@ interface ComboBoxProps extends ControlWrapperProps {
   options: string[];
   value?: string;
 }
-const ComboBox = ({
+export const ComboBox = ({
   disabled,
   label,
   nullable,

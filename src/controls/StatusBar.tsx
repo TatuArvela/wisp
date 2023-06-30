@@ -8,7 +8,7 @@ import { Direction } from '../windowManager/types';
 
 export const StatusBarThemeProperties = ['ResizeHandle', 'StatusBar'] as const;
 
-interface StatusBarProps {
+export interface StatusBarProps {
   children?: React.ReactNode;
   showResizeHandle?: boolean;
 }
@@ -17,7 +17,7 @@ const StatusBarElement = styled.div`
   ${(props) => props.theme.controls.StatusBar}
 `;
 
-const StatusBar = ({ children, showResizeHandle }: StatusBarProps) => {
+export const StatusBar = ({ children, showResizeHandle }: StatusBarProps) => {
   return (
     <StatusBarElement>
       {children}

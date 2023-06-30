@@ -1,5 +1,4 @@
-import { WindowContent } from '../../src';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { ControlStoryDecorator, WindowContent } from '../../src';
 
 export default {
   component: WindowContent,

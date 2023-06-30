@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Divider } from '../../src';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { ControlStoryDecorator, Divider } from '../../src';
 
 export default {
   component: Divider,

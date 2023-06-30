@@ -1,5 +1,4 @@
-import { Label } from '../../src';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { ControlStoryDecorator, Label } from '../../src';
 
 export default {
   component: Label,

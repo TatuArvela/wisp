@@ -10,11 +10,11 @@ import {
   StatusBarSection,
   Toolbar,
   ToolbarButton,
+  useWindow,
   Window,
   WindowContent,
   Wisp,
-} from '../src/index';
-import { useWindow } from '../src/window/WindowContext';
+} from '../src';
 
 export default {
   title: 'Wisp/Advanced Usage',

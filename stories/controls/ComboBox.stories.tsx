@@ -1,6 +1,4 @@
-import ComboBox from '../../src/controls/ComboBox';
-import argon from '../decorators/Argon';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { argon, ComboBox, ControlStoryDecorator } from '../../src';
 
 export default {
   component: ComboBox,

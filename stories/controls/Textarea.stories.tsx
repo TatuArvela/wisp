@@ -1,6 +1,4 @@
-import Textarea from '../../src/controls/Textarea';
-import argon from '../decorators/Argon';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { argon, ControlStoryDecorator, Textarea } from '../../src/';
 
 export default {
   component: Textarea,

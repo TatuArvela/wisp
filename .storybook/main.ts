@@ -24,5 +24,6 @@ const config: StorybookConfig = {
     disableTelemetry: true,
   },
   staticDirs: ['../stories/assets'],
+  env: (config) => ({...config, STORYBOOK_PACKAGE_VERSION: process.env.npm_package_version! }),
 };
 export default config;

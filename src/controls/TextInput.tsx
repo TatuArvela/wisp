@@ -13,22 +13,30 @@ const TextInputWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.TextInputWrapper}
 `;
 
-const TextInputLabel = styled.label<{ disabled?: boolean }>`
+export interface TextInputLabelProps {
+  disabled?: boolean;
+}
+
+const TextInputLabel = styled.label<TextInputLabelProps>`
   ${(props) => props.theme.controls.TextInputLabel}
 `;
 
-const TextInputElement = styled.input<{ disabled?: boolean }>`
+export interface TextInputElementProps {
+  disabled?: boolean;
+}
+
+const TextInputElement = styled.input<TextInputElementProps>`
   ${(props) => props.theme.controls.TextInputElement}
 `;
 
-interface TextInputProps extends ControlWrapperProps {
+export interface TextInputProps extends ControlWrapperProps {
   disabled?: boolean;
   label?: string;
   onChange(value: string): void;
   value?: string;
 }
 
-const TextInput = ({
+export const TextInput = ({
   disabled,
   inlineLabel,
   label,

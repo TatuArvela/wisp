@@ -1,6 +1,4 @@
-import { AddressBar } from '../../src/index';
-import argon from '../decorators/Argon';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { AddressBar, argon, ControlStoryDecorator } from '../../src';
 
 export default {
   component: AddressBar,

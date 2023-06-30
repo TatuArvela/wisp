@@ -1,13 +1,13 @@
 import { css } from 'styled-components';
 
-import { ControlWrapperProps } from '../../../controls/ControlWrapper';
+import { ControlWrapperProps, TextInputElementProps } from '../../../controls';
 import { Label } from './label';
 
 export const TextInputWrapper = css<ControlWrapperProps>``;
 
 export const TextInputLabel = Label;
 
-export const TextInputElement = css<{ disabled?: boolean }>`
+export const TextInputElement = css<TextInputElementProps>`
   border-radius: 1px;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   box-sizing: border-box;

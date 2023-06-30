@@ -1,6 +1,4 @@
-import TimeInput from '../../src/controls/TimeInput';
-import argon from '../decorators/Argon';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { argon, ControlStoryDecorator, TimeInput } from '../../src';
 
 export default {
   component: TimeInput,

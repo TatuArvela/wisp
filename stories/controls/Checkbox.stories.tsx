@@ -1,6 +1,4 @@
-import { Checkbox } from '../../src/index';
-import argon from '../decorators/Argon';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { argon, Checkbox, ControlStoryDecorator } from '../../src';
 
 export default {
   component: Checkbox,

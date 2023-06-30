@@ -16,7 +16,11 @@ export type WindowProps = {
   id: string;
 } & Partial<WindowType>;
 
-const Window: React.FC<WindowProps> = ({ children, id, ...windowProps }) => {
+export const Window: React.FC<WindowProps> = ({
+  children,
+  id,
+  ...windowProps
+}) => {
   const windowManager = useWindowManager();
   const wmWindow = windowManager.windows.get(id);
   const orderNumber = windowManager.windowOrder.indexOf(id);

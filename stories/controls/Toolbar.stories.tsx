@@ -1,7 +1,11 @@
 import React from 'react';
 
-import { icons, Toolbar, ToolbarButton } from '../../src/index';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import {
+  ControlStoryDecorator,
+  icons,
+  Toolbar,
+  ToolbarButton,
+} from '../../src';
 
 export default {
   component: Toolbar,

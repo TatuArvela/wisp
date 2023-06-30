@@ -24,7 +24,11 @@ const TimeInputWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.TimeInputWrapper}
 `;
 
-const TimeInputLabel = styled.label<{ disabled?: boolean }>`
+export interface TimeInputLabelProps {
+  disabled?: boolean;
+}
+
+const TimeInputLabel = styled.label<TimeInputLabelProps>`
   ${(props) => props.theme.controls.TimeInputLabel}
 `;
 
@@ -32,11 +36,19 @@ const TimeInputControl = styled.div`
   ${(props) => props.theme.controls.TimeInputControl}
 `;
 
-const TimeInputField = styled.div<{ disabled?: boolean }>`
+export interface TimeInputFieldProps {
+  disabled?: boolean;
+}
+
+const TimeInputField = styled.div<TimeInputFieldProps>`
   ${(props) => props.theme.controls.TimeInputField}
 `;
 
-const TimeInputValue = styled.input`
+export interface TimeInputValueProps {
+  disabled?: boolean;
+}
+
+const TimeInputValue = styled.input<TimeInputValueProps>`
   ${(props) => props.theme.controls.TimeInputValue}
 `;
 
@@ -48,28 +60,28 @@ const TimeInputButtons = styled.div`
   ${(props) => props.theme.controls.TimeInputButtons}
 `;
 
-const TimeInputDecreaseButton = styled.button<{
+export interface TimeInputButtonProps {
   active?: boolean;
   disabled?: boolean;
-}>`
+}
+
+const TimeInputDecreaseButton = styled.button<TimeInputButtonProps>`
   ${(props) => props.theme.controls.TimeInputDecreaseButton}
 `;
 
-const TimeInputIncreaseButton = styled.button<{
-  active?: boolean;
-  disabled?: boolean;
-}>`
+const TimeInputIncreaseButton = styled.button<TimeInputButtonProps>`
   ${(props) => props.theme.controls.TimeInputIncreaseButton}
 `;
 
-interface TimeInputProps extends ControlWrapperProps {
+export interface TimeInputProps extends ControlWrapperProps {
   disabled?: boolean;
   label?: string;
   nullable?: boolean;
   onChange(value: Time): void;
   value?: Time;
 }
-const TimeInput = ({
+
+export const TimeInput = ({
   disabled,
   inlineLabel,
   label,

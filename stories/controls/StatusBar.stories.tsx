@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { StatusBar, StatusBarSection } from '../../src/index';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { ControlStoryDecorator, StatusBar, StatusBarSection } from '../../src';
 
 export default {
   component: StatusBar,

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const ButtonThemeProperties = ['Button', 'ButtonWrapper'] as const;
 
-interface ButtonWrapperProps {
+export interface ButtonWrapperProps {
   disabled?: boolean;
   height?: number;
   width?: number;
@@ -23,7 +23,7 @@ const ButtonElement = styled.button`
   ${(props) => props.theme.controls.Button}
 `;
 
-const Button = ({ width, height, disabled, ...rest }: ButtonProps) => (
+export const Button = ({ width, height, disabled, ...rest }: ButtonProps) => (
   <ButtonWrapper
     disabled={disabled}
     style={{ width: `${width}px`, height: `${height}px` }}

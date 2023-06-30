@@ -16,7 +16,7 @@ export interface FieldsetProps {
   children?: React.ReactNode;
 }
 
-const Fieldset = ({ legend, children }: FieldsetProps) => (
+export const Fieldset = ({ legend, children }: FieldsetProps) => (
   <FieldsetElement>
     {legend && <FieldsetLegend>{legend}</FieldsetLegend>}
     {children}

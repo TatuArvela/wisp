@@ -1,6 +1,11 @@
 import { css } from 'styled-components';
 
-import { ControlWrapperProps } from '../../../controls/ControlWrapper';
+import {
+  ControlWrapperProps,
+  TimeInputButtonProps,
+  TimeInputFieldProps,
+  TimeInputValueProps,
+} from '../../../controls';
 import { Label } from './label';
 
 export const TimeInputWrapper = css<ControlWrapperProps>``;
@@ -14,14 +19,14 @@ export const TimeInputControl = css`
   width: 100%;
 `;
 
-export const TimeInputField = css<{ disabled?: boolean }>`
+export const TimeInputField = css<TimeInputFieldProps>`
   border-radius: 1px;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   display: flex;
   width: 100%;
 `;
 
-export const TimeInputValue = css<{ disabled?: boolean }>`
+export const TimeInputValue = css<TimeInputValueProps>`
   border: none;
   color: ${(props) => (props.disabled ? 'gray' : 'black')};
   outline: none;
@@ -57,17 +62,14 @@ const activeStyleProperties = css`
   left: 1px;
   top: 1px;
 `;
-const activeStyle = css<{ active?: boolean }>`
+const activeStyle = css<TimeInputButtonProps>`
   ${({ active }) => active && activeStyleProperties}
   &:active {
     ${activeStyleProperties}
   }
 `;
 
-export const TimeInputIncreaseButton = css<{
-  active?: boolean;
-  disabled?: boolean;
-}>`
+export const TimeInputIncreaseButton = css<TimeInputButtonProps>`
   background: white;
   border-radius: 0;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
@@ -102,10 +104,7 @@ export const TimeInputIncreaseButton = css<{
   }
 `;
 
-export const TimeInputDecreaseButton = css<{
-  active?: boolean;
-  disabled?: boolean;
-}>`
+export const TimeInputDecreaseButton = css<TimeInputButtonProps>`
   background: white;
   border-radius: 0;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};

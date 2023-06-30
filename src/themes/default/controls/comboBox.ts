@@ -1,6 +1,10 @@
 import { css } from 'styled-components';
 
-import { ComboBoxOptionsProps } from '../../../controls/ComboBox';
+import {
+  ComboBoxButtonProps,
+  ComboBoxInputProps,
+  ComboBoxOptionsProps,
+} from '../../../controls/ComboBox';
 import { ControlWrapperProps } from '../../../controls/ControlWrapper';
 import { Label } from './label';
 
@@ -15,7 +19,7 @@ export const ComboBoxControl = css`
   width: 100%;
 `;
 
-export const ComboBoxInput = css<{ disabled?: boolean }>`
+export const ComboBoxInput = css<ComboBoxInputProps>`
   border-bottom-left-radius: 1px;
   border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   border-left: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
@@ -34,7 +38,7 @@ export const ComboBoxInput = css<{ disabled?: boolean }>`
   width: 100%;
 `;
 
-export const ComboBoxButton = css<{ disabled?: boolean }>`
+export const ComboBoxButton = css<ComboBoxButtonProps>`
   background: white;
   border-top: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   border-right: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
@@ -81,6 +85,7 @@ export const ComboBoxOptions = css<ComboBoxOptionsProps>`
   position: fixed;
   top: ${(props) => `${props.top - 1}`}px;
   width: ${(props) => `${props.width}`}px;
+  z-index: 100;
 `;
 
 export const ComboBoxOption = css`

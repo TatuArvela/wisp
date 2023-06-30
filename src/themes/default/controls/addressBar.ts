@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+import { AddressBarInputProps } from '../../../controls';
+
 export const AddressBar = css`
   align-items: center;
   background: white;
@@ -19,7 +21,7 @@ export const AddressBar = css`
   width: 100%;
 `;
 
-export const AddressBarInput = css<{ disabled?: boolean }>`
+export const AddressBarInput = css<AddressBarInputProps>`
   border-radius: 1ps;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   box-sizing: border-box;

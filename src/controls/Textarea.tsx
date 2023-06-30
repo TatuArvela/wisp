@@ -13,22 +13,30 @@ const TextareaWrapper = styled(ControlWrapper)`
   ${(props) => props.theme.controls.TextareaWrapper}
 `;
 
-const TextareaLabel = styled.label<{ disabled?: boolean }>`
+export interface TextareaLabelProps {
+  disabled?: boolean;
+}
+
+const TextareaLabel = styled.label<TextareaLabelProps>`
   ${(props) => props.theme.controls.TextareaLabel}
 `;
 
-const TextareaElement = styled.textarea<{ disabled?: boolean }>`
+export interface TextareaElementProps {
+  disabled?: boolean;
+}
+
+const TextareaElement = styled.textarea<TextareaElementProps>`
   ${(props) => props.theme.controls.TextareaElement}
 `;
 
-interface TextareaProps extends ControlWrapperProps {
+export interface TextareaProps extends ControlWrapperProps {
   disabled?: boolean;
   label?: string;
   onChange(value: string): void;
   value?: string;
 }
 
-const Textarea = ({
+export const Textarea = ({
   disabled,
   inlineLabel,
   label,

@@ -30,18 +30,21 @@ const StyledCheckbox = styled.div<StyledCheckboxProps>`
   ${(props) => props.theme.controls.Checkbox}
 `;
 
-const CheckboxLabel = styled.label<{ disabled?: boolean }>`
+export interface CheckboxLabelProps {
+  disabled?: boolean;
+}
+const CheckboxLabel = styled.label<CheckboxLabelProps>`
   ${(props) => props.theme.controls.CheckboxLabel}
 `;
 
-interface CheckboxProps extends ControlWrapperProps {
+export interface CheckboxProps extends ControlWrapperProps {
   checked?: boolean;
   disabled?: boolean;
   onChange(value: boolean): void;
   label?: string;
 }
 
-const Checkbox = ({
+export const Checkbox = ({
   checked,
   disabled,
   onChange,

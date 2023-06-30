@@ -6,10 +6,12 @@ export const ProgressBarThemeProperties = [
   'ProgressBarFill',
 ] as const;
 
-const ProgressBarFill = styled.div<{
+export interface ProgressBarFillProps {
   disabled: boolean;
   isIndeterminate: boolean;
-}>`
+}
+
+const ProgressBarFill = styled.div<ProgressBarFillProps>`
   ${(props) => props.theme.controls.ProgressBarFill}
 `;
 
@@ -17,13 +19,13 @@ const ProgressBarElement = styled.div<{ disabled: boolean }>`
   ${(props) => props.theme.controls.ProgressBar}
 `;
 
-interface ProgressBarProps {
+export interface ProgressBarProps {
   max?: number;
   value?: number;
   disabled?: boolean;
 }
 
-const ProgressBar = ({
+export const ProgressBar = ({
   max = 1,
   value,
   disabled = false,

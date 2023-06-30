@@ -36,7 +36,8 @@ const ToolbarButtonIcon = ({ icon }: { icon: Icon }) => {
   return <ToolbarButtonIconElement src={iconFile} alt="Window icon" />;
 };
 
-interface ToolbarButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+export interface ToolbarButtonProps
+  extends React.ComponentPropsWithoutRef<'button'> {
   disabled?: boolean;
   onClick?(): void;
   icon?: Icon;
@@ -47,7 +48,7 @@ const ToolbarButtonElement = styled.button`
   ${(props) => props.theme.controls.ToolbarButton}
 `;
 
-const ToolbarButton = ({
+export const ToolbarButton = ({
   disabled,
   icon,
   label,

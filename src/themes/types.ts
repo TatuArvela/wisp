@@ -62,7 +62,6 @@ const ElementsProperties = [
 const WindowProperties = [
   'CloseButton',
   'EResize',
-  'Icon',
   'MaximizeButton',
   'MinimizeButton',
   'NEResize',
@@ -71,7 +70,6 @@ const WindowProperties = [
   'SEResize',
   'SResize',
   'SWResize',
-  'Title',
   'TitleBar',
   'TitleBarButtons',
   'TitleBarIcon',
@@ -92,14 +90,6 @@ type ThemeSection<Properties extends ReadonlyArray<string>> = {
 export type ControlsThemeSection = ThemeSection<typeof ControlsProperties>;
 export type ElementsThemeSection = ThemeSection<typeof ElementsProperties>;
 export type WindowThemeSection = ThemeSection<typeof WindowProperties>;
-
-export interface DefaultTheme {
-  id: string;
-  name: string;
-  controls: ControlsThemeSection;
-  elements: ElementsThemeSection;
-  window: WindowThemeSection;
-}
 
 export interface Theme {
   id: string;

@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { ScrollableContent } from '../../src';
-import { buildControlStoryDecorator } from '../decorators/ControlStoryDecorator';
+import { buildControlStoryDecorator, ScrollableContent } from '../../src';
 
 export default {
   component: ScrollableContent,

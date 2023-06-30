@@ -1,6 +1,4 @@
-import TextInput from '../../src/controls/TextInput';
-import argon from '../decorators/Argon';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { argon, ControlStoryDecorator, TextInput } from '../../src';
 
 export default {
   component: TextInput,

@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 export const LabelThemeProperties = ['Label'] as const;
 
-const Label = styled.div<{ disabled?: boolean }>`
+export interface LabelProps {
+  disabled?: boolean;
+}
+
+export const Label = styled.div<LabelProps>`
   ${(props) => props.theme.controls.Label}
 `;
 

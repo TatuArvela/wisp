@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AlertWindow, Desktop, icons, Window, Wisp } from '../src/index';
+import { AlertWindow, Desktop, icons, Window, Wisp } from '../src';
 
 export default {
   component: Wisp,

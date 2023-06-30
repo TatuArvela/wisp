@@ -1,4 +1,4 @@
-import { Theme } from '../types';
+import { Theme } from '../../src/themes/types';
 import window from './window/index';
 
 const testTheme: Theme = {

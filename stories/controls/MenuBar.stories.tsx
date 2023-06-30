@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { MenuBar } from '../../src/index';
-import ControlStoryDecorator from '../decorators/ControlStoryDecorator';
+import { ControlStoryDecorator, MenuBar } from '../../src';
 
 export default {
   component: MenuBar,

@@ -6,7 +6,7 @@ export interface DividerProps {
   vertical?: boolean;
 }
 
-const Divider = styled.div<DividerProps>`
+export const Divider = styled.div<DividerProps>`
   ${(props) => props.theme.controls.Divider}
 `;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface TitleBarButtonsProps {
+export interface TitleBarButtonsProps {
   close(): void;
 
   isClosable: boolean;

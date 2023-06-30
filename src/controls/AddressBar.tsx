@@ -6,14 +6,18 @@ export const AddressBarThemeProperties = [
   'AddressBarInput',
 ] as const;
 
-interface AddressBarProps {
+export interface AddressBarProps {
   children?: React.ReactNode;
   disabled?: boolean;
   onChange(value: string): void;
   value?: string;
 }
 
-const AddressBarInput = styled.input`
+export interface AddressBarInputProps {
+  disabled?: boolean;
+}
+
+const AddressBarInput = styled.input<AddressBarInputProps>`
   ${(props) => props.theme.controls.AddressBarInput}
 `;
 
@@ -21,7 +25,7 @@ const AddressBarElement = styled.div`
   ${(props) => props.theme.controls.AddressBar}
 `;
 
-const AddressBar = ({
+export const AddressBar = ({
   children,
   value,
   disabled,

@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 
+import { MenuBarThrobberProps } from '../../../controls';
 import menuBarThrobberIcon from './menuBarThrobberIcon.png';
 
 export const MenuBar = css`
@@ -19,7 +20,7 @@ export const MenuBar = css`
   width: 100%;
 `;
 
-export const MenuBarThrobber = css<{ isAnimated: boolean }>`
+export const MenuBarThrobber = css<MenuBarThrobberProps>`
   align-self: end;
   background-color: black;
   background-image: url('${menuBarThrobberIcon}');
