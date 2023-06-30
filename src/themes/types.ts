@@ -23,6 +23,7 @@ import { TextInputThemeProperties } from '../controls/TextInput';
 import { TimeInputThemeProperties } from '../controls/TimeInput';
 import { ToolbarButtonThemeProperties } from '../controls/ToolbarButton';
 import { WellThemeProperties } from '../controls/Well';
+import { WindowContentThemeProperties } from '../controls/WindowContent';
 
 const ControlsProperties = [
   ...AddressBarThemeProperties,
@@ -48,6 +49,7 @@ const ControlsProperties = [
   ...TimeInputThemeProperties,
   ...ToolbarButtonThemeProperties,
   ...WellThemeProperties,
+  ...WindowContentThemeProperties,
 ] as const;
 
 const ElementsProperties = [

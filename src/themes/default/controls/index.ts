@@ -23,6 +23,7 @@ import * as timeInput from './timeInput';
 import * as toolbar from './toolbar';
 import * as toolbarButton from './toolbarButton';
 import * as well from './well';
+import * as windowContent from './windowContent';
 
 const controls: ControlsThemeSection = {
   ...addressBar,
@@ -49,6 +50,7 @@ const controls: ControlsThemeSection = {
   ...toolbar,
   ...toolbarButton,
   ...well,
+  ...windowContent,
 };
 
 export default controls;

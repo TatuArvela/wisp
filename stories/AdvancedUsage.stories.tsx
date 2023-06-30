@@ -11,6 +11,7 @@ import {
   Toolbar,
   ToolbarButton,
   Window,
+  WindowContent,
   Wisp,
 } from '../src/index';
 import { useWindow } from '../src/window/WindowContext';
@@ -156,19 +157,18 @@ export const ComplexWindow = () => {
           Address:
         </AddressBar>
 
-        <div style={{ flexGrow: 1, overflow: 'hidden' }}>
+        <WindowContent>
           <ScrollableContent horizontal vertical>
             <div
               style={{
                 height: '400px',
                 padding: '5px',
-                borderLeft: '1px solid black',
               }}
             >
               Test
             </div>
           </ScrollableContent>
-        </div>
+        </WindowContent>
 
         <StatusBar showResizeHandle>
           <StatusBarSection>Status bar</StatusBarSection>

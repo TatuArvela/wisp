@@ -18,3 +18,4 @@ export { default as TimeInput } from './TimeInput';
 export { default as Toolbar } from './Toolbar';
 export { default as ToolbarButton } from './ToolbarButton';
 export { default as Well } from './Well';
+export { default as WindowContent } from './WindowContent';
