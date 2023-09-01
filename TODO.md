@@ -22,9 +22,6 @@
 * Calculate default window position
   * Maybe a "atDefaultPosition" property
   * Share logic with cascadeWindows
-* Icons
-  * Window icon
-  * Alert icon
 
 ## Elements
 
@@ -40,7 +37,6 @@
 ## Documentation and verification
 
 * Written documentation
-* Storybook knobs
 * Tests
 
 ## Extension and theming
