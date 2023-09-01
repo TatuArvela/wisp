@@ -4,9 +4,7 @@ import {
   AlertWindow,
   ThemeSwitcher as ThemeSwitcherComponent,
   Wisp,
-} from '../src/index';
-import defaultTheme from '../src/themes/default/theme';
-import testTheme from './testTheme/theme';
+} from '../src';
 
 export default {
   component: Wisp,

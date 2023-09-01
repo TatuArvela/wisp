@@ -1,4 +1,4 @@
-import { ControlStoryDecorator, StatusBarSection } from '../../src/index';
+import { ControlStoryDecorator, StatusBarSection } from '../../src';
 
 export default {
   component: StatusBarSection,

@@ -1,4 +1,4 @@
-import { argon, ControlStoryDecorator, Textarea } from '../../src/';
+import { argon, ControlStoryDecorator, Textarea } from '../../src';
 
 export default {
   component: Textarea,
