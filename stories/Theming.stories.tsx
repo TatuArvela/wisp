@@ -15,7 +15,6 @@ export default {
 
 export const ThemeSwitcher = {
   args: {
-    themes: [defaultTheme, testTheme],
     children: (
       <>
         <ThemeSwitcherComponent />

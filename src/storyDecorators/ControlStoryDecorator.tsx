@@ -1,3 +1,4 @@
+import { Decorator } from '@storybook/react';
 import React from 'react';
 
 import { ConfigProvider } from '../ConfigContext';
@@ -7,7 +8,7 @@ import { WindowProvider } from '../window/WindowContext';
 import { WindowType } from '../windowManager/types';
 
 export const buildControlStoryDecorator =
-  ({ width, height }: { width?: number; height?: number }) =>
+  ({ width, height }: { width?: number; height?: number }): Decorator =>
   (Story, context) => {
     const isInDocs = context.viewMode === 'docs';
 
