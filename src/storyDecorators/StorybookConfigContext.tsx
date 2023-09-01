@@ -23,9 +23,8 @@ export const useStorybookConfig = () => {
 
 export const storybookConfigContextDecorator =
   (config: Partial<WispConfig>): Decorator =>
-  (Story) =>
-    (
-      <StorybookConfigProvider {...config}>
-        <Story />
-      </StorybookConfigProvider>
-    );
+  (Story) => (
+    <StorybookConfigProvider {...config}>
+      <Story />
+    </StorybookConfigProvider>
+  );
