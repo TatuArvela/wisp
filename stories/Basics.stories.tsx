@@ -25,9 +25,20 @@ export const NoDefaultElements = {
     children: (
       <>
         <Desktop />
-        <Window id="hello world" title="Hello World">
+        <AlertWindow id="warning" title="Warning">
+          Warning!
+        </AlertWindow>
+        <AlertWindow id="error" title="Error" alertIcon="error">
+          Error!
+        </AlertWindow>
+        <AlertWindow
+          id="hello world"
+          title="Hello World"
+          icon={icons.wisp}
+          alertIcon="wisp"
+        >
           Check out Wisp
-        </Window>
+        </AlertWindow>
       </>
     ),
   },

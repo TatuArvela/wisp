@@ -1,6 +1,8 @@
 import { ControlsThemeSection } from '../../types';
 import * as addressBar from './addressBar';
 import * as alertButton from './alertButton';
+import * as alertContent from './alertContent';
+import * as alertIcon from './alertIcon';
 import * as alertText from './alertText';
 import * as button from './button';
 import * as checkbox from './checkbox';
@@ -28,6 +30,8 @@ import * as windowContent from './windowContent';
 const controls: ControlsThemeSection = {
   ...addressBar,
   ...alertButton,
+  ...alertContent,
+  ...alertIcon,
   ...alertText,
   ...button,
   ...checkbox,
