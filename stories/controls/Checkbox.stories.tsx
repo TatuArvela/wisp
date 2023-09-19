@@ -1,4 +1,4 @@
-import { argon, Checkbox, ControlStoryDecorator } from '../../src';
+import { statefulProps, Checkbox, ControlStoryDecorator } from '../../src';
 
 export default {
   component: Checkbox,
@@ -11,5 +11,5 @@ export const Default = {
     label: 'Checkbox',
     inlineLabel: false,
   },
-  parameters: argon('checked', 'onChange', false, 'toggle'),
+  parameters: statefulProps('checked', 'onChange', false, 'toggle'),
 };

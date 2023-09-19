@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { defaultConfig, WispConfig } from './config';
-import { useStorybookConfig } from './storyDecorators/StorybookConfigContext';
+import { useStorybookConfig } from './storyDecorators/storybookConfigContext';
 
 export const ConfigContext = React.createContext<WispConfig>(defaultConfig);
 

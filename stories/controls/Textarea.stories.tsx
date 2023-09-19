@@ -1,4 +1,4 @@
-import { argon, ControlStoryDecorator, Textarea } from '../../src';
+import { statefulProps, ControlStoryDecorator, Textarea } from '../../src';
 
 export default {
   component: Textarea,
@@ -11,5 +11,5 @@ export const Default = {
     label: 'Feedback:',
     inlineLabel: false,
   },
-  parameters: argon('value', 'onChange', ''),
+  parameters: statefulProps('value', 'onChange', ''),
 };

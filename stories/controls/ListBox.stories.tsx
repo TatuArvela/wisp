@@ -1,4 +1,4 @@
-import { argon, ControlStoryDecorator, ListBox } from '../../src';
+import { statefulProps, ControlStoryDecorator, ListBox } from '../../src';
 
 export default {
   component: ListBox,
@@ -13,5 +13,5 @@ export const Default = {
     label: 'Smoothie',
     inlineLabel: false,
   },
-  parameters: argon('value', 'onChange', undefined),
+  parameters: statefulProps('value', 'onChange', undefined),
 };

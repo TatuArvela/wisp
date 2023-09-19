@@ -1,4 +1,4 @@
-import { argon, ComboBox, ControlStoryDecorator } from '../../src';
+import { statefulProps, ComboBox, ControlStoryDecorator } from '../../src';
 
 export default {
   component: ComboBox,
@@ -13,5 +13,5 @@ export const Default = {
     label: 'Smoothie',
     inlineLabel: false,
   },
-  parameters: argon('value', 'onChange', undefined),
+  parameters: statefulProps('value', 'onChange', undefined),
 };

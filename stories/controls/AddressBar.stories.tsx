@@ -1,4 +1,4 @@
-import { AddressBar, argon, ControlStoryDecorator } from '../../src';
+import { AddressBar, ControlStoryDecorator, statefulProps } from '../../src';
 
 export default {
   component: AddressBar,
@@ -10,7 +10,7 @@ export const Default = {
   args: {
     value: 'https://www.google.com/',
   },
-  parameters: argon('value', 'onChange', ''),
+  parameters: statefulProps('value', 'onChange', 'https://www.google.com/'),
 };
 
 export const WithLabel = {
@@ -18,5 +18,5 @@ export const WithLabel = {
     children: 'Address:',
     value: 'https://www.google.com/',
   },
-  parameters: argon('value', 'onChange', ''),
+  parameters: statefulProps('value', 'onChange', 'https://www.google.com/'),
 };

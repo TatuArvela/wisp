@@ -1,4 +1,4 @@
-import { argon, ControlStoryDecorator, TimeInput } from '../../src';
+import { statefulProps, ControlStoryDecorator, TimeInput } from '../../src';
 
 export default {
   component: TimeInput,
@@ -11,5 +11,5 @@ export const Default = {
     label: 'Time:',
     inlineLabel: false,
   },
-  parameters: argon('value', 'onChange', { minutes: 0, hours: 0 }),
+  parameters: statefulProps('value', 'onChange', { minutes: 0, hours: 0 }),
 };

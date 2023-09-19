@@ -1,4 +1,4 @@
-import { argon, ControlStoryDecorator, TextInput } from '../../src';
+import { statefulProps, ControlStoryDecorator, TextInput } from '../../src';
 
 export default {
   component: TextInput,
@@ -11,5 +11,5 @@ export const Default = {
     label: 'Feedback:',
     inlineLabel: false,
   },
-  parameters: argon('value', 'onChange', ''),
+  parameters: statefulProps('value', 'onChange', ''),
 };
