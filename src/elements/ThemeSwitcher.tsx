@@ -26,6 +26,7 @@ const ThemeSwitcher = () => {
       isClosable={false}
       isMaximizable={false}
       height={58}
+      width={300}
     >
       <ListBox onChange={onChange} value={value} options={options} />
     </Window>
