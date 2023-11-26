@@ -36,7 +36,9 @@
 
 ## Documentation and verification
 
-* Written documentation
+* Documentation in Storybook
+  * Add more usage explanations
+  * Detail how controls work
 * Tests
 
 ## Extension and theming
