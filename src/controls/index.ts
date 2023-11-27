@@ -13,6 +13,8 @@ export * from './ListBox';
 export * from './MenuBar';
 export * from './ProgressBar';
 export * from './ScrollableContent';
+export * from './ScrollbarHorizontal';
+export * from './ScrollbarVertical';
 export * from './StatusBar';
 export * from './StatusBarSection';
 export * from './Textarea';

@@ -1,29 +1,31 @@
 import { FlattenInterpolation } from 'styled-components';
 
-import { AddressBarThemeProperties } from '../controls/AddressBar';
-import { AlertButtonThemeProperties } from '../controls/AlertButton';
-import { AlertTextThemeProperties } from '../controls/AlertText';
-import { ButtonThemeProperties } from '../controls/Button';
-import { CheckboxThemeProperties } from '../controls/Checkbox';
-import { ComboBoxThemeProperties } from '../controls/ComboBox';
-import { ControlWrapperThemeProperties } from '../controls/ControlWrapper';
-import { DividerThemeProperties } from '../controls/Divider';
-import { FieldsetThemeProperties } from '../controls/Fieldset';
-import { LabelThemeProperties } from '../controls/Label';
-import { ListBoxThemeProperties } from '../controls/ListBox';
-import { MenuBarThemeProperties } from '../controls/MenuBar';
-import { ProgressBarThemeProperties } from '../controls/ProgressBar';
-import { ScrollableContentThemeProperties } from '../controls/ScrollableContent';
-import { ScrollbarHorizontalThemeProperties } from '../controls/ScrollbarHorizontal';
-import { ScrollbarVerticalThemeProperties } from '../controls/ScrollbarVertical';
-import { StatusBarThemeProperties } from '../controls/StatusBar';
-import { StatusBarSectionThemeProperties } from '../controls/StatusBarSection';
-import { TextareaThemeProperties } from '../controls/Textarea';
-import { TextInputThemeProperties } from '../controls/TextInput';
-import { TimeInputThemeProperties } from '../controls/TimeInput';
-import { ToolbarButtonThemeProperties } from '../controls/ToolbarButton';
-import { WellThemeProperties } from '../controls/Well';
-import { WindowContentThemeProperties } from '../controls/WindowContent';
+import {
+  AddressBarThemeProperties,
+  AlertButtonThemeProperties,
+  AlertTextThemeProperties,
+  ButtonThemeProperties,
+  CheckboxThemeProperties,
+  ComboBoxThemeProperties,
+  ControlWrapperThemeProperties,
+  DividerThemeProperties,
+  FieldsetThemeProperties,
+  LabelThemeProperties,
+  ListBoxThemeProperties,
+  MenuBarThemeProperties,
+  ProgressBarThemeProperties,
+  ScrollableContentThemeProperties,
+  ScrollbarHorizontalThemeProperties,
+  ScrollbarVerticalThemeProperties,
+  StatusBarSectionThemeProperties,
+  StatusBarThemeProperties,
+  TextareaThemeProperties,
+  TextInputThemeProperties,
+  TimeInputThemeProperties,
+  ToolbarButtonThemeProperties,
+  WellThemeProperties,
+  WindowContentThemeProperties,
+} from '../controls';
 import { Icon, IconKey } from '../icons';
 
 const ControlsProperties = [
