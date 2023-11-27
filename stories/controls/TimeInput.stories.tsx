@@ -1,4 +1,4 @@
-import { statefulProps, ControlStoryDecorator, TimeInput } from '../../src';
+import { ControlStoryDecorator, statefulProps, TimeInput } from '../../src';
 
 export default {
   component: TimeInput,

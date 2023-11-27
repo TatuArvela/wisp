@@ -1,11 +1,6 @@
 import React from 'react';
 
-import {
-  ControlStoryDecorator,
-  icons,
-  Toolbar,
-  ToolbarButton,
-} from '../../src';
+import { ControlStoryDecorator, Toolbar, ToolbarButton } from '../../src';
 
 export default {
   component: Toolbar,
@@ -18,7 +13,7 @@ export const Default = {
     children: (
       <>
         <ToolbarButton label="Action" />
-        <ToolbarButton icon={icons.wisp} />
+        <ToolbarButton icon="wisp" />
       </>
     ),
   },

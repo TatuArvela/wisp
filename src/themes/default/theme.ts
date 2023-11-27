@@ -1,26 +1,16 @@
-import {
-  ControlsThemeSection,
-  ElementsThemeSection,
-  WindowThemeSection,
-} from '../types';
+import type { FullTheme } from '../types';
 import controls from './controls';
 import elements from './elements';
+import icons from './icons';
 import window from './window';
 
-interface DefaultTheme {
-  id: string;
-  name: string;
-  controls: ControlsThemeSection;
-  elements: ElementsThemeSection;
-  window: WindowThemeSection;
-}
-
-const defaultTheme: DefaultTheme = {
+const defaultTheme: FullTheme = {
   id: 'DEFAULT',
   name: 'Default Theme',
   controls,
   elements,
   window,
+  icons,
 };
 
 export default defaultTheme;

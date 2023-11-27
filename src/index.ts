@@ -1,7 +1,7 @@
 export { WispConfig } from './config';
 export * from './controls';
 export * from './elements';
-export { default as icons } from './icons';
+export * from './icons';
 export * from './storyDecorators';
 export { useThemeManager } from './themeManager/hooks';
 export { default as defaultTheme } from './themes/default/theme';

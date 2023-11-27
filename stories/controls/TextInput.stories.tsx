@@ -1,4 +1,4 @@
-import { statefulProps, ControlStoryDecorator, TextInput } from '../../src';
+import { ControlStoryDecorator, statefulProps, TextInput } from '../../src';
 
 export default {
   component: TextInput,

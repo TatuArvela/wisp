@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import type { Icon } from '../../icons/types';
+import type { Icon } from '../../icons';
 import { getIconFileForSize } from '../../icons/utils';
+import { useThemeManager } from '../../themeManager/hooks';
 
 export type TaskbarButtonProps = {
   active: boolean;
@@ -23,12 +24,15 @@ const TaskbarButtonIconElement = styled.img`
   ${(props) => props.theme.elements.TaskbarButtonIcon}
 `;
 
-const TaskbarButtonIcon = ({ icon }: { icon: Icon }) => {
-  if (!icon) {
+const TaskbarButtonIcon = ({ icon }: { icon: string | Icon }) => {
+  const { theme } = useThemeManager();
+
+  const resolvedIcon = typeof icon === 'string' ? theme.icons[icon] : icon;
+  if (!resolvedIcon) {
     return null;
   }
 
-  const iconFile = getIconFileForSize(icon);
+  const iconFile = getIconFileForSize(resolvedIcon);
   return <TaskbarButtonIconElement src={iconFile} alt="Window icon" />;
 };
 
@@ -40,7 +44,7 @@ const TaskbarButton = ({
 }: TaskbarButtonProps) => {
   return (
     <TaskbarButtonElement type="button" active={active} onClick={onClick}>
-      <TaskbarButtonIcon icon={icon} />
+      {icon !== undefined && <TaskbarButtonIcon icon={icon} />}
       <TaskbarButtonTitle>{title}</TaskbarButtonTitle>
     </TaskbarButtonElement>
   );

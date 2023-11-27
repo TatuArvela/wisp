@@ -24,6 +24,7 @@ import { TimeInputThemeProperties } from '../controls/TimeInput';
 import { ToolbarButtonThemeProperties } from '../controls/ToolbarButton';
 import { WellThemeProperties } from '../controls/Well';
 import { WindowContentThemeProperties } from '../controls/WindowContent';
+import { Icon, IconKey } from '../icons';
 
 const ControlsProperties = [
   ...AddressBarThemeProperties,
@@ -90,6 +91,16 @@ type ThemeSection<Properties extends ReadonlyArray<string>> = {
 export type ControlsThemeSection = ThemeSection<typeof ControlsProperties>;
 export type ElementsThemeSection = ThemeSection<typeof ElementsProperties>;
 export type WindowThemeSection = ThemeSection<typeof WindowProperties>;
+export type IconsThemeSection = Record<IconKey, Icon> & Record<string, Icon>;
+
+export interface FullTheme {
+  id: string;
+  name: string;
+  controls: ControlsThemeSection;
+  elements: ElementsThemeSection;
+  window: WindowThemeSection;
+  icons: IconsThemeSection;
+}
 
 export interface Theme {
   id: string;
@@ -97,4 +108,5 @@ export interface Theme {
   controls?: Partial<ControlsThemeSection>;
   elements?: Partial<ElementsThemeSection>;
   window?: Partial<WindowThemeSection>;
+  icons?: Partial<IconsThemeSection>;
 }

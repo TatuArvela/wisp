@@ -1,7 +1,7 @@
-import { Theme } from '../themes/types';
+import { FullTheme } from '../themes/types';
 
 export interface ThemeManager {
-  theme: Theme;
-  changeTheme: (theme: Theme) => void;
-  themes: Theme[];
+  theme: FullTheme;
+  changeTheme: (theme: FullTheme) => void;
+  themes: FullTheme[];
 }

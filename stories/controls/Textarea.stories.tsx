@@ -1,4 +1,4 @@
-import { statefulProps, ControlStoryDecorator, Textarea } from '../../src';
+import { ControlStoryDecorator, statefulProps, Textarea } from '../../src';
 
 export default {
   component: Textarea,

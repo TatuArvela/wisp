@@ -1,5 +1,5 @@
 import defaultTheme from './themes/default/theme';
-import { Theme } from './themes/types';
+import { FullTheme } from './themes/types';
 import { ViewportWindowMargins } from './windowManager/types';
 
 export interface WispConfig {
@@ -14,7 +14,7 @@ export interface WispConfig {
   minWindowWidth: number;
   newWindowXOffset: number;
   newWindowYOffset: number;
-  themes: Theme[];
+  themes: FullTheme[];
   viewportWindowMargins: ViewportWindowMargins;
 }
 

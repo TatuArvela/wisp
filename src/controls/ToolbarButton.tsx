@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Icon } from '../icons/types';
+import type { Icon } from '../icons';
 import { getIconFileForSize } from '../icons/utils';
+import { useThemeManager } from '../themeManager/hooks';
 
 export const ToolbarButtonThemeProperties = [
   'ToolbarButton',
@@ -27,12 +28,15 @@ const ToolbarButtonIconElement = styled.img`
   ${(props) => props.theme.controls.ToolbarButtonIcon}
 `;
 
-const ToolbarButtonIcon = ({ icon }: { icon: Icon }) => {
-  if (!icon) {
+const ToolbarButtonIcon = ({ icon }: { icon: string | Icon }) => {
+  const { theme } = useThemeManager();
+
+  const resolvedIcon = typeof icon === 'string' ? theme.icons[icon] : icon;
+  if (!resolvedIcon) {
     return null;
   }
 
-  const iconFile = getIconFileForSize(icon);
+  const iconFile = getIconFileForSize(resolvedIcon);
   return <ToolbarButtonIconElement src={iconFile} alt="Window icon" />;
 };
 
@@ -57,7 +61,7 @@ export const ToolbarButton = ({
   return (
     <ToolbarButtonWrapper disabled={disabled}>
       <ToolbarButtonElement disabled={disabled} {...rest}>
-        {icon && <ToolbarButtonIcon icon={icon} />}
+        {icon !== undefined && <ToolbarButtonIcon icon={icon} />}
         {label && <ToolbarButtonLabel>{label}</ToolbarButtonLabel>}
       </ToolbarButtonElement>
     </ToolbarButtonWrapper>

@@ -4,29 +4,19 @@ import styled from 'styled-components';
 import AlertButton from '../controls/AlertButton';
 import AlertContent from '../controls/AlertContent';
 import AlertText from '../controls/AlertText';
-import icons, { IconKey } from '../icons';
-import { Icon } from '../icons/types';
+import { Icon } from '../icons';
 import { getIconFileForSize } from '../icons/utils';
+import { useThemeManager } from '../themeManager/hooks';
 import Window, { WindowProps } from './Window';
-
-type AlertIconType = null | IconKey | Icon;
 
 const AlertIconElement = styled.img`
   ${(props) => props.theme.controls.AlertIcon}
 `;
 
-const AlertIcon = ({ icon }: { icon: AlertIconType }) => {
-  if (!icon) {
-    return null;
-  }
+const AlertIcon = ({ icon }: { icon: string | Icon }) => {
+  const { theme } = useThemeManager();
 
-  let resolvedIcon;
-  if (typeof icon === 'string') {
-    resolvedIcon = icons[icon] ?? null;
-  } else {
-    resolvedIcon = icon;
-  }
-
+  const resolvedIcon = typeof icon === 'string' ? theme.icons[icon] : icon;
   if (!resolvedIcon) {
     return null;
   }
@@ -36,7 +26,7 @@ const AlertIcon = ({ icon }: { icon: AlertIconType }) => {
 };
 
 export type AlertWindowProps = WindowProps & {
-  alertIcon?: AlertIconType;
+  alertIcon?: string | Icon;
   buttonText?: string;
   onButtonClick?(): void;
 };

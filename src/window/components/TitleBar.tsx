@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import type { Icon } from '../../icons/types';
+import type { Icon } from '../../icons';
 import { getIconFileForSize } from '../../icons/utils';
+import { useThemeManager } from '../../themeManager/hooks';
 import TitleBarButtons from './TitleBarButtons';
 
 export interface TitleBarElementProps {
@@ -25,12 +26,15 @@ const TitleBarIconElement = styled.img`
   ${(props) => props.theme.window.TitleBarIcon}
 `;
 
-const TitleBarIcon = ({ icon }: { icon: Icon }) => {
-  if (!icon) {
+const TitleBarIcon = ({ icon }: { icon: string | Icon }) => {
+  const { theme } = useThemeManager();
+
+  const resolvedIcon = typeof icon === 'string' ? theme.icons[icon] : icon;
+  if (!resolvedIcon) {
     return null;
   }
 
-  const iconFile = getIconFileForSize(icon);
+  const iconFile = getIconFileForSize(resolvedIcon);
   return <TitleBarIconElement src={iconFile} alt="Window icon" />;
 };
 
@@ -75,7 +79,7 @@ const TitleBar = ({
   return (
     <TitleBarElement isActive={isActive}>
       <TitleContainer onMouseDown={drag} onDoubleClick={onTitleDoubleClick}>
-        <TitleBarIcon icon={icon} />
+        {icon !== undefined && <TitleBarIcon icon={icon} />}
         <TitleBarTitle>{title}</TitleBarTitle>
       </TitleContainer>
       <TitleBarButtons

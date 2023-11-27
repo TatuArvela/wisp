@@ -1,4 +1,4 @@
-import { statefulProps, ControlStoryDecorator, ListBox } from '../../src';
+import { ControlStoryDecorator, ListBox, statefulProps } from '../../src';
 
 export default {
   component: ListBox,

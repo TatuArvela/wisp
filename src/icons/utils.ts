@@ -1,7 +1,6 @@
-import { Icon } from './types';
+import { Icon } from './index';
 
 // TODO: get most suitable icon size
 export const getIconFileForSize = (icon: Icon) => {
-  const iconFile = Object.entries(icon)[0][1];
-  return iconFile;
+  return Object.entries(icon)[0][1];
 };

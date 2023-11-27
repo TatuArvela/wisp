@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import {
   AddressBar,
-  icons,
   MenuBar,
   ProgressBar,
   ScrollableContent,
@@ -151,7 +150,7 @@ export const ComplexWindow = () => {
         <MenuBar isThrobberAnimated></MenuBar>
         <Toolbar>
           <ToolbarButton label="Action" />
-          <ToolbarButton icon={icons.wisp} />
+          <ToolbarButton icon="wisp" />
         </Toolbar>
         <AddressBar value={address} onChange={setAddress}>
           Address:
