@@ -2,10 +2,12 @@ import { Decorator } from '@storybook/react';
 import React from 'react';
 
 import { ConfigProvider } from '../ConfigContext';
-import { Desktop, Window, Wisp } from '../index';
+import { Desktop } from '../elements';
 import ThemeManager from '../themeManager/ThemeManager';
-import { WindowProvider } from '../window/WindowContext';
+import { WindowProvider } from '../window';
+import { Window } from '../window';
 import { WindowType } from '../windowManager/types';
+import Wisp from '../Wisp';
 
 export const buildControlStoryDecorator =
   ({ width, height }: { width?: number; height?: number }): Decorator =>

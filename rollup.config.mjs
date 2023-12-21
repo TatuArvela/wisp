@@ -8,7 +8,7 @@ import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import del from 'rollup-plugin-delete';
-import dts from 'rollup-plugin-dts';
+import { dts } from 'rollup-plugin-dts';
 import externals from 'rollup-plugin-node-externals';
 
 const require = createRequire(import.meta.url);
@@ -26,9 +26,16 @@ export default [
       }),
       replace({
         'process.env.PACKAGE_VERSION': JSON.stringify(pkg.version),
+        preventAssignment: true,
       }),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json' }),
+      typescript({
+        tsconfig: "./tsconfig.json",
+        compilerOptions: {
+          emitDeclarationOnly: true,
+        },
+        sourceMap: false,
+      }),
       babel({
         babelHelpers: 'runtime',
         exclude: 'node_modules/**',
@@ -42,7 +49,7 @@ export default [
     ],
   },
   {
-    input: './dist/dts/index.d.ts',
+    input: './dist/dts/src/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'es' }],
     plugins: [dts(), del({ hook: 'buildEnd', targets: './dist/dts' })],
   },

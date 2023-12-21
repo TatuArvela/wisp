@@ -2,7 +2,6 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "dts",
-    "emitDeclarationOnly": true,
     "target": "ES6",
     "outDir": "dist",
     "sourceMap": true,

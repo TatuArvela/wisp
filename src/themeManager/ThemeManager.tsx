@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { useConfig } from '../ConfigContext';
 import defaultTheme from '../themes/default/theme';
-import { FullTheme } from '../themes/types';
+import { FullTheme, Theme } from '../themes/types';
 import { ThemeManagerProvider } from './ThemeManagerContext';
 import { mergeDeep } from './utils';
 
@@ -14,9 +14,9 @@ interface Props {
 const ThemeManager = ({ children }: Props) => {
   const { themes } = useConfig();
 
-  const baseOnDefault = (theme: FullTheme) => {
+  const baseOnDefault = (theme: Theme): FullTheme => {
     if (theme.id === defaultTheme.id) {
-      return theme;
+      return theme as FullTheme;
     }
     return mergeDeep(defaultTheme, theme);
   };

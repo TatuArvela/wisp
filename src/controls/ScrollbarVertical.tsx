@@ -57,7 +57,7 @@ const ScrollbarVertical = ({
 
     const onMouseUp = () => {
       document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', this);
+      document.removeEventListener('mouseup', onMouseUp);
     };
 
     document.addEventListener('mousemove', onMouseMove);
