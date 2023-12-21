@@ -4,8 +4,8 @@ import { useWindowManager } from '../windowManager/hooks';
 import { WindowType } from '../windowManager/types';
 import ResizeBorder from './components/ResizeBorder';
 import TitleBar from './components/TitleBar';
-import WindowContent from './components/WindowContent';
 import WindowElement from './components/WindowElement';
+import WindowElementContent from './components/WindowElementContent';
 import { windowDragHandler } from './handlers/windowDragHandler';
 import { windowResizeHandler } from './handlers/windowResizeHandler';
 import { WindowProvider } from './WindowContext';
@@ -67,9 +67,9 @@ export const Window: React.FC<WindowProps> = ({
           unmaximize={() => windowManager.unmaximizeWindow(id)}
         />
 
-        <WindowContent onClick={() => windowManager.activateWindow(id)}>
+        <WindowElementContent onClick={() => windowManager.activateWindow(id)}>
           {children}
-        </WindowContent>
+        </WindowElementContent>
 
         {window.isResizable && (
           <ResizeBorder resize={windowResizeHandler(windowManager, window)} />

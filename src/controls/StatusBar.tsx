@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useWindow } from '../window';
 import { windowResizeHandler } from '../window/handlers/windowResizeHandler';
-import { useWindow } from '../window/WindowContext';
 import { useWindowManager } from '../windowManager/hooks';
 import { Direction } from '../windowManager/types';
 
@@ -30,7 +30,7 @@ const ResizeHandleElement = styled.div`
   ${(props) => props.theme.controls.ResizeHandle}
 `;
 
-const ResizeHandle = (): JSX.Element => {
+const ResizeHandle = () => {
   const windowManager = useWindowManager();
   const window = useWindow();
   const eventHandler = windowResizeHandler(windowManager, window);

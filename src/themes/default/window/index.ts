@@ -3,14 +3,14 @@ import * as resizeBorder from './components/resizeBorder';
 import * as titleBar from './components/titleBar';
 import * as titleBarButtons from './components/titleBarButtons';
 import * as window from './window';
-import * as windowContent from './windowContent';
+import * as windowElementContent from './windowElementContent';
 
 const windowTheme: WindowThemeSection = {
   ...resizeBorder,
   ...titleBar,
   ...titleBarButtons,
   ...window,
-  ...windowContent,
+  ...windowElementContent,
 };
 
 export default windowTheme;

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const Desktop = styled.div`
+export const DesktopThemeProperties = ['Desktop'] as const;
+
+export const Desktop = styled.div`
   ${(props) => props.theme.elements.Desktop}
 `;
 

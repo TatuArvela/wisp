@@ -3,6 +3,7 @@ import { FlattenInterpolation } from 'styled-components';
 import {
   AddressBarThemeProperties,
   AlertButtonThemeProperties,
+  AlertContentThemeProperties,
   AlertTextThemeProperties,
   ButtonThemeProperties,
   CheckboxThemeProperties,
@@ -26,11 +27,25 @@ import {
   WellThemeProperties,
   WindowContentThemeProperties,
 } from '../controls';
+import {
+  DesktopThemeProperties,
+  TaskbarButtonThemeProperties,
+  TaskbarThemeProperties,
+  VersionInfoThemeProperties,
+} from '../elements';
 import { Icon, IconKey } from '../icons';
+import {
+  ResizeBorderThemeProperties,
+  TitleBarButtonsThemeProperties,
+  TitleBarThemeProperties,
+  WindowElementContentThemeProperties,
+  WindowElementThemeProperties,
+} from '../window';
 
 const ControlsProperties = [
   ...AddressBarThemeProperties,
   ...AlertButtonThemeProperties,
+  ...AlertContentThemeProperties,
   ...AlertTextThemeProperties,
   ...ButtonThemeProperties,
   ...CheckboxThemeProperties,
@@ -45,8 +60,8 @@ const ControlsProperties = [
   ...ScrollableContentThemeProperties,
   ...ScrollbarHorizontalThemeProperties,
   ...ScrollbarVerticalThemeProperties,
-  ...StatusBarThemeProperties,
   ...StatusBarSectionThemeProperties,
+  ...StatusBarThemeProperties,
   ...TextareaThemeProperties,
   ...TextInputThemeProperties,
   ...TimeInputThemeProperties,
@@ -56,33 +71,18 @@ const ControlsProperties = [
 ] as const;
 
 const ElementsProperties = [
-  'Desktop',
-  'Taskbar',
-  'TaskbarButton',
-  'VersionInfo',
+  ...DesktopThemeProperties,
+  ...TaskbarButtonThemeProperties,
+  ...TaskbarThemeProperties,
+  ...VersionInfoThemeProperties,
 ] as const;
 
 const WindowProperties = [
-  'CloseButton',
-  'EResize',
-  'MaximizeButton',
-  'MinimizeButton',
-  'NEResize',
-  'NResize',
-  'NWResize',
-  'SEResize',
-  'SResize',
-  'SWResize',
-  'TitleBar',
-  'TitleBarButtons',
-  'TitleBarIcon',
-  'TitleBarTitle',
-  'TitleBarTitleContainer',
-  'UnmaximizeButton',
-  'WindowButton',
-  'WindowContent',
-  'WindowElement',
-  'WResize',
+  ...ResizeBorderThemeProperties,
+  ...TitleBarThemeProperties,
+  ...TitleBarButtonsThemeProperties,
+  ...WindowElementContentThemeProperties,
+  ...WindowElementThemeProperties,
 ] as const;
 
 type Style = FlattenInterpolation<any>;

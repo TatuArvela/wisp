@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { WindowElementProps } from '../../../window/components/WindowElement';
+import { WindowElementProps } from '../../../window';
 import { ViewportWindowMargins } from '../../../windowManager/types';
 
 const getHeight = (viewportWindowMargins: ViewportWindowMargins) =>

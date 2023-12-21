@@ -6,6 +6,13 @@ import { getIconFileForSize } from '../../icons/utils';
 import { useThemeManager } from '../../themeManager/hooks';
 import TitleBarButtons from './TitleBarButtons';
 
+export const TitleBarThemeProperties = [
+  'TitleBar',
+  'TitleBarTitleContainer',
+  'TitleBarTitle',
+  'TitleBarIcon',
+] as const;
+
 export interface TitleBarElementProps {
   isActive: boolean;
 }

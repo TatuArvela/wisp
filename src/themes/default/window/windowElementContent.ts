@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const WindowContent = css`
+export const WindowElementContent = css`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

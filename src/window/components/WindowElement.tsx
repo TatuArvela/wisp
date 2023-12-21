@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import { ViewportWindowMargins } from '../../windowManager/types';
 
+export const WindowElementThemeProperties = ['WindowElement'] as const;
+
 export interface WindowElementProps {
   height: number;
   width: number;

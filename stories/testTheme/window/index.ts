@@ -7,8 +7,8 @@ import {
 } from '../../../src';
 import titleBar from './titleBar';
 
-const WindowContent = css`
-  ${defaultTheme.window.WindowContent}
+const WindowElementContent = css`
+  ${defaultTheme.window.WindowElementContent}
   font-family: serif;
 `;
 
@@ -21,7 +21,7 @@ const WindowElement = css<WindowElementProps>`
 
 const window: Partial<WindowThemeSection> = {
   ...titleBar,
-  WindowContent,
+  WindowElementContent,
   WindowElement,
 };
 

@@ -3,6 +3,17 @@ import styled from 'styled-components';
 
 import { Direction } from '../../windowManager/types';
 
+export const ResizeBorderThemeProperties = [
+  'NResize',
+  'NEResize',
+  'EResize',
+  'SEResize',
+  'SResize',
+  'SWResize',
+  'WResize',
+  'NWResize',
+] as const;
+
 interface ResizeBorderProps {
   resize: (event: React.MouseEvent, direction: Direction) => void;
 }

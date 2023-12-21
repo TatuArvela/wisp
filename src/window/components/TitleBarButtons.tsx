@@ -1,6 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+export const TitleBarButtonsThemeProperties = [
+  'TitleBarButtons',
+  'WindowButton',
+  'MinimizeButton',
+  'MaximizeButton',
+  'UnmaximizeButton',
+  'CloseButton',
+] as const;
+
 export interface TitleBarButtonsProps {
   close(): void;
 
@@ -52,7 +61,7 @@ const TitleBarButtons = ({
   maximize,
   minimize,
   unmaximize,
-}: TitleBarButtonsProps): JSX.Element => (
+}: TitleBarButtonsProps) => (
   <TitleBarButtonsElement>
     {isMinimizable && <MinimizeButton onClick={minimize} />}
     {isMaximizable &&

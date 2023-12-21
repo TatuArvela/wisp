@@ -5,6 +5,12 @@ import type { Icon } from '../../icons';
 import { getIconFileForSize } from '../../icons/utils';
 import { useThemeManager } from '../../themeManager/hooks';
 
+export const TaskbarButtonThemeProperties = [
+  'TaskbarButton',
+  'TaskbarButtonTitle',
+  'TaskbarButtonIcon',
+] as const;
+
 export type TaskbarButtonProps = {
   active: boolean;
   icon?: Icon;
@@ -36,7 +42,7 @@ const TaskbarButtonIcon = ({ icon }: { icon: string | Icon }) => {
   return <TaskbarButtonIconElement src={iconFile} alt="Window icon" />;
 };
 
-const TaskbarButton = ({
+export const TaskbarButton = ({
   active,
   icon,
   title,

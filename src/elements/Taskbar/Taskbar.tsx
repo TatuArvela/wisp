@@ -5,11 +5,13 @@ import { useWindowManager } from '../../windowManager/hooks';
 import { WindowType } from '../../windowManager/types';
 import TaskbarButton from './TaskbarButton';
 
+export const TaskbarThemeProperties = ['Taskbar'] as const;
+
 const TaskbarElement = styled.div`
   ${(props) => props.theme.elements.Taskbar}
 `;
 
-const Taskbar = (): JSX.Element => {
+const Taskbar = () => {
   const { activeWindowId, windows, restoreWindow, setViewportWindowMargins } =
     useWindowManager();
   const taskbarRef = React.useRef<HTMLDivElement>();

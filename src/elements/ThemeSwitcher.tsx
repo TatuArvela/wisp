@@ -4,7 +4,7 @@ import ListBox from '../controls/ListBox';
 import { useThemeManager } from '../themeManager/hooks';
 import Window from '../window/Window';
 
-const ThemeSwitcher = () => {
+export const ThemeSwitcher = () => {
   const { theme: currentTheme, themes, changeTheme } = useThemeManager();
 
   const value = `${currentTheme.name} (Active)`;

@@ -1,5 +1,7 @@
 export * from './AddressBar';
 export * from './AlertButton';
+export { AlertContentThemeProperties } from './AlertContent';
+export { AlertIconThemeProperties } from './AlertIcon';
 export * from './AlertIcon';
 export * from './AlertText';
 export * from './Button';

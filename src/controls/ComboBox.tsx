@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Portal } from 'react-portal';
 import styled from 'styled-components';
 
-import { useWindow } from '../window/WindowContext';
+import { useWindow } from '../window';
 import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
 export const ComboBoxThemeProperties = [

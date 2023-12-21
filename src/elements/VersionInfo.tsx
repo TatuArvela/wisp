@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+export const VersionInfoThemeProperties = ['VersionInfo'] as const;
+
 const VersionInformationElement = styled.p`
   ${(props) => props.theme.elements.VersionInfo}
 `;
 
-const VersionInfo = () => {
+export const VersionInfo = () => {
   const version =
     process.env.PACKAGE_VERSION || process.env.STORYBOOK_PACKAGE_VERSION;
 
@@ -18,4 +20,5 @@ const VersionInfo = () => {
     </VersionInformationElement>
   );
 };
+
 export default VersionInfo;

@@ -10,7 +10,7 @@ export interface WispProps extends Partial<WispConfig> {
   children: React.ReactNode;
 }
 
-const Wisp = ({ children, ...config }: WispProps): JSX.Element => (
+const Wisp = ({ children, ...config }: WispProps) => (
   <ConfigProvider {...config}>
     <ThemeManager>
       <WindowManager>
