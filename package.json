@@ -1,6 +1,6 @@
 {
   "name": "@tatuarvela/wisp",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Window manager and widget toolkit",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
