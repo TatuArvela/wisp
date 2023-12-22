@@ -6,11 +6,12 @@ import {
   ComboBoxOptionsProps,
 } from '../../../controls/ComboBox';
 import { ControlWrapperProps } from '../../../controls/ControlWrapper';
-import { Label } from './label';
 
 export const ComboBoxWrapper = css<ControlWrapperProps>``;
 
-export const ComboBoxLabel = Label;
+export const ComboBoxLabel = css`
+  ${(props) => props.theme.controls.Label}
+`;
 
 export const ComboBoxControl = css`
   display: flex;
@@ -26,7 +27,6 @@ export const ComboBoxInput = css<ComboBoxInputProps>`
   border-right: none;
   border-top-left-radius: 1px;
   border-top: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
-  box-sizing: border-box;
   box-sizing: border-box;
   color: ${(props) => (props.disabled ? 'gray' : 'black')};
   font-size: 12px;

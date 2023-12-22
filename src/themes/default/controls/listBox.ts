@@ -2,11 +2,12 @@ import { css } from 'styled-components';
 
 import { ControlWrapperProps } from '../../../controls/ControlWrapper';
 import { ListBoxOptionsProps } from '../../../controls/ListBox';
-import { Label } from './label';
 
 export const ListBoxWrapper = css<ControlWrapperProps>``;
 
-export const ListBoxLabel = Label;
+export const ListBoxLabel = css`
+  ${(props) => props.theme.controls.Label}
+`;
 
 export const ListBoxButton = css<{ disabled?: boolean }>`
   background: white;
@@ -17,7 +18,6 @@ export const ListBoxButton = css<{ disabled?: boolean }>`
   height: 24px;
   padding: 3px;
   font-size: 12px;
-  position: relative;
   position: relative;
   width: 100%;
 

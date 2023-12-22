@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 
 import { CheckboxProps, ControlWrapperProps } from '../../../controls';
-import { Label } from './label';
 
 export const CheckboxWrapper = css<ControlWrapperProps>``;
 
@@ -47,4 +46,6 @@ export const Checkbox = css<CheckboxProps>`
   ${(props) => props.checked && checkedStyle}
 `;
 
-export const CheckboxLabel = Label;
+export const CheckboxLabel = css`
+  ${(props) => props.theme.controls.Label}
+`;

@@ -2,11 +2,12 @@ import { css } from 'styled-components';
 
 import { ControlWrapperProps } from '../../../controls/ControlWrapper';
 import { TextareaElementProps } from '../../../controls/Textarea';
-import { Label } from './label';
 
 export const TextareaWrapper = css<ControlWrapperProps>``;
 
-export const TextareaLabel = Label;
+export const TextareaLabel = css`
+  ${(props) => props.theme.controls.Label}
+`;
 
 export const TextareaElement = css<TextareaElementProps>`
   border-radius: 1px;

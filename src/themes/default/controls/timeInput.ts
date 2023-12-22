@@ -6,11 +6,12 @@ import {
   TimeInputFieldProps,
   TimeInputValueProps,
 } from '../../../controls';
-import { Label } from './label';
 
 export const TimeInputWrapper = css<ControlWrapperProps>``;
 
-export const TimeInputLabel = Label;
+export const TimeInputLabel = css`
+  ${(props) => props.theme.controls.Label}
+`;
 
 export const TimeInputControl = css`
   display: flex;
