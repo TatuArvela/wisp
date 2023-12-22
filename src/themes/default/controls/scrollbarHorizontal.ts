@@ -82,7 +82,6 @@ export const ScrollbarHorizontalTrack = css`
 
 export const ScrollbarHorizontalThumb = css`
   height: 22px;
-  background: blue;
   position: absolute;
   border: 1px solid black;
   background: #fff;

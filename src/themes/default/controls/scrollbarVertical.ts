@@ -81,7 +81,6 @@ export const ScrollbarVerticalTrack = css`
 `;
 
 export const ScrollbarVerticalThumb = css`
-  background: blue;
   width: 22px;
   position: absolute;
   border: 1px solid black;
