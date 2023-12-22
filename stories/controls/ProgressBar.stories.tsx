@@ -6,4 +6,10 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Default = {};
+export const Default = {
+  args: {
+    max: undefined,
+    value: undefined,
+    disabled: undefined,
+  },
+};
