@@ -86,6 +86,8 @@ export const ScrollbarHorizontalThumb = css`
   border: 1px solid black;
   background: #fff;
   box-sizing: border-box;
+  left: var(--left);
+  width: var(--width);
 
   &:hover {
     background: #dedede;

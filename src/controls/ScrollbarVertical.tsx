@@ -81,9 +81,9 @@ const ScrollbarVertical = ({
       scrollPositions.scrollTop / scrollPositions.scrollTopMax
     } * (100% - ${thumbHeight}))`;
     return {
-      height: thumbHeight,
-      top: topPosition,
-    };
+      '--height': thumbHeight,
+      '--top': topPosition,
+    } as React.CSSProperties;
   };
 
   return (

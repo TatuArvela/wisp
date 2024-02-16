@@ -81,9 +81,9 @@ const ScrollbarHorizontal = ({
       scrollPositions.scrollLeft / scrollPositions.scrollLeftMax
     } * (100% - ${thumbWidth}))`;
     return {
-      width: thumbWidth,
-      left: leftPosition,
-    };
+      '--width': thumbWidth,
+      '--left': leftPosition,
+    } as React.CSSProperties;
   };
 
   return (

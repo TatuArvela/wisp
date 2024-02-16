@@ -86,6 +86,8 @@ export const ScrollbarVerticalThumb = css`
   border: 1px solid black;
   background: #fff;
   box-sizing: border-box;
+  top: var(--top);
+  height: var(--height);
 
   &:hover {
     background: #dedede;
