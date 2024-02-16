@@ -88,7 +88,7 @@ const ScrollbarHorizontal = ({
 
   return (
     <ScrollbarHorizontalWrapper
-      style={{ width: width + 'px' }}
+      style={{ '--width': width + 'px' } as React.CSSProperties}
       ref={wrapperRef}
     >
       <ScrollLeftButton onMouseDown={onButtonMouseDown(-50)} />

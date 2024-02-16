@@ -88,7 +88,7 @@ const ScrollbarVertical = ({
 
   return (
     <ScrollbarVerticalWrapper
-      style={{ height: height + 'px' }}
+      style={{ '--height': height + 'px' } as React.CSSProperties}
       ref={wrapperRef}
     >
       <ScrollUpButton onMouseDown={onButtonMouseDown(-50)} />

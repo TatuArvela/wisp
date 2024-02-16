@@ -103,4 +103,5 @@ export const ScrollbarVerticalWrapper = css`
   right: 0;
   top: 0;
   width: 22px;
+  height: var(--height);
 `;

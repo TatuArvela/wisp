@@ -103,4 +103,5 @@ export const ScrollbarHorizontalWrapper = css`
   height: 22px;
   left: 0;
   position: absolute;
+  width: var(--width);
 `;
