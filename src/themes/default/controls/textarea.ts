@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 
-import { ControlWrapperProps } from '../../../controls/ControlWrapper';
-import { TextareaElementProps } from '../../../controls/Textarea';
+import { ControlWrapperProps, TextareaElementProps } from '../../../controls';
 
 export const TextareaWrapper = css<ControlWrapperProps>``;
 

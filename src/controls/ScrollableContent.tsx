@@ -85,7 +85,7 @@ export const ScrollableContent = ({
     return () => observer.unobserve(view);
   }, [updateState]);
 
-  const scrollHandler = (e) => {
+  const scrollHandler = () => {
     setScrollPositions(
       mapScrollPositions(viewRef.current as unknown as ScrollPositions)
     );
