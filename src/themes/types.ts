@@ -24,6 +24,7 @@ import {
   TextInputThemeProperties,
   TimeInputThemeProperties,
   ToolbarButtonThemeProperties,
+  ToolbarThemeProperties,
   WellThemeProperties,
   WindowContentThemeProperties,
 } from '../controls';
@@ -65,6 +66,7 @@ const ControlsProperties = [
   ...TextareaThemeProperties,
   ...TextInputThemeProperties,
   ...TimeInputThemeProperties,
+  ...ToolbarThemeProperties,
   ...ToolbarButtonThemeProperties,
   ...WellThemeProperties,
   ...WindowContentThemeProperties,
