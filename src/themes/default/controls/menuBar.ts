@@ -31,7 +31,7 @@ export const MenuBarThrobber = css<MenuBarThrobberProps>`
   margin-left: auto;
   width: 40px;
 
-  ${({ isAnimated }) => isAnimated && animatedMenuThrobber}
+  ${({ isAnimated }) => isAnimated && animatedMenuThrobber};
 
   @keyframes menu-bar-throbber-animation {
     0% {
