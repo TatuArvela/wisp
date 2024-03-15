@@ -17,4 +17,8 @@ export const TextInputElement = css<TextInputElementProps>`
   height: 24px;
   outline: none;
   width: 100%;
+
+  &:disabled {
+    background: #dedede;
+  }
 `;
