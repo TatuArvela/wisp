@@ -30,7 +30,8 @@
   "dependencies": {
     "@babel/runtime": "^7.23.6",
     "@headlessui/react": "^1.7.17",
-    "react-portal": "^4.2.2"
+    "react-portal": "^4.2.2",
+    "use-resize-observer": "^9.1.0"
   },
   "peerDependencies": {
     "@types/styled-components": "^5.1.26",

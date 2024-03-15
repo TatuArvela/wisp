@@ -21,8 +21,8 @@ export const ProgressBarFill = css<ProgressBarFillProps>`
   background: ${(props) => (props.disabled ? 'gray' : '#2222ff')};
 
   width: ${(props) =>
-    props.isIndeterminate ? (props.disabled ? '0%' : '50%') : undefined};
-  ${(props) => !props.disabled && props.isIndeterminate && indeterminateStyle}
+    props.isIndeterminate ? (props.disabled ? '0%' : '50%') : 'var(--width)'};
+  ${(props) => !props.disabled && props.isIndeterminate && indeterminateStyle};
 
   @keyframes indeterminate-progress-bar-fill-animation {
     0% {
