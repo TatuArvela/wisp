@@ -4,17 +4,13 @@ on:
   release:
     types: [ released ]
 
-env:
-  NPM_JOB_ENABLED: ${{ secrets.NPM_JOB_ENABLED == 'true' }}
-  NPM_PUBLISH_ENABLED: ${{ secrets.NPM_PUBLISH_ENABLED == 'true' }}
-  PACKAGES_JOB_ENABLED: ${{ secrets.PACKAGES_JOB_ENABLED == 'true' }}
-  PACKAGES_PUBLISH_ENABLED: ${{ secrets.PACKAGES_PUBLISH_ENABLED == 'true' }}
-
 jobs:
   release-npm:
     name: Release ${{ github.event.repository.name }} ${{ github.ref }} to npm
-    if: ${{ env.NPM_JOB_ENABLED == 'true' }}
+    if: ${{ secrets.NPM_JOB_ENABLED == 'true' }}
     runs-on: ubuntu-latest
+    env:
+      NPM_PUBLISH_ENABLED: ${{ secrets.NPM_PUBLISH_ENABLED == 'true' }}
 
     steps:
       - name: Checkout
@@ -45,8 +41,10 @@ jobs:
 
   release-packages:
     name: Release ${{ github.event.repository.name }} ${{ github.ref }} to GitHub Packages
-    if: ${{ env.PACKAGES_JOB_ENABLED == 'true' }}
+    if: ${{ secrets.PACKAGES_JOB_ENABLED == 'true' }}
     runs-on: ubuntu-latest
+    env:
+      PACKAGES_PUBLISH_ENABLED: ${{ secrets.PACKAGES_PUBLISH_ENABLED == 'true' }}
 
     steps:
       - name: Checkout
