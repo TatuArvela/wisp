@@ -4,12 +4,6 @@ on:
   release:
     types: [ released ]
 
-env:
-  NPM_JOB_ENABLED: false
-  NPM_PUBLISH_ENABLED: false
-  PACKAGES_JOB_ENABLED: false
-  PACKAGES_PUBLISH_ENABLED: false
-
 jobs:
   enabled:
     name: Check enabled release targets
@@ -17,15 +11,20 @@ jobs:
     outputs:
       npm: ${{ steps.npm.outputs.npm }}
       packages: ${{ steps.packages.outputs.packages }}
+    env:
+      NPM_JOB_ENABLED: ${{ secrets.NPM_JOB_ENABLED == 'true' }}
+      PACKAGES_JOB_ENABLED: ${{ secrets.PACKAGES_JOB_ENABLED == 'true' }}
+
     steps:
       - name: Check npm
         id: npm
         run: |
           echo "npm=${{ env.NPM_JOB_ENABLED }}" >> $GITHUB_OUTPUT
+
       - name: Check GitHub Packages
         id: packages
         run: |
-          echo "npm=${{ env.PACKAGES_JOB_ENABLED }}" >> $GITHUB_OUTPUT
+          echo "packages=${{ env.PACKAGES_JOB_ENABLED }}" >> $GITHUB_OUTPUT
 
   release-npm:
     name: Release ${{ github.event.repository.name }} ${{ github.ref }} to npm
