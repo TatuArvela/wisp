@@ -4,12 +4,17 @@ on:
   release:
     types: [ released ]
 
+env:
+  NPM_JOB_ENABLED: ${{ secrets.NPM_JOB_ENABLED == 'true' }}
+  NPM_PUBLISH_ENABLED: ${{ secrets.NPM_PUBLISH_ENABLED == 'true' }}
+  PACKAGES_JOB_ENABLED: ${{ secrets.PACKAGES_JOB_ENABLED == 'true' }}
+  PACKAGES_PUBLISH_ENABLED: ${{ secrets.PACKAGES_PUBLISH_ENABLED == 'true' }}
+
 jobs:
-  release:
-    name: Release Wisp ${{ github.ref }}
+  release-npm:
+    name: Release ${{ github.event.repository.name }} ${{ github.ref }} to npm
+    if: ${{ env.NPM_JOB_ENABLED == 'true' }}
     runs-on: ubuntu-latest
-    env:
-      PUBLISH_ENABLED: ${{ secrets.PUBLISH_ENABLED == 'true' }}
 
     steps:
       - name: Checkout
@@ -20,20 +25,52 @@ jobs:
           npm install
           npm run build
 
-      # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Release to npm
-        if: ${{ env.PUBLISH_ENABLED == 'true' }}
+        if: ${{ env.NPM_PUBLISH_ENABLED == 'true' }}
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Release to npm (dry-run)
-        if: ${{ env.PUBLISH_ENABLED == 'false' }}
+        if: ${{ env.NPM_PUBLISH_ENABLED == 'false' }}
         run: npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  release-packages:
+    name: Release ${{ github.event.repository.name }} ${{ github.ref }} to GitHub Packages
+    if: ${{ env.PACKAGES_JOB_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://npm.pkg.github.com/'
+
+      - name: Release to GitHub Packages
+        if: ${{ env.PACKAGES_PUBLISH_ENABLED == 'true' }}
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release to GitHub Packages (dry-run)
+        if: ${{ env.PACKAGES_PUBLISH_ENABLED == 'false' }}
+        run: npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
