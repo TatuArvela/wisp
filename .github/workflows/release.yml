@@ -6,7 +6,7 @@ on:
 
 jobs:
   release-npm:
-    name: Release ${{ github.event.repository.name }} ${{ github.ref }} to npm
+    name: Release ${{ github.event.repository.name }} ${{ github.ref_name }} to npm
     runs-on: ubuntu-latest
     if: ${{ vars.NPM_JOB_ENABLED == 'true' }}
     env:
@@ -40,7 +40,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   release-packages:
-    name: Release ${{ github.event.repository.name }} ${{ github.ref }} to GitHub Packages
+    name: Release ${{ github.event.repository.name }} ${{ github.ref_name }} to GitHub Packages
     runs-on: ubuntu-latest
     if: ${{ vars.PACKAGES_JOB_ENABLED == 'true' }}
     env:
