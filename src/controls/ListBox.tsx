@@ -101,7 +101,7 @@ const FloatingListBox = ({
 }: FloatingListBoxProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const { refs, floatingStyles, context } = useFloating<HTMLElement>({
+  const { refs, floatingStyles } = useFloating<HTMLElement>({
     placement: 'bottom-start',
     open: open,
     whileElementsMounted: autoUpdate,
