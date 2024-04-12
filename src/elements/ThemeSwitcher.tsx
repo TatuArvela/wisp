@@ -20,12 +20,13 @@ export const ThemeSwitcher = () => {
 
   return (
     <Window
+      alwaysShowCloseButton={true}
+      height={58}
       id="THEME_SWITCHER"
-      title="Theme Switcher"
-      isResizable={false}
       isClosable={false}
       isMaximizable={false}
-      height={58}
+      isResizable={false}
+      title="Theme Switcher"
       width={300}
     >
       <ListBox onChange={onChange} value={value} options={options} />
