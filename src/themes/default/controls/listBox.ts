@@ -1,7 +1,11 @@
 import { css } from 'styled-components';
 
-import { ControlWrapperProps } from '../../../controls/ControlWrapper';
-import { ListBoxOptionsProps } from '../../../controls/ListBox';
+import {
+  ControlWrapperProps,
+  ListBoxButtonProps,
+  ListBoxOptionsProps,
+  ListBoxValueProps,
+} from '../../../controls';
 
 export const ListBoxWrapper = css<ControlWrapperProps>``;
 
@@ -9,22 +13,57 @@ export const ListBoxLabel = css`
   ${(props) => props.theme.controls.Label}
 `;
 
-export const ListBoxButton = css<{ disabled?: boolean }>`
-  background: white;
-  border-radius: 0;
-  border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
-  box-sizing: border-box;
+export const ListBoxControl = css`
   display: flex;
-  height: 24px;
-  padding: 3px;
-  font-size: 12px;
   position: relative;
+  height: 100%;
   width: 100%;
+
+  &:focus-within {
+    outline: 1px solid blue;
+  }
+`;
+
+export const ListBoxValue = css<ListBoxValueProps>`
+  align-items: center;
+  border-bottom-left-radius: 1px;
+  border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  border-left: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  border-right: none;
+  border-top-left-radius: 1px;
+  border-top: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  box-sizing: border-box;
+  color: ${(props) => (props.disabled ? 'gray' : 'black')};
+  display: flex;
+  font-family: sans-serif;
+  font-size: 12px;
+  height: 24px;
+  margin: 0;
+  outline: none;
+  padding: 2px 4px;
+  position: relative;
+  user-select: none;
+  width: 100%;
+`;
+
+export const ListBoxButton = css<ListBoxButtonProps>`
+  background: white;
+  border-top: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  border-right: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  border-left: none;
+  border-radius: 0;
+  box-sizing: border-box;
+  width: 24px;
+  outline: none;
+  padding: 0;
+  height: 24px;
+  position: relative;
 
   &:before {
     border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
     content: '';
-    right: 10px;
+    left: 2px;
     pointer-events: none;
     position: absolute;
     top: 11px;
@@ -35,7 +74,7 @@ export const ListBoxButton = css<{ disabled?: boolean }>`
   &:after {
     border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
     content: '';
-    right: 4px;
+    left: 8px;
     pointer-events: none;
     position: absolute;
     top: 11px;
@@ -49,13 +88,11 @@ export const ListBoxOptions = css<ListBoxOptionsProps>`
   border: 1px solid black;
   box-sizing: border-box;
   display: ${(props) => `${props.open ? 'block' : 'none'}`};
-  left: ${(props) => `${props.left}`}px;
   margin: 0;
   padding: 0;
-  position: fixed;
-  top: ${(props) => `${props.top - 1}`}px;
-  width: ${(props) => `${props.width}`}px;
-  z-index: 100;
+  position: relative;
+  top: -1px !important;
+  width: 100%;
 `;
 
 export const ListBoxOption = css`

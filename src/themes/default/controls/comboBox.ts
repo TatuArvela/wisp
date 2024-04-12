@@ -4,8 +4,8 @@ import {
   ComboBoxButtonProps,
   ComboBoxInputProps,
   ComboBoxOptionsProps,
-} from '../../../controls/ComboBox';
-import { ControlWrapperProps } from '../../../controls/ControlWrapper';
+  ControlWrapperProps,
+} from '../../../controls';
 
 export const ComboBoxWrapper = css<ControlWrapperProps>``;
 
@@ -21,6 +21,7 @@ export const ComboBoxControl = css`
 `;
 
 export const ComboBoxInput = css<ComboBoxInputProps>`
+  align-items: center;
   border-bottom-left-radius: 1px;
   border-bottom: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   border-left: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
@@ -29,10 +30,13 @@ export const ComboBoxInput = css<ComboBoxInputProps>`
   border-top: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   box-sizing: border-box;
   color: ${(props) => (props.disabled ? 'gray' : 'black')};
+  display: flex;
+  font-family: sans-serif;
   font-size: 12px;
   height: 24px;
   margin: 0;
   outline: none;
+  padding: 2px 4px;
   position: relative;
   user-select: ${(props) => (props.disabled ? 'none' : 'auto')};
   width: 100%;
@@ -79,13 +83,11 @@ export const ComboBoxOptions = css<ComboBoxOptionsProps>`
   border: 1px solid black;
   box-sizing: border-box;
   display: ${(props) => `${props.open ? 'block' : 'none'}`};
-  left: ${(props) => `${props.left}`}px;
   margin: 0;
   padding: 0;
-  position: fixed;
-  top: ${(props) => `${props.top - 1}`}px;
-  width: ${(props) => `${props.width}`}px;
-  z-index: 100;
+  position: relative;
+  top: -1px !important;
+  width: 100%;
 `;
 
 export const ComboBoxOption = css`

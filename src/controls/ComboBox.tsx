@@ -1,9 +1,14 @@
+import {
+  autoUpdate,
+  flip,
+  FloatingPortal,
+  size,
+  useFloating,
+} from '@floating-ui/react';
 import { Combobox as HeadlessComboBox } from '@headlessui/react';
-import React, { useEffect, useRef, useState } from 'react';
-import { Portal } from 'react-portal';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { useWindow } from '../window';
 import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
 export const ComboBoxThemeProperties = [
@@ -31,13 +36,6 @@ const ComboBoxControl = styled.div`
   ${(props) => props.theme.controls.ComboBoxControl}
 `;
 
-export interface ComboBoxButtonProps {
-  disabled?: boolean;
-}
-const ComboBoxButton = styled(HeadlessComboBox.Button)<ComboBoxButtonProps>`
-  ${(props) => props.theme.controls.ComboBoxButton}
-`;
-
 export interface ComboBoxInputProps {
   disabled?: boolean;
 }
@@ -45,11 +43,15 @@ const ComboBoxInput = styled(HeadlessComboBox.Input)<ComboBoxInputProps>`
   ${(props) => props.theme.controls.ComboBoxInput}
 `;
 
+export interface ComboBoxButtonProps {
+  disabled?: boolean;
+}
+const ComboBoxButton = styled(HeadlessComboBox.Button)<ComboBoxButtonProps>`
+  ${(props) => props.theme.controls.ComboBoxButton}
+`;
+
 export interface ComboBoxOptionsProps {
   open: boolean;
-  width: number;
-  left: number;
-  top: number;
 }
 const ComboBoxOptions = styled(HeadlessComboBox.Options)<ComboBoxOptionsProps>`
   ${(props) => props.theme.controls.ComboBoxOptions}
@@ -76,31 +78,57 @@ export const ComboBox = ({
   value,
   inlineLabel,
 }: ComboBoxProps) => {
-  const window = useWindow();
-  const controlRef = useRef<HTMLDivElement>(null);
+  return (
+    <HeadlessComboBox
+      disabled={disabled}
+      value={value ?? ''}
+      onChange={onChange}
+      nullable={nullable ? true : undefined}
+    >
+      {({ open }) => (
+        <FloatingComboBox
+          disabled={disabled}
+          inlineLabel={inlineLabel}
+          label={label}
+          open={open}
+          options={options}
+          value={value}
+        />
+      )}
+    </HeadlessComboBox>
+  );
+};
+
+type FloatingComboBoxProps = Omit<ComboBoxProps, 'onChange'> & {
+  open: boolean;
+};
+const FloatingComboBox = ({
+  disabled,
+  inlineLabel,
+  label,
+  open,
+  options,
+}: FloatingComboBoxProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [query, setQuery] = useState<string>('');
-  const [sizes, setSizes] = useState<{
-    width: number;
-    left: number;
-    top: number;
-  }>({ width: 0, left: 0, top: 0 });
 
-  useEffect(() => {
-    if (window) {
-      const rect = controlRef?.current.getBoundingClientRect() ?? {
-        width: 0,
-        left: 0,
-        top: 0,
-        height: 0,
-      };
-      setSizes({
-        width: rect.width,
-        left: rect.left,
-        top: rect.top + rect.height,
-      });
-    }
-  }, [window]);
+  const { refs, floatingStyles, context } = useFloating<HTMLElement>({
+    placement: 'bottom-start',
+    open: open,
+    whileElementsMounted: autoUpdate,
+    middleware: [
+      flip({ flipAlignment: false }),
+      size({
+        apply({ availableHeight, availableWidth, elements, rects }) {
+          Object.assign(elements.floating.style, {
+            maxHeight: `${availableHeight}px`,
+            maxWidth: `${availableWidth}px`,
+            minWidth: `${rects.reference.width}px`,
+          });
+        },
+      }),
+    ],
+  });
 
   const onInputClick = () => {
     buttonRef?.current?.click();
@@ -114,38 +142,35 @@ export const ComboBox = ({
         });
 
   return (
-    <HeadlessComboBox
-      disabled={disabled}
-      value={value ?? ''}
-      onChange={onChange}
-      nullable={nullable ? true : undefined}
-    >
-      {({ open }) => (
-        <ComboBoxWrapper inlineLabel={inlineLabel}>
-          {label && <ComboBoxLabel disabled={disabled}>{label}</ComboBoxLabel>}
-          <ComboBoxControl ref={controlRef}>
-            <ComboBoxInput
-              disabled={disabled}
-              onClick={onInputClick}
-              onChange={(event) => setQuery(event.target.value)}
-            />
-            <ComboBoxButton disabled={disabled} ref={buttonRef} />
-            <Portal>
-              <ComboBoxOptions
-                open={filteredOptions.length > 0 && open}
-                {...sizes}
-              >
+    <ComboBoxWrapper inlineLabel={inlineLabel}>
+      {label && <ComboBoxLabel disabled={disabled}>{label}</ComboBoxLabel>}
+      <ComboBoxControl ref={refs.setReference}>
+        <ComboBoxInput
+          disabled={disabled}
+          onClick={onInputClick}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+        <ComboBoxButton disabled={disabled} ref={buttonRef} />
+        {open && (
+          <FloatingPortal>
+            <div
+              ref={refs.setFloating}
+              style={{
+                ...floatingStyles,
+              }}
+            >
+              <ComboBoxOptions open={filteredOptions.length > 0 && open}>
                 {filteredOptions.map((option) => (
                   <ComboBoxOption key={option} value={option}>
                     {option}
                   </ComboBoxOption>
                 ))}
               </ComboBoxOptions>
-            </Portal>
-          </ComboBoxControl>
-        </ComboBoxWrapper>
-      )}
-    </HeadlessComboBox>
+            </div>
+          </FloatingPortal>
+        )}
+      </ComboBoxControl>
+    </ComboBoxWrapper>
   );
 };
 
