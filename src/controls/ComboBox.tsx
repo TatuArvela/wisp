@@ -114,6 +114,7 @@ const FloatingComboBox = ({
 
   const { refs, floatingStyles } = useFloating<HTMLElement>({
     placement: 'bottom-start',
+    strategy: 'fixed',
     open: open,
     whileElementsMounted: autoUpdate,
     middleware: [
@@ -157,6 +158,7 @@ const FloatingComboBox = ({
               ref={refs.setFloating}
               style={{
                 ...floatingStyles,
+                zIndex: 100,
               }}
             >
               <ComboBoxOptions open={filteredOptions.length > 0 && open}>

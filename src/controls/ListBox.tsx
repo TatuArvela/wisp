@@ -103,6 +103,7 @@ const FloatingListBox = ({
 
   const { refs, floatingStyles } = useFloating<HTMLElement>({
     placement: 'bottom-start',
+    strategy: 'fixed',
     open: open,
     whileElementsMounted: autoUpdate,
     middleware: [
@@ -139,10 +140,11 @@ const FloatingListBox = ({
               ref={refs.setFloating}
               style={{
                 ...floatingStyles,
+                zIndex: 100,
               }}
             >
               <ListBoxOptions open={open}>
-                {options.map((option, i) => (
+                {options.map((option) => (
                   <ListBoxOption key={option} value={option}>
                     {option}
                   </ListBoxOption>
