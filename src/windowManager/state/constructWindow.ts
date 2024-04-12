@@ -7,6 +7,7 @@ const constructWindow = (
   initial?: Partial<WindowType>
 ): WindowType => {
   return {
+    alwaysShowCloseButton: initial?.alwaysShowCloseButton ?? false,
     height: initial?.height ?? config.defaultWindowHeight,
     icon: initial?.icon,
     id,

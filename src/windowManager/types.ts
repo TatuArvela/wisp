@@ -106,6 +106,7 @@ export interface WindowType {
   positionX: number;
   positionY: number;
   showAsTask: boolean;
+  alwaysShowCloseButton?: boolean;
   title: string;
   width: number;
 }

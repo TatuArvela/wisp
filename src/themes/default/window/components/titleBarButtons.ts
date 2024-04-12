@@ -20,18 +20,25 @@ export const WindowButton = css`
   position: relative;
   width: 20px;
 
-  &:hover {
+  --window-button-icon-color: black;
+
+  &:hover&:not(:disabled) {
     filter: brightness(90%);
   }
 
-  &:active {
+  &:active&:not(:disabled) {
     background: lightgray;
+  }
+
+  &:disabled {
+    opacity: 50%;
+    --window-button-icon-color: gray;
   }
 `;
 
 export const MinimizeButton = css`
   &:before {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--window-button-icon-color);
     content: '';
     height: 10px;
     left: 5px;
@@ -44,7 +51,7 @@ export const MinimizeButton = css`
 
 export const MaximizeButton = css`
   &:before {
-    border: 1px solid black;
+    border: 1px solid var(--window-button-icon-color);
     content: '';
     height: 10px;
     left: 4px;
@@ -57,8 +64,8 @@ export const MaximizeButton = css`
 
 export const UnmaximizeButton = css`
   &:before {
-    border-right: 1px solid black;
-    border-top: 1px solid black;
+    border-right: 1px solid var(--window-button-icon-color);
+    border-top: 1px solid var(--window-button-icon-color);
     content: '';
     height: 8px;
     pointer-events: none;
@@ -69,7 +76,7 @@ export const UnmaximizeButton = css`
   }
 
   &:after {
-    border: 1px solid black;
+    border: 1px solid var(--window-button-icon-color);
     bottom: 4px;
     content: '';
     height: 8px;
@@ -82,7 +89,7 @@ export const UnmaximizeButton = css`
 
 export const CloseButton = css`
   &:before {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--window-button-icon-color);
     content: '';
     left: 2px;
     pointer-events: none;
@@ -93,7 +100,7 @@ export const CloseButton = css`
   }
 
   &:after {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--window-button-icon-color);
     content: '';
     left: 2px;
     pointer-events: none;

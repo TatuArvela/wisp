@@ -53,6 +53,7 @@ export const Window: React.FC<WindowProps> = ({
         viewportWindowMargins={windowManager.viewportWindowMargins}
       >
         <TitleBar
+          alwaysShowCloseButton={window.alwaysShowCloseButton}
           close={() => windowManager.closeWindow(id)}
           drag={windowDragHandler(windowManager, window)}
           icon={window.icon}

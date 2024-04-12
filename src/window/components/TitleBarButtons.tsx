@@ -11,17 +11,14 @@ export const TitleBarButtonsThemeProperties = [
 ] as const;
 
 export interface TitleBarButtonsProps {
+  alwaysShowCloseButton: boolean;
   close(): void;
-
   isClosable: boolean;
   isMaximizable: boolean;
   isMaximized: boolean;
   isMinimizable: boolean;
-
   maximize(): void;
-
   minimize(): void;
-
   unmaximize(): void;
 }
 
@@ -53,6 +50,7 @@ const CloseButton = styled(WindowButton)`
 `;
 
 const TitleBarButtons = ({
+  alwaysShowCloseButton,
   close,
   isClosable,
   isMaximizable,
@@ -70,7 +68,9 @@ const TitleBarButtons = ({
       ) : (
         <MaximizeButton onClick={maximize} />
       ))}
-    {isClosable && <CloseButton onClick={close} />}
+    {(isClosable || alwaysShowCloseButton) && (
+      <CloseButton onClick={close} disabled={!isClosable} />
+    )}
   </TitleBarButtonsElement>
 );
 export default TitleBarButtons;

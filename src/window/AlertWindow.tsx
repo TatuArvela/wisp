@@ -34,23 +34,22 @@ export type AlertWindowProps = WindowProps & {
 export const AlertWindow = ({
   alertIcon = 'warning',
   buttonText = 'OK',
-  children,
-  id,
   onButtonClick,
-  title,
   ...windowProps
 }: AlertWindowProps) => (
   <Window
     {...windowProps}
-    id={id}
-    title={title}
-    isMaximizable={false}
-    isMinimizable={false}
-    isResizable={false}
+    id={windowProps.id}
+    title={windowProps.title}
+    alwaysShowCloseButton={windowProps.alwaysShowCloseButton ?? true}
+    isClosable={windowProps.isClosable ?? false}
+    isMaximizable={windowProps.isMaximizable ?? false}
+    isMinimizable={windowProps.isMinimizable ?? false}
+    isResizable={windowProps.isResizable ?? false}
   >
     <AlertContent>
       <AlertIcon icon={alertIcon} />
-      <AlertText>{children}</AlertText>
+      <AlertText>{windowProps.children}</AlertText>
     </AlertContent>
     <AlertButton onClick={onButtonClick} type="button">
       {buttonText}

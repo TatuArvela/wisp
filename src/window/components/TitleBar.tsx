@@ -47,33 +47,29 @@ const TitleBarIcon = ({ icon }: { icon: string | Icon }) => {
 
 export interface TitleBarProps extends TitleBarElementProps {
   close(): void;
-
   drag(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
-
   icon: Icon;
   isClosable: boolean;
   isMaximizable: boolean;
   isMaximized: boolean;
   isMinimizable: boolean;
-
   maximize(): void;
-
   minimize(): void;
-
+  alwaysShowCloseButton: boolean;
   title: string;
-
   unmaximize(): void;
 }
 
 const TitleBar = ({
+  alwaysShowCloseButton,
   close,
   drag,
   icon,
   isActive,
+  isClosable,
   isMaximizable,
   isMaximized,
   isMinimizable,
-  isClosable,
   maximize,
   minimize,
   title,
@@ -90,6 +86,7 @@ const TitleBar = ({
         <TitleBarTitle>{title}</TitleBarTitle>
       </TitleContainer>
       <TitleBarButtons
+        alwaysShowCloseButton={alwaysShowCloseButton}
         close={close}
         isClosable={isClosable}
         isMaximizable={isMaximizable}
