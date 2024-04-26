@@ -2,9 +2,11 @@ import React from 'react';
 
 import ListBox from '../controls/ListBox';
 import { useThemeManager } from '../themeManager/hooks';
-import Window from '../window/Window';
+import Window, { WindowProps } from '../window/Window';
 
-export const ThemeSwitcher = () => {
+export type ThemeSwitcherProps = Partial<WindowProps>;
+
+export const ThemeSwitcher = (props: ThemeSwitcherProps) => {
   const { theme: currentTheme, themes, changeTheme } = useThemeManager();
 
   const value = `${currentTheme.name} (Active)`;
@@ -20,14 +22,15 @@ export const ThemeSwitcher = () => {
 
   return (
     <Window
-      alwaysShowCloseButton={true}
-      height={58}
-      id="THEME_SWITCHER"
-      isClosable={false}
-      isMaximizable={false}
-      isResizable={false}
-      title="Theme Switcher"
-      width={300}
+      {...props}
+      alwaysShowCloseButton={props.alwaysShowCloseButton ?? true}
+      height={props.height ?? 58}
+      id={props.id ?? 'THEME_SWITCHER'}
+      isClosable={props.isClosable ?? false}
+      isMaximizable={props.isMaximizable ?? false}
+      isResizable={props.isResizable ?? false}
+      title={props.title ?? 'Theme Switcher'}
+      width={props.width ?? 300}
     >
       <ListBox onChange={onChange} value={value} options={options} />
     </Window>
