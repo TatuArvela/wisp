@@ -21,6 +21,7 @@ export const ThemeSwitcher = () => {
   return (
     <Window
       alwaysShowCloseButton={true}
+      height={58}
       id="THEME_SWITCHER"
       isClosable={false}
       isMaximizable={false}
