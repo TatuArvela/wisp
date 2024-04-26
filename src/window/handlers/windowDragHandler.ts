@@ -11,9 +11,9 @@ import {
 import mouseDragHandler from './utils/mouseDragHandler';
 
 export const windowDragHandler =
-  (windowManager: WindowManager, window: WindowType) => (event) => {
+  (windowManager: WindowManager, window: WindowType) => (event: MouseEvent) => {
     windowManager.activateWindow(window.id);
-    if (!window.isDraggable || window.isMaximized) {
+    if (!window.isDraggable || window.isMaximized || event.button !== 0) {
       return;
     }
 
