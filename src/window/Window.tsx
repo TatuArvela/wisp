@@ -44,13 +44,14 @@ export const Window: React.FC<WindowProps> = ({
     <WindowProvider value={wmWindow}>
       <WindowElement
         height={window.height}
+        id={window.id}
         isMaximized={window.isMaximized}
         isMinimized={window.isMinimized}
         orderNumber={orderNumber}
         positionX={window.positionX}
         positionY={window.positionY}
-        width={window.width}
         viewportWindowMargins={windowManager.viewportWindowMargins}
+        width={window.width}
       >
         <TitleBar
           alwaysShowCloseButton={window.alwaysShowCloseButton}
