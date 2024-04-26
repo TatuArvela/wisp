@@ -13,7 +13,7 @@ import mouseDragHandler from './utils/mouseDragHandler';
 
 export const windowResizeHandler =
   (windowManager: WindowManager, window: WindowType) =>
-  (event: MouseEvent, direction: Direction) => {
+  (event, direction: Direction) => {
     windowManager.activateWindow(window.id);
     if (!window.isResizable || window.isMaximized || event.button !== 0) {
       return;
