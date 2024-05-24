@@ -27,7 +27,6 @@
 
 * Start menu
 * Quick launch bar
-* Splash screen
 * Popup menus
 
 ## Visuals
@@ -44,5 +43,4 @@
 ## Extension and theming
 
 * Support for replacement components
-* Cursor theming
 * Sound effect support
