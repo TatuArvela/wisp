@@ -1,5 +1,6 @@
 import React from 'react';
 
+import type { WispConfig } from '../config';
 import type { Icon } from '../icons';
 
 export interface WindowManagerState {
@@ -21,7 +22,10 @@ interface CloseWindowAction {
 
 interface CreateWindowAction {
   type: 'CREATE_WINDOW';
-  payload: WindowType;
+  payload: {
+    config: WispConfig;
+    props: InitialWindow;
+  };
 }
 
 interface DeactivateWindowAction {
@@ -53,7 +57,7 @@ export type WindowManagerAction =
 export type BaseMethods = {
   activateWindow(id: string): void;
   closeWindow(id: string): void;
-  createWindow(id: string, initialState: Partial<WindowType>): WindowType;
+  createWindow(initial: InitialWindow): WindowType;
   deactivateWindow(id: string): void;
   getViewportHeight(): number;
   getViewportWidth(): number;
@@ -88,12 +92,14 @@ export interface WindowManagerBase extends WindowManagerState, BaseMethods {
 export interface WindowManager extends WindowManagerBase, WindowStateMethods {}
 
 export interface WindowType {
+  alwaysShowCloseButton?: boolean;
   height: number;
   icon?: string | Icon;
   id: string;
   isClosable: boolean;
   isClosed: boolean;
   isDraggable: boolean;
+  isInInitialAutomaticPosition: boolean;
   isMaximizable: boolean;
   isMaximized: boolean;
   isMinimizable: boolean;
@@ -106,10 +112,11 @@ export interface WindowType {
   positionX: number;
   positionY: number;
   showAsTask: boolean;
-  alwaysShowCloseButton?: boolean;
   title: string;
   width: number;
 }
+
+export type InitialWindow = Pick<WindowType, 'id'> & Partial<WindowType>;
 
 export interface ViewportWindowMargins {
   top: number;

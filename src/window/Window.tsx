@@ -16,18 +16,15 @@ export type WindowProps = {
   id: string;
 } & Partial<WindowType>;
 
-export const Window: React.FC<WindowProps> = ({
-  children,
-  id,
-  ...windowProps
-}) => {
+export const Window: React.FC<WindowProps> = ({ children, ...windowProps }) => {
+  const { id } = windowProps;
   const windowManager = useWindowManager();
   const wmWindow = windowManager.windows.get(id);
   const orderNumber = windowManager.windowOrder.indexOf(id);
 
   useEffect(() => {
     if (!wmWindow) {
-      windowManager.createWindow(id, windowProps);
+      windowManager.createWindow(windowProps);
     }
     return () => windowManager.closeWindow(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps

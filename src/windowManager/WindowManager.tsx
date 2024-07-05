@@ -7,9 +7,9 @@ import {
   restoreWindow,
   unmaximizeWindow,
 } from './methods/windowStateMethods';
-import constructWindow from './state/constructWindow';
 import reducer from './state/reducer';
 import {
+  InitialWindow,
   ViewportWindowMargins,
   WindowManager as WindowManagerType,
   WindowManagerAction,
@@ -55,13 +55,12 @@ const WindowManager = ({ children }: Props) => {
     [dispatch]
   );
 
-  const createWindow = (id: string, initialState: Partial<WindowType>) => {
-    const window = constructWindow(config, id, initialState);
+  const createWindow = (props: InitialWindow) => {
     dispatch({
       type: 'CREATE_WINDOW',
-      payload: window,
+      payload: { config, props },
     });
-    return state.windows.get(id);
+    return state.windows.get(props.id);
   };
 
   const deactivateWindow = useCallback(

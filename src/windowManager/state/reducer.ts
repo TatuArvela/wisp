@@ -1,4 +1,5 @@
-import { WindowManagerAction, WindowManagerState } from '../types';
+import { WindowManagerAction, WindowManagerState, WindowType } from '../types';
+import constructWindow from './constructWindow';
 
 function reducer(
   state: WindowManagerState,
@@ -31,10 +32,13 @@ function reducer(
     }
 
     case 'CREATE_WINDOW': {
+      const { config, props } = action.payload;
+      const { id } = props;
+      const window = constructWindow(config, state.windows, props);
       return {
         ...state,
-        windows: new Map(state.windows).set(action.payload.id, action.payload),
-        windowOrder: state.windowOrder.concat(action.payload.id),
+        windows: new Map(state.windows).set(id, window),
+        windowOrder: state.windowOrder.concat(id),
       };
     }
 
@@ -47,11 +51,21 @@ function reducer(
     }
 
     case 'UPDATE_WINDOW': {
+      const { id, props } = action.payload;
+      const prevWindow = state.windows.get(id);
+
+      const hasPositionChanged =
+        (props.positionX && prevWindow.positionX !== props.positionX) ||
+        (props.positionY && prevWindow.positionY !== props.positionY);
+      const isInInitialAutomaticPosition =
+        !hasPositionChanged && prevWindow.isInInitialAutomaticPosition;
+
       return {
         ...state,
-        windows: new Map(state.windows).set(action.payload.id, {
-          ...state.windows.get(action.payload.id),
-          ...action.payload.props,
+        windows: new Map(state.windows).set(id, {
+          ...prevWindow,
+          ...props,
+          isInInitialAutomaticPosition,
         }),
       };
     }
