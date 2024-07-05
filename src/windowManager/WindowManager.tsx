@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect } from 'react';
 import useResizeObserver from 'use-resize-observer';
 
 import { useConfig } from '../ConfigContext';
@@ -137,7 +137,7 @@ const WindowManager = ({ children }: Props) => {
     unmaximizeWindow: unmaximizeWindow(baseContext),
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     refitWindows({
       height: viewportHeight,
       width: viewportWidth,
