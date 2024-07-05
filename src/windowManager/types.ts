@@ -46,13 +46,22 @@ interface SetViewportWindowMarginsAction {
   payload: Partial<ViewportWindowMargins>;
 }
 
+interface RefitWindowsAction {
+  type: 'REFIT_WINDOWS';
+  payload: {
+    height: number;
+    width: number;
+  };
+}
+
 export type WindowManagerAction =
   | ActivateWindowAction
   | CloseWindowAction
   | CreateWindowAction
   | DeactivateWindowAction
   | UpdateWindowAction
-  | SetViewportWindowMarginsAction;
+  | SetViewportWindowMarginsAction
+  | RefitWindowsAction;
 
 export type BaseMethods = {
   activateWindow(id: string): void;

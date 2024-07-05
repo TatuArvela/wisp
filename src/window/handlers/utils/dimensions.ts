@@ -1,5 +1,6 @@
 import {
   Boundaries,
+  ViewportWindowMargins,
   WindowManager,
   WindowType,
 } from '../../../windowManager/types';
@@ -11,7 +12,10 @@ export const calculatePositionX = (
 ): number => {
   const newX = window.positionX - xOffset;
   const maxX = boundaries.maxX - window.width;
-  return Math.min(Math.max(newX, boundaries.minX), maxX);
+  return Math.min(
+    Math.max(newX, boundaries.minX),
+    Math.max(maxX, boundaries.minX)
+  );
 };
 
 export const calculatePositionY = (
@@ -21,7 +25,10 @@ export const calculatePositionY = (
 ): number => {
   const newY = window.positionY - yOffset;
   const maxY = boundaries.maxY - window.height;
-  return Math.min(Math.max(newY, boundaries.minY), maxY);
+  return Math.min(
+    Math.max(newY, boundaries.minY),
+    Math.max(maxY, boundaries.minY)
+  );
 };
 
 export const calculateWidth = (
@@ -33,9 +40,10 @@ export const calculateWidth = (
   const newWidth = window.width - xOffset;
   return Math.min(
     Math.max(newWidth, window.minWidth),
-    boundaries.maxX - window.positionX,
     window.maxWidth,
-    scalingLeft ? window.width + window.positionX - boundaries.minX : Math.min()
+    scalingLeft
+      ? window.width + window.positionX - boundaries.minX
+      : boundaries.maxX - window.positionX
   );
 };
 
@@ -48,19 +56,35 @@ export const calculateHeight = (
   const newHeight = window.height - yOffset;
   return Math.min(
     Math.max(newHeight, window.minHeight),
-    boundaries.maxY - window.positionY,
     window.maxHeight,
-    scalingUp ? window.height + window.positionY - boundaries.minY : Math.min()
+    scalingUp
+      ? window.height + window.positionY - boundaries.minY
+      : boundaries.maxY - window.positionY
   );
 };
 
-export const calculateBoundaries = ({
+export const getBoundariesFromWindowManager = ({
   getViewportWidth,
   getViewportHeight,
   viewportWindowMargins,
-}: WindowManager): Boundaries => ({
+}: WindowManager): Boundaries =>
+  getBoundaries({
+    height: getViewportHeight(),
+    width: getViewportWidth(),
+    viewportWindowMargins,
+  });
+
+export const getBoundaries = ({
+  height,
+  width,
+  viewportWindowMargins,
+}: {
+  height: number;
+  width: number;
+  viewportWindowMargins: ViewportWindowMargins;
+}): Boundaries => ({
   minX: viewportWindowMargins.left,
   minY: viewportWindowMargins.top,
-  maxX: getViewportWidth() - viewportWindowMargins.right,
-  maxY: getViewportHeight() - viewportWindowMargins.bottom,
+  maxX: width - viewportWindowMargins.right,
+  maxY: height - viewportWindowMargins.bottom,
 });

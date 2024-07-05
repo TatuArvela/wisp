@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
+import useResizeObserver from 'use-resize-observer';
 
 import { useConfig } from '../ConfigContext';
 import {
@@ -35,7 +36,12 @@ const WindowManager = ({ children }: Props) => {
     windowOrder: [],
     windows: new Map(),
   });
-  const viewportRef = React.useRef<HTMLDivElement>();
+
+  const viewportRef = React.useRef<HTMLDivElement>(null);
+  const { width: viewportWidth = 1, height: viewportHeight = 1 } =
+    useResizeObserver<HTMLDivElement>({
+      ref: viewportRef,
+    });
 
   const activateWindow = useCallback(
     (id: string) =>
@@ -90,6 +96,15 @@ const WindowManager = ({ children }: Props) => {
     [dispatch]
   );
 
+  const refitWindows = useCallback(
+    (dimensions: { height: number; width: number }) =>
+      dispatch({
+        type: 'REFIT_WINDOWS',
+        payload: dimensions,
+      }),
+    [dispatch]
+  );
+
   const getViewportHeight = useCallback(
     () => viewportRef.current?.offsetHeight || 0,
     [viewportRef]
@@ -121,6 +136,13 @@ const WindowManager = ({ children }: Props) => {
     restoreWindow: restoreWindow(baseContext),
     unmaximizeWindow: unmaximizeWindow(baseContext),
   };
+
+  useEffect(() => {
+    refitWindows({
+      height: viewportHeight,
+      width: viewportWidth,
+    });
+  }, [refitWindows, viewportHeight, viewportWidth]);
 
   return (
     <WindowManagerProvider value={context}>

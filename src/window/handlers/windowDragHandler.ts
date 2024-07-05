@@ -4,9 +4,9 @@ import {
   WindowType,
 } from '../../windowManager/types';
 import {
-  calculateBoundaries,
   calculatePositionX,
   calculatePositionY,
+  getBoundariesFromWindowManager,
 } from './utils/dimensions';
 import mouseDragHandler from './utils/mouseDragHandler';
 
@@ -25,7 +25,7 @@ export const windowDragHandler =
           window,
           xOffset,
           yOffset,
-          calculateBoundaries(windowManager)
+          getBoundariesFromWindowManager(windowManager)
         ),
       };
       windowManager.updateWindow(window.id, window);

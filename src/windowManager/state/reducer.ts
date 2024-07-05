@@ -1,3 +1,5 @@
+import refitWindow from '../../window/handlers/refitWindow';
+import { getBoundaries } from '../../window/handlers/utils/dimensions';
 import { WindowManagerAction, WindowManagerState, WindowType } from '../types';
 import constructWindow from './constructWindow';
 
@@ -77,6 +79,31 @@ function reducer(
           ...state.viewportWindowMargins,
           ...action.payload,
         },
+      };
+    }
+
+    case 'REFIT_WINDOWS': {
+      const { width, height } = action.payload;
+      const boundaries = getBoundaries({
+        height,
+        width,
+        viewportWindowMargins: state.viewportWindowMargins,
+      });
+      const windows = Array.from(state.windows);
+
+      const refittedWindows: [string, WindowType][] = windows.map(
+        ([id, window]) => {
+          const newWindow: WindowType = {
+            ...window,
+            ...refitWindow(window, boundaries),
+          };
+          return [id, newWindow];
+        }
+      );
+
+      return {
+        ...state,
+        windows: new Map(refittedWindows),
       };
     }
 
