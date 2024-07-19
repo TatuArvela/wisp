@@ -41,7 +41,7 @@ export interface AddressBarInputContainerProps {
   disabled?: boolean;
 }
 
-const AddressBarInputContainer = styled.div`
+const AddressBarInputContainer = styled.div<AddressBarInputContainerProps>`
   ${(props) => props.theme.controls.AddressBarInputContainer}
 `;
 
@@ -91,9 +91,9 @@ export const AddressBar = ({
   };
 
   return (
-    <AddressBarElement>
+    <AddressBarElement disabled={disabled}>
       {label && <AddressBarLabel disabled={disabled}>{label}</AddressBarLabel>}
-      <AddressBarInputContainer>
+      <AddressBarInputContainer disabled={disabled}>
         {icon && <AddressBarIcon icon={icon} onClick={handleIconClick} />}
         <AddressBarInput
           ref={inputRef}
