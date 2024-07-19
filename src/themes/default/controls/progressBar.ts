@@ -1,19 +1,26 @@
 import { css } from 'styled-components';
 
-import { ProgressBarFillProps, ProgressBarProps } from '../../../controls';
+import {
+  ProgressBarElementProps,
+  ProgressBarFillProps,
+} from '../../../controls';
 
-export const ProgressBarElement = css<ProgressBarProps>`
+const borderedStyle = css<ProgressBarElementProps>`
+  border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+`;
+
+export const ProgressBarElement = css<ProgressBarElementProps>`
+  ${(props) => props.bordered && borderedStyle}
   background: lightgray;
   border-radius: 1px;
-  border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   box-sizing: border-box;
   color: ${(props) => (props.disabled ? 'gray' : 'black')};
   font-size: 12px;
   height: 24px;
   max-height: 100%;
   outline: none;
-  width: 100%;
   overflow: hidden;
+  width: 100%;
 `;
 
 export const ProgressBarFill = css<ProgressBarFillProps>`

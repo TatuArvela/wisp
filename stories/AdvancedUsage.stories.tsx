@@ -178,7 +178,7 @@ export const ComplexWindow = () => {
         <StatusBar showResizeHandle>
           <StatusBarSection>Status bar</StatusBarSection>
           <StatusBarSection width="80px">
-            <ProgressBar />
+            <ProgressBar bordered={false} />
           </StatusBarSection>
           <StatusBarSection></StatusBarSection>
         </StatusBar>
