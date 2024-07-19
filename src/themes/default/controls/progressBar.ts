@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 import { ProgressBarFillProps, ProgressBarProps } from '../../../controls';
 
-export const ProgressBar = css<ProgressBarProps>`
+export const ProgressBarElement = css<ProgressBarProps>`
   background: lightgray;
   border-radius: 1px;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};

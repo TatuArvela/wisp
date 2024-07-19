@@ -14,6 +14,7 @@ import {
   WindowContent,
   Wisp,
 } from '../src';
+import icons from '../src/themes/default/icons';
 
 export default {
   title: 'Wisp/Advanced Usage',
@@ -152,7 +153,14 @@ export const ComplexWindow = () => {
           <ToolbarButton label="Action" />
           <ToolbarButton icon="wisp" />
         </Toolbar>
-        <AddressBar value={address} onChange={setAddress} label="Address:" />
+        <Toolbar>
+          <AddressBar
+            value={address}
+            onChange={setAddress}
+            label="Address"
+            icon={icons.wisp}
+          />
+        </Toolbar>
 
         <WindowContent>
           <ScrollableContent horizontal vertical>

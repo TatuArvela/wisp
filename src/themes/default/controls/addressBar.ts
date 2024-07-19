@@ -6,7 +6,7 @@ import {
   AddressBarLabelProps,
 } from '../../../controls';
 
-export const AddressBar = css`
+export const AddressBarElement = css`
   align-items: center;
   background: white;
   border: 1px solid gray;

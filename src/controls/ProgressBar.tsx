@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import useResizeObserver from 'use-resize-observer';
 
 export const ProgressBarThemeProperties = [
-  'ProgressBar',
+  'ProgressBarElement',
   'ProgressBarFill',
 ] as const;
 
@@ -17,11 +17,17 @@ const ProgressBarFill = styled.div<ProgressBarFillProps>`
   ${(props) => props.theme.controls.ProgressBarFill}
 `;
 
-const ProgressBarElement = styled.div<{ disabled: boolean }>`
-  ${(props) => props.theme.controls.ProgressBar}
+export interface ProgressBarElementProps {
+  bordered?: boolean;
+  disabled?: boolean;
+}
+
+const ProgressBarElement = styled.div<ProgressBarElementProps>`
+  ${(props) => props.theme.controls.ProgressBarElement}
 `;
 
 export interface ProgressBarProps {
+  bordered?: boolean;
   disabled?: boolean;
   max?: number;
   value?: number;
@@ -62,6 +68,7 @@ const calculateWidth = ({
 };
 
 export const ProgressBar = ({
+  bordered = true,
   disabled = false,
   max = 1,
   value,
@@ -87,7 +94,7 @@ export const ProgressBar = ({
   }, [elementWidth, isIndeterminate, max, value, variant]);
 
   return (
-    <ProgressBarElement disabled={disabled} ref={ref}>
+    <ProgressBarElement bordered={bordered} disabled={disabled} ref={ref}>
       <ProgressBarFill
         disabled={disabled}
         isIndeterminate={isIndeterminate}

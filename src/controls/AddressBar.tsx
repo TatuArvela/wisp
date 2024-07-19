@@ -6,8 +6,9 @@ import { getIconFileForSize } from '../icons/utils';
 import { useThemeManager } from '../themeManager/hooks';
 
 export const AddressBarThemeProperties = [
-  'AddressBar',
+  'AddressBarElement',
   'AddressBarInput',
+  'AddressBarInputContainer',
   'AddressBarIcon',
   'AddressBarLabel',
 ] as const;
@@ -21,7 +22,7 @@ export interface AddressBarProps {
 }
 
 const AddressBarElement = styled.div`
-  ${(props) => props.theme.controls.AddressBar}
+  ${(props) => props.theme.controls.AddressBarElement}
 `;
 
 export interface AddressBarLabelProps {
