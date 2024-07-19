@@ -23,7 +23,7 @@ export const MenuBar = css`
 export const MenuBarThrobber = css<MenuBarThrobberProps>`
   align-self: end;
   background-color: black;
-  background-image: url('${menuBarThrobberIcon}');
+  background-image: url('${(props) => props.image ?? menuBarThrobberIcon}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
