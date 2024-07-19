@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useLayoutEffect } from 'react';
+import React, { useCallback, useLayoutEffect } from 'react';
 import useResizeObserver from 'use-resize-observer';
 
 import { useConfig } from '../ConfigContext';

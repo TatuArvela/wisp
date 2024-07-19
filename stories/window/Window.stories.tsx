@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Window, Wisp } from '../../src';
+import { Window } from '../../src';
 import { WindowStoryDecorator } from '../../src/storyDecorators/windowStory';
 
 export default {

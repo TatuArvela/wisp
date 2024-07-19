@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MessageBox, Wisp } from '../../src';
+import { MessageBox } from '../../src';
 import { WindowStoryDecorator } from '../../src/storyDecorators/windowStory';
 
 export default {
