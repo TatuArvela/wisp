@@ -1,17 +1,43 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+
+import type { Icon } from '../icons';
+import { getIconFileForSize } from '../icons/utils';
+import { useThemeManager } from '../themeManager/hooks';
 
 export const AddressBarThemeProperties = [
   'AddressBar',
   'AddressBarInput',
+  'AddressBarIcon',
+  'AddressBarLabel',
 ] as const;
 
 export interface AddressBarProps {
-  children?: React.ReactNode;
   disabled?: boolean;
+  icon?: Icon;
+  label?: string;
   onChange(value: string): void;
   value?: string;
 }
+
+const AddressBarElement = styled.div`
+  ${(props) => props.theme.controls.AddressBar}
+`;
+
+export interface AddressBarLabelProps {
+  disabled?: boolean;
+}
+const AddressBarLabel = styled.label<AddressBarLabelProps>`
+  ${(props) => props.theme.controls.AddressBarLabel}
+`;
+
+export interface AddressBarInputContainerProps {
+  disabled?: boolean;
+}
+
+const AddressBarInputContainer = styled.div`
+  ${(props) => props.theme.controls.AddressBarInputContainer}
+`;
 
 export interface AddressBarInputProps {
   disabled?: boolean;
@@ -21,24 +47,55 @@ const AddressBarInput = styled.input<AddressBarInputProps>`
   ${(props) => props.theme.controls.AddressBarInput}
 `;
 
-const AddressBarElement = styled.div`
-  ${(props) => props.theme.controls.AddressBar}
+const AddressBarIconElement = styled.img`
+  ${(props) => props.theme.controls.AddressBarIcon}
 `;
 
+const AddressBarIcon = ({
+  icon,
+  onClick,
+}: {
+  icon: string | Icon;
+  onClick(): void;
+}) => {
+  const { theme } = useThemeManager();
+
+  const resolvedIcon = typeof icon === 'string' ? theme.icons[icon] : icon;
+  if (!resolvedIcon) {
+    return null;
+  }
+
+  const iconFile = getIconFileForSize(resolvedIcon);
+  return <AddressBarIconElement src={iconFile} alt="Window icon" />;
+};
+
 export const AddressBar = ({
-  children,
-  value,
   disabled,
+  icon,
+  label,
   onChange,
+  value,
 }: AddressBarProps) => {
+  const inputRef = useRef(null);
+
+  const handleIconClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   return (
     <AddressBarElement>
-      {children}
-      <AddressBarInput
-        value={value}
-        disabled={disabled}
-        onChange={(event) => onChange(event.target.value)}
-      />
+      {label && <AddressBarLabel disabled={disabled}>{label}</AddressBarLabel>}
+      <AddressBarInputContainer>
+        {icon && <AddressBarIcon icon={icon} onClick={handleIconClick} />}
+        <AddressBarInput
+          ref={inputRef}
+          value={value}
+          disabled={disabled}
+          onChange={(event) => onChange(event.target.value)}
+        />
+      </AddressBarInputContainer>
     </AddressBarElement>
   );
 };

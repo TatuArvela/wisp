@@ -1,6 +1,10 @@
 import { css } from 'styled-components';
 
-import { AddressBarInputProps } from '../../../controls';
+import {
+  AddressBarInputContainerProps,
+  AddressBarInputProps,
+  AddressBarLabelProps,
+} from '../../../controls';
 
 export const AddressBar = css`
   align-items: center;
@@ -21,9 +25,27 @@ export const AddressBar = css`
   width: 100%;
 `;
 
-export const AddressBarInput = css<AddressBarInputProps>`
+export const AddressBarLabel = css<AddressBarLabelProps>`
+  ${(props) => props.theme.controls.Label}
+`;
+
+export const AddressBarInputContainer = css<AddressBarInputContainerProps>`
+  align-items: center;
   border-radius: 1px;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+`;
+
+export const AddressBarIcon = css<AddressBarInputProps>`
+  height: 16px;
+  margin: 0 4px;
+  width: 16px;
+`;
+
+export const AddressBarInput = css<AddressBarInputProps>`
+  border: none;
   box-sizing: border-box;
   color: ${(props) => (props.disabled ? 'gray' : 'black')};
   cursor: text;

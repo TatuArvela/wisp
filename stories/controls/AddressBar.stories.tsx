@@ -1,4 +1,5 @@
 import { AddressBar, ControlStoryDecorator, statefulProps } from '../../src';
+import icons from '../../src/themes/default/icons';
 
 export default {
   component: AddressBar,
@@ -15,7 +16,8 @@ export const Default = {
 
 export const WithLabel = {
   args: {
-    children: 'Address:',
+    label: 'Address:',
+    icon: icons.wisp,
     value: 'https://www.google.com/',
   },
   parameters: statefulProps('value', 'onChange', 'https://www.google.com/'),
