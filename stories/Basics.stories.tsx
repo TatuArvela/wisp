@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AlertWindow, Desktop, Window, Wisp } from '../src';
+import { Desktop, MessageBox, Window, Wisp } from '../src';
 
 export default {
   component: Wisp,
@@ -25,20 +25,20 @@ export const NoDefaultElements = {
     children: (
       <>
         <Desktop />
-        <AlertWindow id="warning" title="Warning">
+        <MessageBox id="warning" title="Warning">
           Warning!
-        </AlertWindow>
-        <AlertWindow id="error" title="Error" alertIcon="error">
+        </MessageBox>
+        <MessageBox id="error" title="Error" alertIcon="error">
           Error!
-        </AlertWindow>
-        <AlertWindow
+        </MessageBox>
+        <MessageBox
           id="hello world"
           title="Hello World"
           icon="wisp"
           alertIcon="wisp"
         >
           Check out Wisp
-        </AlertWindow>
+        </MessageBox>
       </>
     ),
   },
@@ -48,12 +48,12 @@ export const MultipleWindows = {
   args: {
     children: (
       <>
-        <AlertWindow id="1" title="Uno">
+        <MessageBox id="1" title="Uno">
           Alert!
-        </AlertWindow>
-        <AlertWindow id="2" title="Dos">
+        </MessageBox>
+        <MessageBox id="2" title="Dos">
           Warning!
-        </AlertWindow>
+        </MessageBox>
         <Window id="3" title="Tres" width={400} height={300} isMinimized={true}>
           <p>Regular window</p>
           <p>

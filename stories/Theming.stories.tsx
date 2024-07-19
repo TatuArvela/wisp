@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  AlertWindow,
+  MessageBox,
   ThemeSwitcher as ThemeSwitcherComponent,
   Wisp,
 } from '../src';
@@ -16,9 +16,9 @@ export const ThemeSwitcher = {
     children: (
       <>
         <ThemeSwitcherComponent />
-        <AlertWindow id={'1'} title={'TEST'} positionX={240}>
+        <MessageBox id={'1'} title={'TEST'} positionX={240}>
           TEEEST
-        </AlertWindow>
+        </MessageBox>
       </>
     ),
   },

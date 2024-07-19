@@ -25,18 +25,18 @@ const AlertIcon = ({ icon }: { icon: string | Icon }) => {
   return <AlertIconElement src={iconFile} alt="Alert icon" />;
 };
 
-export type AlertWindowProps = WindowProps & {
+export type MessageBoxProps = WindowProps & {
   alertIcon?: string | Icon;
   buttonText?: string;
   onButtonClick?(): void;
 };
 
-export const AlertWindow = ({
+export const MessageBox = ({
   alertIcon = 'warning',
   buttonText = 'OK',
   onButtonClick,
   ...windowProps
-}: AlertWindowProps) => (
+}: MessageBoxProps) => (
   <Window
     {...windowProps}
     id={windowProps.id}
@@ -57,4 +57,4 @@ export const AlertWindow = ({
   </Window>
 );
 
-export default AlertWindow;
+export default MessageBox;
