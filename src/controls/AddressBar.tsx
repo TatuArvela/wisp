@@ -21,13 +21,18 @@ export interface AddressBarProps {
   value?: string;
 }
 
-const AddressBarElement = styled.div`
+export interface AddressBarElementProps {
+  disabled?: boolean;
+}
+
+const AddressBarElement = styled.div<AddressBarElementProps>`
   ${(props) => props.theme.controls.AddressBarElement}
 `;
 
 export interface AddressBarLabelProps {
   disabled?: boolean;
 }
+
 const AddressBarLabel = styled.label<AddressBarLabelProps>`
   ${(props) => props.theme.controls.AddressBarLabel}
 `;
