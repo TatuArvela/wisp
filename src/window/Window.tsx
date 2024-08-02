@@ -70,7 +70,7 @@ export const Window: React.FC<WindowProps> = ({ children, ...windowProps }) => {
           {children}
         </WindowElementContent>
 
-        {window.isResizable && (
+        {window.isResizable && !window.isMaximized && (
           <ResizeBorder resize={windowResizeHandler(windowManager, window)} />
         )}
       </WindowElement>
