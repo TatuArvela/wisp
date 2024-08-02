@@ -18,36 +18,45 @@ export interface MenuBarProps {
   throbberIcon?: Icon;
 }
 
-const MenuBarElement = styled.div`
-  ${(props) => props.theme.controls.MenuBarElement}
-`;
-
 export const MenuBar = ({
   children,
   isThrobberActive,
   throbberActiveIcon,
   throbberIcon,
-}: MenuBarProps) => {
-  return (
-    <MenuBarElement>
-      {children}
-      <MenuBarThrobber
-        isActive={isThrobberActive}
-        icon={throbberIcon}
-        activeIcon={throbberActiveIcon}
-      />
-    </MenuBarElement>
-  );
-};
+}: MenuBarProps) => (
+  <MenuBarElement>
+    {children}
+    <MenuBarThrobber
+      isActive={isThrobberActive}
+      icon={throbberIcon}
+      activeIcon={throbberActiveIcon}
+    />
+  </MenuBarElement>
+);
 
-export interface MenuBarThrobberIconElementProps {
+const MenuBarElement = styled.div`
+  ${(props) => props.theme.controls.MenuBarElement}
+`;
+
+export interface MenuBarThrobberProps {
+  activeIcon?: Icon;
+  icon?: Icon;
   isActive: boolean;
-  src: string;
 }
 
-const MenuBarThrobberIconElement = styled.img<MenuBarThrobberIconElementProps>`
-  ${(props) => props.theme.controls.MenuBarThrobberIconElement}
-`;
+const MenuBarThrobber = ({
+  activeIcon,
+  icon,
+  isActive,
+}: MenuBarThrobberProps) => (
+  <MenuBarThrobberContainer>
+    <MenuBarThrobberIcon
+      icon={icon}
+      activeIcon={activeIcon}
+      isActive={isActive}
+    />
+  </MenuBarThrobberContainer>
+);
 
 export interface MenuBarThrobberIconProps {
   icon: string | Icon;
@@ -79,24 +88,13 @@ const MenuBarThrobberContainer = styled.div`
   ${(props) => props.theme.controls.MenuBarThrobberContainer}
 `;
 
-export interface MenuBarThrobberProps {
-  activeIcon?: Icon;
-  icon?: Icon;
+export interface MenuBarThrobberIconElementProps {
   isActive: boolean;
+  src: string;
 }
 
-const MenuBarThrobber = ({
-  activeIcon,
-  icon,
-  isActive,
-}: MenuBarThrobberProps) => (
-  <MenuBarThrobberContainer>
-    <MenuBarThrobberIcon
-      icon={icon}
-      activeIcon={activeIcon}
-      isActive={isActive}
-    />
-  </MenuBarThrobberContainer>
-);
+const MenuBarThrobberIconElement = styled.img<MenuBarThrobberIconElementProps>`
+  ${(props) => props.theme.controls.MenuBarThrobberIconElement}
+`;
 
 export default MenuBar;
