@@ -28,6 +28,7 @@ const ListBoxWrapper = styled(ControlWrapper)`
 export interface ListBoxLabelProps {
   disabled?: boolean;
 }
+
 const ListBoxLabel = styled.label<ListBoxLabelProps>`
   ${(props) => props.theme.controls.ListBoxLabel}
 `;
@@ -39,6 +40,7 @@ const ListBoxControl = styled.div`
 export interface ListBoxValueProps {
   disabled?: boolean;
 }
+
 const ListBoxValue = styled.div<ListBoxValueProps>`
   ${(props) => props.theme.controls.ListBoxValue}
 `;
@@ -46,6 +48,7 @@ const ListBoxValue = styled.div<ListBoxValueProps>`
 export interface ListBoxButtonProps {
   disabled?: boolean;
 }
+
 const ListBoxButton = styled(HeadlessListBox.Button)<ListBoxButtonProps>`
   ${(props) => props.theme.controls.ListBoxButton}
 `;
@@ -53,6 +56,7 @@ const ListBoxButton = styled(HeadlessListBox.Button)<ListBoxButtonProps>`
 export interface ListBoxOptionsProps {
   open: boolean;
 }
+
 const ListBoxOptions = styled(HeadlessListBox.Options)<ListBoxOptionsProps>`
   ${(props) => props.theme.controls.ListBoxOptions}
 `;
@@ -68,6 +72,7 @@ export interface ListBoxProps extends ControlWrapperProps {
   options: string[];
   value?: string;
 }
+
 export const ListBox = ({
   disabled,
   inlineLabel,

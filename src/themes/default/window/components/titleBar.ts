@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
-import { TitleBarProps } from '../../../../window/components/TitleBar';
+import { TitleBarElementProps } from '../../../../window';
 
-export const TitleBar = css<TitleBarProps>`
+export const TitleBarElement = css<TitleBarElementProps>`
   background: ${(props) => (props.isActive ? 'rgb(19, 71, 214)' : 'grey')};
   border-radius: 3px;
   box-sizing: border-box;

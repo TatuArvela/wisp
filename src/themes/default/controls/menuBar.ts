@@ -1,9 +1,8 @@
 import { css } from 'styled-components';
 
-import { MenuBarThrobberProps } from '../../../controls';
-import menuBarThrobberIcon from './menuBarThrobberIcon.png';
+import { MenuBarThrobberIconElementProps } from '../../../controls';
 
-export const MenuBar = css`
+export const MenuBarElement = css`
   background: white;
   border: 1px solid gray;
   box-shadow: -1px -1px 0 lightgray;
@@ -20,25 +19,17 @@ export const MenuBar = css`
   width: 100%;
 `;
 
-export const MenuBarThrobber = css<MenuBarThrobberProps>`
-  align-self: end;
-  background-color: black;
-  background-image: url('${(props) => props.image ?? menuBarThrobberIcon}');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 16px 16px;
-  height: 100%;
-  margin-left: auto;
-  width: 40px;
-
+export const MenuBarThrobberIconElement = css<MenuBarThrobberIconElementProps>`
+  height: 16px;
+  width: 16px;
   ${({ isAnimated }) => isAnimated && animatedMenuThrobber};
 
   @keyframes menu-bar-throbber-animation {
     0% {
-      background-size: 16px 16px;
+      transform: scale(1);
     }
     100% {
-      background-size: 18px 18px;
+      transform: scale(1.2);
     }
   }
 `;
@@ -48,4 +39,15 @@ const animatedMenuThrobber = css`
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+`;
+
+export const MenuBarThrobberContainer = css`
+  align-self: end;
+  background-color: black;
+  height: 100%;
+  margin-left: auto;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

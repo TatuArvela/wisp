@@ -57,13 +57,12 @@ const AddressBarIconElement = styled.img`
   ${(props) => props.theme.controls.AddressBarIcon}
 `;
 
-const AddressBarIcon = ({
-  icon,
-  onClick,
-}: {
+export interface AddressBarIconProps {
   icon: string | Icon;
   onClick(): void;
-}) => {
+}
+
+const AddressBarIcon = ({ icon, onClick }: AddressBarIconProps) => {
   const { theme } = useThemeManager();
 
   const resolvedIcon = typeof icon === 'string' ? theme.icons[icon] : icon;
@@ -72,7 +71,9 @@ const AddressBarIcon = ({
   }
 
   const iconFile = getIconFileForSize(resolvedIcon);
-  return <AddressBarIconElement src={iconFile} alt="Window icon" />;
+  return (
+    <AddressBarIconElement onClick={onClick} src={iconFile} alt="Window icon" />
+  );
 };
 
 export const AddressBar = ({

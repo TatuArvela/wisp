@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const VersionInfo = css`
+export const VersionInfoElement = css`
   bottom: 30px;
   color: white;
   font-family: sans-serif;

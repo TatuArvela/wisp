@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ControlWrapper, { ControlWrapperProps } from './ControlWrapper';
 
 export const CheckboxThemeProperties = [
-  'Checkbox',
+  'CheckboxElement',
   'CheckboxLabel',
   'CheckboxWrapper',
 ] as const;
@@ -23,16 +23,21 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   width: 1px;
 `;
 
-type StyledCheckboxProps = Omit<CheckboxProps, 'onChange'> & {
+export interface CheckboxElementProps {
+  checked?: boolean;
+  disabled?: boolean;
+  label?: string;
   onClick(): void;
-};
-const StyledCheckbox = styled.div<StyledCheckboxProps>`
-  ${(props) => props.theme.controls.Checkbox}
+}
+
+const CheckboxElement = styled.div<CheckboxElementProps>`
+  ${(props) => props.theme.controls.CheckboxElement}
 `;
 
 export interface CheckboxLabelProps {
   disabled?: boolean;
 }
+
 const CheckboxLabel = styled.label<CheckboxLabelProps>`
   ${(props) => props.theme.controls.CheckboxLabel}
 `;
@@ -56,7 +61,11 @@ export const Checkbox = ({
     <CheckboxWrapper inlineLabel={inlineLabel}>
       {label && <CheckboxLabel disabled={disabled}>{label}</CheckboxLabel>}
       <HiddenCheckbox checked={checked} onChange={() => undefined} />
-      <StyledCheckbox checked={checked} disabled={disabled} onClick={onClick} />
+      <CheckboxElement
+        checked={checked}
+        disabled={disabled}
+        onClick={onClick}
+      />
     </CheckboxWrapper>
   );
 };

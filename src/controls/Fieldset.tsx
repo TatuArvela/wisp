@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const FieldsetThemeProperties = ['Fieldset', 'FieldsetLegend'] as const;
+export const FieldsetThemeProperties = [
+  'FieldsetElement',
+  'FieldsetLegend',
+] as const;
 
 const FieldsetElement = styled.fieldset`
-  ${(props) => props.theme.controls.Fieldset}
+  ${(props) => props.theme.controls.FieldsetElement}
 `;
 
 const FieldsetLegend = styled.legend`

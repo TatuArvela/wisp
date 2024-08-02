@@ -5,10 +5,10 @@ import { useWindowManager } from '../../windowManager/hooks';
 import { WindowType } from '../../windowManager/types';
 import TaskbarButton from './TaskbarButton';
 
-export const TaskbarThemeProperties = ['Taskbar'] as const;
+export const TaskbarThemeProperties = ['TaskbarElement'] as const;
 
 const TaskbarElement = styled.div`
-  ${(props) => props.theme.elements.Taskbar}
+  ${(props) => props.theme.elements.TaskbarElement}
 `;
 
 const Taskbar = () => {

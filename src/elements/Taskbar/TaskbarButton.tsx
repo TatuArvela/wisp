@@ -6,20 +6,17 @@ import { getIconFileForSize } from '../../icons/utils';
 import { useThemeManager } from '../../themeManager/hooks';
 
 export const TaskbarButtonThemeProperties = [
-  'TaskbarButton',
+  'TaskbarButtonElement',
   'TaskbarButtonTitle',
-  'TaskbarButtonIcon',
+  'TaskbarButtonIconElement',
 ] as const;
 
-export type TaskbarButtonProps = {
+export interface TaskbarButtonElementProps {
   active: boolean;
-  icon?: Icon;
-  title?: string;
-  onClick(): void;
-};
+}
 
-const TaskbarButtonElement = styled.button<TaskbarButtonProps>`
-  ${(props) => props.theme.elements.TaskbarButton}
+const TaskbarButtonElement = styled.button<TaskbarButtonElementProps>`
+  ${(props) => props.theme.elements.TaskbarButtonElement}
 `;
 
 const TaskbarButtonTitle = styled.div`
@@ -27,10 +24,14 @@ const TaskbarButtonTitle = styled.div`
 `;
 
 const TaskbarButtonIconElement = styled.img`
-  ${(props) => props.theme.elements.TaskbarButtonIcon}
+  ${(props) => props.theme.elements.TaskbarButtonIconElement}
 `;
 
-const TaskbarButtonIcon = ({ icon }: { icon: string | Icon }) => {
+export interface TaskbarButtonIconProps {
+  icon: string | Icon;
+}
+
+const TaskbarButtonIcon = ({ icon }: TaskbarButtonIconProps) => {
   const { theme } = useThemeManager();
 
   const resolvedIcon = typeof icon === 'string' ? theme.icons[icon] : icon;
@@ -41,6 +42,13 @@ const TaskbarButtonIcon = ({ icon }: { icon: string | Icon }) => {
   const iconFile = getIconFileForSize(resolvedIcon);
   return <TaskbarButtonIconElement src={iconFile} alt="Window icon" />;
 };
+
+export interface TaskbarButtonProps {
+  active: boolean;
+  icon?: Icon;
+  title?: string;
+  onClick(): void;
+}
 
 export const TaskbarButton = ({
   active,

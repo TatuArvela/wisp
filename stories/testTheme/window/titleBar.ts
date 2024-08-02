@@ -1,13 +1,13 @@
 import { css } from 'styled-components';
 
-import { defaultTheme, TitleBarProps } from '../../../src';
+import { defaultTheme, TitleBarElementProps } from '../../../src';
 
-const TitleBar = css<TitleBarProps>`
-  ${defaultTheme.window.TitleBar}
+const TitleBarElement = css<TitleBarElementProps>`
+  ${defaultTheme.window.TitleBarElement}
   background: ${(props) => (props.isActive ? 'rgb(214,19,107)' : 'grey')};
   font-family: serif;
 `;
 
 export default {
-  TitleBar,
+  TitleBarElement,
 };

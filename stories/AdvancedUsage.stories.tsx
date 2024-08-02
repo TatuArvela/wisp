@@ -14,7 +14,6 @@ import {
   WindowContent,
   Wisp,
 } from '../src';
-import icons from '../src/themes/default/icons';
 
 export default {
   title: 'Wisp/Advanced Usage',
@@ -158,7 +157,7 @@ export const ComplexWindow = () => {
             value={address}
             onChange={setAddress}
             label="Address"
-            icon={icons.wisp}
+            icon="wisp"
           />
         </Toolbar>
 

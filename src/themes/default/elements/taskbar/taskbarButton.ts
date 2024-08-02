@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { TaskbarButtonProps } from '../../../../elements/Taskbar/TaskbarButton';
+import { TaskbarButtonElementProps } from '../../../../elements';
 
 const taskbarButtonActiveStyle = css`
   background: none;
@@ -9,7 +9,7 @@ const taskbarButtonActiveStyle = css`
   font-weight: bold;
 `;
 
-export const TaskbarButton = css<TaskbarButtonProps>`
+export const TaskbarButtonElement = css<TaskbarButtonElementProps>`
   align-items: center;
   border-radius: 3px;
   border: 1px solid gray;
@@ -27,7 +27,7 @@ export const TaskbarButton = css<TaskbarButtonProps>`
 
 export const TaskbarButtonTitle = css``;
 
-export const TaskbarButtonIcon = css`
+export const TaskbarButtonIconElement = css`
   display: block;
   height: 16px;
   width: 16px;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const TitleBarButtonsThemeProperties = [
-  'TitleBarButtons',
+  'TitleBarButtonsElement',
   'WindowButton',
   'MinimizeButton',
   'MaximizeButton',
@@ -23,7 +23,7 @@ export interface TitleBarButtonsProps {
 }
 
 const TitleBarButtonsElement = styled.div`
-  ${(props) => props.theme.window.TitleBarButtons}
+  ${(props) => props.theme.window.TitleBarButtonsElement}
 `;
 
 const WindowButton = styled.button`

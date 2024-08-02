@@ -28,6 +28,7 @@ const ComboBoxWrapper = styled(ControlWrapper)`
 export interface ComboBoxLabelProps {
   disabled?: boolean;
 }
+
 const ComboBoxLabel = styled.label<ComboBoxLabelProps>`
   ${(props) => props.theme.controls.ComboBoxLabel}
 `;
@@ -39,6 +40,7 @@ const ComboBoxControl = styled.div`
 export interface ComboBoxInputProps {
   disabled?: boolean;
 }
+
 const ComboBoxInput = styled(HeadlessComboBox.Input)<ComboBoxInputProps>`
   ${(props) => props.theme.controls.ComboBoxInput}
 `;
@@ -46,6 +48,7 @@ const ComboBoxInput = styled(HeadlessComboBox.Input)<ComboBoxInputProps>`
 export interface ComboBoxButtonProps {
   disabled?: boolean;
 }
+
 const ComboBoxButton = styled(HeadlessComboBox.Button)<ComboBoxButtonProps>`
   ${(props) => props.theme.controls.ComboBoxButton}
 `;
@@ -53,6 +56,7 @@ const ComboBoxButton = styled(HeadlessComboBox.Button)<ComboBoxButtonProps>`
 export interface ComboBoxOptionsProps {
   open: boolean;
 }
+
 const ComboBoxOptions = styled(HeadlessComboBox.Options)<ComboBoxOptionsProps>`
   ${(props) => props.theme.controls.ComboBoxOptions}
 `;
@@ -69,6 +73,7 @@ export interface ComboBoxProps extends ControlWrapperProps {
   options: string[];
   value?: string;
 }
+
 export const ComboBox = ({
   disabled,
   label,

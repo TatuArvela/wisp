@@ -1,12 +1,13 @@
 import { css } from 'styled-components';
 
 import {
+  AddressBarElementProps,
   AddressBarInputContainerProps,
   AddressBarInputProps,
   AddressBarLabelProps,
 } from '../../../controls';
 
-export const AddressBarElement = css`
+export const AddressBarElement = css<AddressBarElementProps>`
   align-items: center;
   background: white;
   border: 1px solid gray;

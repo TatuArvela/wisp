@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const VersionInfoThemeProperties = ['VersionInfo'] as const;
+export const VersionInfoThemeProperties = ['VersionInfoElement'] as const;
 
-const VersionInformationElement = styled.p`
-  ${(props) => props.theme.elements.VersionInfo}
+const VersionInfoElement = styled.p`
+  ${(props) => props.theme.elements.VersionInfoElement}
 `;
 
 export const VersionInfo = () => {
@@ -14,11 +14,7 @@ export const VersionInfo = () => {
   if (!version) {
     return null;
   }
-  return (
-    <VersionInformationElement>
-      Wisp Version {version}
-    </VersionInformationElement>
-  );
+  return <VersionInfoElement>Wisp Version {version}</VersionInfoElement>;
 };
 
 export default VersionInfo;

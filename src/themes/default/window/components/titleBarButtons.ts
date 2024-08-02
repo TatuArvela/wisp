@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const TitleBarButtons = css`
+export const TitleBarButtonsElement = css`
   box-sizing: border-box;
   display: flex;
   position: absolute;

@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const ToolbarThemeProperties = ['Toolbar'] as const;
+export const ToolbarThemeProperties = ['ToolbarElement'] as const;
 
 export interface ToolbarProps {
   children?: React.ReactNode;
 }
 
 const ToolbarElement = styled.div`
-  ${(props) => props.theme.controls.Toolbar}
+  ${(props) => props.theme.controls.ToolbarElement}
 `;
 
 export const Toolbar = ({ children }: ToolbarProps) => {

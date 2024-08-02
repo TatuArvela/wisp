@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { ToolbarButtonProps } from '../../../controls';
+import { ToolbarButtonElementProps } from '../../../controls';
 
 export const ToolbarButtonWrapper = css``;
 
@@ -18,7 +18,7 @@ const activeStyle = css`
   }
 `;
 
-export const ToolbarButton = css<ToolbarButtonProps>`
+export const ToolbarButtonElement = css<ToolbarButtonElementProps>`
   justify-content: center;
   background: white;
   border-radius: 1px;
@@ -37,7 +37,7 @@ export const ToolbarButton = css<ToolbarButtonProps>`
 
 export const ToolbarButtonLabel = css``;
 
-export const ToolbarButtonIcon = css`
+export const ToolbarButtonIconElement = css`
   display: block;
   height: 16px;
   width: 16px;

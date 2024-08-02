@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const AlertButton = css`
+export const AlertButtonElement = css`
   width: 60px;
   margin: auto;
 `;

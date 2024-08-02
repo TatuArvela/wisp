@@ -18,6 +18,5 @@ export const ControlWrapper = css<ControlWrapperProps>`
   display: flex;
   width: 100%;
   margin-bottom: 4px;
-  box-sizing: border-box;
   ${({ inlineLabel }) => (inlineLabel ? inlineStyle : columnStyle)}
 `;

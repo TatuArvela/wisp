@@ -6,7 +6,10 @@ import { windowResizeHandler } from '../window/handlers/windowResizeHandler';
 import { useWindowManager } from '../windowManager/hooks';
 import { Direction } from '../windowManager/types';
 
-export const StatusBarThemeProperties = ['ResizeHandle', 'StatusBar'] as const;
+export const StatusBarThemeProperties = [
+  'ResizeHandle',
+  'StatusBarElement',
+] as const;
 
 export interface StatusBarProps {
   children?: React.ReactNode;
@@ -14,7 +17,7 @@ export interface StatusBarProps {
 }
 
 const StatusBarElement = styled.div`
-  ${(props) => props.theme.controls.StatusBar}
+  ${(props) => props.theme.controls.StatusBarElement}
 `;
 
 export const StatusBar = ({ children, showResizeHandle }: StatusBarProps) => {

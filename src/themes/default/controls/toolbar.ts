@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const Toolbar = css`
+export const ToolbarElement = css`
   background: white;
   border: 1px solid gray;
   box-shadow: -1px -1px 0 lightgray;

@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { CheckboxProps, ControlWrapperProps } from '../../../controls';
+import { CheckboxElementProps, ControlWrapperProps } from '../../../controls';
 
 export const CheckboxWrapper = css<ControlWrapperProps>``;
 
@@ -28,7 +28,7 @@ const activeStyle = css`
   }
 `;
 
-export const Checkbox = css<CheckboxProps>`
+export const CheckboxElement = css<CheckboxElementProps>`
   background: white;
   border: 1px solid ${(props) => (props.disabled ? 'gray' : 'black')};
   border-radius: 2px;

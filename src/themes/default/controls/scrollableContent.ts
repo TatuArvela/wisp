@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { ScrollableContentViewProps } from '../../../controls/ScrollableContent';
+import { ScrollableContentViewProps } from '../../../controls';
 
 export const ScrollableContentWrapper = css`
   height: 100%;

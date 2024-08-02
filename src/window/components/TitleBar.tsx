@@ -7,7 +7,7 @@ import { useThemeManager } from '../../themeManager/hooks';
 import TitleBarButtons from './TitleBarButtons';
 
 export const TitleBarThemeProperties = [
-  'TitleBar',
+  'TitleBarElement',
   'TitleBarTitleContainer',
   'TitleBarTitle',
   'TitleBarIcon',
@@ -18,7 +18,7 @@ export interface TitleBarElementProps {
 }
 
 const TitleBarElement = styled.div<TitleBarElementProps>`
-  ${(props) => props.theme.window.TitleBar}
+  ${(props) => props.theme.window.TitleBarElement}
 `;
 
 const TitleContainer = styled.div`

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { ControlStoryDecorator, MenuBar } from '../../src';
-import icons from '../../src/themes/default/icons';
 
 export default {
   component: MenuBar,
@@ -46,6 +45,6 @@ export const CustomIcon = {
       </>
     ),
     isThrobberAnimated: true,
-    throbberImage: icons.warning[48],
+    throbberIcon: 'warning',
   },
 };

@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
-import { StatusBarSectionProps } from '../../../controls/StatusBarSection';
+import { StatusBarSectionElementProps } from '../../../controls';
 
-export const StatusBarSection = css<StatusBarSectionProps>`
+export const StatusBarSectionElement = css<StatusBarSectionElementProps>`
   border: 1px solid black;
   display: flex;
   align-items: center;

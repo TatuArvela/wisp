@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const Taskbar = css`
+export const TaskbarElement = css`
   background: white;
   border-top: 1px solid black;
   bottom: 0;

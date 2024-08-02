@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const StatusBar = css`
+export const StatusBarElement = css`
   border-top: 1px solid grey;
   bottom: 0;
   box-sizing: border-box;

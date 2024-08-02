@@ -6,13 +6,13 @@ import { getIconFileForSize } from '../icons/utils';
 import { useThemeManager } from '../themeManager/hooks';
 
 export const ToolbarButtonThemeProperties = [
-  'ToolbarButton',
+  'ToolbarButtonElement',
   'ToolbarButtonWrapper',
   'ToolbarButtonLabel',
-  'ToolbarButtonIcon',
+  'ToolbarButtonIconElement',
 ] as const;
 
-interface ToolbarButtonWrapperProps {
+export interface ToolbarButtonWrapperProps {
   disabled?: boolean;
 }
 
@@ -25,10 +25,14 @@ const ToolbarButtonLabel = styled.div`
 `;
 
 const ToolbarButtonIconElement = styled.img`
-  ${(props) => props.theme.controls.ToolbarButtonIcon}
+  ${(props) => props.theme.controls.ToolbarButtonIconElement}
 `;
 
-const ToolbarButtonIcon = ({ icon }: { icon: string | Icon }) => {
+export interface ToolbarButtonIconProps {
+  icon: string | Icon;
+}
+
+const ToolbarButtonIcon = ({ icon }: ToolbarButtonIconProps) => {
   const { theme } = useThemeManager();
 
   const resolvedIcon = typeof icon === 'string' ? theme.icons[icon] : icon;
@@ -40,6 +44,15 @@ const ToolbarButtonIcon = ({ icon }: { icon: string | Icon }) => {
   return <ToolbarButtonIconElement src={iconFile} alt="Window icon" />;
 };
 
+export type ToolbarButtonElementProps = Omit<
+  ToolbarButtonProps,
+  'icon' | 'label'
+>;
+
+const ToolbarButtonElement = styled.button`
+  ${(props) => props.theme.controls.ToolbarButtonElement}
+`;
+
 export interface ToolbarButtonProps
   extends React.ComponentPropsWithoutRef<'button'> {
   disabled?: boolean;
@@ -47,10 +60,6 @@ export interface ToolbarButtonProps
   icon?: Icon;
   label?: string;
 }
-
-const ToolbarButtonElement = styled.button`
-  ${(props) => props.theme.controls.ToolbarButton}
-`;
 
 export const ToolbarButton = ({
   disabled,
