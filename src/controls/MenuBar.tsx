@@ -64,7 +64,7 @@ export interface MenuBarThrobberIconProps {
 }
 
 const MenuBarThrobberIcon = ({
-  activeIcon = 'menuBarThrobber',
+  activeIcon = 'menuBarThrobberActive',
   icon = 'menuBarThrobber',
   isActive,
 }: MenuBarThrobberProps) => {
