@@ -41,7 +41,7 @@ const ToolbarButtonIcon = ({ icon }: ToolbarButtonIconProps) => {
   }
 
   const iconFile = getIconFileForSize(resolvedIcon);
-  return <ToolbarButtonIconElement src={iconFile} alt="Window icon" />;
+  return <ToolbarButtonIconElement src={iconFile} />;
 };
 
 export type ToolbarButtonElementProps = Omit<

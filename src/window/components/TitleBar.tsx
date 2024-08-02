@@ -42,7 +42,7 @@ const TitleBarIcon = ({ icon }: { icon: string | Icon }) => {
   }
 
   const iconFile = getIconFileForSize(resolvedIcon);
-  return <TitleBarIconElement src={iconFile} alt="Window icon" />;
+  return <TitleBarIconElement src={iconFile} />;
 };
 
 export interface TitleBarProps extends TitleBarElementProps {

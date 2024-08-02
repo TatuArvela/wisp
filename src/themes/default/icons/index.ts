@@ -16,10 +16,20 @@ const warning: Icon = {
   48: warningIcon,
 };
 
+const menuBarThrobber: Icon = {
+  48: wispIcon,
+};
+
+const menuBarThrobberActive: Icon = {
+  48: wispIcon,
+};
+
 const icons: IconsThemeSection = {
   error,
   warning,
   wisp,
+  menuBarThrobber,
+  menuBarThrobberActive,
 } as const;
 
 export default icons;

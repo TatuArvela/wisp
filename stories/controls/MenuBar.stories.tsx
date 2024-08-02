@@ -24,7 +24,7 @@ export const Default = {
         </div>
       </>
     ),
-    isThrobberAnimated: true,
+    isThrobberActive: true,
   },
 };
 
@@ -44,7 +44,7 @@ export const CustomIcon = {
         </div>
       </>
     ),
-    isThrobberAnimated: true,
+    isThrobberActive: true,
     throbberIcon: 'warning',
   },
 };

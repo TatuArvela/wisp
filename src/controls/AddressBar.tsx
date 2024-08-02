@@ -71,9 +71,7 @@ const AddressBarIcon = ({ icon, onClick }: AddressBarIconProps) => {
   }
 
   const iconFile = getIconFileForSize(resolvedIcon);
-  return (
-    <AddressBarIconElement onClick={onClick} src={iconFile} alt="Window icon" />
-  );
+  return <AddressBarIconElement onClick={onClick} src={iconFile} />;
 };
 
 export const AddressBar = ({

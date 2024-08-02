@@ -22,7 +22,7 @@ export const MenuBarElement = css`
 export const MenuBarThrobberIconElement = css<MenuBarThrobberIconElementProps>`
   height: 16px;
   width: 16px;
-  ${({ isAnimated }) => isAnimated && animatedMenuThrobber};
+  ${({ isActive }) => isActive && animatedMenuThrobber};
 
   @keyframes menu-bar-throbber-animation {
     0% {

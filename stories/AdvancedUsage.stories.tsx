@@ -147,7 +147,7 @@ export const ComplexWindow = () => {
         minWidth={200}
         title="Complex Window"
       >
-        <MenuBar isThrobberAnimated></MenuBar>
+        <MenuBar isThrobberActive></MenuBar>
         <Toolbar>
           <ToolbarButton label="Action" />
           <ToolbarButton icon="wisp" />

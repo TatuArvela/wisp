@@ -4,4 +4,9 @@ export type Icon = {
   [size: number]: File;
 };
 
-export type IconKey = 'wisp' | 'error' | 'warning';
+export type IconKey =
+  | 'wisp'
+  | 'error'
+  | 'warning'
+  | 'menuBarThrobber'
+  | 'menuBarThrobberActive';

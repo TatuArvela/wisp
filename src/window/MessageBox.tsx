@@ -22,7 +22,7 @@ const AlertIcon = ({ icon }: { icon: string | Icon }) => {
   }
 
   const iconFile = getIconFileForSize(resolvedIcon);
-  return <AlertIconElement src={iconFile} alt="Alert icon" />;
+  return <AlertIconElement src={iconFile} />;
 };
 
 export type MessageBoxProps = WindowProps & {

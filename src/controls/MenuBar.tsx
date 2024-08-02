@@ -13,7 +13,8 @@ export const MenuBarThemeProperties = [
 
 export interface MenuBarProps {
   children?: React.ReactNode;
-  isThrobberAnimated?: boolean;
+  isThrobberActive?: boolean;
+  throbberActiveIcon?: Icon;
   throbberIcon?: Icon;
 }
 
@@ -23,19 +24,24 @@ const MenuBarElement = styled.div`
 
 export const MenuBar = ({
   children,
-  isThrobberAnimated,
+  isThrobberActive,
+  throbberActiveIcon,
   throbberIcon,
 }: MenuBarProps) => {
   return (
     <MenuBarElement>
       {children}
-      <MenuBarThrobber isAnimated={isThrobberAnimated} icon={throbberIcon} />
+      <MenuBarThrobber
+        isActive={isThrobberActive}
+        icon={throbberIcon}
+        activeIcon={throbberActiveIcon}
+      />
     </MenuBarElement>
   );
 };
 
 export interface MenuBarThrobberIconElementProps {
-  isAnimated: boolean;
+  isActive: boolean;
   src: string;
 }
 
@@ -49,24 +55,24 @@ export interface MenuBarThrobberIconProps {
 }
 
 const MenuBarThrobberIcon = ({
-  icon = 'wisp',
-  isAnimated,
+  activeIcon = 'menuBarThrobber',
+  icon = 'menuBarThrobber',
+  isActive,
 }: MenuBarThrobberProps) => {
   const { theme } = useThemeManager();
 
-  const resolvedIcon = typeof icon === 'string' ? theme.icons[icon] : icon;
+  const iconToShow = isActive ? activeIcon : icon;
+
+  const resolvedIcon =
+    typeof iconToShow === 'string' ? theme.icons[iconToShow] : iconToShow;
+
   if (!resolvedIcon) {
     return null;
   }
 
   const iconFile = getIconFileForSize(resolvedIcon);
-  return (
-    <MenuBarThrobberIconElement
-      src={iconFile}
-      alt="Window icon"
-      isAnimated={isAnimated}
-    />
-  );
+
+  return <MenuBarThrobberIconElement src={iconFile} isActive={isActive} />;
 };
 
 const MenuBarThrobberContainer = styled.div`
@@ -74,16 +80,22 @@ const MenuBarThrobberContainer = styled.div`
 `;
 
 export interface MenuBarThrobberProps {
-  isAnimated: boolean;
+  activeIcon?: Icon;
   icon?: Icon;
+  isActive: boolean;
 }
 
 const MenuBarThrobber = ({
-  icon = 'wisp',
-  isAnimated,
+  activeIcon,
+  icon,
+  isActive,
 }: MenuBarThrobberProps) => (
   <MenuBarThrobberContainer>
-    <MenuBarThrobberIcon icon={icon} isAnimated={isAnimated} />
+    <MenuBarThrobberIcon
+      icon={icon}
+      activeIcon={activeIcon}
+      isActive={isActive}
+    />
   </MenuBarThrobberContainer>
 );
 

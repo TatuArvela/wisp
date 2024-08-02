@@ -40,7 +40,7 @@ const TaskbarButtonIcon = ({ icon }: TaskbarButtonIconProps) => {
   }
 
   const iconFile = getIconFileForSize(resolvedIcon);
-  return <TaskbarButtonIconElement src={iconFile} alt="Window icon" />;
+  return <TaskbarButtonIconElement src={iconFile} />;
 };
 
 export interface TaskbarButtonProps {
