@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Window } from '../../src';
-import { WindowStoryDecorator } from '../../src/storyDecorators/windowStory';
+import { WindowStoryDecorator } from '../../src';
 
 export default {
   component: Window,
