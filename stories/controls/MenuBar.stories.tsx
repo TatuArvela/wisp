@@ -46,5 +46,6 @@ export const CustomIcon = {
     ),
     isThrobberActive: true,
     throbberIcon: 'warning',
+    throbberActiveIcon: 'error',
   },
 };
