@@ -31,6 +31,7 @@ const WindowButton = styled.button`
 `;
 WindowButton.defaultProps = {
   type: 'button',
+  tabIndex: -1,
 };
 
 const MinimizeButton = styled(WindowButton)`

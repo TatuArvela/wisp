@@ -26,15 +26,24 @@ function reducer(
     }
 
     case 'CLOSE_WINDOW': {
+      const closedWindowIndex = state.windowOrder.indexOf(action.payload);
+
+      const newActiveWindowId =
+        state.windowOrder
+          .slice(0, closedWindowIndex)
+          .reverse()
+          .find((windowId) => {
+            const windowInstance = state.windows.get(windowId);
+            return (
+              windowInstance &&
+              !windowInstance.isClosed &&
+              !windowInstance.isMinimized
+            );
+          }) || null;
+
       return {
         ...state,
-        activeWindowId:
-          // find previous window
-          state.windowOrder[
-            state.windowOrder.findIndex(
-              (windowId) => windowId === action.payload
-            ) - 1
-          ] ?? null,
+        activeWindowId: newActiveWindowId,
         windows: new Map(
           [...state.windows].filter(([key]) => key !== action.payload)
         ),

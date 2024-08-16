@@ -82,6 +82,18 @@ export const Window: React.FC<WindowProps> = ({ children, ...windowProps }) => {
           {window.isResizable && !window.isMaximized && (
             <ResizeBorder resize={windowResizeHandler(windowManager, window)} />
           )}
+
+          <div
+            tabIndex={0}
+            style={{
+              width: '0',
+              height: '0',
+              position: 'absolute',
+              opacity: '0',
+              outline: 'none',
+            }}
+            /* focus-trap-react always needs at least one tabbable element */
+          />
         </WindowElement>
       </FocusTrap>
     </WindowProvider>
