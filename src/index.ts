@@ -1,13 +1,12 @@
-export { WispConfig } from './config';
+export * from './config';
 export * from './controls';
 export * from './elements';
 export * from './icons';
 export * from './storyDecorators';
-export { useThemeManager } from './themeManager/hooks';
+export * from './themeManager/hooks';
 export { default as defaultTheme } from './themes/default/theme';
 export * from './themes/types';
 export * from './window';
-export { useWindowManager } from './windowManager/hooks';
+export * from './windowManager/hooks';
 export * from './windowManager/types';
-export { WispProps } from './Wisp';
-export { default as Wisp } from './Wisp';
+export * from './Wisp';

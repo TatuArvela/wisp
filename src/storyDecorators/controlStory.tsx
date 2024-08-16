@@ -7,7 +7,7 @@ import ThemeManager from '../themeManager/ThemeManager';
 import { WindowProvider } from '../window';
 import { Window } from '../window';
 import { WindowType } from '../windowManager/types';
-import Wisp from '../Wisp';
+import { Wisp } from '../Wisp';
 
 export const buildControlStoryDecorator =
   ({ width, height }: { width?: number; height?: number }): Decorator =>
