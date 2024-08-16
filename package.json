@@ -31,6 +31,7 @@
     "@babel/runtime": "^7.25.0",
     "@floating-ui/react": "^0.26.20",
     "@headlessui/react": "^2.1.2",
+    "focus-trap-react": "^10.2.3",
     "use-resize-observer": "^9.1.0"
   },
   "peerDependencies": {

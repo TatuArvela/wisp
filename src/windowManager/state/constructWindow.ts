@@ -17,7 +17,7 @@ const constructWindow = (
     isMaximizable: initial.isMaximizable ?? true,
     isMaximized: initial.isMaximized ?? false,
     isMinimizable: config.enableWindowMinimize
-      ? initial.isMinimizable ?? true
+      ? (initial.isMinimizable ?? true)
       : false,
     isMinimized: initial.isMinimized ?? false,
     isResizable: initial.isResizable ?? true,

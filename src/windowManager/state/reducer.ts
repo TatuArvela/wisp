@@ -9,6 +9,10 @@ function reducer(
 ): WindowManagerState {
   switch (action.type) {
     case 'ACTIVATE_WINDOW': {
+      if (!state.windows.get(action.payload)) {
+        return state;
+      }
+
       return {
         ...state,
         activeWindowId: action.payload,
@@ -22,11 +26,18 @@ function reducer(
     }
 
     case 'CLOSE_WINDOW': {
-      const windows = new Map(state.windows);
-      windows.delete(action.payload);
       return {
         ...state,
-        windows: windows,
+        activeWindowId:
+          // find previous window
+          state.windowOrder[
+            state.windowOrder.findIndex(
+              (windowId) => windowId === action.payload
+            ) - 1
+          ] ?? null,
+        windows: new Map(
+          [...state.windows].filter(([key]) => key !== action.payload)
+        ),
         windowOrder: [...state.windowOrder].filter(
           (windowId) => windowId !== action.payload
         ),
@@ -37,8 +48,10 @@ function reducer(
       const { config, props } = action.payload;
       const { id } = props;
       const window = constructWindow(config, state.windows, props);
+
       return {
         ...state,
+        activeWindowId: id,
         windows: new Map(state.windows).set(id, window),
         windowOrder: state.windowOrder.concat(id),
       };

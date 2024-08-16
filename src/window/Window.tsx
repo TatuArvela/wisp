@@ -1,3 +1,4 @@
+import FocusTrap from 'focus-trap-react';
 import React, { useEffect } from 'react';
 
 import { useWindowManager } from '../windowManager/hooks';
@@ -39,41 +40,50 @@ export const Window: React.FC<WindowProps> = ({ children, ...windowProps }) => {
 
   return (
     <WindowProvider value={wmWindow}>
-      <WindowElement
-        height={window.height}
-        id={window.id}
-        isMaximized={window.isMaximized}
-        isMinimized={window.isMinimized}
-        orderNumber={orderNumber}
-        positionX={window.positionX}
-        positionY={window.positionY}
-        viewportWindowMargins={windowManager.viewportWindowMargins}
-        width={window.width}
+      <FocusTrap
+        active={id === windowManager.activeWindowId}
+        focusTrapOptions={{
+          allowOutsideClick: true,
+        }}
       >
-        <TitleBar
-          alwaysShowCloseButton={window.alwaysShowCloseButton}
-          close={() => windowManager.closeWindow(id)}
-          drag={windowDragHandler(windowManager, window)}
-          icon={window.icon}
-          isActive={id === windowManager.activeWindowId}
-          isClosable={window.isClosable}
-          isMaximizable={window.isMaximizable}
+        <WindowElement
+          height={window.height}
+          id={window.id}
           isMaximized={window.isMaximized}
-          isMinimizable={window.isMinimizable}
-          maximize={() => windowManager.maximizeWindow(id)}
-          minimize={() => windowManager.minimizeWindow(id)}
-          title={window.title}
-          unmaximize={() => windowManager.unmaximizeWindow(id)}
-        />
+          isMinimized={window.isMinimized}
+          orderNumber={orderNumber}
+          positionX={window.positionX}
+          positionY={window.positionY}
+          viewportWindowMargins={windowManager.viewportWindowMargins}
+          width={window.width}
+        >
+          <TitleBar
+            alwaysShowCloseButton={window.alwaysShowCloseButton}
+            close={() => windowManager.closeWindow(id)}
+            drag={windowDragHandler(windowManager, window)}
+            icon={window.icon}
+            isActive={id === windowManager.activeWindowId}
+            isClosable={window.isClosable}
+            isMaximizable={window.isMaximizable}
+            isMaximized={window.isMaximized}
+            isMinimizable={window.isMinimizable}
+            maximize={() => windowManager.maximizeWindow(id)}
+            minimize={() => windowManager.minimizeWindow(id)}
+            title={window.title}
+            unmaximize={() => windowManager.unmaximizeWindow(id)}
+          />
 
-        <WindowElementContent onClick={() => windowManager.activateWindow(id)}>
-          {children}
-        </WindowElementContent>
+          <WindowElementContent
+            onClick={() => windowManager.activateWindow(id)}
+          >
+            {children}
+          </WindowElementContent>
 
-        {window.isResizable && !window.isMaximized && (
-          <ResizeBorder resize={windowResizeHandler(windowManager, window)} />
-        )}
-      </WindowElement>
+          {window.isResizable && !window.isMaximized && (
+            <ResizeBorder resize={windowResizeHandler(windowManager, window)} />
+          )}
+        </WindowElement>
+      </FocusTrap>
     </WindowProvider>
   );
 };

@@ -36,25 +36,53 @@ export const MessageBox = ({
   buttonText = 'OK',
   onButtonClick,
   ...windowProps
-}: MessageBoxProps) => (
-  <Window
-    {...windowProps}
-    id={windowProps.id}
-    title={windowProps.title}
-    alwaysShowCloseButton={windowProps.alwaysShowCloseButton ?? true}
-    isClosable={windowProps.isClosable ?? false}
-    isMaximizable={windowProps.isMaximizable ?? false}
-    isMinimizable={windowProps.isMinimizable ?? false}
-    isResizable={windowProps.isResizable ?? false}
-  >
-    <AlertContent>
-      <AlertIcon icon={alertIcon} />
-      <AlertText>{windowProps.children}</AlertText>
-    </AlertContent>
-    <AlertButton onClick={onButtonClick} type="button">
-      {buttonText}
-    </AlertButton>
-  </Window>
-);
+}: MessageBoxProps) => {
+  return (
+    <Window
+      {...windowProps}
+      id={windowProps.id}
+      title={windowProps.title}
+      alwaysShowCloseButton={windowProps.alwaysShowCloseButton ?? true}
+      isClosable={windowProps.isClosable ?? false}
+      isMaximizable={windowProps.isMaximizable ?? false}
+      isMinimizable={windowProps.isMinimizable ?? false}
+      isResizable={windowProps.isResizable ?? false}
+    >
+      <MessageBoxInternal
+        alertIcon={alertIcon}
+        buttonText={buttonText}
+        onButtonClick={onButtonClick}
+      >
+        {windowProps.children}
+      </MessageBoxInternal>
+    </Window>
+  );
+};
+
+type MessageBoxInternalProps = {
+  alertIcon?: string | Icon;
+  buttonText?: string;
+  children?: React.ReactNode;
+  onButtonClick?(): void;
+};
+
+const MessageBoxInternal = ({
+  alertIcon,
+  buttonText,
+  children,
+  onButtonClick,
+}: MessageBoxInternalProps) => {
+  return (
+    <>
+      <AlertContent>
+        <AlertIcon icon={alertIcon} />
+        <AlertText>{children}</AlertText>
+      </AlertContent>
+      <AlertButton onClick={onButtonClick} type="button">
+        {buttonText}
+      </AlertButton>
+    </>
+  );
+};
 
 export default MessageBox;
