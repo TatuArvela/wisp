@@ -35,18 +35,22 @@ export const MessageBox = ({
   alertIcon = 'warning',
   buttonText = 'OK',
   onButtonClick,
+  height = 'auto',
+  width = 'auto',
   ...windowProps
 }: MessageBoxProps) => {
   return (
     <Window
       {...windowProps}
-      id={windowProps.id}
-      title={windowProps.title}
       alwaysShowCloseButton={windowProps.alwaysShowCloseButton ?? true}
+      height={height}
+      id={windowProps.id}
       isClosable={windowProps.isClosable ?? false}
       isMaximizable={windowProps.isMaximizable ?? false}
       isMinimizable={windowProps.isMinimizable ?? false}
       isResizable={windowProps.isResizable ?? false}
+      title={windowProps.title}
+      width={width}
     >
       <MessageBoxInternal
         alertIcon={alertIcon}

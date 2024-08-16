@@ -125,7 +125,10 @@ export interface WindowType {
   width: number;
 }
 
-export type InitialWindow = Pick<WindowType, 'id'> & Partial<WindowType>;
+export type InitialWindow = Pick<WindowType, 'id'> & {
+  height?: number | 'auto';
+  width?: number | 'auto';
+} & Partial<Omit<WindowType, 'height' | 'width'>>;
 
 export interface ViewportWindowMargins {
   top: number;

@@ -1,8 +1,12 @@
 import FocusTrap from 'focus-trap-react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { useWindowManager } from '../windowManager/hooks';
-import { WindowType } from '../windowManager/types';
+import {
+  useWindowById,
+  useWindowManager,
+  useWindowOrderNumberById,
+} from '../windowManager/hooks';
+import { InitialWindow, WindowType } from '../windowManager/types';
 import ResizeBorder from './components/ResizeBorder';
 import TitleBar from './components/TitleBar';
 import WindowElement from './components/WindowElement';
@@ -14,14 +18,14 @@ import { WindowProvider } from './WindowContext';
 // Altering the state post-mount is done with the windowManager API
 export type WindowProps = {
   children: React.ReactNode;
-  id: string;
-} & Partial<WindowType>;
+} & InitialWindow;
 
 export const Window: React.FC<WindowProps> = ({ children, ...windowProps }) => {
   const { id } = windowProps;
   const windowManager = useWindowManager();
-  const wmWindow = windowManager.windows.get(id);
-  const orderNumber = windowManager.windowOrder.indexOf(id);
+  const wmWindow = useWindowById(id);
+  const orderNumber = useWindowOrderNumberById(id);
+  const windowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!wmWindow) {
@@ -30,6 +34,18 @@ export const Window: React.FC<WindowProps> = ({ children, ...windowProps }) => {
     return () => windowManager.closeWindow(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  useLayoutEffect(() => {
+    if (wmWindow && windowRef.current) {
+      if (wmWindow.width === undefined || wmWindow.height === undefined) {
+        const windowElementRect = windowRef.current.getBoundingClientRect();
+        let windowUpdate: Partial<WindowType> = {};
+        windowUpdate.width = windowElementRect.width;
+        windowUpdate.height = windowElementRect.height;
+        windowManager.updateWindow(id, windowUpdate);
+      }
+    }
+  }, [id, windowManager, wmWindow]);
 
   if (!wmWindow || wmWindow.isClosed) {
     return null;
@@ -54,6 +70,7 @@ export const Window: React.FC<WindowProps> = ({ children, ...windowProps }) => {
           orderNumber={orderNumber}
           positionX={window.positionX}
           positionY={window.positionY}
+          ref={windowRef}
           viewportWindowMargins={windowManager.viewportWindowMargins}
           width={window.width}
         >

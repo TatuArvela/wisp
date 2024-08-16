@@ -1,6 +1,16 @@
 import { WispConfig } from '../../config';
 import { InitialWindow, WindowType } from '../types';
 
+const makeLength = (
+  length: number | 'auto' | undefined,
+  defaultLength: number | undefined
+) => {
+  if (length === 'auto') {
+    return undefined;
+  }
+  return length ?? defaultLength;
+};
+
 const constructWindow = (
   config: WispConfig,
   windows: Map<string, WindowType>,
@@ -8,7 +18,7 @@ const constructWindow = (
 ): WindowType => {
   return {
     alwaysShowCloseButton: initial.alwaysShowCloseButton ?? false,
-    height: initial.height ?? config.defaultWindowHeight,
+    height: makeLength(initial.height, config.defaultWindowHeight),
     icon: initial.icon,
     id: initial.id,
     isClosable: initial.isClosable ?? true,
@@ -27,7 +37,7 @@ const constructWindow = (
     minWidth: initial.minWidth ?? config.minWindowWidth,
     showAsTask: initial.showAsTask ?? true,
     title: initial.title ?? '',
-    width: initial.width ?? config.defaultWindowWidth,
+    width: makeLength(initial.width, config.defaultWindowWidth),
     ...determinePosition(config, windows, initial),
   };
 };

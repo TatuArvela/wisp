@@ -5,6 +5,7 @@ import { ButtonElementProps, ButtonWrapperProps } from '../../../controls';
 export const ButtonWrapper = css<ButtonWrapperProps>`
   display: inherit;
   padding: 0 1px 1px 0;
+  margin-bottom: 1px;
 `;
 
 const activeStyle = css`
