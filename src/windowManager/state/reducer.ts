@@ -57,10 +57,11 @@ function reducer(
       const { config, props } = action.payload;
       const { id } = props;
       const window = constructWindow(config, state.windows, props);
+      const shouldActivate = !window.isMinimized && !window.isClosed;
 
       return {
         ...state,
-        activeWindowId: id,
+        activeWindowId: shouldActivate ? id : state.activeWindowId,
         windows: new Map(state.windows).set(id, window),
         windowOrder: state.windowOrder.concat(id),
       };
