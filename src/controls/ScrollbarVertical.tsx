@@ -91,7 +91,7 @@ const ScrollbarVertical = ({
       style={{ '--height': height + 'px' } as React.CSSProperties}
       ref={wrapperRef}
     >
-      <ScrollUpButton onMouseDown={onButtonMouseDown(-50)} />
+      <ScrollUpButton tabIndex={-1} onMouseDown={onButtonMouseDown(-50)} />
       <ScrollbarVerticalTrack>
         <ScrollbarVerticalThumb
           ref={thumbRef}
@@ -99,7 +99,7 @@ const ScrollbarVertical = ({
           onMouseDown={onThumbMouseDown}
         />
       </ScrollbarVerticalTrack>
-      <ScrollDownButton onMouseDown={onButtonMouseDown(50)} />
+      <ScrollDownButton tabIndex={-1} onMouseDown={onButtonMouseDown(50)} />
     </ScrollbarVerticalWrapper>
   );
 };

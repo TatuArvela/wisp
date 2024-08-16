@@ -91,7 +91,7 @@ const ScrollbarHorizontal = ({
       style={{ '--width': width + 'px' } as React.CSSProperties}
       ref={wrapperRef}
     >
-      <ScrollLeftButton onMouseDown={onButtonMouseDown(-50)} />
+      <ScrollLeftButton tabIndex={-1} onMouseDown={onButtonMouseDown(-50)} />
       <ScrollbarHorizontalTrack>
         <ScrollbarHorizontalThumb
           ref={thumbRef}
@@ -99,7 +99,7 @@ const ScrollbarHorizontal = ({
           onMouseDown={onThumbMouseDown}
         />
       </ScrollbarHorizontalTrack>
-      <ScrollRightButton onMouseDown={onButtonMouseDown(50)} />
+      <ScrollRightButton tabIndex={-1} onMouseDown={onButtonMouseDown(50)} />
     </ScrollbarHorizontalWrapper>
   );
 };
