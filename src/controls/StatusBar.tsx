@@ -21,10 +21,13 @@ const StatusBarElement = styled.div`
 `;
 
 export const StatusBar = ({ children, showResizeHandle }: StatusBarProps) => {
+  const window = useWindow();
   return (
     <StatusBarElement>
       {children}
-      {showResizeHandle && <ResizeHandle />}
+      {window.isResizable && !window.isMaximized && showResizeHandle && (
+        <ResizeHandle />
+      )}
     </StatusBarElement>
   );
 };
