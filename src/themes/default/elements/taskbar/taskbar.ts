@@ -5,7 +5,7 @@ export const TaskbarElement = css`
   border-top: 1px solid black;
   bottom: 0;
   box-sizing: border-box;
-  display: inline-block;
+  display: inline-flex;
   font-size: 16px;
   height: 28px;
   left: 0;
