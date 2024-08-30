@@ -76,7 +76,7 @@ const TitleBar = ({
   unmaximize,
 }: TitleBarProps) => {
   const onTitleDoubleClick = () => {
-    isMaximized ? unmaximize() : maximize();
+    isMaximizable && (isMaximized ? unmaximize() : maximize());
   };
 
   return (
