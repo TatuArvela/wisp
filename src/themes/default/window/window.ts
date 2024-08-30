@@ -1,19 +1,19 @@
 import { css } from 'styled-components';
 
 import { WindowElementProps } from '../../../window';
-import { ViewportWindowMargins } from '../../../windowManager/types';
+import { ViewportMargins } from '../../../windowManager/types';
 
-const getHeight = (viewportWindowMargins: ViewportWindowMargins) =>
-  `calc(100% - ${viewportWindowMargins.top + viewportWindowMargins.bottom}px)`;
+const getHeight = (viewportMargins: ViewportMargins) =>
+  `calc(100% - ${viewportMargins.top + viewportMargins.bottom}px)`;
 
-const getWidth = (viewportWindowMargins: ViewportWindowMargins) =>
-  `calc(100% - ${viewportWindowMargins.left + viewportWindowMargins.right}px)`;
+const getWidth = (viewportMargins: ViewportMargins) =>
+  `calc(100% - ${viewportMargins.left + viewportMargins.right}px)`;
 
 const maximizedStyles = css<WindowElementProps>`
-  height: ${(props) => getHeight(props.viewportWindowMargins)} !important;
-  left: ${(props) => props.viewportWindowMargins.left} !important;
-  top: ${(props) => props.viewportWindowMargins.top} !important;
-  width: ${(props) => getWidth(props.viewportWindowMargins)} !important;
+  height: ${(props) => getHeight(props.viewportMargins)} !important;
+  left: ${(props) => props.viewportMargins.left} !important;
+  top: ${(props) => props.viewportMargins.top} !important;
+  width: ${(props) => getWidth(props.viewportMargins)} !important;
   z-index: ${(props) => props.orderNumber} !important;
   border-radius: 0;
 `;

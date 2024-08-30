@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {
   AddressBar,
   MenuBar,
+  MessageBox,
   ProgressBar,
   ScrollableContent,
   StatusBar,
@@ -182,6 +183,35 @@ export const ComplexWindow = () => {
           <StatusBarSection></StatusBarSection>
         </StatusBar>
       </Window>
+    </Wisp>
+  );
+};
+
+export const ChildMessageBoxes = () => {
+  return (
+    <Wisp>
+      <Window id="parent" title="Parent" icon="wisp">
+        Parent
+      </Window>
+
+      <MessageBox
+        id="message"
+        title="Message"
+        parentId="parent"
+        showAsTask={false}
+      >
+        Message!
+      </MessageBox>
+
+      <MessageBox
+        id="blockingMessage"
+        title="Blocking message"
+        parentId="parent"
+        isBlockingParent={true}
+        showAsTask={false}
+      >
+        Blocking message!
+      </MessageBox>
     </Wisp>
   );
 };

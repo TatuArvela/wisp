@@ -1,5 +1,7 @@
 import { WispConfig } from '../../config';
 import { InitialWindow, WindowType } from '../types';
+import { determineIsBlocked } from './childParentUtils';
+import { determinePosition } from './positionUtils';
 
 const makeLength = (
   length: number | 'auto' | undefined,
@@ -21,6 +23,7 @@ const constructWindow = (
     height: makeLength(initial.height, config.defaultWindowHeight),
     icon: initial.icon,
     id: initial.id,
+    isBlocked: determineIsBlocked(initial.id, windows),
     isClosable: initial.isClosable ?? true,
     isClosed: initial.isClosed ?? false,
     isDraggable: initial.isDraggable ?? true,
@@ -30,69 +33,17 @@ const constructWindow = (
       ? (initial.isMinimizable ?? true)
       : false,
     isMinimized: initial.isMinimized ?? false,
+    isBlockingParent: initial.isBlockingParent ?? false,
     isResizable: initial.isResizable ?? true,
     maxHeight: initial.maxHeight ?? config.maxWindowHeight,
     maxWidth: initial.maxWidth ?? config.maxWindowWidth,
     minHeight: initial.minHeight ?? config.minWindowHeight,
     minWidth: initial.minWidth ?? config.minWindowWidth,
+    parentId: initial.parentId ?? null,
     showAsTask: initial.showAsTask ?? true,
     title: initial.title ?? '',
     width: makeLength(initial.width, config.defaultWindowWidth),
-    ...determinePosition(config, windows, initial),
-  };
-};
-
-// TODO: Handle case where Viewport runs out of space
-const determinePosition = (
-  config: WispConfig,
-  windows: Map<string, WindowType>,
-  initial: InitialWindow
-): Pick<
-  WindowType,
-  'isInInitialAutomaticPosition' | 'positionX' | 'positionY'
-> => {
-  const windowEntries = Array.from(windows.entries());
-
-  const offsetMultiplier = windowEntries.reduce((acc, [_id, window]) => {
-    if (
-      window.isInInitialAutomaticPosition &&
-      !window.isClosed &&
-      !window.isMinimized
-    ) {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
-
-  const shouldGetInitialAutomaticPosition =
-    initial.positionX === undefined && initial.positionY === undefined;
-
-  const getInitialAutomaticPositionX = () => {
-    if (
-      !shouldGetInitialAutomaticPosition ||
-      initial.isMinimized ||
-      initial.isClosed
-    ) {
-      return 0;
-    }
-    return config.newWindowXOffset * offsetMultiplier;
-  };
-
-  const getInitialAutomaticPositionY = () => {
-    if (
-      !shouldGetInitialAutomaticPosition ||
-      initial.isMinimized ||
-      initial.isClosed
-    ) {
-      return 0;
-    }
-    return config.newWindowYOffset * offsetMultiplier;
-  };
-
-  return {
-    isInInitialAutomaticPosition: shouldGetInitialAutomaticPosition,
-    positionX: initial.positionX ?? getInitialAutomaticPositionX(),
-    positionY: initial.positionY ?? getInitialAutomaticPositionY(),
+    ...determinePosition(initial, config, windows),
   };
 };
 

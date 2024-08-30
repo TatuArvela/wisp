@@ -1,87 +1,19 @@
-import React from 'react';
-
-import type { WispConfig } from '../config';
 import type { Icon } from '../icons';
+import { ActionPayload, WindowManagerState } from './state/types';
 
-export interface WindowManagerState {
-  activeWindowId: string | null;
-  windows: Map<string, WindowType>;
-  windowOrder: string[];
-  viewportHeight: number | null;
-  viewportWidth: number | null;
-  viewportWindowMargins: ViewportWindowMargins;
-}
-
-interface ActivateWindowAction {
-  type: 'ACTIVATE_WINDOW';
-  payload: string;
-}
-
-interface CloseWindowAction {
-  type: 'CLOSE_WINDOW';
-  payload: string;
-}
-
-interface CreateWindowAction {
-  type: 'CREATE_WINDOW';
-  payload: {
-    config: WispConfig;
-    props: InitialWindow;
-  };
-}
-
-interface DeactivateWindowAction {
-  type: 'DEACTIVATE_WINDOW';
-  payload: string;
-}
-
-interface UpdateWindowAction {
-  type: 'UPDATE_WINDOW';
-  payload: {
-    id: string;
-    props: Partial<WindowType>;
-  };
-}
-
-interface SetViewportWindowMarginsAction {
-  type: 'SET_WINDOW_MARGINS';
-  payload: Partial<ViewportWindowMargins>;
-}
-
-interface UpdateViewportSizeAction {
-  type: 'UPDATE_VIEWPORT_SIZE';
-  payload: {
-    height: number;
-    width: number;
-  };
-}
-
-export type WindowManagerAction =
-  | ActivateWindowAction
-  | CloseWindowAction
-  | CreateWindowAction
-  | DeactivateWindowAction
-  | UpdateWindowAction
-  | SetViewportWindowMarginsAction
-  | UpdateViewportSizeAction;
-
-export type BaseMethods = {
-  activateWindow(id: string): void;
-  closeWindow(id: string): void;
-  createWindow(initial: InitialWindow): WindowType;
-  deactivateWindow(id: string): void;
+export type WindowManagerActions = {
+  activateWindow(payload: ActionPayload['ACTIVATE_WINDOW']): void;
+  closeWindow(payload: ActionPayload['CLOSE_WINDOW']): void;
+  createWindow(payload: ActionPayload['CREATE_WINDOW']): void;
+  deactivateWindow(payload: ActionPayload['DEACTIVATE_WINDOW']): void;
+  maximizeWindow(payload: ActionPayload['MAXIMIZE_WINDOW']): void;
+  minimizeWindow(payload: ActionPayload['MINIMIZE_WINDOW']): void;
+  restoreWindow(payload: ActionPayload['RESTORE_WINDOW']): void;
   setViewportWindowMargins(
-    viewportWindowMargins: Partial<ViewportWindowMargins>
+    payload: ActionPayload['UPDATE_VIEWPORT_MARGINS']
   ): void;
-  updateWindow(id: string, props: Partial<WindowType>): void;
-  updateViewportSize(dimensions: { height: number; width: number }): void;
-};
-
-export type WindowStateMethods = {
-  maximizeWindow(id: string): void;
-  minimizeWindow(id: string): void;
-  restoreWindow(id: string): void;
-  unmaximizeWindow(id: string): void;
+  unmaximizeWindow(payload: ActionPayload['UNMAXIMIZE_WINDOW']): void;
+  updateWindow(payload: ActionPayload['UPDATE_WINDOW']): void;
   // TODO: flashWindow
   // TODO: maximizeWindowHorizontally
   // TODO: maximizeWindowVertically
@@ -95,17 +27,14 @@ export type WindowStateMethods = {
   // TODO: cascadeWindows
 };
 
-export interface WindowManagerBase extends WindowManagerState, BaseMethods {
-  viewportRef: React.Ref<HTMLDivElement>;
-}
-
-export interface WindowManager extends WindowManagerBase, WindowStateMethods {}
+export type WindowManager = WindowManagerState & WindowManagerActions;
 
 export interface WindowType {
   alwaysShowCloseButton?: boolean;
   height: number;
   icon?: string | Icon;
   id: string;
+  isBlocked: boolean;
   isClosable: boolean;
   isClosed: boolean;
   isDraggable: boolean;
@@ -114,11 +43,13 @@ export interface WindowType {
   isMaximized: boolean;
   isMinimizable: boolean;
   isMinimized: boolean;
+  isBlockingParent: boolean;
   isResizable: boolean;
   maxHeight?: number;
   maxWidth?: number;
   minHeight?: number;
   minWidth?: number;
+  parentId: string | null;
   positionX: number;
   positionY: number;
   showAsTask: boolean;
@@ -127,11 +58,12 @@ export interface WindowType {
 }
 
 export type InitialWindow = Pick<WindowType, 'id'> & {
+  isBlocked?: never;
   height?: number | 'auto';
   width?: number | 'auto';
-} & Partial<Omit<WindowType, 'height' | 'width'>>;
+} & Partial<Omit<WindowType, 'isBlocked' | 'height' | 'width'>>;
 
-export interface ViewportWindowMargins {
+export interface ViewportMargins {
   top: number;
   right: number;
   bottom: number;

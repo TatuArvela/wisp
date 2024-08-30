@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ViewportWindowMargins } from '../../windowManager/types';
+import { ViewportMargins } from '../../windowManager/types';
 
 export const WindowElementThemeProperties = ['WindowElement'] as const;
 
@@ -12,7 +12,7 @@ export interface WindowElementProps {
   isMinimized: boolean;
   isMaximized: boolean;
   orderNumber: number;
-  viewportWindowMargins: ViewportWindowMargins;
+  viewportMargins: ViewportMargins;
 }
 
 const WindowElement = styled.div.attrs((props: WindowElementProps) => ({

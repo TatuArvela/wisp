@@ -1,131 +1,74 @@
-import refitWindow from '../../window/handlers/refitWindow';
-import { getBoundaries } from '../../window/handlers/utils/dimensions';
-import { WindowManagerAction, WindowManagerState, WindowType } from '../types';
-import constructWindow from './constructWindow';
+import { WindowManagerAction, WindowManagerState } from './types';
+import {
+  activateWindow,
+  closeWindow,
+  createWindow,
+  deactivateWindow,
+  updateViewportMargins,
+  updateViewportSize,
+  updateWindow,
+} from './updaters';
 
 function reducer(
   state: WindowManagerState,
-  action: WindowManagerAction
+  { type, payload }: WindowManagerAction
 ): WindowManagerState {
-  switch (action.type) {
+  switch (type) {
     case 'ACTIVATE_WINDOW': {
-      if (!state.windows.get(action.payload)) {
-        return state;
-      }
-
-      return {
-        ...state,
-        activeWindowId: action.payload,
-        windowOrder: [
-          ...state.windowOrder.filter(
-            (windowId) => windowId !== action.payload
-          ),
-          action.payload,
-        ],
-      };
+      return activateWindow(state, payload);
     }
-
     case 'CLOSE_WINDOW': {
-      const closedWindowIndex = state.windowOrder.indexOf(action.payload);
-
-      const newActiveWindowId =
-        state.windowOrder
-          .slice(0, closedWindowIndex)
-          .reverse()
-          .find((windowId) => {
-            const windowInstance = state.windows.get(windowId);
-            return (
-              windowInstance &&
-              !windowInstance.isClosed &&
-              !windowInstance.isMinimized
-            );
-          }) || null;
-
-      return {
-        ...state,
-        activeWindowId: newActiveWindowId,
-        windows: new Map(
-          [...state.windows].filter(([key]) => key !== action.payload)
-        ),
-        windowOrder: [...state.windowOrder].filter(
-          (windowId) => windowId !== action.payload
-        ),
-      };
+      return closeWindow(state, payload);
     }
-
     case 'CREATE_WINDOW': {
-      const { config, props } = action.payload;
-      const { id } = props;
-      const window = constructWindow(config, state.windows, props);
-      const shouldActivate = !window.isMinimized && !window.isClosed;
-
-      return {
-        ...state,
-        activeWindowId: shouldActivate ? id : state.activeWindowId,
-        windows: new Map(state.windows).set(id, window),
-        windowOrder: state.windowOrder.concat(id),
-      };
+      return createWindow(state, payload);
     }
-
     case 'DEACTIVATE_WINDOW': {
-      return {
-        ...state,
-        activeWindowId:
-          action.payload === state.activeWindowId ? null : state.activeWindowId,
-      };
+      return deactivateWindow(state, payload);
     }
-
     case 'UPDATE_WINDOW': {
-      const { id, props } = action.payload;
-      const prevWindow = state.windows.get(id);
-
-      const hasPositionChanged =
-        (props.positionX && prevWindow.positionX !== props.positionX) ||
-        (props.positionY && prevWindow.positionY !== props.positionY);
-      const isInInitialAutomaticPosition =
-        !hasPositionChanged && prevWindow.isInInitialAutomaticPosition;
-
-      return {
-        ...state,
-        windows: new Map(state.windows).set(id, {
-          ...prevWindow,
-          ...props,
-          isInInitialAutomaticPosition,
-        }),
-      };
+      return updateWindow(state, payload);
     }
-
-    case 'SET_WINDOW_MARGINS': {
-      return {
-        ...state,
-        viewportWindowMargins: {
-          ...state.viewportWindowMargins,
-          ...action.payload,
-        },
-      };
+    case 'UPDATE_VIEWPORT_MARGINS': {
+      return updateViewportMargins(state, payload);
     }
-
     case 'UPDATE_VIEWPORT_SIZE': {
-      const { width, height } = action.payload;
-      const boundaries = getBoundaries({
-        height,
-        width,
-        viewportWindowMargins: state.viewportWindowMargins,
+      return updateViewportSize(state, payload);
+    }
+    case 'MAXIMIZE_WINDOW': {
+      let newState = activateWindow(state, payload);
+      return updateWindow(newState, {
+        id: payload,
+        isMaximized: true,
       });
-      const windows = Array.from(state.windows);
-
-      const refittedWindows: [string, WindowType][] = windows.map(
-        ([id, window]) => [id, refitWindow(window, boundaries)]
-      );
-
+    }
+    case 'MINIMIZE_WINDOW': {
+      let newState = deactivateWindow(state, payload);
+      return updateWindow(newState, {
+        id: payload,
+        isMinimized: true,
+      });
+    }
+    case 'RESTORE_WINDOW': {
+      let newState = activateWindow(state, payload);
+      return updateWindow(newState, {
+        id: payload,
+        isMinimized: false,
+      });
+    }
+    case 'UNMAXIMIZE_WINDOW': {
+      let newState = activateWindow(state, payload);
+      return updateWindow(newState, {
+        id: payload,
+        isMaximized: false,
+      });
+    }
+    case 'SET_CONFIG': {
       return {
         ...state,
-        viewportHeight: height,
-        viewportWidth: width,
-        windows: new Map(refittedWindows),
+        config: payload,
       };
     }
-
     default: {
       return state;
     }

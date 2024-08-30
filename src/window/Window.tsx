@@ -6,6 +6,7 @@ import {
   useWindowManager,
   useWindowOrderNumberById,
 } from '../windowManager/hooks';
+import { ActionPayload } from '../windowManager/state/types';
 import { InitialWindow, WindowType } from '../windowManager/types';
 import ResizeBorder from './components/ResizeBorder';
 import TitleBar from './components/TitleBar';
@@ -39,10 +40,12 @@ export const Window: React.FC<WindowProps> = ({ children, ...windowProps }) => {
     if (wmWindow && windowRef.current) {
       if (wmWindow.width === undefined || wmWindow.height === undefined) {
         const windowElementRect = windowRef.current.getBoundingClientRect();
-        let windowUpdate: Partial<WindowType> = {};
-        windowUpdate.width = windowElementRect.width;
-        windowUpdate.height = windowElementRect.height;
-        windowManager.updateWindow(id, windowUpdate);
+        const windowUpdate: ActionPayload['UPDATE_WINDOW'] = {
+          id,
+          width: windowElementRect.width,
+          height: windowElementRect.height,
+        };
+        windowManager.updateWindow(windowUpdate);
       }
     }
   }, [id, windowManager, wmWindow]);
@@ -71,7 +74,7 @@ export const Window: React.FC<WindowProps> = ({ children, ...windowProps }) => {
           positionX={window.positionX}
           positionY={window.positionY}
           ref={windowRef}
-          viewportWindowMargins={windowManager.viewportWindowMargins}
+          viewportMargins={windowManager.viewportMargins}
           width={window.width}
         >
           <TitleBar

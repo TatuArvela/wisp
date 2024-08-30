@@ -1,6 +1,7 @@
+import { WindowManagerState } from '../../../windowManager/state/types';
 import {
   Boundaries,
-  ViewportWindowMargins,
+  ViewportMargins,
   WindowManager,
   WindowType,
 } from '../../../windowManager/types';
@@ -63,28 +64,13 @@ export const calculateHeight = (
   );
 };
 
-export const getBoundariesFromWindowManager = ({
+export const getBoundaries = ({
   viewportHeight,
   viewportWidth,
-  viewportWindowMargins,
-}: WindowManager): Boundaries =>
-  getBoundaries({
-    height: viewportHeight,
-    width: viewportWidth,
-    viewportWindowMargins,
-  });
-
-export const getBoundaries = ({
-  height,
-  width,
-  viewportWindowMargins,
-}: {
-  height: number;
-  width: number;
-  viewportWindowMargins: ViewportWindowMargins;
-}): Boundaries => ({
-  minX: viewportWindowMargins.left,
-  minY: viewportWindowMargins.top,
-  maxX: width - viewportWindowMargins.right,
-  maxY: height - viewportWindowMargins.bottom,
+  viewportMargins,
+}: WindowManagerState): Boundaries => ({
+  minX: viewportMargins.left,
+  minY: viewportMargins.top,
+  maxX: viewportWidth - viewportMargins.right,
+  maxY: viewportHeight - viewportMargins.bottom,
 });

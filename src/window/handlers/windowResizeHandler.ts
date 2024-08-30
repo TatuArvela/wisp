@@ -7,7 +7,7 @@ import {
 import {
   calculateHeight,
   calculateWidth,
-  getBoundariesFromWindowManager,
+  getBoundaries,
 } from './utils/dimensions';
 import mouseDragHandler from './utils/mouseDragHandler';
 
@@ -28,10 +28,10 @@ export const windowResizeHandler =
           direction,
           xOffset,
           yOffset,
-          getBoundariesFromWindowManager(windowManager)
+          getBoundaries(windowManager)
         ),
       };
-      windowManager.updateWindow(window.id, window);
+      windowManager.updateWindow(window);
     });
   };
 
