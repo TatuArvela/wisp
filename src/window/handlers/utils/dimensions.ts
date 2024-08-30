@@ -64,13 +64,13 @@ export const calculateHeight = (
 };
 
 export const getBoundariesFromWindowManager = ({
-  getViewportWidth,
-  getViewportHeight,
+  viewportHeight,
+  viewportWidth,
   viewportWindowMargins,
 }: WindowManager): Boundaries =>
   getBoundaries({
-    height: getViewportHeight(),
-    width: getViewportWidth(),
+    height: viewportHeight,
+    width: viewportWidth,
     viewportWindowMargins,
   });
 

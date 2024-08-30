@@ -105,7 +105,7 @@ function reducer(
       };
     }
 
-    case 'REFIT_WINDOWS': {
+    case 'UPDATE_VIEWPORT_SIZE': {
       const { width, height } = action.payload;
       const boundaries = getBoundaries({
         height,
@@ -115,17 +115,13 @@ function reducer(
       const windows = Array.from(state.windows);
 
       const refittedWindows: [string, WindowType][] = windows.map(
-        ([id, window]) => {
-          const newWindow: WindowType = {
-            ...window,
-            ...refitWindow(window, boundaries),
-          };
-          return [id, newWindow];
-        }
+        ([id, window]) => [id, refitWindow(window, boundaries)]
       );
 
       return {
         ...state,
+        viewportHeight: height,
+        viewportWidth: width,
         windows: new Map(refittedWindows),
       };
     }

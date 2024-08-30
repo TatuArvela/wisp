@@ -7,6 +7,8 @@ export interface WindowManagerState {
   activeWindowId: string | null;
   windows: Map<string, WindowType>;
   windowOrder: string[];
+  viewportHeight: number | null;
+  viewportWidth: number | null;
   viewportWindowMargins: ViewportWindowMargins;
 }
 
@@ -46,8 +48,8 @@ interface SetViewportWindowMarginsAction {
   payload: Partial<ViewportWindowMargins>;
 }
 
-interface RefitWindowsAction {
-  type: 'REFIT_WINDOWS';
+interface UpdateViewportSizeAction {
+  type: 'UPDATE_VIEWPORT_SIZE';
   payload: {
     height: number;
     width: number;
@@ -61,19 +63,18 @@ export type WindowManagerAction =
   | DeactivateWindowAction
   | UpdateWindowAction
   | SetViewportWindowMarginsAction
-  | RefitWindowsAction;
+  | UpdateViewportSizeAction;
 
 export type BaseMethods = {
   activateWindow(id: string): void;
   closeWindow(id: string): void;
   createWindow(initial: InitialWindow): WindowType;
   deactivateWindow(id: string): void;
-  getViewportHeight(): number;
-  getViewportWidth(): number;
   setViewportWindowMargins(
     viewportWindowMargins: Partial<ViewportWindowMargins>
   ): void;
   updateWindow(id: string, props: Partial<WindowType>): void;
+  updateViewportSize(dimensions: { height: number; width: number }): void;
 };
 
 export type WindowStateMethods = {

@@ -9,7 +9,7 @@ import {
 const refitWindow = (
   window: WindowType,
   boundaries: Boundaries
-): Partial<WindowType> => {
+): WindowType => {
   const positionX = calculatePositionX(window, 0, boundaries);
   const positionY = calculatePositionY(window, 0, boundaries);
 
@@ -23,6 +23,7 @@ const refitWindow = (
   const height = calculateHeight(windowForComparison, 0, boundaries);
 
   return {
+    ...window,
     positionX,
     positionY,
     height,

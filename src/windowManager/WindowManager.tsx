@@ -32,13 +32,15 @@ const WindowManager = ({ children }: Props) => {
     React.Reducer<WindowManagerState, WindowManagerAction>
   >(reducer, {
     activeWindowId: null,
+    viewportHeight: null,
+    viewportWidth: null,
     viewportWindowMargins: config.viewportWindowMargins,
     windowOrder: [],
     windows: new Map(),
   });
 
   const viewportRef = React.useRef<HTMLDivElement>(null);
-  const { width: viewportWidth = 1, height: viewportHeight = 1 } =
+  const { width: viewportWidth, height: viewportHeight } =
     useResizeObserver<HTMLDivElement>({
       ref: viewportRef,
     });
@@ -96,23 +98,13 @@ const WindowManager = ({ children }: Props) => {
     [dispatch]
   );
 
-  const refitWindows = useCallback(
+  const updateViewportSize = useCallback(
     (dimensions: { height: number; width: number }) =>
       dispatch({
-        type: 'REFIT_WINDOWS',
+        type: 'UPDATE_VIEWPORT_SIZE',
         payload: dimensions,
       }),
     [dispatch]
-  );
-
-  const getViewportHeight = useCallback(
-    () => viewportRef.current?.offsetHeight || 0,
-    [viewportRef]
-  );
-
-  const getViewportWidth = useCallback(
-    () => viewportRef.current?.offsetWidth || 0,
-    [viewportRef]
   );
 
   // Used for setting up additional methods
@@ -122,10 +114,9 @@ const WindowManager = ({ children }: Props) => {
     closeWindow,
     createWindow,
     deactivateWindow,
-    getViewportHeight,
-    getViewportWidth,
     setViewportWindowMargins,
     updateWindow,
+    updateViewportSize,
     viewportRef,
   };
 
@@ -138,11 +129,11 @@ const WindowManager = ({ children }: Props) => {
   };
 
   useLayoutEffect(() => {
-    refitWindows({
+    updateViewportSize({
       height: viewportHeight,
       width: viewportWidth,
     });
-  }, [refitWindows, viewportHeight, viewportWidth]);
+  }, [updateViewportSize, viewportHeight, viewportWidth]);
 
   return (
     <WindowManagerProvider value={context}>
