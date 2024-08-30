@@ -1,9 +1,5 @@
 import { ControlsThemeSection } from '../../types';
 import * as addressBar from './addressBar';
-import * as alertButton from './alertButton';
-import * as alertContent from './alertContent';
-import * as alertIcon from './alertIcon';
-import * as alertText from './alertText';
 import * as button from './button';
 import * as checkbox from './checkbox';
 import * as comboBox from './comboBox';
@@ -13,6 +9,10 @@ import * as fieldset from './fieldset';
 import * as label from './label';
 import * as listBox from './listBox';
 import * as menuBar from './menuBar';
+import * as messageBoxButton from './messageBoxButton';
+import * as messageBoxContent from './messageBoxContent';
+import * as messageBoxIcon from './messageBoxIcon';
+import * as messageBoxText from './messageBoxText';
 import * as progressBar from './progressBar';
 import * as scrollableContent from './scrollableContent';
 import * as scrollbarHorizontal from './scrollbarHorizontal';
@@ -29,10 +29,6 @@ import * as windowContent from './windowContent';
 
 const controls: ControlsThemeSection = {
   ...addressBar,
-  ...alertButton,
-  ...alertContent,
-  ...alertIcon,
-  ...alertText,
   ...button,
   ...checkbox,
   ...comboBox,
@@ -42,14 +38,18 @@ const controls: ControlsThemeSection = {
   ...label,
   ...listBox,
   ...menuBar,
+  ...messageBoxButton,
+  ...messageBoxContent,
+  ...messageBoxIcon,
+  ...messageBoxText,
   ...progressBar,
   ...scrollableContent,
   ...scrollbarHorizontal,
   ...scrollbarVertical,
   ...statusBar,
   ...statusBarSection,
-  ...textarea,
   ...textInput,
+  ...textarea,
   ...timeInput,
   ...toolbar,
   ...toolbarButton,

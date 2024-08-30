@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const AlertText = css`
+export const MessageBoxText = css`
   display: inline-flex;
   flex-grow: 1;
   font-family: sans-serif;

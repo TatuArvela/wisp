@@ -1,7 +1,7 @@
-import { AlertText, ControlStoryDecorator } from '../../src';
+import { ControlStoryDecorator, MessageBoxText } from '../../src';
 
 export default {
-  component: AlertText,
+  component: MessageBoxText,
   decorators: [ControlStoryDecorator],
   tags: ['autodocs'],
 };

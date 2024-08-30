@@ -5,18 +5,22 @@ import Button from '../controls/Button';
 import { useWindow } from '../window';
 import { useWindowManager } from '../windowManager/hooks';
 
-export const AlertButtonThemeProperties = ['AlertButtonElement'] as const;
+export const MessageBoxButtonThemeProperties = [
+  'MessageBoxButtonElement',
+] as const;
 
-const AlertButtonElement = styled(Button)`
-  ${(props) => props.theme.controls.AlertButtonElement}
+const MessageBoxButtonElement = styled(Button)`
+  ${(props) => props.theme.controls.MessageBoxButtonElement}
 `;
 
-const AlertButton = (props: ComponentProps<typeof AlertButtonElement>) => {
+const MessageBoxButton = (
+  props: ComponentProps<typeof MessageBoxButtonElement>
+) => {
   const { id } = useWindow();
   const { closeWindow } = useWindowManager();
   const defaultOnClick = () => closeWindow(id);
   const onClick = props.onClick ?? defaultOnClick;
-  return <AlertButtonElement {...props} onClick={onClick} />;
+  return <MessageBoxButtonElement {...props} onClick={onClick} />;
 };
 
-export default AlertButton;
+export default MessageBoxButton;

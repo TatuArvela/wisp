@@ -28,14 +28,14 @@ export const NoDefaultElements = {
         <MessageBox id="warning" title="Warning">
           Warning!
         </MessageBox>
-        <MessageBox id="error" title="Error" alertIcon="error">
+        <MessageBox id="error" title="Error" messageBoxIcon="error">
           Error!
         </MessageBox>
         <MessageBox
           id="hello world"
           title="Hello World"
           icon="wisp"
-          alertIcon="wisp"
+          messageBoxIcon="wisp"
         >
           Check out Wisp
         </MessageBox>

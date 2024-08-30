@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const AlertButtonElement = css`
+export const MessageBoxButtonElement = css`
   width: 60px;
   margin: auto;
 `;
