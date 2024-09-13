@@ -38,7 +38,7 @@ interface UpdateWindowAction {
 
 interface UpdateViewportMarginsAction {
   type: 'UPDATE_VIEWPORT_MARGINS';
-  payload: ViewportMargins;
+  payload: Partial<ViewportMargins>;
 }
 
 interface UpdateViewportSizeAction {

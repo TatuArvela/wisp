@@ -162,7 +162,10 @@ export function updateViewportMargins(
 ) {
   let newState = {
     ...state,
-    viewportMargins: payload,
+    viewportMargins: {
+      ...state.viewportMargins,
+      ...payload,
+    },
   };
   newState = refitWindows(newState);
   return newState;

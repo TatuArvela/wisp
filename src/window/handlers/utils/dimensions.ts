@@ -64,8 +64,8 @@ export const getBoundaries = ({
   viewportWidth,
   viewportMargins,
 }: WindowManagerState): Boundaries => ({
-  minX: viewportMargins?.left ?? 0,
-  minY: viewportMargins?.top ?? 0,
-  maxX: viewportWidth - (viewportMargins?.right ?? 0),
-  maxY: viewportHeight - (viewportMargins?.bottom ?? 0),
+  minX: viewportMargins.left,
+  minY: viewportMargins.top,
+  maxX: viewportWidth - viewportMargins.right,
+  maxY: viewportHeight - viewportMargins.bottom,
 });
