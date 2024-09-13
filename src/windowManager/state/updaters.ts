@@ -116,7 +116,22 @@ export function deactivateWindow(
   };
 }
 
-function filterUpdatableProps(props: Partial<WindowType>): Partial<WindowType> {
+function filterUpdatablePropsForInactive(
+  props: Partial<WindowType>
+): Partial<WindowType> {
+  return Object.fromEntries(
+    Object.entries(props).filter(
+      ([propName]) =>
+        !['positionX', 'positionY', 'isMinimized', 'isMaximized'].includes(
+          propName
+        )
+    )
+  );
+}
+
+function filterUpdatablePropsForNonActivatable(
+  props: Partial<WindowType>
+): Partial<WindowType> {
   return Object.fromEntries(
     Object.entries(props).filter(
       ([propName]) =>
@@ -144,11 +159,13 @@ export function updateWindow(
   }
 
   let propsToUpdate = props;
-  if (
-    state.activeWindowId !== id ||
-    !isWindowActivatable(id, state.windows, state.windowOrder)
-  ) {
-    propsToUpdate = filterUpdatableProps(props);
+
+  if (state.activeWindowId !== id) {
+    propsToUpdate = filterUpdatablePropsForInactive(props);
+  }
+
+  if (!isWindowActivatable(id, state.windows, state.windowOrder)) {
+    propsToUpdate = filterUpdatablePropsForNonActivatable(props);
   }
 
   const hasPositionChanged =
