@@ -26,4 +26,5 @@ const WindowElement = styled.div.attrs((props: WindowElementProps) => ({
 }))<WindowElementProps>`
   ${(props) => props.theme.window.WindowElement}
 `;
+
 export default WindowElement;

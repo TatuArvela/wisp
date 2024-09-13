@@ -7,4 +7,5 @@ export const WindowElementContentThemeProperties = [
 const WindowElementContent = styled.div`
   ${(props) => props.theme.window.WindowElementContent}
 `;
+
 export default WindowElementContent;

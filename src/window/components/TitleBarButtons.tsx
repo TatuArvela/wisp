@@ -74,4 +74,5 @@ const TitleBarButtons = ({
     )}
   </TitleBarButtonsElement>
 );
+
 export default TitleBarButtons;
