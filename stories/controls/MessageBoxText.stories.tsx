@@ -8,6 +8,6 @@ export default {
 
 export const Default = {
   args: {
-    children: 'AlertText',
+    children: 'MessageBoxText',
   },
 };
