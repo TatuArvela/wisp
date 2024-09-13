@@ -79,22 +79,35 @@ export const StickyNotes = {
 };
 
 export const ExternalWindowToggling = () => {
-  const [showWindow, setShowWindow] = useState<boolean>(false);
+  const [showWindow1, setShowWindow1] = useState<boolean>(false);
+  const [showWindow2, setShowWindow2] = useState<boolean>(false);
+
   return (
     <div>
       <div style={{ padding: '10px' }}>
-        <button type="button" onClick={() => setShowWindow(!showWindow)}>
+        <button type="button" onClick={() => setShowWindow1(!showWindow1)}>
           Toggle window
+        </button>
+        <button
+          type="button"
+          onClick={() => setTimeout(() => setShowWindow2(!showWindow2), 3000)}
+        >
+          Toggle window in 3 seconds
         </button>
       </div>
       <div style={{ width: '800px', height: '600px' }}>
         <Wisp>
-          <Window id="1" title="Initially shown">
+          <Window id="0" title="Initially shown">
             This window is initially shown
           </Window>
-          {showWindow && (
-            <Window id="2" title="Toggled window">
+          {showWindow1 && (
+            <Window id="1" title="Toggled window">
               This window is toggled by the button above
+            </Window>
+          )}
+          {showWindow2 && (
+            <Window id="2" title="Timed window">
+              This window is created after 3 seconds
             </Window>
           )}
         </Wisp>

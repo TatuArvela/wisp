@@ -1,5 +1,7 @@
+import React from 'react';
+
 const mouseDragHandler = (
-  initialEvent: MouseEvent,
+  initialEvent: React.MouseEvent<HTMLElement, MouseEvent>,
   callback: (xOffset: number, yOffset: number) => void
 ): void => {
   initialEvent.preventDefault();

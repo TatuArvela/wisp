@@ -43,12 +43,11 @@ const WindowManager = ({ children }: Props) => {
 
   const action = useCallback(
     <T extends ActionType>(type: T) =>
-      (payload: ActionPayload[T]) => {
+      (payload: ActionPayload[T]) =>
         dispatch({
           type,
           payload,
-        } as Extract<WindowManagerAction, { type: T }>);
-      },
+        } as Extract<WindowManagerAction, { type: T }>),
     [dispatch]
   );
 

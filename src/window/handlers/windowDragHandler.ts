@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   Boundaries,
   WindowManager,
@@ -11,23 +13,24 @@ import {
 import mouseDragHandler from './utils/mouseDragHandler';
 
 export const windowDragHandler =
-  (windowManager: WindowManager, window: WindowType) => (event) => {
+  (windowManager: WindowManager, window: WindowType) =>
+  (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     windowManager.activateWindow(window.id);
     if (!window.isDraggable || window.isMaximized || event.button !== 0) {
       return;
     }
 
     return mouseDragHandler(event, (xOffset, yOffset) => {
-      // Using cloned mutable window for quick and iterative event handling
-      window = {
-        ...window,
+      // Updating existing instance to have quick and iterative event handling
+      Object.assign(window, {
         ...repositionWindow(
           window,
           xOffset,
           yOffset,
           getBoundaries(windowManager)
         ),
-      };
+      });
+
       windowManager.updateWindow(window);
     });
   };

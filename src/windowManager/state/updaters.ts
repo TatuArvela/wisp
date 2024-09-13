@@ -139,8 +139,15 @@ export function updateWindow(
   const { id, ...props } = payload;
   const prevWindow = state.windows.get(id);
 
+  if (!prevWindow) {
+    return state;
+  }
+
   let propsToUpdate = props;
-  if (!isWindowActivatable(id, state.windows, state.windowOrder)) {
+  if (
+    state.activeWindowId !== id ||
+    !isWindowActivatable(id, state.windows, state.windowOrder)
+  ) {
     propsToUpdate = filterUpdatableProps(props);
   }
 

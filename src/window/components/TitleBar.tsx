@@ -47,7 +47,7 @@ const TitleBarIcon = ({ icon }: { icon: string | Icon }) => {
 
 export interface TitleBarProps extends TitleBarElementProps {
   close(): void;
-  drag(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
+  drag(event: React.MouseEvent<HTMLElement, MouseEvent>): void;
   icon: Icon;
   isClosable: boolean;
   isMaximizable: boolean;
