@@ -19,7 +19,11 @@ export function activateWindow(
     return state;
   }
 
-  const activatableWindow = getActivatableWindow(payload, state.windows);
+  const activatableWindow = getActivatableWindow(
+    payload,
+    state.windows,
+    state.windowOrder
+  );
 
   if (!activatableWindow) {
     return state;
@@ -136,7 +140,7 @@ export function updateWindow(
   const prevWindow = state.windows.get(id);
 
   let propsToUpdate = props;
-  if (!isWindowActivatable(id, state.windows)) {
+  if (!isWindowActivatable(id, state.windows, state.windowOrder)) {
     propsToUpdate = filterUpdatableProps(props);
   }
 

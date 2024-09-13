@@ -10,7 +10,8 @@ export const getChildWindows = (
 
 export const getActivatableWindow = (
   windowId: string,
-  windows: Map<string, WindowType>
+  windows: Map<string, WindowType>,
+  windowOrder: string[]
 ) => {
   const originalWindow = windows.get(windowId);
 
@@ -20,7 +21,12 @@ export const getActivatableWindow = (
   const childWindows = getChildWindows(windowId, windows);
   if (childWindows.length === 0) return originalWindow;
 
-  const modalChild = childWindows.find((window) => window.isModal);
+  const modalChildId = [...windowOrder]
+    .reverse()
+    .find((windowId) =>
+      childWindows.find((childWindow) => childWindow.id === windowId)
+    );
+  const modalChild = childWindows.find((window) => window.id === modalChildId);
   return modalChild ? modalChild : originalWindow;
   // TODO: Block non-modal children?
   // TODO: Is support for deeper nesting needed?
@@ -28,5 +34,6 @@ export const getActivatableWindow = (
 
 export const isWindowActivatable = (
   windowId: string,
-  windows: Map<string, WindowType>
-) => getActivatableWindow(windowId, windows)?.id === windowId;
+  windows: Map<string, WindowType>,
+  windowOrder: string[]
+) => getActivatableWindow(windowId, windows, windowOrder)?.id === windowId;

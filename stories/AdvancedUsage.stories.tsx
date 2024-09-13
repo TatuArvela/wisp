@@ -203,7 +203,31 @@ export const ChildMessageBoxes = () => {
         Not a modal
       </MessageBox>
 
-      <MessageBox id="modal" title="Modal" parentId="parent">
+      <MessageBox id="modal1" title="Modal" parentId="parent">
+        Modal
+      </MessageBox>
+      <MessageBox id="modal2" title="Modal" parentId="parent">
+        Modal
+      </MessageBox>
+      <MessageBox id="modal3" title="Modal" parentId="parent">
+        Modal
+      </MessageBox>
+      <MessageBox id="modal4" title="Modal" parentId="parent">
+        Modal
+      </MessageBox>
+      <MessageBox id="modal5" title="Modal" parentId="parent">
+        Modal
+      </MessageBox>
+      <MessageBox id="modal6" title="Modal" parentId="parent">
+        Modal
+      </MessageBox>
+      <MessageBox id="modal7" title="Modal" parentId="parent">
+        Modal
+      </MessageBox>
+      <MessageBox id="modal8" title="Modal" parentId="parent">
+        Modal
+      </MessageBox>
+      <MessageBox id="modal9" title="Modal" parentId="parent">
         Modal
       </MessageBox>
     </Wisp>
