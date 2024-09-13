@@ -14,23 +14,32 @@ export type MessageBoxProps = WindowProps & {
 };
 
 export const MessageBox = ({
-  messageBoxIcon = 'warning',
+  alwaysShowCloseButton = true,
   buttonText = 'OK',
-  onButtonClick,
   height = 'auto',
+  isClosable = false,
+  isMaximizable = false,
+  isMinimizable = false,
+  isModal = true,
+  isResizable = false,
+  messageBoxIcon = 'warning',
+  onButtonClick,
+  showAsTask = false,
   width = 'auto',
   ...windowProps
 }: MessageBoxProps) => {
   return (
     <Window
       {...windowProps}
-      alwaysShowCloseButton={windowProps.alwaysShowCloseButton ?? true}
+      alwaysShowCloseButton={alwaysShowCloseButton}
       height={height}
       id={windowProps.id}
-      isClosable={windowProps.isClosable ?? false}
-      isMaximizable={windowProps.isMaximizable ?? false}
-      isMinimizable={windowProps.isMinimizable ?? false}
-      isResizable={windowProps.isResizable ?? false}
+      isClosable={isClosable}
+      isMaximizable={isMaximizable}
+      isMinimizable={isMinimizable}
+      isModal={isModal ?? true}
+      isResizable={isResizable}
+      showAsTask={showAsTask}
       title={windowProps.title}
       width={width}
     >

@@ -34,7 +34,6 @@ export interface WindowType {
   height: number;
   icon?: string | Icon;
   id: string;
-  isBlocked: boolean;
   isClosable: boolean;
   isClosed: boolean;
   isDraggable: boolean;
@@ -43,7 +42,7 @@ export interface WindowType {
   isMaximized: boolean;
   isMinimizable: boolean;
   isMinimized: boolean;
-  isBlockingParent: boolean;
+  isModal: boolean;
   isResizable: boolean;
   maxHeight?: number;
   maxWidth?: number;
@@ -58,16 +57,15 @@ export interface WindowType {
 }
 
 export type InitialWindow = Pick<WindowType, 'id'> & {
-  isBlocked?: never;
   height?: number | 'auto';
   width?: number | 'auto';
-} & Partial<Omit<WindowType, 'isBlocked' | 'height' | 'width'>>;
+} & Partial<Omit<WindowType, 'height' | 'width'>>;
 
 export interface ViewportMargins {
-  top: number;
-  right: number;
-  bottom: number;
-  left: number;
+  top?: number;
+  right?: number;
+  bottom?: number;
+  left?: number;
 }
 
 export interface Boundaries {

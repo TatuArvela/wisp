@@ -1,11 +1,13 @@
 import refitWindow from '../../window/handlers/refitWindow';
 import { getBoundaries } from '../../window/handlers/utils/dimensions';
 import { WindowType } from '../types';
-import { getAllChildWindows, getRootParentId } from './childParentUtils';
+import {
+  getActivatableWindow,
+  getChildWindows,
+  isWindowActivatable,
+} from './childParentUtils';
 import constructWindow from './constructWindow';
 import { ActionPayload, WindowManagerState } from './types';
-
-// TODO: complete child/parent window constraints
 
 export function activateWindow(
   state: WindowManagerState,
@@ -17,43 +19,40 @@ export function activateWindow(
     return state;
   }
 
-  if (window.isBlocked) {
-    const rootParentId = getRootParentId(payload, state.windows);
-    const childWindows = getAllChildWindows(rootParentId, state.windows);
+  const activatableWindow = getActivatableWindow(payload, state.windows);
+
+  if (!activatableWindow) {
+    return state;
+  }
+
+  let newWindowOrder = [
+    ...state.windowOrder.filter(
+      (windowId) => windowId !== activatableWindow.id
+    ),
+    activatableWindow.id,
+  ];
+
+  if (window.id !== activatableWindow.id) {
+    const childWindows = getChildWindows(payload, state.windows);
 
     if (childWindows.length > 0) {
       const childWindowIds = childWindows.map((window) => window.id);
       const childWindowOrder = state.windowOrder.filter((windowId) =>
         childWindowIds.includes(windowId)
       );
-      const blockingChildWindowOrder = childWindowOrder.filter(
-        (id) => childWindows.find((window) => window.id === id).isBlockingParent
-      );
-      const newActiveWindowId =
-        blockingChildWindowOrder.length > 0
-          ? blockingChildWindowOrder.at(-1)
-          : payload;
-
-      return {
-        ...state,
-        activeWindowId: newActiveWindowId,
-        windowOrder: [
-          ...state.windowOrder.filter(
-            (windowId) => !childWindowOrder.includes(windowId)
-          ),
-          ...childWindowOrder,
-        ],
-      };
+      newWindowOrder = [
+        ...state.windowOrder.filter(
+          (windowId) => !childWindowOrder.includes(windowId)
+        ),
+        ...childWindowOrder,
+      ];
     }
   }
 
   return {
     ...state,
-    activeWindowId: payload,
-    windowOrder: [
-      ...state.windowOrder.filter((windowId) => windowId !== payload),
-      payload,
-    ],
+    activeWindowId: activatableWindow.id,
+    windowOrder: newWindowOrder,
   };
 }
 
@@ -113,12 +112,33 @@ export function deactivateWindow(
   };
 }
 
+function filterUpdatableProps(props: Partial<WindowType>): Partial<WindowType> {
+  return Object.fromEntries(
+    Object.entries(props).filter(
+      ([propName]) =>
+        ![
+          'height',
+          'width',
+          'positionX',
+          'positionY',
+          'isMinimized',
+          'isMaximized',
+        ].includes(propName)
+    )
+  );
+}
+
 export function updateWindow(
   state: WindowManagerState,
   payload: ActionPayload['UPDATE_WINDOW']
 ) {
   const { id, ...props } = payload;
   const prevWindow = state.windows.get(id);
+
+  let propsToUpdate = props;
+  if (!isWindowActivatable(id, state.windows)) {
+    propsToUpdate = filterUpdatableProps(props);
+  }
 
   const hasPositionChanged =
     (props.positionX && prevWindow.positionX !== props.positionX) ||
@@ -130,7 +150,7 @@ export function updateWindow(
     ...state,
     windows: new Map(state.windows).set(id, {
       ...prevWindow,
-      ...props,
+      ...propsToUpdate,
       isInInitialAutomaticPosition,
     }),
   };

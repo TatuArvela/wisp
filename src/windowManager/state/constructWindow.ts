@@ -1,6 +1,5 @@
 import { WispConfig } from '../../config';
 import { InitialWindow, WindowType } from '../types';
-import { determineIsBlocked } from './childParentUtils';
 import { determinePosition } from './positionUtils';
 
 const makeLength = (
@@ -23,7 +22,6 @@ const constructWindow = (
     height: makeLength(initial.height, config.defaultWindowHeight),
     icon: initial.icon,
     id: initial.id,
-    isBlocked: determineIsBlocked(initial.id, windows),
     isClosable: initial.isClosable ?? true,
     isClosed: initial.isClosed ?? false,
     isDraggable: initial.isDraggable ?? true,
@@ -33,7 +31,7 @@ const constructWindow = (
       ? (initial.isMinimizable ?? true)
       : false,
     isMinimized: initial.isMinimized ?? false,
-    isBlockingParent: initial.isBlockingParent ?? false,
+    isModal: initial.isModal ?? false,
     isResizable: initial.isResizable ?? true,
     maxHeight: initial.maxHeight ?? config.maxWindowHeight,
     maxWidth: initial.maxWidth ?? config.maxWindowWidth,

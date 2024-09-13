@@ -1,10 +1,5 @@
 import { WindowManagerState } from '../../../windowManager/state/types';
-import {
-  Boundaries,
-  ViewportMargins,
-  WindowManager,
-  WindowType,
-} from '../../../windowManager/types';
+import { Boundaries, WindowType } from '../../../windowManager/types';
 
 export const calculatePositionX = (
   window: WindowType,
@@ -69,8 +64,8 @@ export const getBoundaries = ({
   viewportWidth,
   viewportMargins,
 }: WindowManagerState): Boundaries => ({
-  minX: viewportMargins.left,
-  minY: viewportMargins.top,
-  maxX: viewportWidth - viewportMargins.right,
-  maxY: viewportHeight - viewportMargins.bottom,
+  minX: viewportMargins?.left ?? 0,
+  minY: viewportMargins?.top ?? 0,
+  maxX: viewportWidth - (viewportMargins?.right ?? 0),
+  maxY: viewportHeight - (viewportMargins?.bottom ?? 0),
 });

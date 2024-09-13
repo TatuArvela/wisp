@@ -195,22 +195,16 @@ export const ChildMessageBoxes = () => {
       </Window>
 
       <MessageBox
-        id="message"
-        title="Message"
+        id="nonModal"
+        title="Non-modal"
         parentId="parent"
-        showAsTask={false}
+        isModal={false}
       >
-        Message!
+        Not a modal
       </MessageBox>
 
-      <MessageBox
-        id="blockingMessage"
-        title="Blocking message"
-        parentId="parent"
-        isBlockingParent={true}
-        showAsTask={false}
-      >
-        Blocking message!
+      <MessageBox id="modal" title="Modal" parentId="parent">
+        Modal
       </MessageBox>
     </Wisp>
   );

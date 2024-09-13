@@ -7,7 +7,7 @@ import {
   useWindowOrderNumberById,
 } from '../windowManager/hooks';
 import { ActionPayload } from '../windowManager/state/types';
-import { InitialWindow, WindowType } from '../windowManager/types';
+import { InitialWindow } from '../windowManager/types';
 import ResizeBorder from './components/ResizeBorder';
 import TitleBar from './components/TitleBar';
 import WindowElement from './components/WindowElement';
