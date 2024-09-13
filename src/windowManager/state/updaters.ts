@@ -97,12 +97,12 @@ export function createWindow(
   const window = constructWindow(state.config, state.windows, payload);
   const shouldActivate = !window.isMinimized && !window.isClosed;
 
-  return {
+  return refitWindows({
     ...state,
     activeWindowId: shouldActivate ? id : state.activeWindowId,
     windows: new Map(state.windows).set(id, window),
     windowOrder: state.windowOrder.concat(id),
-  };
+  });
 }
 
 export function deactivateWindow(
@@ -196,6 +196,10 @@ export function updateViewportSize(
 }
 
 function refitWindows(state: WindowManagerState): WindowManagerState {
+  if (!state.viewportWidth || !state.viewportHeight) {
+    return state;
+  }
+
   const boundaries = getBoundaries(state);
   const windows = Array.from(state.windows);
   const refittedWindows: [string, WindowType][] = windows.map(

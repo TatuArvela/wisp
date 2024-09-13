@@ -61,6 +61,7 @@ export const StickyNotes = {
         <Window
           id="1"
           {...commonState}
+          positionX={400}
           isDraggable={false}
           isResizable={false}
           title="Static note"
