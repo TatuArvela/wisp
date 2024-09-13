@@ -121,10 +121,7 @@ function filterUpdatablePropsForInactive(
 ): Partial<WindowType> {
   return Object.fromEntries(
     Object.entries(props).filter(
-      ([propName]) =>
-        !['positionX', 'positionY', 'isMinimized', 'isMaximized'].includes(
-          propName
-        )
+      ([propName]) => !['positionX', 'positionY'].includes(propName)
     )
   );
 }
